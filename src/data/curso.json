@@ -1,0 +1,2574 @@
+{
+  "version": "1.0.0",
+  "modulos": [
+    {
+      "id": "m1",
+      "num": 1,
+      "title": "Fundamentos de Enfermería",
+      "lead": "Bases teóricas, ético-legales y metodológicas que sostienen toda la práctica profesional.",
+      "imageKey": "m1_hero",
+      "iconName": "school-outline",
+      "gradient": [
+        "#7C3AED",
+        "#5B21B6"
+      ],
+      "isPremium": false,
+      "subs": [
+        {
+          "id": "m1-1",
+          "title": "1.1 Definición y disciplina",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "La enfermería es la ciencia y arte del cuidado de la persona, familia y comunidad, en todas las etapas del ciclo vital y en cualquier estado de salud-enfermedad. Integra tres dimensiones:"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Asistencial — cuidados directos al paciente.",
+                "Docente — educación al paciente, familia y nuevos profesionales.",
+                "Investigativa y de gestión — calidad, evidencia y administración de servicios."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "★ Insight",
+              "text": "El cuidado enfermero no es solo \"hacer técnicas\". Implica observación continua, juicio clínico y abogacía por el paciente — el enfermero suele ser el primero en detectar deterioro silencioso."
+            }
+          ]
+        },
+        {
+          "id": "m1-2",
+          "title": "1.2 Niveles de atención",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Nivel",
+                "Características",
+                "Ejemplo"
+              ],
+              "rows": [
+                [
+                  "Primario",
+                  "Promoción y prevención. Atención ambulatoria.",
+                  "CAPS, vacunación, controles del niño sano"
+                ],
+                [
+                  "Secundario",
+                  "Atención hospitalaria, especialidades básicas.",
+                  "Hospital general, internación clínica/quirúrgica"
+                ],
+                [
+                  "Terciario",
+                  "Alta complejidad y subespecialidades.",
+                  "UTI, neurocirugía, trasplantes, oncología"
+                ],
+                [
+                  "Cuaternario",
+                  "Investigación, alta tecnología, tratamientos experimentales.",
+                  "Centros de referencia internacional"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m1-3",
+          "title": "1.3 Roles del enfermero",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Cuidador — el rol nuclear: atender necesidades fisiológicas, emocionales y sociales.",
+                "Comunicador — puente entre paciente, familia y equipo.",
+                "Educador — enseñanza para el alta y autocuidado.",
+                "Defensor (advocate) — protege derechos y dignidad del paciente.",
+                "Líder y gestor — coordina cuidados, recursos y equipo.",
+                "Investigador — aplica y genera evidencia."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m1-4",
+          "title": "1.4 Proceso de Atención de Enfermería (PAE)",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Método sistemático y científico para brindar cuidados. 5 etapas cíclicas:"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "Valoración — recolección de datos (entrevista, examen físico, historia, estudios). Subjetivos + objetivos.",
+                "Diagnóstico de enfermería — uso de taxonomía NANDA-I. Formato P-E-S (Problema, Etiología, Signos/Síntomas).",
+                "Planificación — objetivos SMART + intervenciones NIC.",
+                "Ejecución — implementación de intervenciones planificadas.",
+                "Evaluación — comparación con resultados NOC; ajustar plan."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "💡 Tip clínico",
+              "text": "Memorizá el ciclo como \"VDPEE\". Si un paciente no mejora, el problema casi siempre está en la valoración (datos incompletos) o en el diagnóstico (etiología equivocada), no en la ejecución."
+            }
+          ]
+        },
+        {
+          "id": "m1-5",
+          "title": "1.5 Bioética: 4 principios",
+          "blocks": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "title": "Autonomía",
+                  "text": "Respetar las decisiones informadas del paciente — consentimiento informado."
+                },
+                {
+                  "title": "Beneficencia",
+                  "text": "Hacer el bien — actuar buscando el mayor beneficio para el paciente."
+                },
+                {
+                  "title": "No maleficencia",
+                  "text": "Primum non nocere — ante todo no dañar."
+                },
+                {
+                  "title": "Justicia",
+                  "text": "Distribución equitativa de recursos y trato sin discriminación."
+                }
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "⚠️ Bandera roja ético-legal",
+              "text": "Toda intervención requiere consentimiento. La excepción es la emergencia con riesgo vital inmediato donde el paciente no puede expresar voluntad — se aplica el principio de beneficencia con documentación posterior."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m2",
+      "num": 2,
+      "title": "Anatomía y constantes fisiológicas",
+      "lead": "Referencias rápidas de sistemas, composición del aire y valores normales que todo enfermero debe tener \"en la cabeza\".",
+      "imageKey": "m2_anatomia",
+      "iconName": "human",
+      "gradient": [
+        "#0891B2",
+        "#0E7490"
+      ],
+      "isPremium": false,
+      "subs": [
+        {
+          "id": "m2-1",
+          "title": "2.1 Los 12 sistemas del cuerpo humano",
+          "blocks": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "title": "1. Cardiovascular",
+                  "text": "Corazón + vasos. Bombea sangre."
+                },
+                {
+                  "title": "2. Respiratorio",
+                  "text": "Pulmones, vías aéreas. Intercambio gaseoso."
+                },
+                {
+                  "title": "3. Digestivo",
+                  "text": "Boca → ano + glándulas anexas."
+                },
+                {
+                  "title": "4. Renal-urinario",
+                  "text": "Riñones, uréteres, vejiga, uretra."
+                },
+                {
+                  "title": "5. Nervioso",
+                  "text": "SNC + SNP + SNA. Control e integración."
+                },
+                {
+                  "title": "6. Endocrino",
+                  "text": "Glándulas y hormonas: regula a largo plazo."
+                },
+                {
+                  "title": "7. Musculoesquelético",
+                  "text": "Huesos, músculos, articulaciones."
+                },
+                {
+                  "title": "8. Tegumentario",
+                  "text": "Piel, faneras. Barrera primaria."
+                },
+                {
+                  "title": "9. Inmune-linfático",
+                  "text": "Defensa, drenaje linfático."
+                },
+                {
+                  "title": "10. Hematopoyético",
+                  "text": "Médula ósea — produce células sanguíneas."
+                },
+                {
+                  "title": "11. Reproductor",
+                  "text": "Masculino y femenino."
+                },
+                {
+                  "title": "12. Sensorial",
+                  "text": "Vista, audición, olfato, gusto, tacto."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m2-2",
+          "title": "2.2 Composición del aire atmosférico",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Gas",
+                "Porcentaje",
+                "Relevancia clínica"
+              ],
+              "rows": [
+                [
+                  "Nitrógeno (N₂)",
+                  "78,08 %",
+                  "Inerte; riesgo en buceo (enfermedad descompresiva)."
+                ],
+                [
+                  "Oxígeno (O₂)",
+                  "20,95 % (≈ 21 %)",
+                  "Imprescindible. La FiO₂ ambiental = 0,21."
+                ],
+                [
+                  "Argón (Ar)",
+                  "0,93 %",
+                  "Inerte."
+                ],
+                [
+                  "CO₂",
+                  "0,04 %",
+                  "Producto del metabolismo; clave en regulación ácido-base."
+                ],
+                [
+                  "Otros",
+                  "~0,003 %",
+                  "Vapor de agua, neón, helio."
+                ]
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "★ Insight",
+              "text": "Cuando administrás O₂ con cánula nasal a 2 L/min, la FiO₂ ≈ 0,28 (cada L/min suma ~4 % a la FiO₂ basal de 21 %). Por eso la cánula nasal es de bajo flujo — la FiO₂ depende también del patrón respiratorio del paciente."
+            }
+          ]
+        },
+        {
+          "id": "m2-3",
+          "title": "2.3 Valores normales adulto — cheat-sheet",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Parámetro",
+                "Valor normal",
+                "Unidad"
+              ],
+              "rows": [
+                [
+                  "Frecuencia cardíaca",
+                  "60 – 100",
+                  "lpm"
+                ],
+                [
+                  "Frecuencia respiratoria",
+                  "12 – 20",
+                  "rpm"
+                ],
+                [
+                  "TA sistólica",
+                  "90 – 130",
+                  "mmHg"
+                ],
+                [
+                  "TA diastólica",
+                  "60 – 85",
+                  "mmHg"
+                ],
+                [
+                  "Temperatura axilar",
+                  "36,0 – 37,2",
+                  "°C"
+                ],
+                [
+                  "SatO₂",
+                  "≥ 95",
+                  "%"
+                ],
+                [
+                  "Glucemia ayunas",
+                  "70 – 100",
+                  "mg/dL"
+                ],
+                [
+                  "Hemoglobina ♂/♀",
+                  "13,5–17,5 / 12–16",
+                  "g/dL"
+                ],
+                [
+                  "Hematocrito ♂/♀",
+                  "40–52 / 36–48",
+                  "%"
+                ],
+                [
+                  "Leucocitos",
+                  "4.000 – 11.000",
+                  "/mm³"
+                ],
+                [
+                  "Plaquetas",
+                  "150.000 – 400.000",
+                  "/mm³"
+                ],
+                [
+                  "Sodio (Na⁺)",
+                  "135 – 145",
+                  "mEq/L"
+                ],
+                [
+                  "Potasio (K⁺)",
+                  "3,5 – 5,0",
+                  "mEq/L"
+                ],
+                [
+                  "Creatinina ♂/♀",
+                  "0,7–1,3 / 0,6–1,1",
+                  "mg/dL"
+                ],
+                [
+                  "Urea",
+                  "10 – 50",
+                  "mg/dL"
+                ],
+                [
+                  "pH arterial",
+                  "7,35 – 7,45",
+                  "—"
+                ],
+                [
+                  "PaO₂",
+                  "80 – 100",
+                  "mmHg"
+                ],
+                [
+                  "PaCO₂",
+                  "35 – 45",
+                  "mmHg"
+                ],
+                [
+                  "HCO₃⁻",
+                  "22 – 26",
+                  "mEq/L"
+                ],
+                [
+                  "Diuresis",
+                  "0,5 – 1",
+                  "mL/kg/h"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m2-4",
+          "title": "2.4 Valores pediátricos según edad",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Edad",
+                "FC (lpm)",
+                "FR (rpm)",
+                "TAS mín."
+              ],
+              "rows": [
+                [
+                  "RN (0-1 mes)",
+                  "120 – 160",
+                  "30 – 60",
+                  "> 60"
+                ],
+                [
+                  "Lactante (1-12 m)",
+                  "100 – 160",
+                  "25 – 40",
+                  "> 70"
+                ],
+                [
+                  "1 – 3 años",
+                  "90 – 140",
+                  "20 – 30",
+                  "> 70 + (edad×2)"
+                ],
+                [
+                  "3 – 6 años",
+                  "80 – 120",
+                  "20 – 25",
+                  "> 75"
+                ],
+                [
+                  "6 – 12 años",
+                  "70 – 110",
+                  "16 – 22",
+                  "> 80"
+                ],
+                [
+                  "> 12 años",
+                  "60 – 100",
+                  "12 – 20",
+                  "> 90"
+                ]
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "💡 Regla pediátrica",
+              "text": "TAS mínima en niños 1-10 años ≈ 70 + (edad × 2) mmHg. Por debajo de eso → hipotensión franca."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m3",
+      "num": 3,
+      "title": "Signos vitales",
+      "lead": "Técnica correcta de medición y rangos a interpretar. Los 5 + 1: TA, FC, FR, T°, SatO₂ y dolor.",
+      "imageKey": "m3_signos",
+      "iconName": "heart-pulse",
+      "gradient": [
+        "#DC2626",
+        "#991B1B"
+      ],
+      "isPremium": true,
+      "subs": [
+        {
+          "id": "m3-1",
+          "title": "3.1 Tensión arterial",
+          "blocks": [
+            {
+              "type": "h4",
+              "text": "Técnica"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "Paciente sentado 5 min, espalda apoyada, piernas sin cruzar.",
+                "Brazo a la altura del corazón, palma hacia arriba.",
+                "Manguito del tamaño correcto (ancho = 40 % de la circunferencia del brazo).",
+                "Borde inferior del manguito 2-3 cm por encima del pliegue cubital.",
+                "Inflar 30 mmHg por encima del punto donde desaparece el pulso radial.",
+                "Desinflar a 2-3 mmHg/segundo.",
+                "Primer ruido de Korotkoff = sistólica; desaparición = diastólica."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Clasificación"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Categoría",
+                "Sistólica",
+                "Diastólica"
+              ],
+              "rows": [
+                [
+                  "Óptima",
+                  "< 120",
+                  "< 80"
+                ],
+                [
+                  "Normal",
+                  "120-129",
+                  "80-84"
+                ],
+                [
+                  "Normal alta",
+                  "130-139",
+                  "85-89"
+                ],
+                [
+                  "HTA grado 1",
+                  "140-159",
+                  "90-99"
+                ],
+                [
+                  "HTA grado 2",
+                  "160-179",
+                  "100-109"
+                ],
+                [
+                  "HTA grado 3",
+                  "≥ 180",
+                  "≥ 110"
+                ],
+                [
+                  "Hipotensión",
+                  "< 90",
+                  "< 60"
+                ],
+                [
+                  "Crisis HTA",
+                  "≥ 180",
+                  "≥ 120"
+                ]
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "⚠️ Crisis hipertensiva",
+              "text": "TA ≥ 180/120. Diferenciar urgencia (sin daño de órgano blanco, bajar TA en horas) de emergencia (con daño: encefalopatía, IAM, ACV, edema agudo de pulmón — bajar TA en minutos con medicación EV)."
+            }
+          ]
+        },
+        {
+          "id": "m3-2",
+          "title": "3.2 Frecuencia cardíaca y pulso",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Contar 1 minuto completo si es irregular. Si regular, 30 seg × 2."
+            },
+            {
+              "type": "h4",
+              "text": "Sitios de toma"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Radial — el más usado en adultos.",
+                "Carotídeo — emergencias, shock, RCP.",
+                "Femoral — RCP, shock, lactantes.",
+                "Braquial — TA y RCP en lactantes.",
+                "Apical — auscultación 5° EIC línea medioclavicular izq. Estándar en pediatría < 2 años.",
+                "Pedio / tibial posterior — perfusión periférica de MMII."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Alteración",
+                "Definición",
+                "Causas comunes"
+              ],
+              "rows": [
+                [
+                  "Taquicardia",
+                  "> 100 lpm",
+                  "Fiebre, dolor, ansiedad, shock, anemia, hipertiroidismo"
+                ],
+                [
+                  "Bradicardia",
+                  "< 60 lpm",
+                  "Atletas, hipotermia, hipotiroidismo, BAV, β-bloqueantes"
+                ],
+                [
+                  "Pulso filiforme",
+                  "Débil y rápido",
+                  "Shock hipovolémico"
+                ],
+                [
+                  "Pulso saltón",
+                  "Amplio y vigoroso",
+                  "Fiebre, ejercicio, hipertiroidismo, IAo"
+                ],
+                [
+                  "Pulso paradójico",
+                  "Cae > 10 mmHg en inspiración",
+                  "Taponamiento cardíaco, asma severa"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m3-3",
+          "title": "3.3 Frecuencia respiratoria",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Observar movimientos torácicos sin que el paciente lo note (si lo nota, se altera la FR). Contar 1 minuto."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Taquipnea: > 20 rpm — fiebre, dolor, hipoxia, acidosis, ansiedad.",
+                "Bradipnea: < 12 rpm — opioides, lesión SNC, hipotermia.",
+                "Apnea: ausencia > 10 seg — paro respiratorio.",
+                "Disnea: respiración dificultosa subjetiva u objetiva.",
+                "Ortopnea: disnea en decúbito — típica de ICC.",
+                "Cheyne-Stokes: ciclos crescendo-decrescendo + apnea — daño SNC, ICC terminal.",
+                "Kussmaul: profunda y rápida — cetoacidosis diabética.",
+                "Biot: irregular, ciclos con apnea — daño bulbar."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m3-4",
+          "title": "3.4 Temperatura",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Sitio",
+                "Rango normal",
+                "Tiempo"
+              ],
+              "rows": [
+                [
+                  "Axilar",
+                  "36,0 – 37,2 °C",
+                  "5 min"
+                ],
+                [
+                  "Bucal",
+                  "36,4 – 37,6 °C",
+                  "3 min"
+                ],
+                [
+                  "Rectal (gold standard)",
+                  "36,8 – 38,0 °C",
+                  "2 min"
+                ],
+                [
+                  "Timpánica",
+                  "36,7 – 37,5 °C",
+                  "segundos"
+                ],
+                [
+                  "Frontal",
+                  "36,0 – 37,2 °C",
+                  "segundos"
+                ]
+              ]
+            },
+            {
+              "type": "list",
+              "items": [
+                "Hipotermia < 35 °C / leve 32-35 / moderada 28-32 / severa < 28.",
+                "Febrícula 37,3 – 37,9 °C.",
+                "Fiebre ≥ 38 °C.",
+                "Hiperpirexia ≥ 41 °C — riesgo de daño cerebral."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m3-5",
+          "title": "3.5 Saturación de oxígeno",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Normal: ≥ 95 % (en EPOC basal puede ser 88-92 %).",
+                "Hipoxemia leve: 91-94 %.",
+                "Hipoxemia moderada: 86-90 %.",
+                "Hipoxemia severa: ≤ 85 %."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "warn",
+              "title": "⚠️ Falsos en oximetría",
+              "items": [
+                "Esmalte de uñas oscuro → lecturas falsamente bajas.",
+                "Mala perfusión / hipotensión / frío → señal pobre.",
+                "Anemia severa → SatO₂ puede ser normal con hipoxia tisular.",
+                "Intoxicación por CO → SatO₂ FALSAMENTE NORMAL.",
+                "Movimiento → artefacto."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m3-6",
+          "title": "3.6 Dolor (5° signo vital)",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Evaluación con escalas según edad y estado cognitivo:"
+            },
+            {
+              "type": "list",
+              "items": [
+                "EVA — adultos colaboradores. 0 (sin dolor) – 10 (máximo).",
+                "Wong-Baker (caritas) — niños y pacientes con dificultad verbal.",
+                "FLACC — niños 2 meses – 7 años.",
+                "BPS / CPOT — pacientes intubados o sedados.",
+                "PAINAD — adultos mayores con demencia."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "OPQRST para anamnesis del dolor: Onset, Provoca/Palia, Quality, Radiación, Severidad, Tiempo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m4",
+      "num": 4,
+      "title": "Bioseguridad",
+      "lead": "Prevención de infecciones asociadas a la atención sanitaria — protege al paciente, al equipo y a uno mismo.",
+      "imageKey": "m4_bioseguridad",
+      "iconName": "shield-check-outline",
+      "gradient": [
+        "#059669",
+        "#047857"
+      ],
+      "isPremium": true,
+      "subs": [
+        {
+          "id": "m4-1",
+          "title": "4.1 Lavado de manos — los 5 momentos OMS",
+          "blocks": [
+            {
+              "type": "ol",
+              "items": [
+                "Antes del contacto con el paciente.",
+                "Antes de una tarea aséptica.",
+                "Después del riesgo de exposición a fluidos.",
+                "Después del contacto con el paciente.",
+                "Después del contacto con el entorno del paciente."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Tipos de lavado"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Tipo",
+                "Tiempo",
+                "Producto",
+                "Indicación"
+              ],
+              "rows": [
+                [
+                  "Social",
+                  "15-30 s",
+                  "Jabón común",
+                  "Suciedad visible, antes de comer"
+                ],
+                [
+                  "Antiséptico",
+                  "40-60 s",
+                  "Clorhexidina/iodopovidona",
+                  "Antes/después de paciente"
+                ],
+                [
+                  "Frotación alcohol",
+                  "20-30 s",
+                  "Solución alcohólica 70 %",
+                  "Manos visiblemente limpias"
+                ],
+                [
+                  "Quirúrgico",
+                  "3-5 min",
+                  "Jabón antiséptico + cepillo",
+                  "Antes de cirugía"
+                ]
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "💡 Técnica de los 7 pasos",
+              "text": "Palmas → dorsos → entre dedos → uñas → pulgares → puntas (en palma) → muñecas. Si saltás un paso, te quedan zonas sucias."
+            }
+          ]
+        },
+        {
+          "id": "m4-2",
+          "title": "4.2 EPP — orden correcto",
+          "blocks": [
+            {
+              "type": "h4",
+              "text": "Colocación"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "Higiene de manos.",
+                "Bata / camisolín.",
+                "Barbijo / respirador.",
+                "Antiparras / protector facial.",
+                "Guantes (sobre el puño de la bata)."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Retiro"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "Guantes (lo más contaminado).",
+                "Higiene de manos.",
+                "Antiparras.",
+                "Bata.",
+                "Higiene de manos.",
+                "Barbijo (último — protege la vía aérea).",
+                "Higiene de manos final."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "⚠️ Error frecuente",
+              "text": "Tocarse la cara con guantes contaminados. Una vez puesto el EPP, las manos NO van a la cara hasta haberlo retirado por completo."
+            }
+          ]
+        },
+        {
+          "id": "m4-3",
+          "title": "4.3 Tipos de aislamiento",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Tipo",
+                "Mecanismo",
+                "EPP",
+                "Ejemplos"
+              ],
+              "rows": [
+                [
+                  "Estándar",
+                  "Todos los pacientes",
+                  "Guantes según riesgo",
+                  "Universal"
+                ],
+                [
+                  "Contacto",
+                  "Directo / indirecto",
+                  "Guantes + bata",
+                  "SARM, C. difficile"
+                ],
+                [
+                  "Gotas (>5µm, <1m)",
+                  "Tos, estornudo",
+                  "Barbijo quirúrgico",
+                  "Gripe, meningitis"
+                ],
+                [
+                  "Aéreo (<5µm)",
+                  "Aerosol",
+                  "N95 + presión negativa",
+                  "TBC, varicela, sarampión"
+                ],
+                [
+                  "Protector",
+                  "Proteger AL paciente",
+                  "EPP + presión positiva",
+                  "Trasplante MO, neutropenia"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m4-4",
+          "title": "4.4 Manejo de residuos",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Color",
+                "Tipo",
+                "Contenido"
+              ],
+              "rows": [
+                [
+                  "Rojo",
+                  "Patológico/infeccioso",
+                  "Material con sangre, fluidos, gasas usadas"
+                ],
+                [
+                  "Amarillo",
+                  "Corto-punzante",
+                  "Agujas, bisturí (descartador rígido)"
+                ],
+                [
+                  "Negro",
+                  "Común",
+                  "Papeles, envoltorios sin contaminar"
+                ],
+                [
+                  "Azul",
+                  "Reciclable",
+                  "Plástico, vidrio limpio"
+                ],
+                [
+                  "Especial",
+                  "Citotóxico/radiactivo",
+                  "Quimio, contrastes, isótopos"
+                ]
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "🚨 Pinchazo accidental",
+              "items": [
+                "NO exprimir la herida (favorece entrada).",
+                "Lavar con agua y jabón abundantes 3-5 min.",
+                "Antiséptico (clorhexidina o yodopovidona).",
+                "Notificar inmediatamente a medicina laboral.",
+                "Evaluar profilaxis post-exposición (HIV, HBV) — ventana 1-2 h ideal, hasta 72 h máx.",
+                "Serología basal del trabajador y de la fuente."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m5",
+      "num": 5,
+      "title": "Equipamiento clínico",
+      "lead": "Dispositivos de oxigenoterapia, accesos vasculares, sondas, drenajes y monitoreo.",
+      "imageKey": "m5_equipamiento",
+      "iconName": "medical-bag",
+      "gradient": [
+        "#0EA5E9",
+        "#0369A1"
+      ],
+      "isPremium": true,
+      "subs": [
+        {
+          "id": "m5-1",
+          "title": "5.1 Dispositivos de oxigenoterapia",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Dispositivo",
+                "Flujo (L/min)",
+                "FiO₂",
+                "Indicación"
+              ],
+              "rows": [
+                [
+                  "Cánula nasal",
+                  "1 – 6",
+                  "24 – 40 %",
+                  "Hipoxemia leve, O₂ crónica"
+                ],
+                [
+                  "Máscara simple",
+                  "5 – 10",
+                  "40 – 60 %",
+                  "FiO₂ mayor que cánula"
+                ],
+                [
+                  "Máscara reservorio",
+                  "10 – 15",
+                  "60 – 90 %",
+                  "Hipoxemia severa, IAM, trauma"
+                ],
+                [
+                  "Máscara Venturi",
+                  "4 – 15",
+                  "24 – 60 % preciso",
+                  "EPOC — control fino FiO₂"
+                ],
+                [
+                  "CPAP / BiPAP",
+                  "—",
+                  "21 – 100 %",
+                  "EPOC reagudizado, EAP, SAOS"
+                ],
+                [
+                  "AVM (ARM)",
+                  "—",
+                  "21 – 100 %",
+                  "Insuficiencia respiratoria, post-PCR"
+                ],
+                [
+                  "AMBU (BVM)",
+                  "10 – 15",
+                  "~90 % con reservorio",
+                  "Apnea, ventilación de emergencia"
+                ]
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "★ Insight — Venturi",
+              "text": "Es el único dispositivo que entrega FiO₂ exacta sin importar el patrón respiratorio. Ideal en EPOC, donde subir FiO₂ bruscamente puede deprimir el centro respiratorio."
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "⚠️ Reservorio",
+              "text": "Antes de colocar máscara con reservorio, llenar la bolsa ocluyendo la válvula con el dedo. Si el reservorio se colapsa al inspirar, no llega FiO₂ alta — aumentar el flujo."
+            }
+          ]
+        },
+        {
+          "id": "m5-2",
+          "title": "5.2 AMBU / Bolsa-Válvula-Máscara",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Dispositivo de ventilación manual de emergencia. Componentes: máscara + válvula unidireccional + bolsa autoinflable + reservorio + conexión a O₂."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sin O₂: FiO₂ ≈ 21 %.",
+                "Con O₂ a 10-15 L/min sin reservorio: ~50 %.",
+                "Con O₂ + reservorio: ~90-100 %.",
+                "Frecuencia: adulto 10/min, niño/lactante 20-30/min, neonato 40-60/min.",
+                "Volumen: solo apretar hasta ver elevación del tórax (~6-8 mL/kg).",
+                "Técnica E-C: pulgar e índice (E sobre la máscara), 3 dedos restantes (C bajo la mandíbula)."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m5-3",
+          "title": "5.3 Vías de acceso vascular",
+          "blocks": [
+            {
+              "type": "h4",
+              "text": "Catéter venoso periférico"
+            },
+            {
+              "type": "list",
+              "items": [
+                "14G (naranja) — trauma.",
+                "16G (gris) — cirugía mayor.",
+                "18G (verde) — sangre, contrastes.",
+                "20G (rosa) — uso general.",
+                "22G (azul) — ancianos, niños.",
+                "24G (amarillo) — neonatos.",
+                "Cambio cada 72-96 h o ante signos de flebitis.",
+                "Evitar miembro con FAV o vaciamiento ganglionar."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Vía central (CVC)"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sitios: yugular interna, subclavia, femoral.",
+                "Indicaciones: drogas vasoactivas, NPT, PVC, accesos prolongados.",
+                "Riesgos: neumotórax (subclavia), infección (femoral), trombosis.",
+                "PICC: catéter central de inserción periférica — duración semanas/meses."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Escala de flebitis (Maddox)"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "Sin signos.",
+                "Eritema con o sin dolor.",
+                "Dolor + eritema y/o edema.",
+                "Anteriores + cordón venoso palpable.",
+                "Anteriores + cordón > 2,5 cm + secreción purulenta."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m5-4",
+          "title": "5.4 Sondas y catéteres",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Sonda",
+                "Uso",
+                "Cuidados clave"
+              ],
+              "rows": [
+                [
+                  "Foley (vesical)",
+                  "Retención urinaria, control diuresis",
+                  "Sistema cerrado, bolsa por debajo de vejiga, higiene perineal diaria"
+                ],
+                [
+                  "Nasogástrica",
+                  "Descompresión, alimentación, lavado",
+                  "Verificar posición (pH < 5,5 o Rx), cabecera 30-45°"
+                ],
+                [
+                  "Nasoyeyunal",
+                  "Alimentación post-pilórica",
+                  "Reduce riesgo broncoaspiración"
+                ],
+                [
+                  "Gastrostomía PEG",
+                  "Alimentación enteral > 4-6 sem",
+                  "Higiene del estoma, rotar diariamente"
+                ],
+                [
+                  "Tubo endotraqueal",
+                  "Ventilación mecánica",
+                  "Presión balón 20-30 cmH₂O, control radiológico"
+                ],
+                [
+                  "Traqueostomía",
+                  "Vía aérea prolongada",
+                  "Aspiración aséptica, humidificación"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m5-5",
+          "title": "5.5 Drenajes",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Penrose: pasivo, gravedad. Drena absceso, post-cirugía menor.",
+                "Jackson-Pratt (J-P): cerrado, succión suave por bulbo. Cirugía abdominal/torácica.",
+                "Hemovac: cerrado, succión por resorte. Ortopedia.",
+                "Kehr (en T): en colédoco — cirugía biliar.",
+                "Tubo torácico: con sello de agua. Neumotórax (apical), hemo/derrame (basal)."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "warn",
+              "title": "⚠️ Tubo torácico — sello de agua",
+              "items": [
+                "El frasco SIEMPRE por debajo del tórax.",
+                "Burbujeo continuo: fuga aérea — evaluar conexiones o fístula.",
+                "Burbujeo solo en espiración: normal en neumotórax.",
+                "Oscilación en columna: sistema permeable y pulmón móvil. Si cesa: tubo obstruido o pulmón re-expandido.",
+                "Nunca pinzar el tubo en traslado salvo cambio de frasco."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m5-6",
+          "title": "5.6 Monitoreo",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Monitor multiparamétrico: ECG (3 o 5 derivaciones), SpO₂, TA NIBP, FR, T°.",
+                "Capnografía (EtCO₂): 35-45 mmHg. Estándar en intubados — confirma posición del TET.",
+                "PVC: 2-8 mmHg. Reflejo de precarga del VD.",
+                "Línea arterial: monitoreo TA latido a latido + extracción de gases.",
+                "Bombas de infusión: doble check en heparina, noradrenalina, insulina, KCl."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m6",
+      "num": 6,
+      "title": "Sistemas corporales — examen físico",
+      "lead": "Cómo explorar cada sistema en el examen físico. Para enciclopedia de patologías → app Patologías.",
+      "imageKey": "m6_patologias",
+      "iconName": "human-male",
+      "gradient": [
+        "#7C3AED",
+        "#5B21B6"
+      ],
+      "isPremium": true,
+      "subs": [
+        {
+          "id": "m6-1",
+          "title": "6.1 Examen cardiovascular",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Inspección, palpación, auscultación. Buscar coloración, edemas, ingurgitación yugular, latido apical, frémitos, soplos."
+            },
+            {
+              "type": "h4",
+              "text": "Focos de auscultación"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Aórtico: 2° EIC paraesternal derecho.",
+                "Pulmonar: 2° EIC paraesternal izquierdo.",
+                "Tricuspídeo: 4° EIC paraesternal izquierdo.",
+                "Mitral: 5° EIC línea medioclavicular izq. (ápex)."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Pulsos arteriales (escala 0-4)"
+            },
+            {
+              "type": "list",
+              "items": [
+                "0 — ausente / 1+ — débil / 2+ — normal / 3+ — saltón / 4+ — aneurismático.",
+                "Comparar bilateral (radial, femoral, pedio, tibial posterior).",
+                "Pulso paradójico → cae > 10 mmHg en inspiración (taponamiento, asma severa)."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "💡 Tip",
+              "text": "Auscultar siempre con el paciente sentado y en decúbito izquierdo (acentúa soplos mitrales). Comparar tonos en inspiración vs espiración."
+            },
+            {
+              "type": "crosslink",
+              "target": "patologias",
+              "title": "Patologías cardiovasculares",
+              "description": "IAM, ICC, arritmias, HTA, valvulopatías con signos, síntomas, cuidados completos.",
+              "path": "system/cardiovascular"
+            }
+          ]
+        },
+        {
+          "id": "m6-2",
+          "title": "6.2 Examen respiratorio",
+          "blocks": [
+            {
+              "type": "h4",
+              "text": "Inspección"
+            },
+            {
+              "type": "list",
+              "items": [
+                "FR, patrón, simetría, uso de musculatura accesoria, tiraje.",
+                "Cianosis central (labios, lengua) o periférica (uñas, lechos).",
+                "Forma del tórax: tórax en tonel (EPOC), pectus excavatum/carinatum."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Auscultación — sonidos normales"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vesicular: parénquima pulmonar — suave, inspiración > espiración.",
+                "Bronquial: tráquea — fuerte, espiración > inspiración.",
+                "Broncovesicular: zonas de transición — ambas fases similares."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Ruidos agregados (patológicos)"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Ruido",
+                "Origen",
+                "Patología típica"
+              ],
+              "rows": [
+                [
+                  "Crepitantes finos",
+                  "Apertura alvéolos",
+                  "ICC, neumonía, fibrosis"
+                ],
+                [
+                  "Crepitantes gruesos",
+                  "Vías aéreas con secreción",
+                  "Bronquitis, EPOC reagudizado"
+                ],
+                [
+                  "Sibilancias",
+                  "Broncoespasmo",
+                  "Asma, EPOC"
+                ],
+                [
+                  "Roncus",
+                  "Secreción en bronquios grandes",
+                  "Bronquitis, EPOC"
+                ],
+                [
+                  "Estridor",
+                  "Obstrucción vía aérea alta",
+                  "Edema laríngeo, cuerpo extraño"
+                ],
+                [
+                  "Frote pleural",
+                  "Pleuritis",
+                  "TEP, pleuritis"
+                ]
+              ]
+            },
+            {
+              "type": "crosslink",
+              "target": "patologias",
+              "title": "Patologías respiratorias",
+              "description": "EPOC, asma, neumonía, TEP con presentación clínica, criterios de gravedad y manejo.",
+              "path": "system/respiratorio"
+            }
+          ]
+        },
+        {
+          "id": "m6-3",
+          "title": "6.3 Examen abdominal",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Orden inverso al resto: inspección → AUSCULTACIÓN → percusión → palpación. La palpación primero altera los ruidos."
+            },
+            {
+              "type": "h4",
+              "text": "Inspección"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cicatrices, distensión, hernias, circulación colateral, peristaltismo visible.",
+                "9 cuadrantes o 4 cuadrantes para localizar síntomas."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Auscultación"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Ruidos hidroaéreos: 5-30/min normal. Ausentes (íleo) o aumentados (gastroenteritis, obstrucción).",
+                "Soplos: aórtico, renal — sospechar aneurisma o estenosis."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Palpación + signos clave"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Signo",
+                "Maniobra",
+                "Sugiere"
+              ],
+              "rows": [
+                [
+                  "Blumberg",
+                  "Dolor a la descompresión",
+                  "Irritación peritoneal"
+                ],
+                [
+                  "McBurney",
+                  "Dolor en FID",
+                  "Apendicitis"
+                ],
+                [
+                  "Murphy",
+                  "Detiene inspiración al palpar HD",
+                  "Colecistitis"
+                ],
+                [
+                  "Giordano",
+                  "Puñopercusión lumbar dolorosa",
+                  "Pielonefritis, litiasis"
+                ],
+                [
+                  "Rovsing",
+                  "Palpar FII despierta dolor en FID",
+                  "Apendicitis"
+                ]
+              ]
+            },
+            {
+              "type": "crosslink",
+              "target": "patologias",
+              "title": "Patologías digestivas y renales",
+              "description": "Apendicitis, pancreatitis, cirrosis, ITU, litiasis con cuidados completos.",
+              "path": "system/digestivo"
+            }
+          ]
+        },
+        {
+          "id": "m6-4",
+          "title": "6.4 Examen neurológico",
+          "blocks": [
+            {
+              "type": "h4",
+              "text": "Nivel de conciencia — Glasgow"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Apertura ocular",
+                "Verbal",
+                "Motora"
+              ],
+              "rows": [
+                [
+                  "4 espontánea",
+                  "5 orientada",
+                  "6 obedece"
+                ],
+                [
+                  "3 al llamado",
+                  "4 confusa",
+                  "5 localiza dolor"
+                ],
+                [
+                  "2 al dolor",
+                  "3 inapropiada",
+                  "4 retira"
+                ],
+                [
+                  "1 sin respuesta",
+                  "2 incomprensible",
+                  "3 flexión anormal"
+                ],
+                [
+                  "—",
+                  "1 sin respuesta",
+                  "2 extensión anormal"
+                ],
+                [
+                  "—",
+                  "—",
+                  "1 sin respuesta"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Total: 15 (normal) – 3 (coma). ≤ 8 → considerar intubación."
+            },
+            {
+              "type": "h4",
+              "text": "Pupilas"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tamaño normal: 2-4 mm. Mióticas (< 2) — opioides, lesión pontina. Midriáticas (> 5) — anticolinérgicos, anoxia, muerte encefálica.",
+                "Reactividad: cierre rápido al estímulo lumínico — preservada o ausente.",
+                "Anisocoria: diferencia > 1 mm entre ambas — herniación, lesión del III par."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Focalidad"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Fuerza muscular escala 0-5 (0 ausente, 5 normal).",
+                "Reflejos osteotendinosos: bicipital, tricipital, rotuliano, aquíleo (0 a 4+).",
+                "Babinski: extensión del primer dedo + apertura del resto = lesión piramidal en adulto.",
+                "Signos meníngeos: rigidez de nuca, Kernig, Brudzinski."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "🚨 Tríada de Cushing",
+              "text": "Bradicardia + HTA + alteración respiratoria = hipertensión endocraneana. Avisar inmediatamente."
+            },
+            {
+              "type": "crosslink",
+              "target": "patologias",
+              "title": "Patologías neurológicas",
+              "description": "ACV, TEC, convulsiones, meningitis con FAST, ventana terapéutica y cuidados.",
+              "path": "system/neurologico"
+            }
+          ]
+        },
+        {
+          "id": "m6-5",
+          "title": "6.5 Examen musculoesquelético y piel",
+          "blocks": [
+            {
+              "type": "h4",
+              "text": "Movilidad y fuerza"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Rango articular activo y pasivo de cada articulación.",
+                "Fuerza muscular escala 0-5 comparativa bilateral.",
+                "Marcha: simetría, base, equilibrio. Romberg para coordinación."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Piel y heridas — escala de Braden"
+            },
+            {
+              "type": "p",
+              "text": "Evalúa 6 ítems (1-4 puntos): percepción sensorial, humedad, actividad, movilidad, nutrición, fricción. Total 6-23."
+            },
+            {
+              "type": "list",
+              "items": [
+                "≤ 9 — riesgo muy alto",
+                "10-12 — riesgo alto",
+                "13-14 — riesgo moderado",
+                "15-18 — riesgo bajo",
+                "≥ 19 — sin riesgo"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "UPP — Estadios NPUAP"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "I: eritema no blanqueable, piel intacta.",
+                "II: pérdida parcial — flictena o erosión.",
+                "III: pérdida total con grasa subcutánea visible.",
+                "IV: exposición de músculo, hueso o tendón.",
+                "No clasificable: cubierta por esfacelo o escara."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "💡 Prevención UPP",
+              "text": "Cambios posturales cada 2 h, superficies de redistribución, hidratación de piel, nutrición proteica, control de humedad. NO masajear prominencias enrojecidas."
+            },
+            {
+              "type": "crosslink",
+              "target": "patologias",
+              "title": "Patologías musculoesqueléticas y tegumentarias",
+              "description": "Fracturas, artrosis, UPP, quemaduras, celulitis con valoración y manejo.",
+              "path": "system/musculoesqueletico"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m7",
+      "num": 7,
+      "title": "Técnicas y procedimientos",
+      "lead": "Procedimientos esenciales paso a paso. Antes de cada uno: 5 correctos + consentimiento.",
+      "imageKey": "m7_tecnicas",
+      "iconName": "needle",
+      "gradient": [
+        "#F59E0B",
+        "#B45309"
+      ],
+      "isPremium": true,
+      "subs": [
+        {
+          "id": "m7-1",
+          "title": "7.1 Catéter venoso periférico",
+          "blocks": [
+            {
+              "type": "ol",
+              "items": [
+                "Higiene de manos + guantes.",
+                "Selección de vena (palpar): firme, recta, no en flexura.",
+                "Compresor 10 cm por encima.",
+                "Asepsia con clorhexidina 2 % en alcohol o alcohol 70 %, secado al aire.",
+                "Tracción suave de la piel; angulación 15-30°, bisel hacia arriba.",
+                "\"Flash\" de sangre → bajar ángulo, avanzar 2-3 mm más, deslizar cánula sobre la aguja.",
+                "Soltar compresor, ocluir vena con presión digital, retirar mandril, conectar.",
+                "Fijación con apósito transparente estéril, fecha y hora.",
+                "Verificar permeabilidad con SF 5-10 mL."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m7-2",
+          "title": "7.2 Sondaje vesical",
+          "blocks": [
+            {
+              "type": "ol",
+              "items": [
+                "Material: Foley (CH 14-16 ♂, 12-14 ♀), bolsa colectora cerrada, lubricante hidrosoluble (gel anestésico), guantes estériles, agua estéril para inflar balón, gasas y antiséptico.",
+                "Posición: ♀ decúbito dorsal piernas flexionadas; ♂ decúbito dorsal extendido.",
+                "Higiene perineal con antiséptico (de adelante hacia atrás en ♀).",
+                "Técnica estéril: campo estéril, lubricar, introducir hasta ver flujo de orina.",
+                "Inflar balón con agua estéril (volumen indicado en la sonda — habitualmente 10 mL), retirar suavemente hasta tope.",
+                "Conectar a bolsa cerrada, fijar muslo.",
+                "Registrar: fecha, hora, calibre, motivo, características de orina."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "🚨 Balón: agua estéril, NUNCA solución fisiológica",
+              "text": "El NaCl 0,9 % puede cristalizar dentro del canal de inflación y bloquear la deflación al retirar la sonda (balón atrapado → hay que punzarlo). Los fabricantes (Bard, Teleflex, Coloplast) y guías (CDC, EAUN, RCN) especifican agua estéril. Tampoco usar agua del grifo — no es estéril."
+            },
+            {
+              "type": "card",
+              "variant": "warn",
+              "title": "⚠️ Si no avanza",
+              "text": "NO forzar. Resistencia en ♂ puede ser hipertrofia prostática — más lubricante, esperar relajación, no insistir > 2-3 intentos. Avisar al médico."
+            }
+          ]
+        },
+        {
+          "id": "m7-3",
+          "title": "7.3 Lavado vesical",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Procedimiento de instilación y aspiración de solución estéril en la vejiga a través de una sonda. Se usa para mantener la permeabilidad cuando hay coágulos o sedimentos, y para administrar tratamientos intravesicales."
+            },
+            {
+              "type": "h4",
+              "text": "Indicaciones"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Hematuria con coágulos (post-RTU prostática, trauma vesical, cistitis hemorrágica).",
+                "Obstrucción de sonda permanente por sedimentos, moco o coágulos.",
+                "Citostáticos intravesicales — BCG y mitomicina en cáncer vesical superficial.",
+                "Antibioticoterapia intravesical en infecciones recurrentes seleccionadas."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "🚨 Solución correcta",
+              "text": "Usar SF 0,9 % estéril a temperatura corporal (37 °C). NO usar agua sola — es hipotónica y puede causar hemólisis si hay lesión de mucosa. NO usar soluciones frías — provocan espasmo vesical doloroso."
+            },
+            {
+              "type": "h4",
+              "text": "Modalidades"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Tipo",
+                "Sonda",
+                "Material",
+                "Cuándo"
+              ],
+              "rows": [
+                [
+                  "Intermitente (manual)",
+                  "Foley 2 vías",
+                  "Jeringa 60 mL Luer/cono, SF 30-50 mL/ciclo",
+                  "Obstrucción puntual, instilación de drogas"
+                ],
+                [
+                  "Irrigación continua (IVC)",
+                  "Foley 3 vías CH 18-22",
+                  "Bolsas SF 3000 mL colgadas a 1 m, vía Y",
+                  "Hematuria post-RTU, prevención de coágulos"
+                ]
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Técnica del lavado intermitente"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "Higiene de manos y EPP. Explicar al paciente, posición decúbito dorsal.",
+                "Material: jeringa 60 mL estéril, SF 0,9 % tibio, paño/campo estéril, guantes estériles, gasas, antiséptico, recipiente colector.",
+                "Pinzar la sonda o desconectar de la bolsa con técnica aséptica (proteger el extremo).",
+                "Aspirar SF tibio en la jeringa (típicamente 30-50 mL adultos / 5-10 mL pediatría).",
+                "Conectar a la sonda. Instilar lentamente — si hay dolor o resistencia, detener.",
+                "Dejar drenar por gravedad o aspirar suavemente. NUNCA forzar la aspiración (riesgo de succión de mucosa).",
+                "Repetir hasta que el líquido salga claro (típico 3-5 ciclos).",
+                "Reconectar bolsa cerrada estéril. Registrar volumen instilado, recuperado, características del retorno."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Irrigación vesical continua (IVC)"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sonda Foley de 3 vías: 1 vía para inflar balón (agua estéril), 1 vía de entrada (SF al sistema), 1 vía de salida (a bolsa).",
+                "Velocidad ajustable según color del drenaje: rojo intenso → más rápido; rosa claro → reducir.",
+                "Cálculo de orina real = volumen total drenado − volumen total instilado.",
+                "Mantener bolsa por debajo del nivel vesical y sistema cerrado para prevenir CAUTI."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "warn",
+              "title": "⚠️ Vigilar durante el procedimiento",
+              "items": [
+                "Distensión vesical: dolor suprapúbico, espasmos — detener si aparecen, evaluar drenaje.",
+                "Hipotermia local: usar SIEMPRE solución a temperatura corporal.",
+                "Sangrado nuevo o aumento brusco — pensar en perforación o presión excesiva.",
+                "Drenaje obstruido > 1-2 hs: evaluar permeabilidad, no aumentar la velocidad de entrada."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "💡 Tip clínico",
+              "text": "En post-RTU prostática, el balón Foley de 3 vías suele inflarse con 30-40 mL para hacer hemostasia por presión sobre el lecho prostático. Verificá la indicación quirúrgica antes de retirar."
+            },
+            {
+              "type": "crosslink",
+              "target": "patologias",
+              "title": "Hematuria y patología urológica",
+              "description": "Mecanismos de hematuria, signos de alarma, patologías que requieren lavado vesical (RTU, cistitis hemorrágica, tumor vesical)."
+            }
+          ]
+        },
+        {
+          "id": "m7-4",
+          "title": "7.4 Colocación de SNG",
+          "blocks": [
+            {
+              "type": "ol",
+              "items": [
+                "Paciente sentado o Fowler 45°.",
+                "Medir: punta nariz → lóbulo oreja → apéndice xifoides.",
+                "Lubricar 10-15 cm con lubricante hidrosoluble.",
+                "Introducir por fosa nasal, dirigir hacia abajo y atrás.",
+                "Al llegar a faringe (10-15 cm), pedir tragar agua. Avanzar con cada deglución.",
+                "Verificar: aspirado gástrico con pH < 5,5 (gold standard). Auscultación NO confiable sola. Rx si NPT o duda.",
+                "Fijar con cinta a nariz, evitar úlcera por presión."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m7-5",
+          "title": "7.5 Lavado gástrico",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Vaciamiento del contenido gástrico mediante una sonda de calibre grueso. Históricamente usado en intoxicaciones; en la práctica actual su uso es muy restringido — el carbón activado tiene mejor evidencia para la mayoría de tóxicos."
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "🚨 Postura actual (AACT/EAPCCT 2024-25)",
+              "text": "El lavado gástrico YA NO es estándar de cuidado. Solo se considera si: (1) ingesta < 60 minutos, (2) sustancia muy tóxica sin antídoto eficaz, (3) vía aérea protegida, y (4) beneficio claro > riesgo. En el resto de los casos, carbón activado 1 g/kg vía oral o por SNG es la primera elección."
+            },
+            {
+              "type": "h4",
+              "text": "Indicaciones (excepcionales)"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Intoxicación grave reciente con sustancia muy tóxica (ej: paraquat, digital, antidepresivos tricíclicos en dosis masiva).",
+                "Vaciamiento previo a procedimientos urgentes (endoscopía, cirugía).",
+                "Hipotermia severa — lavado con líquido tibio para recalentamiento central."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "🚨 Contraindicaciones absolutas",
+              "items": [
+                "Cáusticos (ácidos o álcalis) — riesgo de perforación esofágica/gástrica al pasar la sonda.",
+                "Hidrocarburos (kerosene, naftalina, gasolina) — neumonitis aspirativa grave.",
+                "Conciencia disminuida sin protección de vía aérea — intubar PRIMERO.",
+                "Cirugía gastroesofágica reciente o varices conocidas — alto riesgo de hemorragia.",
+                "Convulsiones activas — riesgo de mordida de la sonda y aspiración.",
+                "Tóxico ingerido > 1-2 horas (perdió eficacia, riesgo > beneficio)."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Material"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sonda de Faucher de calibre grueso: 30-36 Fr en adultos, 24-28 Fr en niños mayores. La SNG común NO sirve (lumen muy chico para aspirar comprimidos).",
+                "Lubricante hidrosoluble, jeringa de 60 mL o embudo, baldes colectores.",
+                "SF 0,9 % tibio (37 °C) — 2-4 L total. NO agua corriente sola (riesgo de hiponatremia/hipocloremia con lavado prolongado).",
+                "EPP completo: barbijo, antiparras, camisolín — alto riesgo de salpicaduras.",
+                "Material para intubación y aspiración a mano. Carbón activado disponible para instilación final."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Técnica"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "Verificar reflejos protectores (tos, deglución). Si están ausentes o disminuidos → intubar antes de iniciar.",
+                "Posición: decúbito lateral izquierdo + Trendelenburg ligero (10-20°). Esto minimiza el paso del tóxico al duodeno y reduce el riesgo de aspiración pulmonar.",
+                "Medir la sonda: nariz/boca → lóbulo oreja → apéndice xifoides. Introducir por boca (NO nariz por el calibre).",
+                "Verificar posición gástrica: aspirar contenido (pH < 5,5 con tira) y/o radiografía si hay duda.",
+                "Tomar muestra del contenido inicial para toxicología antes de instilar.",
+                "Instilar 200-300 mL de SF tibio en adulto (10-15 mL/kg en pediatría, máximo 250 mL/ciclo).",
+                "Drenar por gravedad bajando el extremo de la sonda al nivel del piso, o aspirar suavemente.",
+                "Repetir hasta que el líquido recuperado salga claro y sin partículas (típico 5-10 ciclos, total 2-4 L).",
+                "Si está indicado: instilar dosis final de carbón activado (1 g/kg, 25-100 g en adulto) antes de retirar.",
+                "Retirar sonda con la punta pinzada para evitar regurgitación de contenido residual."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "🚨 Complicaciones graves",
+              "items": [
+                "Aspiración pulmonar — la más frecuente y la más grave (mortalidad significativa).",
+                "Perforación esofágica o gástrica — riesgo aumentado en lesiones cáusticas previas no detectadas.",
+                "Hipotermia si se usa líquido frío — siempre usar SF a 37 °C.",
+                "Hiponatremia / hipocloremia / alcalosis si se hace lavado prolongado con agua sola — usar SF.",
+                "Lesión laringo-faríngea, epistaxis, vómitos.",
+                "Bradicardia vagal — monitorizar FC durante el procedimiento."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "💡 Recordá",
+              "text": "Antes de cualquier intoxicación, llamar al Centro de Información Toxicológica (en Argentina: Hospital Posadas 011-4654-6648, Hospital de Niños Garrahan 011-4962-6666). Ellos definen indicación o contraindicación del lavado caso por caso."
+            },
+            {
+              "type": "crosslink",
+              "target": "patologias",
+              "title": "Intoxicaciones y emergencias",
+              "description": "Manejo de intoxicaciones agudas, antídotos específicos, escalas de Glasgow y protocolos de descontaminación."
+            }
+          ]
+        },
+        {
+          "id": "m7-6",
+          "title": "7.6 Aspiración de secreciones",
+          "blocks": [
+            {
+              "type": "ol",
+              "items": [
+                "Lavado de manos, EPP (barbijo, antiparras, guantes estériles).",
+                "Pre-oxigenar FiO₂ 100 % por 30-60 seg en intubados.",
+                "Sonda calibre adecuado: 12-14 Fr adulto, 6-8 Fr niño.",
+                "Presión de succión: 80-120 mmHg adulto, 60-100 mmHg niño.",
+                "Introducir SIN succión hasta encontrar resistencia, retroceder 1 cm.",
+                "Aplicar succión AL retirar, en movimientos rotatorios. Máximo 10-15 segundos.",
+                "Permitir reoxigenar entre pasadas.",
+                "Auscultar antes y después; valorar SatO₂ y FC."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "⚠️ Complicaciones",
+              "text": "Hipoxia, bradicardia refleja, arritmias, broncoespasmo, lesión mucosa. Si SatO₂ < 90 % o bradicardia → suspender, ventilar con AMBU."
+            }
+          ]
+        },
+        {
+          "id": "m7-7",
+          "title": "7.7 Vías de administración",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Vía",
+                "Aguja",
+                "Sitio",
+                "Vol. máx",
+                "Ángulo"
+              ],
+              "rows": [
+                [
+                  "Intradérmica",
+                  "27G × ⅜\"",
+                  "Antebrazo anterior",
+                  "0,1 mL",
+                  "5-15°"
+                ],
+                [
+                  "Subcutánea",
+                  "25-27G × ⅝\"",
+                  "Abdomen, brazos, muslos",
+                  "1,5 mL",
+                  "45-90°"
+                ],
+                [
+                  "Intramuscular",
+                  "21-23G × 1-1,5\"",
+                  "Deltoides, ventroglúteo, vasto",
+                  "2-5 mL",
+                  "90°"
+                ],
+                [
+                  "Endovenosa",
+                  "según vía",
+                  "Vena periférica/central",
+                  "según indicación",
+                  "—"
+                ]
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "💡 Sitios IM seguros",
+              "text": "Ventroglúteo (zona de Hochstetter) es el más seguro — sin grandes vasos ni nervios. Glúteo dorsal cayó en desuso por riesgo de lesión del ciático."
+            }
+          ]
+        },
+        {
+          "id": "m7-8",
+          "title": "7.8 Cálculo de goteo",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Macrogotero (1 mL = 20 gotas): gotas/min = mL totales × 20 / minutos",
+                "Microgotero (1 mL = 60 microgotas): microgotas/min = mL/h",
+                "Bomba: programar mL/h directamente."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Ejemplo: 500 mL en 4 h con macrogotero → (500 × 20) / 240 = 42 gotas/min."
+            }
+          ]
+        },
+        {
+          "id": "m7-9",
+          "title": "7.9 Cálculo de dosis",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Fórmula universal: volumen a administrar = (dosis indicada × volumen disponible) / dosis disponible"
+            },
+            {
+              "type": "p",
+              "text": "Ejemplo: indican 250 mg de ATB; el frasco trae 500 mg en 5 mL → (250 × 5) / 500 = 2,5 mL."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m8",
+      "num": 8,
+      "title": "Vías de administración y cálculo de dosis",
+      "lead": "Cómo aplicar fármacos seguros: técnica, vías, cálculos y prevención de errores. Para enciclopedia de drogas → app Farmacológica.",
+      "imageKey": "m8_farmacologia",
+      "iconName": "needle",
+      "gradient": [
+        "#EC4899",
+        "#BE185D"
+      ],
+      "isPremium": true,
+      "subs": [
+        {
+          "id": "m8-1",
+          "title": "8.1 Las 10 reglas correctas",
+          "blocks": [
+            {
+              "type": "ol",
+              "items": [
+                "Paciente correcto (2 identificadores).",
+                "Medicamento correcto.",
+                "Dosis correcta.",
+                "Vía correcta.",
+                "Hora correcta.",
+                "Caducidad correcta.",
+                "Documentación correcta.",
+                "Acción/efecto correcto.",
+                "Educación al paciente.",
+                "Derecho del paciente a rechazar."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "💡 Doble verificación",
+              "text": "En drogas de alto riesgo (heparina, insulina, KCl, quimio, vasoactivos) doble check obligatorio entre dos enfermeros antes de aplicar."
+            }
+          ]
+        },
+        {
+          "id": "m8-2",
+          "title": "8.2 Vías de administración — tabla completa",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Vía",
+                "Aguja",
+                "Sitio",
+                "Vol. máx",
+                "Ángulo"
+              ],
+              "rows": [
+                [
+                  "Intradérmica (ID)",
+                  "27G × ⅜\"",
+                  "Cara anterior antebrazo",
+                  "0,1 mL",
+                  "5-15°"
+                ],
+                [
+                  "Subcutánea (SC)",
+                  "25-27G × ⅝\"",
+                  "Abdomen, brazos, muslos",
+                  "1,5 mL",
+                  "45-90°"
+                ],
+                [
+                  "Intramuscular (IM)",
+                  "21-23G × 1-1,5\"",
+                  "Deltoides, ventroglúteo, vasto",
+                  "2-5 mL",
+                  "90°"
+                ],
+                [
+                  "Endovenosa (EV)",
+                  "según vía",
+                  "Vena periférica/central",
+                  "según indicación",
+                  "—"
+                ],
+                [
+                  "Vía oral (VO)",
+                  "—",
+                  "Boca",
+                  "—",
+                  "—"
+                ],
+                [
+                  "Sublingual (SL)",
+                  "—",
+                  "Bajo la lengua",
+                  "—",
+                  "—"
+                ],
+                [
+                  "Rectal",
+                  "—",
+                  "Recto",
+                  "—",
+                  "—"
+                ],
+                [
+                  "Tópica",
+                  "—",
+                  "Piel",
+                  "según indicación",
+                  "—"
+                ],
+                [
+                  "Inhalatoria",
+                  "—",
+                  "Vías aéreas",
+                  "según dispositivo",
+                  "—"
+                ]
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "💡 Sitios IM seguros",
+              "text": "Ventroglúteo (zona de Hochstetter) es el más seguro — sin grandes vasos ni nervios. Glúteo dorsal cayó en desuso por riesgo de lesión del ciático."
+            }
+          ]
+        },
+        {
+          "id": "m8-3",
+          "title": "8.3 Cálculo de goteo",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Fórmulas básicas:"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Macrogotero (1 mL = 20 gotas): gotas/min = mL totales × 20 / minutos",
+                "Microgotero (1 mL = 60 microgotas): microgotas/min = mL/h",
+                "Bomba: programar mL/h directamente."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Ejemplos prácticos"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Indicación",
+                "Cálculo",
+                "Resultado"
+              ],
+              "rows": [
+                [
+                  "500 mL en 4 h con macrogotero",
+                  "(500 × 20) / 240",
+                  "42 gotas/min"
+                ],
+                [
+                  "1000 mL en 8 h con macrogotero",
+                  "(1000 × 20) / 480",
+                  "42 gotas/min"
+                ],
+                [
+                  "100 mL en 30 min EV directo",
+                  "(100 × 20) / 30",
+                  "67 gotas/min"
+                ],
+                [
+                  "NPT 2400 mL en 24 h en bomba",
+                  "2400 / 24",
+                  "100 mL/h"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m8-4",
+          "title": "8.4 Cálculo de dosis",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Fórmula universal:"
+            },
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "★ Fórmula",
+              "text": "Volumen a administrar = (dosis indicada × volumen disponible) / dosis disponible"
+            },
+            {
+              "type": "h4",
+              "text": "Ejemplos"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Indican 250 mg ATB; frasco trae 500 mg en 5 mL → (250 × 5) / 500 = 2,5 mL",
+                "Indican 4 mg morfina; ampolla 10 mg/1 mL → (4 × 1) / 10 = 0,4 mL",
+                "Indican 50 mg dipirona/kg en niño 12 kg; ampolla 1 g/2 mL → 600 mg → (600 × 2) / 1000 = 1,2 mL"
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Cálculo en bomba (mcg/kg/min)"
+            },
+            {
+              "type": "p",
+              "text": "mL/h = (dosis [mcg/kg/min] × peso [kg] × 60) / concentración [mcg/mL]"
+            },
+            {
+              "type": "p",
+              "text": "Ejemplo noradrenalina 0,1 mcg/kg/min en paciente 70 kg, dilución 4 mg en 100 mL SF (40 mcg/mL): mL/h = (0,1 × 70 × 60) / 40 = 10,5 mL/h"
+            }
+          ]
+        },
+        {
+          "id": "m8-5",
+          "title": "8.5 Errores frecuentes y prevención",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "🚨 Top 5 errores fatales",
+              "items": [
+                "Confundir KCl con SF (ambos transparentes) → arritmia letal. Etiquetar SIEMPRE.",
+                "Insulina mal dosificada por leer 'U' como '0' → 4U se vuelve 40U.",
+                "Vasoactivo en bolo en vez de infusión → arritmia, IAM.",
+                "Heparina sin ajuste de dosis por peso → sangrado mayor.",
+                "Aminoglucósidos sin niveles plasmáticos → ototoxicidad irreversible."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Antídotos críticos a recordar"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Droga",
+                "Antídoto",
+                "Cuándo"
+              ],
+              "rows": [
+                [
+                  "Opioides (morfina, fentanilo)",
+                  "Naloxona 0,4 mg EV",
+                  "FR < 8, miosis, somnolencia"
+                ],
+                [
+                  "Benzodiacepinas",
+                  "Flumazenil 0,2 mg EV",
+                  "Sedación profunda con BZD"
+                ],
+                [
+                  "Heparina",
+                  "Protamina 1 mg/100 UI heparina",
+                  "Sangrado activo"
+                ],
+                [
+                  "Warfarina",
+                  "Vitamina K + plasma fresco",
+                  "RIN > 5 con sangrado"
+                ],
+                [
+                  "Paracetamol (sobredosis)",
+                  "N-acetilcisteína",
+                  "< 24 h post-ingesta"
+                ],
+                [
+                  "β-bloqueantes",
+                  "Glucagón",
+                  "Bradicardia + hipotensión"
+                ]
+              ]
+            },
+            {
+              "type": "crosslink",
+              "target": "farmacologia",
+              "title": "Enciclopedia de fármacos",
+              "description": "2.877 drogas con dosis, vías, mecanismo, interacciones, compatibilidades EV y cuidados de enfermería detallados.",
+              "path": "home"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m9",
+      "num": 9,
+      "title": "Emergencias",
+      "lead": "RCP, ACLS, shock, anafilaxia y otros eventos donde el tiempo es crítico.",
+      "imageKey": "m9_emergencias",
+      "iconName": "alert-octagon-outline",
+      "gradient": [
+        "#DC2626",
+        "#7F1D1D"
+      ],
+      "isPremium": true,
+      "subs": [
+        {
+          "id": "m9-1",
+          "title": "9.1 Cadena de supervivencia",
+          "blocks": [
+            {
+              "type": "ol",
+              "items": [
+                "Reconocimiento precoz y activación del sistema (código azul / 911).",
+                "RCP de calidad precoz.",
+                "Desfibrilación precoz.",
+                "Soporte vital avanzado.",
+                "Cuidados post-PCR.",
+                "Recuperación (rehabilitación física, cognitiva y emocional)."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m9-2",
+          "title": "9.2 RCP de alta calidad",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Frecuencia: 100-120 compresiones/min.",
+                "Profundidad: ≥ 5 cm adulto (no > 6), 4 cm niño, 4 cm o ⅓ tórax lactante.",
+                "Permitir reexpansión total entre compresiones.",
+                "Minimizar interrupciones (< 10 seg).",
+                "Compresión:ventilación 30:2 sin vía aérea avanzada. Con vía: continuas + 1 ventilación c/6 seg.",
+                "Rotar al compresor cada 2 min.",
+                "EtCO₂ < 10 mmHg sostenido = RCP de baja calidad o pronóstico muy malo."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m9-3",
+          "title": "9.3 Algoritmo ACLS",
+          "blocks": [
+            {
+              "type": "h4",
+              "text": "Ritmos desfibrilables (FV / TV sin pulso)"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "RCP + monitor + acceso EV.",
+                "Desfibrilar (bifásico 120-200 J, monofásico 360 J).",
+                "RCP 2 min → revisar ritmo.",
+                "Si persiste FV/TV → desfibrilar + adrenalina 1 mg EV cada 3-5 min.",
+                "Tras 3ª descarga sin éxito → considerar amiodarona 300 mg EV (segunda dosis 150 mg).",
+                "Buscar causas reversibles (5H y 5T)."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Ritmos no desfibrilables (asistolia / AESP)"
+            },
+            {
+              "type": "ol",
+              "items": [
+                "RCP + acceso EV.",
+                "Adrenalina 1 mg EV cada 3-5 min.",
+                "Buscar causas reversibles.",
+                "NO se desfibrila la asistolia."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "★ Las 5 H y las 5 T",
+              "text": "5 H: Hipovolemia, Hipoxia, H⁺ (acidosis), Hipo/hiperkalemia, Hipotermia. 5 T: Toxinas, Taponamiento cardíaco, neumotórax a Tensión, Trombosis (coronaria/pulmonar), Trauma."
+            }
+          ]
+        },
+        {
+          "id": "m9-4",
+          "title": "9.4 Shock — clasificación",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Tipo",
+                "Causa",
+                "Hallazgos",
+                "Tratamiento"
+              ],
+              "rows": [
+                [
+                  "Hipovolémico",
+                  "Hemorragia, deshidratación",
+                  "Taquicardia, hipotensión, frío",
+                  "Cristaloides + control causa"
+                ],
+                [
+                  "Cardiogénico",
+                  "IAM masivo, ICC severa",
+                  "Edema pulmonar, ingurgitación",
+                  "Inotrópicos, revascularización"
+                ],
+                [
+                  "Séptico",
+                  "Infección + disfunción",
+                  "Fiebre, leucocitosis, lactato ↑",
+                  "ATB < 1 h + cristaloides + NA"
+                ],
+                [
+                  "Anafiláctico",
+                  "Reacción IgE",
+                  "Urticaria, broncoespasmo",
+                  "Adrenalina IM 0,3-0,5 mg"
+                ],
+                [
+                  "Neurogénico",
+                  "Lesión medular",
+                  "Hipotensión + bradicardia",
+                  "Volumen + atropina + vasopresores"
+                ],
+                [
+                  "Obstructivo",
+                  "TEP, taponamiento, NTX tensión",
+                  "Hipotensión + signos específicos",
+                  "Tratar causa"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m9-5",
+          "title": "9.5 Anafilaxia",
+          "blocks": [
+            {
+              "type": "ol",
+              "items": [
+                "Suspender el alérgeno.",
+                "Adrenalina IM 0,3-0,5 mg en cara anterolateral del muslo. Repetir cada 5-15 min si no responde.",
+                "Vía aérea permeable, O₂ alta concentración.",
+                "Decúbito con piernas elevadas (Trendelenburg).",
+                "Cristaloides EV en bolo si hipotensión.",
+                "Adyuvantes: corticoides (hidrocortisona 200 mg EV), antihistamínicos, salbutamol nebulizado."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m9-6",
+          "title": "9.6 Otras emergencias",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "OVACE: maniobra de Heimlich en consciente; RCP si pierde conciencia.",
+                "Quemado mayor: ABC, retirar ropa no adherida, cubrir con paños limpios, Parkland (4 mL × kg × % SCQ, mitad en 8 h).",
+                "Politraumatizado: ABCDE — A (con control cervical), Breathing, Circulación, Déficit, Exposición.",
+                "ACV agudo: tiempo es cerebro. Tomografía urgente. Trombólisis si isquémico < 4,5 h."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m10",
+      "num": 10,
+      "title": "Comunicación clínica",
+      "lead": "Documentar bien y transmitir información clave puede salvar una vida tanto como una técnica.",
+      "imageKey": "m10_comunicacion",
+      "iconName": "message-text-outline",
+      "gradient": [
+        "#2563EB",
+        "#1E40AF"
+      ],
+      "isPremium": true,
+      "subs": [
+        {
+          "id": "m10-1",
+          "title": "10.1 SOAPIE — registro de evolución",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "S — Subjetivo: lo que el paciente refiere (\"me duele el pecho desde hace 1 h\").",
+                "O — Objetivo: datos medibles (TA 160/95, FC 110, sudoroso).",
+                "A — Análisis: diagnóstico de enfermería NANDA.",
+                "P — Plan: intervenciones planificadas.",
+                "I — Implementación: lo que se hizo.",
+                "E — Evaluación: respuesta del paciente."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m10-2",
+          "title": "10.2 SBAR — entrega de turno",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "S — Situation: \"Paciente Pérez, 67 años, con dolor torácico de 30 min\".",
+                "B — Background: \"HTA, ex-tabaquista, ingresó hace 2 días por neumonía\".",
+                "A — Assessment: \"TA 90/60, FC 130, sudoroso, SatO₂ 88 %, ECG con supra ST\".",
+                "R — Recommendation: \"Solicito presencia médica, troponina, traslado a UCO\"."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "💡 Por qué SBAR funciona",
+              "text": "Estandariza la comunicación. Reduce ambigüedad, los datos críticos no se pierden y obliga a recomendar — la enfermería tiene voz en la decisión clínica."
+            }
+          ]
+        },
+        {
+          "id": "m10-3",
+          "title": "10.3 NANDA — estructura P-E-S",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "P — Problema (etiqueta NANDA): Patrón respiratorio ineficaz.",
+                "E — Etiología (relacionado con — r/c): r/c fatiga muscular respiratoria.",
+                "S — Signos y síntomas (manifestado por — m/p): m/p disnea, taquipnea 28 rpm, uso de músculos accesorios."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Diagnósticos comunes: Riesgo de infección, Deterioro de la integridad cutánea, Ansiedad, Déficit de autocuidado, Riesgo de caídas, Dolor agudo, Riesgo de aspiración."
+            }
+          ]
+        },
+        {
+          "id": "m10-4",
+          "title": "10.4 Objetivos SMART",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "S — Specific (específico).",
+                "M — Measurable (medible).",
+                "A — Achievable (alcanzable).",
+                "R — Relevant (relevante).",
+                "T — Time-bound (con tiempo definido)."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Mal: \"El paciente respirará mejor\". Bien: \"El paciente mantendrá SatO₂ ≥ 95 % con O₂ a 3 L/min en las próximas 4 h\"."
+            }
+          ]
+        },
+        {
+          "id": "m10-5",
+          "title": "10.5 Errores frecuentes en registros",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "🚨 Lo que NO debe pasar",
+              "items": [
+                "Registrar antes de hacer.",
+                "Borrar o tachar — usar una sola línea, fecha y firma.",
+                "Abreviaturas ambiguas (U por unidades — confusión con 0).",
+                "Espacios en blanco o registrar por otro.",
+                "Subjetivismos sin sustento.",
+                "Olvidar firmar y poner hora."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "★ Insight legal",
+              "text": "El registro es un documento legal. Lo que no está escrito, no se hizo. Anotar con detalle puede protegerte ante reclamos: hora, intervención, respuesta, persona avisada."
+            }
+          ]
+        },
+        {
+          "id": "m10-6",
+          "title": "10.6 Comunicación con paciente y familia",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Presentarse siempre con nombre y rol.",
+                "Lenguaje claro, sin jerga; verificar comprensión (teach-back).",
+                "Escucha activa — silencios también comunican.",
+                "Empatía: \"entiendo que esto debe ser muy difícil\".",
+                "Confidencialidad — la información NO se comparte por canales no seguros.",
+                "Educación al alta: medicación, signos de alarma, control, plan de cuidados."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

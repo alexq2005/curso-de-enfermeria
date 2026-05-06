@@ -1,0 +1,262 @@
+// ============================================================
+// PrivacyPolicyScreen — privacy policy text
+// ============================================================
+
+import React, { useRef, useEffect } from 'react';
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  StatusBar,
+  Animated,
+  TouchableOpacity,
+} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import { useTheme } from '../context/ThemeContext';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
+import { neuCard } from '../utils/neumorphism';
+import { SPACING } from '../utils/spacing';
+import type { ThemeColors } from '../utils/colors';
+import type { RootStackParamList } from '../types';
+
+// ─────────────────────────────────────────────
+// useFadeIn
+// ─────────────────────────────────────────────
+
+function useFadeIn(duration = 400, delay = 0) {
+  const opacity = useRef(new Animated.Value(0)).current;
+  const translateY = useRef(new Animated.Value(16)).current;
+
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(opacity, { toValue: 1, duration, delay, useNativeDriver: true }),
+      Animated.timing(translateY, { toValue: 0, duration, delay, useNativeDriver: true }),
+    ]).start();
+  }, [opacity, translateY, duration, delay]);
+
+  return { opacity, translateY };
+}
+
+// ─────────────────────────────────────────────
+// Types
+// ─────────────────────────────────────────────
+
+type Props = NativeStackScreenProps<RootStackParamList, 'PrivacyPolicy'>;
+
+// ─────────────────────────────────────────────
+// Content sections
+// ─────────────────────────────────────────────
+
+const SECTIONS = [
+  {
+    title: '1. Información que recopilamos',
+    content:
+      'Manual de Enfermería es una aplicación que funciona completamente sin conexión a internet (offline). ' +
+      'No recopilamos, transmitimos ni almacenamos ningún dato personal en servidores externos. ' +
+      'Toda la información que generas (progreso de lectura, configuración de tema) ' +
+      'se guarda exclusivamente en el almacenamiento local de tu dispositivo.',
+  },
+  {
+    title: '2. Datos almacenados localmente',
+    content:
+      'La aplicación almacena de forma local en tu dispositivo:\n' +
+      '• Subtemas marcados como leídos\n' +
+      '• Último módulo abierto y módulos visitados recientemente\n' +
+      '• Preferencia de tema visual (claro/oscuro/sistema)\n' +
+      '• Estado de activación del acceso Premium\n' +
+      '• Estado de finalización del onboarding\n\n' +
+      'Estos datos nunca son enviados a ningún servidor externo.',
+  },
+  {
+    title: '3. Permisos del dispositivo',
+    content:
+      'La aplicación no solicita permisos de cámara, micrófono, ubicación, contactos ni acceso a archivos. ' +
+      'Únicamente utiliza almacenamiento de preferencias del sistema (AsyncStorage) para persistir ' +
+      'tu configuración entre sesiones.',
+  },
+  {
+    title: '4. Servicios de terceros',
+    content:
+      'La aplicación no integra servicios de análisis (Analytics), publicidad, rastreo de comportamiento ' +
+      'ni redes sociales. No se comparte información con terceros de ninguna forma.',
+  },
+  {
+    title: '5. Seguridad de los datos',
+    content:
+      'Dado que todos los datos se almacenan localmente en tu dispositivo, la seguridad de los mismos ' +
+      'depende de las medidas de seguridad de tu dispositivo (código PIN, patrón, biometría). ' +
+      'Te recomendamos mantener tu dispositivo protegido con una contraseña o bloqueo de pantalla.',
+  },
+  {
+    title: '6. Eliminación de datos',
+    content:
+      'Puedes eliminar todos los datos generados por la aplicación en cualquier momento ' +
+      'desinstalando la aplicación de tu dispositivo. Esto borrará permanentemente ' +
+      'favoritos, notas, historial de quiz y configuración almacenados localmente.',
+  },
+  {
+    title: '7. Menores de edad',
+    content:
+      'Esta aplicación está diseñada para estudiantes de enfermería y profesionales sanitarios. ' +
+      'No está orientada a menores de 13 años. Si eres menor de esa edad, ' +
+      'te solicitamos que uses la aplicación bajo supervisión de un adulto.',
+  },
+  {
+    title: '8. Cambios a esta política',
+    content:
+      'Podemos actualizar esta Política de Privacidad periódicamente. ' +
+      'Los cambios significativos serán comunicados mediante actualizaciones de la aplicación. ' +
+      'Te recomendamos revisar esta sección ocasionalmente.',
+  },
+  {
+    title: '9. Contacto',
+    content:
+      'Si tienes preguntas sobre esta Política de Privacidad o sobre el manejo de tus datos, ' +
+      'puedes contactarnos en: alexq2005@gmail.com',
+  },
+];
+
+// ─────────────────────────────────────────────
+// Component
+// ─────────────────────────────────────────────
+
+export function PrivacyPolicyScreen({ navigation }: Props) {
+  const { colors } = useTheme();
+  const rs = useResponsiveScale();
+  const insets = useSafeAreaInsets();
+
+  const styles = createStyles(colors, rs);
+  const { opacity, translateY } = useFadeIn(380, 40);
+
+  return (
+    <View style={styles.container}>
+      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+
+      {/* Header */}
+      <LinearGradient
+        colors={[colors.gradientStart, colors.gradientEnd]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={[styles.header, { paddingTop: insets.top + rs.space(SPACING.lg) }]}
+      >
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+        >
+          <MaterialCommunityIcons name="arrow-left" size={rs.font(22)} color={colors.gradientText} />
+        </TouchableOpacity>
+        <Animated.View style={{ opacity, transform: [{ translateY }] }}>
+          <Text style={styles.headerTitle}>Politica de Privacidad</Text>
+          <Text style={styles.headerSubtitle}>Ultima actualizacion: Marzo 2026</Text>
+        </Animated.View>
+      </LinearGradient>
+
+      <ScrollView
+        style={styles.scroll}
+        contentContainerStyle={[
+          styles.scrollContent,
+          { paddingBottom: insets.bottom + rs.space(SPACING.xxxl) },
+        ]}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Intro */}
+        <View style={[styles.introCard, neuCard(colors)]}>
+          <View style={styles.offlineRow}>
+            <MaterialCommunityIcons name="wifi-off" size={rs.font(20)} color={colors.success} />
+            <Text style={[styles.offlineBadge, { color: colors.success }]}>
+              App 100% offline — sin envio de datos
+            </Text>
+          </View>
+          <Text style={styles.introText}>
+            Tu privacidad es importante para nosotros. Esta politica explica como Patologias de
+            Enfermeria maneja la informacion en tu dispositivo.
+          </Text>
+        </View>
+
+        {/* Sections */}
+        {SECTIONS.map((section, i) => (
+          <View key={i} style={styles.section}>
+            <Text style={styles.sectionTitle}>{section.title}</Text>
+            <Text style={styles.sectionContent}>{section.content}</Text>
+          </View>
+        ))}
+      </ScrollView>
+    </View>
+  );
+}
+
+// ─────────────────────────────────────────────
+// Styles factory
+// ─────────────────────────────────────────────
+
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    header: {
+      paddingBottom: rs.space(SPACING.xxl),
+      paddingHorizontal: rs.space(SPACING.xxl),
+    },
+    backButton: {
+      marginBottom: rs.space(SPACING.md),
+    },
+    headerTitle: {
+      fontSize: rs.font(22),
+      fontWeight: '800',
+      color: colors.gradientText,
+      letterSpacing: -0.3,
+      marginBottom: rs.space(4),
+    },
+    headerSubtitle: {
+      fontSize: rs.font(13),
+      fontWeight: '500',
+      color: colors.gradientText,
+      opacity: 0.8,
+    },
+    scroll: {
+      flex: 1,
+    },
+    scrollContent: {
+      padding: rs.space(SPACING.lg),
+      gap: rs.space(SPACING.md),
+    },
+    introCard: {
+      padding: rs.space(SPACING.lg),
+      gap: rs.space(SPACING.md),
+    },
+    offlineRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: rs.space(SPACING.sm),
+    },
+    offlineBadge: {
+      fontSize: rs.font(13),
+      fontWeight: '700',
+    },
+    introText: {
+      fontSize: rs.font(14),
+      color: colors.textSecondary,
+      lineHeight: rs.font(21),
+    },
+    section: {
+      gap: rs.space(SPACING.sm),
+    },
+    sectionTitle: {
+      fontSize: rs.font(15),
+      fontWeight: '700',
+      color: colors.text,
+    },
+    sectionContent: {
+      fontSize: rs.font(14),
+      color: colors.textSecondary,
+      lineHeight: rs.font(22),
+    },
+  });

@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Selector de Imágenes — Curso de Enfermería</title>
+<style>
+:root {
+  --bg: #f7f9fc;
+  --bg-elev: #ffffff;
+  --bg-soft: #eef2f7;
+  --text: #1a2433;
+  --text-soft: #4b5b71;
+  --text-mute: #7c8a9c;
+  --primary: #1d4ed8;
+  --primary-soft: #dbeafe;
+  --accent: #0ea5e9;
+  --success: #16a34a;
+  --success-soft: #dcfce7;
+  --danger: #dc2626;
+  --danger-soft: #fee2e2;
+  --border: #dde4ec;
+  --shadow: 0 1px 3px rgba(15, 23, 42, .06), 0 4px 12px rgba(15, 23, 42, .04);
+  --shadow-lg: 0 8px 30px rgba(15, 23, 42, .10);
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  padding-bottom: 100px;
+}
+
+header.topbar {
+  position: sticky;
+  top: 0;
+  background: var(--bg-elev);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+  z-index: 50;
+  box-shadow: var(--shadow);
+}
+header h1 {
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+header .stats {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+  font-size: .9rem;
+}
+header .stats span {
+  background: var(--primary-soft);
+  color: var(--primary);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+header button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: .9rem;
+}
+header button:hover { background: #1e40af; }
+header button.secondary {
+  background: var(--bg-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.intro {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 24px;
+  background: var(--bg-elev);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.intro h2 { color: var(--primary); margin-bottom: 10px; }
+.intro p { color: var(--text-soft); margin-bottom: 8px; }
+.intro ol { margin-left: 20px; color: var(--text-soft); }
+.intro li { margin-bottom: 4px; }
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.module {
+  margin-bottom: 32px;
+  background: var(--bg-elev);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.module-header {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  padding: 16px 24px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.module-header .num {
+  background: rgba(255,255,255,.25);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.slot {
+  border-top: 1px solid var(--border);
+  padding: 20px 24px;
+}
+.slot:first-of-type { border-top: none; }
+
+.slot-meta {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.slot-info { flex: 1; min-width: 260px; }
+.slot-info h3 {
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.slot-info h3 .check {
+  font-size: 1.1rem;
+}
+.slot-info .target {
+  font-family: "Consolas", "Monaco", monospace;
+  font-size: .82rem;
+  color: var(--text-mute);
+  background: var(--bg-soft);
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+.slot-info .desc {
+  color: var(--text-soft);
+  font-size: .9rem;
+  margin-top: 6px;
+}
+
+.slot-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.slot-search a {
+  padding: 5px 12px;
+  background: var(--bg-soft);
+  color: var(--primary);
+  font-size: .82rem;
+  text-decoration: none;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-weight: 600;
+  transition: all .15s;
+}
+.slot-search a:hover { background: var(--primary-soft); }
+
+.candidates {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+.candidate {
+  background: var(--bg-soft);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .2s;
+  position: relative;
+}
+.candidate:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+.candidate.selected {
+  border-color: var(--success);
+  background: var(--success-soft);
+}
+.candidate.selected::after {
+  content: '✓';
+  position: absolute;
+  top: 8px; right: 8px;
+  background: var(--success);
+  color: white;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 1rem;
+}
+.candidate img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  background: var(--bg-soft);
+}
+.candidate-meta {
+  padding: 8px 10px;
+  font-size: .78rem;
+  color: var(--text-soft);
+}
+.candidate-meta .src {
+  display: inline-block;
+  background: var(--bg-elev);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.src.pexels { color: #05a081; }
+.src.unsplash { color: #111; }
+
+.custom-paste {
+  margin-top: 14px;
+  padding: 14px;
+  background: var(--bg-soft);
+  border-radius: 8px;
+}
+.custom-paste label {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  display: block;
+  margin-bottom: 6px;
+}
+.custom-paste input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: .88rem;
+  background: var(--bg-elev);
+  color: var(--text);
+}
+.custom-paste input:focus { outline: none; border-color: var(--primary); }
+.custom-preview {
+  margin-top: 10px;
+  display: none;
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+}
+.custom-preview img {
+  max-width: 200px;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.custom-preview button {
+  display: block;
+  margin: 8px auto 0;
+  background: var(--success);
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: .85rem;
+}
+
+.selected-banner {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--success-soft);
+  border-left: 4px solid var(--success);
+  border-radius: 8px;
+  font-size: .88rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  word-break: break-all;
+}
+.selected-banner code {
+  flex: 1;
+  background: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: .8rem;
+  color: var(--text);
+}
+.selected-banner button {
+  background: var(--danger);
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: .8rem;
+}
+
+.export-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--bg-elev);
+  border-top: 2px solid var(--primary);
+  padding: 14px 24px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  box-shadow: 0 -4px 20px rgba(0,0,0,.08);
+  z-index: 40;
+}
+.export-bar .progress-text {
+  font-weight: 600;
+}
+.export-bar .progress-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--bg-soft);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.export-bar .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--success));
+  transition: width .3s;
+  width: 0%;
+}
+.export-bar button {
+  background: var(--success);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: .92rem;
+}
+.export-bar button:disabled {
+  background: var(--text-mute);
+  cursor: not-allowed;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+}
+.modal-backdrop.show { display: flex; }
+.modal {
+  background: var(--bg-elev);
+  border-radius: var(--radius);
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+  box-shadow: var(--shadow-lg);
+}
+.modal h2 { color: var(--primary); margin-bottom: 12px; }
+.modal pre {
+  background: var(--bg-soft);
+  padding: 14px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: .82rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-family: "Consolas", monospace;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.modal-actions button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: .9rem;
+}
+.modal-actions button.secondary {
+  background: var(--bg-soft);
+  color: var(--text);
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <h1>🎨 Selector visual de imágenes</h1>
+  <div class="stats">
+    <span id="statsTotal">0 / 23 slots</span>
+    <span id="statsPercent">0 %</span>
+  </div>
+  <button class="secondary" id="resetBtn">↺ Reiniciar</button>
+  <button id="exportBtn">📋 Exportar selección</button>
+</header>
+
+<div class="intro">
+  <h2>📋 Cómo funciona</h2>
+  <ol>
+    <li>Cada <strong>slot</strong> describe la imagen que el curso necesita y dónde irá guardada (<code>src/assets/...</code>).</li>
+    <li>Hay <strong>candidatos pre-curados</strong> con preview en vivo. Hacé clic en una imagen para verificarla — abre Pexels/Unsplash en otra pestaña.</li>
+    <li>Si te gusta, <strong>marcala como seleccionada</strong> con el botón ✓. Se guarda en localStorage automáticamente.</li>
+    <li>Si ningún candidato te convence, usá los <strong>botones de búsqueda</strong> y pegá la URL en el campo "URL personalizada".</li>
+    <li>Al terminar, <strong>"Exportar selección"</strong> te da la lista completa de URLs + script bash para descargarlas.</li>
+  </ol>
+  <p style="margin-top:12px; padding:10px; background:#fffbeb; border-left:4px solid #d97706; border-radius:6px; font-size:.92rem;">
+    ⚠️ <strong>Importante</strong>: las descripciones AI de los bancos a veces son incorrectas (ej: Unsplash llamó "headphones" a un estetoscopio). Por eso las imágenes vienen con preview real — lo que ves es lo que vas a usar.
+  </p>
+</div>
+
+<main id="main"></main>
+
+<div class="export-bar">
+  <span class="progress-text" id="progressText">0 de 23 imágenes seleccionadas</span>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <button id="exportBtn2" disabled>Exportar lista</button>
+</div>
+
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <h2>📦 Selección exportada</h2>
+    <p style="margin-bottom:14px; color:var(--text-soft);">Copia este script bash y ejecutalo desde la raíz del proyecto. Crea las carpetas y descarga cada imagen al destino correcto.</p>
+    <pre id="exportContent"></pre>
+    <div class="modal-actions">
+      <button id="copyBtn">📋 Copiar al portapapeles</button>
+      <button id="downloadBtn">💾 Descargar como .sh</button>
+      <button class="secondary" id="closeModalBtn">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =============================================================
+   DATOS — slots de imagen organizados por módulo
+   Cada candidato: { src, id, alt, sourceUrl, cdnUrl }
+   - sourceUrl: página de la imagen (para verificar atribución)
+   - cdnUrl: URL directa al CDN (para preview y descarga)
+   ============================================================= */
+const px = id => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=600`;
+const pxLink = id => `https://www.pexels.com/photo/${id}/`;
+const us = (slug, hash) => ({
+  cdnUrl: `https://images.unsplash.com/photo-${hash}?w=600&q=80`,
+  sourceUrl: `https://unsplash.com/photos/${slug}`
+});
+
+const data = [
+  {
+    module: 'Fundamentos',
+    num: 1,
+    slots: [
+      {
+        name: 'Hero — cuidado enfermero',
+        target: 'src/assets/curso/m1_hero.jpg',
+        desc: 'Imagen principal: enfermera/o cuidando paciente, transmite empatía y profesionalismo.',
+        searches: ['nurse caring patient', 'healthcare empathy', 'enfermería paciente'],
+        candidates: [
+          { src:'pexels', alt:'Enfermera tomando la mano del paciente', cdnUrl: px(6129685), sourceUrl: pxLink(6129685) },
+          { src:'pexels', alt:'Enfermera y paciente saludándose', cdnUrl: px(5207015), sourceUrl: pxLink(5207015) },
+          { src:'pexels', alt:'Enfermera midiendo presión arterial', cdnUrl: px(6129678), sourceUrl: pxLink(6129678) },
+          { src:'pexels', alt:'Enfermera escuchando ritmo cardíaco', cdnUrl: px(6129236), sourceUrl: pxLink(6129236) }
+        ]
+      },
+      {
+        name: 'Bioética / consentimiento',
+        target: 'src/assets/curso/m1_bioetica.jpg',
+        desc: 'Doctor/enfermera firmando documento con paciente, ética clínica.',
+        searches: ['informed consent', 'medical ethics', 'patient signature'],
+        candidates: [
+          { src:'pexels', alt:'Doctor con paciente firmando documento', cdnUrl: px(8413295), sourceUrl: pxLink(8413295) },
+          { src:'pexels', alt:'Persona escribiendo en documento médico', cdnUrl: px(8413333), sourceUrl: pxLink(8413333) },
+          { src:'pexels', alt:'Doctora revisando papeles en clipboard', cdnUrl: px(8413398), sourceUrl: pxLink(8413398) }
+        ]
+      }
+    ]
+  },
+  {
+    module: 'Signos vitales',
+    num: 3,
+    slots: [
+      {
+        name: 'Estetoscopio',
+        target: 'src/assets/curso/m3_estetoscopio.jpg',
+        desc: 'Estetoscopio en primer plano, idealmente con fondo neutro o sobre libro/mesa clínica.',
+        searches: ['stethoscope close-up', 'medical equipment'],
+        candidates: [
+          { src:'unsplash', alt:'Estetoscopio negro y gris (verificado por WebFetch)', cdnUrl:'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600&q=80', sourceUrl:'https://unsplash.com/photos/yo01Z-9HQAw' },
+          { src:'pexels', alt:'Estetoscopio sobre superficie azul', cdnUrl: px(7659564), sourceUrl: pxLink(7659564) }
+        ]
+      },
+      {
+        name: 'Termómetro digital',
+        target: 'src/assets/curso/m3_termometro.jpg',
+        desc: 'Termómetro digital mostrando lectura, idealmente clínico (no de cocina/clima).',
+        searches: ['digital thermometer clinical', 'medical thermometer'],
+        candidates: [
+          { src:'pexels', alt:'Termómetro blanco mostrando 36.7°C', cdnUrl: px(5994867), sourceUrl: pxLink(5994867) },
+          { src:'pexels', alt:'Termómetro digital sobre superficie reflectante', cdnUrl: px(33122263), sourceUrl: pxLink(33122263) },
+          { src:'pexels', alt:'Mano sosteniendo termómetro digital', cdnUrl: px(29007236), sourceUrl: pxLink(29007236) }
+        ]
+      },
+      {
+        name: 'Oxímetro de pulso',
+        target: 'src/assets/curso/m3_oximetro.jpg',
+        desc: 'Oxímetro clipeado en el dedo del paciente, no solo el dispositivo.',
+        searches: ['pulse oximeter finger', 'oximetría'],
+        candidates: [
+          { src:'pexels', alt:'Doctor colocando oxímetro en dedo del paciente', cdnUrl: px(7580251), sourceUrl: pxLink(7580251) },
+          { src:'pexels', alt:'Oxímetro azul en mano', cdnUrl: px(8376310), sourceUrl: pxLink(8376310) },
+          { src:'pexels', alt:'Oxímetro morado primer plano', cdnUrl: px(8655283), sourceUrl: pxLink(8655283) }
+        ]
+      }
+    ]
+  },
+  {
+    module: 'Bioseguridad',
+    num: 4,
+    slots: [
+      {
+        name: 'Lavado de manos clínico',
+        target: 'src/assets/curso/m4_lavado_manos.jpg',
+        desc: 'Lavado de manos con jabón en bacha clínica, técnica visible.',
+        searches: ['hand washing soap', 'lavado manos clínico'],
+        candidates: [
+          { src:'pexels', alt:'Persona lavándose manos en bacha clínica', cdnUrl: px(3992933), sourceUrl: pxLink(3992933) },
+          { src:'pexels', alt:'Lavado de manos con jabón blanco', cdnUrl: px(3987136), sourceUrl: pxLink(3987136) }
+        ]
+      },
+      {
+        name: 'EPP completo',
+        target: 'src/assets/curso/m4_epp.jpg',
+        desc: 'Profesional con barbijo, antiparras, camisolín, guantes — EPP completo.',
+        searches: ['PPE healthcare', 'EPP médico'],
+        candidates: [
+          { src:'pexels', alt:'Profesional sanitario con EPP completo', cdnUrl: px(8442503), sourceUrl: pxLink(8442503) },
+          { src:'pexels', alt:'Persona con EPP en cuarto', cdnUrl: px(4176921), sourceUrl: pxLink(4176921) },
+          { src:'pexels', alt:'Persona con traje de protección blanco', cdnUrl: px(4114442), sourceUrl: pxLink(4114442) }
+        ]
+      },
+      {
+        name: 'Residuos / biohazard',
+        target: 'src/assets/curso/m4_biohazard.jpg',
+        desc: 'Cartel biohazard, contenedor de residuos sanitarios o sharps.',
+        searches: ['biohazard sign', 'sharps container', 'medical waste'],
+        candidates: [
+          { src:'pexels', alt:'Puerta amarilla con cartel biohazard', cdnUrl: px(35531232), sourceUrl: pxLink(35531232) }
+        ]
+      }
+    ]
+  },
+  {
+    module: 'Equipamiento',
+    num: 5,
+    slots: [
+      {
+        name: 'Máscara de O₂ en paciente',
+        target: 'src/assets/curso/m5_oxigeno.jpg',
+        desc: 'Paciente con máscara de oxígeno en cama de hospital.',
+        searches: ['oxygen mask patient', 'oxygenoterapia'],
+        candidates: [
+          { src:'pexels', alt:'Paciente con máscara de oxígeno en cama hospital', cdnUrl: px(20897582), sourceUrl: pxLink(20897582) },
+          { src:'pexels', alt:'Niño con máscara de oxígeno', cdnUrl: px(6202735), sourceUrl: pxLink(6202735) }
+        ]
+      },
+      {
+        name: 'Vía EV (IV drip)',
+        target: 'src/assets/curso/m5_iv.jpg',
+        desc: 'Bolsa de suero EV colgada con goteo, o vía colocada en brazo.',
+        searches: ['IV drip bag', 'venoclisis'],
+        candidates: [
+          { src:'pexels', alt:'Bolsa de suero EV colgada en pie', cdnUrl: px(6191530), sourceUrl: pxLink(6191530) },
+          { src:'pexels', alt:'Niña con vía EV en brazo', cdnUrl: px(6191546), sourceUrl: pxLink(6191546) },
+          { src:'pexels', alt:'Dextrosa colocada en paciente', cdnUrl: px(6010930), sourceUrl: pxLink(6010930) }
+        ]
+      }
+    ]
+  },
+  {
+    module: 'Técnicas y procedimientos',
+    num: 7,
+    slots: [
+      {
+        name: 'Inyección / vacunación',
+        target: 'src/assets/curso/m7_inyeccion.jpg',
+        desc: 'Aplicación de inyección IM/SC, jeringa cerca de brazo del paciente.',
+        searches: ['injection vaccination', 'aplicación intramuscular'],
+        candidates: [
+          { src:'pexels', alt:'Mano sosteniendo jeringas con sustancia', cdnUrl: px(14903484), sourceUrl: pxLink(14903484) },
+          { src:'pexels', alt:'Set de jeringas médicas fondo amarillo', cdnUrl: px(4210554), sourceUrl: pxLink(4210554) },
+          { src:'pexels', alt:'Jeringa con líquido azul', cdnUrl: px(8923193), sourceUrl: pxLink(8923193) }
+        ]
+      },
+      {
+        name: 'Toma de presión arterial',
+        target: 'src/assets/curso/m7_presion.jpg',
+        desc: 'Enfermera midiendo presión arterial al paciente con tensiómetro.',
+        searches: ['blood pressure measurement', 'tensiómetro'],
+        candidates: [
+          { src:'pexels', alt:'Enfermera midiendo presión arterial', cdnUrl: px(6129686), sourceUrl: pxLink(6129686) },
+          { src:'pexels', alt:'Enfermera tomando presión a mujer', cdnUrl: px(6129678), sourceUrl: pxLink(6129678) }
+        ]
+      }
+    ]
+  },
+  {
+    module: 'Farmacología',
+    num: 8,
+    slots: [
+      {
+        name: 'Pastillas / blísters',
+        target: 'src/assets/curso/m8_pastillas.jpg',
+        desc: 'Variedad de medicamentos en blísters, frascos o tabletas.',
+        searches: ['pills blister medication', 'medicamentos'],
+        candidates: [
+          { src:'pexels', alt:'Blísters de medicamentos surtidos', cdnUrl: px(37330388), sourceUrl: pxLink(37330388) },
+          { src:'pexels', alt:'Pastillas en blísters primer plano', cdnUrl: px(4210607), sourceUrl: pxLink(4210607) },
+          { src:'pexels', alt:'Variedad de medicinas', cdnUrl: px(5207333), sourceUrl: pxLink(5207333) },
+          { src:'pexels', alt:'Frasco con pastillas', cdnUrl: px(11361813), sourceUrl: pxLink(11361813) }
+        ]
+      },
+      {
+        name: 'Jeringa preparada',
+        target: 'src/assets/curso/m8_jeringa.jpg',
+        desc: 'Jeringa cargada con medicación, sobre superficie médica.',
+        searches: ['syringe medication', 'jeringa preparación'],
+        candidates: [
+          { src:'pexels', alt:'Jeringa sobre mesa', cdnUrl: px(8923189), sourceUrl: pxLink(8923189) },
+          { src:'pexels', alt:'Jeringa sobre superficie roja', cdnUrl: px(5994835), sourceUrl: pxLink(5994835) }
+        ]
+      }
+    ]
+  },
+  {
+    module: 'Emergencias',
+    num: 9,
+    slots: [
+      {
+        name: 'RCP / Reanimación',
+        target: 'src/assets/curso/m9_rcp.jpg',
+        desc: 'Compresiones torácicas en maniquí o paciente. Idealmente con DEA cerca.',
+        searches: ['CPR chest compressions', 'reanimación'],
+        candidates: [
+          { src:'pexels', alt:'Manos haciendo RCP en maniquí + DEA', cdnUrl: px(11655091), sourceUrl: pxLink(11655091) },
+          { src:'pexels', alt:'Compresiones cardiopulmonares primer plano', cdnUrl: px(28271058), sourceUrl: pxLink(28271058) },
+          { src:'pexels', alt:'Entrenamiento RCP con maniquí', cdnUrl: px(33862096), sourceUrl: pxLink(33862096) },
+          { src:'pexels', alt:'Mujeres practicando RCP en taller', cdnUrl: px(33317473), sourceUrl: pxLink(33317473) }
+        ]
+      },
+      {
+        name: 'Equipo de emergencia',
+        target: 'src/assets/curso/m9_emergencia.jpg',
+        desc: 'Carro de paro, desfibrilador o equipo de emergencia clínica.',
+        searches: ['defibrillator AED', 'crash cart emergency'],
+        candidates: [
+          { src:'pexels', alt:'Sesión RCP con DEA en Buenos Aires', cdnUrl: px(36346116), sourceUrl: pxLink(36346116) },
+          { src:'pexels', alt:'Hombre con scrubs sosteniendo paletas', cdnUrl:'https://images.pexels.com/photos/6285178/pexels-photo-6285178.jpeg?auto=compress&cs=tinysrgb&w=600', sourceUrl:'https://www.pexels.com/photo/6285178/' }
+        ]
+      }
+    ]
+  },
+  {
+    module: 'Comunicación clínica',
+    num: 10,
+    slots: [
+      {
+        name: 'Documentación / registros',
+        target: 'src/assets/curso/m10_documentacion.jpg',
+        desc: 'Profesional escribiendo en clipboard, computadora con historia clínica.',
+        searches: ['medical records documentation', 'historia clínica'],
+        candidates: [
+          { src:'pexels', alt:'Doctor escribiendo en clipboard', cdnUrl: px(8413090), sourceUrl: pxLink(8413090) },
+          { src:'pexels', alt:'Persona escribiendo en documento frente a PC', cdnUrl: px(8413333), sourceUrl: pxLink(8413333) },
+          { src:'pexels', alt:'Doctora revisando papeles', cdnUrl: px(8413398), sourceUrl: pxLink(8413398) }
+        ]
+      },
+      {
+        name: 'Equipo / hand-off',
+        target: 'src/assets/curso/m10_equipo.jpg',
+        desc: 'Equipo médico en reunión / pase de turno / SBAR.',
+        searches: ['medical team handoff', 'pase de turno'],
+        candidates: [
+          { src:'pexels', alt:'Equipo médico en reunión', cdnUrl: px(7088526), sourceUrl: pxLink(7088526) },
+          { src:'pexels', alt:'Profesionales sanitarios reunidos', cdnUrl: px(7089401), sourceUrl: pxLink(7089401) }
+        ]
+      }
+    ]
+  }
+];
+
+/* =============================================================
+   ESTADO — guardado en localStorage
+   ============================================================= */
+const STORAGE_KEY = 'curso-enfermeria-imagenes-v1';
+let selections = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+/* =============================================================
+   RENDER
+   ============================================================= */
+const main = document.getElementById('main');
+
+data.forEach(mod => {
+  const modEl = document.createElement('section');
+  modEl.className = 'module';
+  modEl.innerHTML = `
+    <div class="module-header">
+      <span class="num">${mod.num}</span>
+      <span>${mod.module}</span>
+    </div>
+  `;
+
+  mod.slots.forEach(slot => {
+    const slotKey = slot.target;
+    const slotEl = document.createElement('div');
+    slotEl.className = 'slot';
+    slotEl.dataset.key = slotKey;
+
+    const searchLinks = slot.searches.map(q => {
+      const enc = encodeURIComponent(q);
+      return `
+        <a href="https://www.pexels.com/search/${enc}/" target="_blank">🔍 Pexels: ${q}</a>
+        <a href="https://unsplash.com/s/photos/${enc.replace(/%20/g,'-')}" target="_blank">🔍 Unsplash: ${q}</a>
+      `;
+    }).join('');
+
+    const candidatesHtml = slot.candidates.map((c, i) => `
+      <div class="candidate" data-key="${slotKey}" data-idx="${i}" data-cdn="${c.cdnUrl}" data-source="${c.sourceUrl}" data-alt="${c.alt.replace(/"/g,'&quot;')}">
+        <img src="${c.cdnUrl}" alt="${c.alt}" loading="lazy" onerror="this.parentElement.style.opacity=0.3;this.alt='⚠️ No carga'" />
+        <div class="candidate-meta">
+          <span class="src ${c.src}">${c.src}</span>
+          <div>${c.alt}</div>
+          <a href="${c.sourceUrl}" target="_blank" style="color:var(--primary);font-size:.75rem;">Ver original →</a>
+        </div>
+      </div>
+    `).join('');
+
+    slotEl.innerHTML = `
+      <div class="slot-meta">
+        <div class="slot-info">
+          <h3>
+            <span class="check">${selections[slotKey] ? '✅' : '⏳'}</span>
+            ${slot.name}
+          </h3>
+          <span class="target">${slot.target}</span>
+          <p class="desc">${slot.desc}</p>
+        </div>
+        <div class="slot-search">${searchLinks}</div>
+      </div>
+      <div class="candidates">${candidatesHtml}</div>
+      <div class="custom-paste">
+        <label>📌 ¿Encontraste otra mejor? Pegá la URL directa de la imagen aquí:</label>
+        <input type="url" placeholder="https://..." data-paste="${slotKey}" />
+        <div class="custom-preview" data-preview="${slotKey}">
+          <img src="" alt="Preview" />
+          <button data-confirm="${slotKey}">✓ Usar esta imagen</button>
+        </div>
+      </div>
+      <div class="selected-banner" data-banner="${slotKey}" style="${selections[slotKey] ? '' : 'display:none;'}">
+        <span>✓ Seleccionada:</span>
+        <code>${selections[slotKey]?.cdnUrl || ''}</code>
+        <button data-remove="${slotKey}">Quitar</button>
+      </div>
+    `;
+    modEl.appendChild(slotEl);
+  });
+
+  main.appendChild(modEl);
+});
+
+/* =============================================================
+   INTERACCIONES
+   ============================================================= */
+function updateStats() {
+  const total = document.querySelectorAll('.slot').length;
+  const done = Object.keys(selections).length;
+  const pct = total ? Math.round((done / total) * 100) : 0;
+  document.getElementById('statsTotal').textContent = `${done} / ${total} slots`;
+  document.getElementById('statsPercent').textContent = `${pct} %`;
+  document.getElementById('progressText').textContent = `${done} de ${total} imágenes seleccionadas`;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('exportBtn2').disabled = done === 0;
+}
+
+function refreshSlot(key) {
+  const slot = document.querySelector(`.slot[data-key="${CSS.escape(key)}"]`);
+  if (!slot) return;
+  const banner = slot.querySelector('[data-banner]');
+  const check = slot.querySelector('.check');
+  const cands = slot.querySelectorAll('.candidate');
+  cands.forEach(c => c.classList.remove('selected'));
+
+  if (selections[key]) {
+    banner.style.display = 'flex';
+    banner.querySelector('code').textContent = selections[key].cdnUrl;
+    check.textContent = '✅';
+    cands.forEach(c => {
+      if (c.dataset.cdn === selections[key].cdnUrl) c.classList.add('selected');
+    });
+  } else {
+    banner.style.display = 'none';
+    check.textContent = '⏳';
+  }
+  updateStats();
+}
+
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(selections));
+  updateStats();
+}
+
+document.body.addEventListener('click', e => {
+  // Click en candidato
+  const cand = e.target.closest('.candidate');
+  if (cand) {
+    const key = cand.dataset.key;
+    const cdn = cand.dataset.cdn;
+    const source = cand.dataset.source;
+    const alt = cand.dataset.alt;
+    if (selections[key] && selections[key].cdnUrl === cdn) {
+      delete selections[key];
+    } else {
+      selections[key] = { cdnUrl: cdn, sourceUrl: source, alt };
+    }
+    save();
+    refreshSlot(key);
+    return;
+  }
+
+  // Quitar selección
+  if (e.target.matches('[data-remove]')) {
+    const key = e.target.dataset.remove;
+    delete selections[key];
+    save();
+    refreshSlot(key);
+    return;
+  }
+
+  // Confirmar URL pegada
+  if (e.target.matches('[data-confirm]')) {
+    const key = e.target.dataset.confirm;
+    const input = document.querySelector(`[data-paste="${CSS.escape(key)}"]`);
+    const url = input.value.trim();
+    if (url) {
+      selections[key] = { cdnUrl: url, sourceUrl: url, alt: 'Custom URL' };
+      save();
+      refreshSlot(key);
+      input.value = '';
+      document.querySelector(`[data-preview="${CSS.escape(key)}"]`).style.display = 'none';
+    }
+    return;
+  }
+});
+
+// Pegar URL personalizada con preview
+document.body.addEventListener('input', e => {
+  if (e.target.matches('[data-paste]')) {
+    const key = e.target.dataset.paste;
+    const url = e.target.value.trim();
+    const preview = document.querySelector(`[data-preview="${CSS.escape(key)}"]`);
+    if (url && /^https?:\/\//.test(url)) {
+      preview.querySelector('img').src = url;
+      preview.style.display = 'block';
+    } else {
+      preview.style.display = 'none';
+    }
+  }
+});
+
+// Reset
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (!confirm('¿Borrar todas las selecciones?')) return;
+  selections = {};
+  save();
+  document.querySelectorAll('.slot').forEach(s => refreshSlot(s.dataset.key));
+});
+
+// Exportar
+function exportSelection() {
+  const lines = ['#!/bin/bash', '# Descarga de imágenes para el curso de enfermería', '# Generado automáticamente por selector-imagenes.html', ''];
+  const dirs = new Set();
+  Object.entries(selections).forEach(([key, val]) => {
+    const dir = key.substring(0, key.lastIndexOf('/'));
+    dirs.add(dir);
+  });
+  dirs.forEach(d => lines.push(`mkdir -p "${d}"`));
+  lines.push('');
+  Object.entries(selections).forEach(([key, val]) => {
+    lines.push(`# ${val.alt}`);
+    lines.push(`# Fuente: ${val.sourceUrl}`);
+    lines.push(`curl -L -o "${key}" "${val.cdnUrl}"`);
+    lines.push('');
+  });
+  lines.push('echo "✅ Descarga completa: ' + Object.keys(selections).length + ' imágenes"');
+  return lines.join('\n');
+}
+
+document.getElementById('exportBtn').addEventListener('click', showModal);
+document.getElementById('exportBtn2').addEventListener('click', showModal);
+function showModal() {
+  if (Object.keys(selections).length === 0) {
+    alert('Seleccioná al menos una imagen primero.');
+    return;
+  }
+  const content = exportSelection();
+  document.getElementById('exportContent').textContent = content;
+  document.getElementById('modal').classList.add('show');
+}
+
+document.getElementById('closeModalBtn').addEventListener('click', () => {
+  document.getElementById('modal').classList.remove('show');
+});
+
+document.getElementById('copyBtn').addEventListener('click', () => {
+  const content = document.getElementById('exportContent').textContent;
+  navigator.clipboard.writeText(content).then(() => {
+    document.getElementById('copyBtn').textContent = '✓ Copiado';
+    setTimeout(() => document.getElementById('copyBtn').textContent = '📋 Copiar al portapapeles', 2000);
+  });
+});
+
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  const content = document.getElementById('exportContent').textContent;
+  const blob = new Blob([content], { type: 'text/x-shellscript' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'descargar-imagenes-curso.sh';
+  a.click();
+});
+
+updateStats();
+</script>
+</body>
+</html>
