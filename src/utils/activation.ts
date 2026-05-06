@@ -1,6 +1,12 @@
 import EncryptedStorage from 'react-native-encrypted-storage';
 
-const ACTIVATION_KEY = '@patologias_activated';
+const ACTIVATION_KEY = '@curso_activated';
+/**
+ * Legacy key — versiones anteriores del Curso usaban erróneamente la key de
+ * Patologías por copy-paste. `isActivated()` migra transparentemente al primer
+ * boot post-update para que ningún tester/usuario interno pierda la activación.
+ */
+const LEGACY_ACTIVATION_KEY = '@patologias_activated';
 
 /**
  * SHA-256 hash of the activation code.
@@ -87,7 +93,15 @@ export function validateActivationCode(code: string): boolean {
 export async function isActivated(): Promise<boolean> {
   try {
     const val = await EncryptedStorage.getItem(ACTIVATION_KEY);
-    return val === 'true';
+    if (val === 'true') return true;
+    // Migration: detect legacy key and move it to the new one transparently.
+    const legacyVal = await EncryptedStorage.getItem(LEGACY_ACTIVATION_KEY).catch(() => null);
+    if (legacyVal === 'true') {
+      await EncryptedStorage.setItem(ACTIVATION_KEY, 'true').catch(() => {});
+      await EncryptedStorage.removeItem(LEGACY_ACTIVATION_KEY).catch(() => {});
+      return true;
+    }
+    return false;
   } catch {
     return false;
   }
