@@ -59,7 +59,7 @@
     { "sigla": "OPQRST", "definicion": "Onset, Provocation, Quality, Region, Severity, Time — mnemotecnia para evaluación del dolor." },
     { "sigla": "OMS", "definicion": "Organización Mundial de la Salud (WHO)." },
     { "sigla": "OVACE", "definicion": "Obstrucción de vía aérea por cuerpo extraño — atragantamiento." },
-    { "sigla": "PAE", "definicion": "Proceso de Atención de Enfermería — método sistemático: valoración, diagnóstico, planificación, ejecución, evaluación." },
+    { "sigla": "PAE", "definicion": "Proceso de Atención de Enfermería — método científico y sistemático aplicado al cuidado, que permite brindar atención individualizada y de calidad. Comprende 5 etapas cíclicas: valoración (recolección de datos), diagnóstico (juicio clínico con taxonomía NANDA-I), planificación (objetivos NOC e intervenciones NIC), ejecución (implementación del plan) y evaluación (comparación de resultados). Fundamenta la autonomía profesional y promueve el pensamiento crítico." },
     { "sigla": "PAINAD", "definicion": "Pain Assessment in Advanced Dementia — escala de dolor para pacientes con demencia avanzada." },
     { "sigla": "PCR", "definicion": "Paro cardiorrespiratorio — cese de la actividad cardíaca y respiratoria efectiva." },
     { "sigla": "PEG", "definicion": "Gastrostomía endoscópica percutánea — sonda alimentaria a través de la pared abdominal hasta el estómago." },
