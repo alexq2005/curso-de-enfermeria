@@ -3,7 +3,7 @@
 // ============================================================
 
 import React, { useMemo, useState, useCallback } from 'react';
-import { View, Text, TextInput, FlatList, StatusBar, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, FlatList, StatusBar, TouchableOpacity, type TextStyle, type StyleProp } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -41,6 +41,68 @@ type IdxEntry = IndexEntry | GlosarioEntry;
 
 function normalize(text: string): string {
   return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+// \u2500\u2500 Highlight helpers \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+// The search is accent-insensitive (via normalize), so a literal indexOf on the
+// original text would miss "\u00falcera" when the user typed "ulcera". We build a
+// per-char map normalizedIndex \u2192 originalIndex, search the normalized form, and
+// then slice the *original* string at the mapped positions to preserve casing
+// and diacritics in the highlighted snippet.
+function findMatchRanges(text: string, normalizedQuery: string): Array<{ start: number; end: number }> {
+  if (!normalizedQuery) return [];
+  let normText = '';
+  const origForNormIdx: number[] = [];
+  for (let i = 0; i < text.length; i++) {
+    const norm = text[i].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    for (let j = 0; j < norm.length; j++) {
+      normText += norm[j];
+      origForNormIdx.push(i);
+    }
+  }
+  const ranges: Array<{ start: number; end: number }> = [];
+  let from = 0;
+  while (from <= normText.length) {
+    const idx = normText.indexOf(normalizedQuery, from);
+    if (idx === -1) break;
+    const startOrig = origForNormIdx[idx];
+    const lastOrig = origForNormIdx[idx + normalizedQuery.length - 1];
+    ranges.push({ start: startOrig, end: lastOrig + 1 });
+    from = idx + normalizedQuery.length;
+  }
+  return ranges;
+}
+
+interface HighlightedTextProps {
+  text: string;
+  query: string; // already normalized
+  baseStyle: StyleProp<TextStyle>;
+  highlightStyle: StyleProp<TextStyle>;
+  numberOfLines?: number;
+}
+
+function HighlightedText({ text, query, baseStyle, highlightStyle, numberOfLines }: HighlightedTextProps) {
+  const ranges = useMemo(() => findMatchRanges(text, query), [text, query]);
+  if (ranges.length === 0) {
+    return <Text style={baseStyle} numberOfLines={numberOfLines}>{text}</Text>;
+  }
+  const parts: React.ReactNode[] = [];
+  let cursor = 0;
+  ranges.forEach((r, i) => {
+    if (r.start > cursor) parts.push(text.slice(cursor, r.start));
+    parts.push(
+      <Text key={i} style={highlightStyle}>
+        {text.slice(r.start, r.end)}
+      </Text>,
+    );
+    cursor = r.end;
+  });
+  if (cursor < text.length) parts.push(text.slice(cursor));
+  return (
+    <Text style={baseStyle} numberOfLines={numberOfLines}>
+      {parts}
+    </Text>
+  );
 }
 
 function blockToText(block: CursoBlock): string {
@@ -99,13 +161,20 @@ export function BuscadorScreen() {
   const navigation = useNavigation<Nav>();
   const [query, setQuery] = useState('');
 
+  const normalizedQuery = useMemo(() => normalize(query.trim()), [query]);
+
   const results = useMemo(() => {
-    const q = normalize(query.trim());
-    if (q.length < 2) return [] as IdxEntry[];
-    const subMatches = SUB_INDEX.filter(e => e.haystack.includes(q));
-    const glosMatches = GLOSARIO_INDEX.filter(e => e.haystack.includes(q));
+    if (normalizedQuery.length < 2) return [] as IdxEntry[];
+    const subMatches = SUB_INDEX.filter(e => e.haystack.includes(normalizedQuery));
+    const glosMatches = GLOSARIO_INDEX.filter(e => e.haystack.includes(normalizedQuery));
     return [...glosMatches, ...subMatches].slice(0, 50);
-  }, [query]);
+  }, [normalizedQuery]);
+
+  const highlightStyle: StyleProp<TextStyle> = {
+    backgroundColor: colors.searchHighlight,
+    color: colors.text,
+    fontWeight: '700',
+  };
 
   const handleSubPress = useCallback(
     (entry: IndexEntry) => {
@@ -233,13 +302,19 @@ export function BuscadorScreen() {
                   <Text style={{ fontSize: rs.font(10), fontWeight: '800', color: '#0EA5E9', letterSpacing: 1 }}>
                     GLOSARIO
                   </Text>
-                  <Text style={{ fontSize: rs.font(15), fontWeight: '900', color: colors.text, marginLeft: 4 }}>
-                    {item.sigla}
-                  </Text>
+                  <HighlightedText
+                    text={item.sigla}
+                    query={normalizedQuery}
+                    baseStyle={{ fontSize: rs.font(15), fontWeight: '900', color: colors.text, marginLeft: 4 }}
+                    highlightStyle={highlightStyle}
+                  />
                 </View>
-                <Text style={{ fontSize: rs.font(13), color: colors.textSecondary, lineHeight: rs.font(19) }}>
-                  {item.definicion}
-                </Text>
+                <HighlightedText
+                  text={item.definicion}
+                  query={normalizedQuery}
+                  baseStyle={{ fontSize: rs.font(13), color: colors.textSecondary, lineHeight: rs.font(19) }}
+                  highlightStyle={highlightStyle}
+                />
               </View>
             );
           }
@@ -274,15 +349,19 @@ export function BuscadorScreen() {
                 </Text>
                 <MaterialCommunityIcons name="chevron-right" size={rs.font(18)} color={colors.textLight} />
               </View>
-              <Text style={{ fontSize: rs.font(15), fontWeight: '700', color: colors.text, marginBottom: rs.space(4) }}>
-                {item.subTitle}
-              </Text>
-              <Text
-                style={{ fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(18) }}
+              <HighlightedText
+                text={item.subTitle}
+                query={normalizedQuery}
+                baseStyle={{ fontSize: rs.font(15), fontWeight: '700', color: colors.text, marginBottom: rs.space(4) }}
+                highlightStyle={highlightStyle}
+              />
+              <HighlightedText
+                text={item.preview}
+                query={normalizedQuery}
+                baseStyle={{ fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(18) }}
+                highlightStyle={highlightStyle}
                 numberOfLines={2}
-              >
-                {item.preview}
-              </Text>
+              />
             </TouchableOpacity>
           );
         }}
