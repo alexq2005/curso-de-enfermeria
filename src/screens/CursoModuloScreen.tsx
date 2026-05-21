@@ -2,7 +2,7 @@
 // CursoModuloScreen — Renderiza un módulo del curso (subtemas + bloques)
 // ============================================================
 
-import React, { useMemo, useEffect, useLayoutEffect, useCallback } from 'react';
+import React, { useMemo, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
 import {
   View,
   Text,
@@ -13,6 +13,7 @@ import {
   TouchableOpacity,
   Linking,
   Alert,
+  findNodeHandle,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -43,11 +44,36 @@ export function CursoModuloScreen({ route, navigation }: Props) {
   const { colors, isDark } = useTheme();
   const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
-  const { moduloId } = route.params;
+  const { moduloId, subId } = route.params;
   const { isRead, toggleRead, recordOpenModulo, getModuloProgress } = useCursoProgress();
 
   const modulo = useMemo(() => data.modulos.find(m => m.id === moduloId), [moduloId]);
   const progress = getModuloProgress(moduloId);
+
+  // ── Scroll-to-sub (deep link desde BuscadorScreen) ─────────────
+  const scrollRef = useRef<ScrollView | null>(null);
+  const subRefs = useRef<Record<string, View | null>>({});
+  // Pending target; cleared after the first successful scroll so re-layouts
+  // (e.g. marking a sub as read) don't yank the viewport again.
+  const pendingSubIdRef = useRef<string | null>(subId ?? null);
+
+  const scrollToPendingSub = useCallback(() => {
+    const target = pendingSubIdRef.current;
+    if (!target) return;
+    const subView = subRefs.current[target];
+    const scroll = scrollRef.current;
+    if (!subView || !scroll) return;
+    const scrollNode = findNodeHandle(scroll);
+    if (scrollNode == null) return;
+    subView.measureLayout(
+      scrollNode,
+      (_x, y) => {
+        scroll.scrollTo({ y: Math.max(0, y - 12), animated: false });
+        pendingSubIdRef.current = null;
+      },
+      () => {},
+    );
+  }, []);
 
   useEffect(() => {
     recordOpenModulo(moduloId);
@@ -71,7 +97,7 @@ export function CursoModuloScreen({ route, navigation }: Props) {
     <View style={{ flex: 1, backgroundColor: colors.background }}>
       <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
 
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: insets.bottom + rs.space(40) }}>
+      <ScrollView ref={scrollRef} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: insets.bottom + rs.space(40) }}>
         {/* Hero */}
         <ImageBackground source={getCursoImage(modulo.imageKey)} style={{ height: rs.space(220) }}>
           <LinearGradient
@@ -137,7 +163,12 @@ export function CursoModuloScreen({ route, navigation }: Props) {
           {modulo.subs.map((sub) => {
             const read = isRead(sub.id);
             return (
-              <View key={sub.id} style={{ marginBottom: rs.space(28) }}>
+              <View
+                key={sub.id}
+                ref={(r) => { subRefs.current[sub.id] = r; }}
+                onLayout={scrollToPendingSub}
+                style={{ marginBottom: rs.space(28) }}
+              >
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(12), gap: rs.space(10) }}>
                   <View style={{ width: 6, height: rs.space(24), backgroundColor: modulo.gradient[1], borderRadius: 3 }} />
                   <Text style={{ fontSize: rs.font(17), fontWeight: '800', color: colors.text, flex: 1 }}>
