@@ -1,6 +1,6 @@
 # Roadmap — Manual de Enfermería
 
-> **Última actualización**: 2026-05-06
+> **Última actualización**: 2026-05-21
 > **Versión actual**: v1.0.0 (versionCode 1)
 > **Política**: este documento se actualiza al cerrar cada release y al iniciar cada milestone. Mover items de "planeado" a "en progreso" → "completado" según avanza el trabajo.
 
@@ -45,12 +45,12 @@ Lo que incluye:
 **Foco**: arreglar lo que se descubre en uso real, no agregar features grandes.
 
 ### Must-have
-- [ ] **Telemetría opcional** (Sentry DSN ya scaffold) — opt-in en Settings, solo crashes y errores no-PII
-- [ ] **Scroll-to-sub** desde BuscadorScreen (param `subId` ya existe en route, falta implementar el scroll en CursoModuloScreen)
+- [ ] **Telemetría opcional** (Sentry no instalado aún — el README mencionaba "DSN ya scaffold" pero no existe en código; pendiente desde 0)
+- [x] **Scroll-to-sub** desde BuscadorScreen — `CursoModuloScreen` consume `route.params.subId` con `measureLayout` + `scrollTo` (2026-05-21)
 - [ ] **Pre-tests E2E** con Maestro o Detox para flujos críticos (onboarding, navegación módulo, toggle tema, buscador)
 - [ ] **Auditoría de accesibilidad**: TalkBack labels, contraste WCAG AA en dark mode, escalado de fuente del sistema
-- [ ] **Highlight de matches en BuscadorScreen** — resaltar la query dentro del preview
-- [ ] **Tablet layout** básico (md breakpoint en `useResponsiveScale`)
+- [x] **Highlight de matches en BuscadorScreen** — componente `HighlightedText` accent-insensitive con mapeo posicional normalizado→original (2026-05-21)
+- [ ] **Tablet layout** básico (md breakpoint en `useResponsiveScale`) — primitiva `isTablet` ya existe, falta consumirla en screens
 - [ ] **Crash analytics local**: log de errores en archivo (offline) consultable desde Settings → Diagnóstico
 
 ### Nice-to-have
@@ -60,8 +60,9 @@ Lo que incluye:
 - [ ] Compartir subtema como texto/imagen
 
 ### Bugs conocidos a resolver
-- Onboarding storage key compartido con Patologías (`@patologias_theme`) — renombrar a `@manual_theme` y migrar
-- TS errors pre-existentes en `EmergencyBadge.tsx` y `colors.ts` (tipos legacy)
+- [x] Storage key compartido con Patologías (`@patologias_theme`) — migrado a `@manual_theme` con lectura legacy de respaldo (2026-05-21)
+- [x] TS errors pre-existentes en `EmergencyBadge.tsx` y `colors.ts` — resueltos eliminando dead code heredado de Patologías (`EmergencyBadge`, `BODY_SYSTEM_*`, `EMERGENCY_LEVEL_*`, `SCALE_*`, `LAB_*`, `PROTOCOL_*`) · 0 TS errors en tsc --noEmit (2026-05-21)
+- [ ] `react-native-encrypted-storage` no mockeado en `jest.setup.js` — `App.test.tsx` falla con `TurboModuleRegistry` error · pre-existente, no bloqueante para release
 
 **Criterio de release**: 0 crashes en Sentry durante 7 días con >50 instalaciones.
 

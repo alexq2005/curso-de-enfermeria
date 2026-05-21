@@ -4,6 +4,45 @@
 
 ---
 
+## 2026-05-21 — Sesion 8: v1.1 quick wins (cleanup + scroll-to-sub + highlight)
+
+### Resumen
+Tres items del milestone v1.1 cerrados en orden de ROI ascendente:
+
+1. **Limpieza de herencia de Patologías + fix 3 TS errors**: eliminado `src/components/EmergencyBadge.tsx` (sin consumidores) y 8 exports muertos en `src/utils/colors.ts` (`BODY_SYSTEM_*`, `EMERGENCY_LEVEL_*`, `SCALE_*`, `LAB_*`, `PROTOCOL_*`). El archivo pasa de 207 a 102 líneas. Migrado storage key `@patologias_theme` → `@manual_theme` con lectura legacy de respaldo para no romper usuarios existentes (mismo patrón que `activation.ts`). `npx tsc --noEmit` → 0 errores.
+
+2. **Scroll-to-sub en `CursoModuloScreen`**: el productor (`BuscadorScreen` + tipo en `RootStackParamList`) ya estaba listo desde v1.0. Implementado el consumidor con `findNodeHandle` + `measureLayout` + `scrollTo` enganchado al `onLayout` del sub target. `pendingSubIdRef` se vacía después del primer scroll para evitar re-scrolls al cambiar el estado leído/no-leído.
+
+3. **Highlight de matches en `BuscadorScreen`**: componente `HighlightedText` con mapeo posicional normalizado→original — resuelve el problema de que la búsqueda es accent-insensitive pero el texto a resaltar conserva diacríticos. Aplicado a sigla, definición (glosario), subTitle y preview (subtemas). Usa el token `colors.searchHighlight` que ya existía en `colors.ts`.
+
+### Archivos modificados
+
+| Archivo | Cambio |
+|---------|--------|
+| `src/components/EmergencyBadge.tsx` | **Eliminado** (dead code, sin consumidores) |
+| `src/utils/colors.ts` | Removidos 8 exports legacy (-105 líneas); ahora solo tokens de tema |
+| `src/context/ThemeContext.tsx` | Migración `@patologias_theme` → `@manual_theme` con `isValidMode` helper |
+| `src/screens/CursoModuloScreen.tsx` | Scroll-to-sub: ref a ScrollView, refs por sub, `measureLayout` en onLayout |
+| `src/screens/BuscadorScreen.tsx` | `findMatchRanges` + componente `HighlightedText` aplicado a 4 campos |
+| `ROADMAP.md` | Items v1.1 marcados como done + nota sobre Sentry inexistente |
+
+### Verificación
+
+- `npx tsc --noEmit` → **0 errores** (antes: 3)
+- `npx jest` → 1 failed (pre-existente: falta mock de `react-native-encrypted-storage` en `jest.setup.js`, confirmado corriendo en HEAD limpio)
+- Smoke test pendiente en device/emulador
+
+### Pendiente / próximos pasos v1.1
+
+- Mock de `react-native-encrypted-storage` en jest.setup.js (10 min)
+- Tablet layout consumiendo `isTablet` en hero/grids
+- Sentry instalación real (estaba en ROADMAP como "scaffolded" pero no había código)
+- Crash analytics local
+- Auditoría a11y (solo 9 `accessibilityLabel/Role` en 11 screens)
+- E2E con Maestro
+
+---
+
 ## 2026-05-06 — Sesion 7: Modo oscuro completo + rebrand a "Manual de Enfermería"
 
 ### Resumen
