@@ -3,9 +3,14 @@ import { useColorScheme } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LIGHT_COLORS, DARK_COLORS, type ThemeColors } from '../utils/colors';
 
-const STORAGE_KEY = '@patologias_theme';
+const STORAGE_KEY = '@manual_theme';
+// Legacy key inherited from Patologías app — migrate transparently on first boot.
+const LEGACY_STORAGE_KEY = '@patologias_theme';
 
 type ThemeMode = 'light' | 'dark' | 'system';
+
+const isValidMode = (v: string | null): v is ThemeMode =>
+  v === 'light' || v === 'dark' || v === 'system';
 
 interface ThemeContextType {
   colors: ThemeColors;
@@ -23,12 +28,23 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    AsyncStorage.getItem(STORAGE_KEY).then(saved => {
-      if (saved === 'light' || saved === 'dark' || saved === 'system') {
-        setThemeModeState(saved);
+    (async () => {
+      try {
+        const saved = await AsyncStorage.getItem(STORAGE_KEY);
+        if (isValidMode(saved)) {
+          setThemeModeState(saved);
+        } else {
+          const legacy = await AsyncStorage.getItem(LEGACY_STORAGE_KEY);
+          if (isValidMode(legacy)) {
+            setThemeModeState(legacy);
+            await AsyncStorage.setItem(STORAGE_KEY, legacy);
+          }
+          await AsyncStorage.removeItem(LEGACY_STORAGE_KEY).catch(() => {});
+        }
+      } finally {
+        setLoaded(true);
       }
-      setLoaded(true);
-    });
+    })();
   }, []);
 
   const setThemeMode = useCallback((mode: ThemeMode) => {
