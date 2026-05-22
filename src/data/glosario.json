@@ -213,7 +213,17 @@
     { "sigla": "Eupnea", "definicion": "Respiración normal: 12-20 rpm en adulto, rítmica, sin esfuerzo ni ruidos. Patrón de referencia para comparar." },
     { "sigla": "Fóvea", "definicion": "Depresión visible que persiste tras presionar con el pulgar la piel sobre un edema. También llamado signo de Godet. Se gradúa 1+ a 4+ según profundidad y duración." },
     { "sigla": "Frialdad distal", "definicion": "Disminución de la temperatura en manos y pies. Signo de mala perfusión periférica: shock, hipotermia, oclusión arterial." },
-    { "sigla": "Hematemesis", "definicion": "Vómito de sangre roja (sangrado activo del tracto digestivo superior) o en borra de café (sangre ya digerida por ácido gástrico)." },
+    { "sigla": "Hematemesis", "definicion": "Vómito de sangre proveniente del tracto digestivo superior. Caracterizar el aspecto orienta al tiempo de sangrado y origen.",
+      "tipos": [
+        "Roja brillante — sangrado activo en curso. Várices esofágicas rotas, desgarro de Mallory-Weiss, lesiones agudas.",
+        "En borra de café — sangre ya digerida por ácido gástrico. Sangrado más lento o detenido: úlcera péptica, gastritis erosiva."
+      ],
+      "ejemplos": [
+        "Hematemesis masiva roja en paciente cirrótico → várices esofágicas rotas (emergencia, alto riesgo de muerte).",
+        "Hematemesis en borra de café + epigastralgia + uso de AINEs → úlcera péptica sangrante.",
+        "Hematemesis + melena + TA 80/50 + FC 130 → hemorragia digestiva alta con shock hipovolémico."
+      ]
+    },
     { "sigla": "Hematoquecia", "definicion": "Emisión de sangre roja por el recto. Sugiere sangrado distal del tracto digestivo (colon, recto) o sangrado alto masivo." },
     { "sigla": "Hematuria", "definicion": "Presencia de sangre en la orina. Macroscópica (visible) o microscópica (solo en sedimento). Causas: ITU, litiasis, tumores, glomerulonefritis." },
     { "sigla": "Hemiparesia", "definicion": "Debilidad muscular en un hemicuerpo. Signo focal típico de ACV. Evaluar fuerza por escala 0-5." },
@@ -251,7 +261,18 @@
     { "sigla": "Ingurgitación yugular", "definicion": "Distensión visible de las venas yugulares con el paciente a 45°. Signo de aumento de presión venosa central: insuficiencia cardíaca derecha, taponamiento, sobrecarga de volumen." },
     { "sigla": "Lipotimia", "definicion": "Sensación de desmayo inminente sin pérdida completa de la conciencia. Diferenciar de síncope (sí hay pérdida)." },
     { "sigla": "Mareo", "definicion": "Sensación inespecífica de inestabilidad. Diferenciar de vértigo (sensación de movimiento) y lipotimia (sensación de desmayo)." },
-    { "sigla": "Melena", "definicion": "Deposición negra, pegajosa, fétida (alquitranada). Sugiere sangrado del tracto digestivo superior con sangre ya digerida." },
+    { "sigla": "Melena", "definicion": "Deposición negra, pegajosa, fétida (alquitranada). Sugiere sangrado del tracto digestivo superior con sangre ya digerida por el ácido gástrico y enzimas intestinales.",
+      "tipos": [
+        "Melena verdadera — por sangrado del tracto digestivo alto (esófago, estómago, duodeno).",
+        "Pseudomelena — deposición oscura no asociada a sangre. Causas: hierro oral, bismuto (subsalicilato), carbón activado, remolacha, espinaca, regaliz."
+      ],
+      "ejemplos": [
+        "Melena + hematemesis → hemorragia digestiva alta activa.",
+        "Melena aislada sin hematemesis → sangrado lento o detenido del tracto digestivo alto/duodenal.",
+        "Paciente toma hierro oral por anemia y consulta por 'deposiciones negras' → descartar pseudomelena por SOMF antes de alarmar.",
+        "Melena + úlcera péptica conocida + AINEs → reagudización ulcerosa con sangrado."
+      ]
+    },
     { "sigla": "Midriasis", "definicion": "Pupilas dilatadas (> 5 mm). Causas: simpaticomiméticos, cocaína, atropina, lesión del III par. Bilateral arreactiva = signo de gravedad." },
     { "sigla": "Miosis", "definicion": "Pupilas contraídas (< 2 mm). Típica de intoxicación por opioides u organofosforados, lesión protuberancial." },
     { "sigla": "Murmullo vesicular", "definicion": "Ruido respiratorio normal a la auscultación pulmonar, suave, predominio inspiratorio. Disminuido o ausente en derrame, neumotórax, consolidación." },
@@ -259,7 +280,20 @@
     { "sigla": "Obnubilación", "definicion": "Disminución leve del nivel de conciencia: respuesta lenta, somnolencia que cede con estímulos verbales. Glasgow 13-14." },
     { "sigla": "Oliguria", "definicion": "Diuresis menor a 0,5 mL/kg/h (~400 mL/día en adulto). Signo precoz de insuficiencia renal aguda o hipovolemia." },
     { "sigla": "Ortopnea", "definicion": "Disnea que aparece en decúbito y mejora al incorporarse. Típica de insuficiencia cardíaca izquierda. Cuantificar por número de almohadas que el paciente necesita para dormir." },
-    { "sigla": "Palidez", "definicion": "Disminución del color rosado normal de piel y mucosas. Generalizada en anemia, shock; localizada en oclusión arterial." },
+    { "sigla": "Palidez", "definicion": "Disminución del color rosado normal de piel y mucosas. Evaluar en conjuntivas, lecho ungueal y mucosa oral (más fiable que la piel, sobre todo en pieles oscuras).",
+      "tipos": [
+        "Generalizada — todo el cuerpo. Anemia, shock, hipotiroidismo, vasoconstricción intensa.",
+        "Localizada — limitada a un sector. Oclusión arterial periférica, fenómeno de Raynaud, compresión vascular.",
+        "Súbita — instalación en minutos. Shock hipovolémico, síncope vasovagal, dolor agudo intenso, hipoglucemia.",
+        "Crónica — semanas o meses. Anemia ferropénica, insuficiencia renal crónica, neoplasias hematológicas."
+      ],
+      "ejemplos": [
+        "Palidez generalizada súbita + sudoración + taquicardia + hipotensión → shock (hipovolémico o cardiogénico).",
+        "Palidez en un miembro inferior + frialdad + sin pulsos → oclusión arterial aguda (emergencia vascular, 'las 6 P': pain, pallor, pulselessness, paralysis, paresthesia, poikilothermia).",
+        "Palidez crónica + fatiga + uñas frágiles + caída de cabello → anemia ferropénica.",
+        "Palidez + ictericia leve + esplenomegalia → anemia hemolítica."
+      ]
+    },
     { "sigla": "Palpitaciones", "definicion": "Percepción consciente del latido cardíaco. Puede ser fisiológica (ejercicio, ansiedad) o patológica (arritmias)." },
     { "sigla": "Parestesia", "definicion": "Sensación anormal espontánea: hormigueo, adormecimiento, pinchazos. Sugiere compromiso de nervio periférico o vía sensitiva." },
     { "sigla": "Petequias", "definicion": "Manchas puntiformes rojo-violáceas (< 3 mm) por extravasación sanguínea capilar. No desaparecen a la vitropresión. Sospechar trombocitopenia o vasculitis." },
@@ -377,6 +411,23 @@
     { "sigla": "Tenesmo", "definicion": "Sensación dolorosa y persistente de necesidad de defecar (rectal) u orinar (vesical), aun con el órgano vacío." },
     { "sigla": "Tiraje", "definicion": "Retracción visible de partes blandas del tórax durante la inspiración (intercostal, subcostal, supraesternal). Indica dificultad respiratoria importante." },
     { "sigla": "Vértigo", "definicion": "Sensación ilusoria de movimiento (del paciente o del entorno). Diferenciar de mareo. Causas: periférico (laberinto) o central (cerebelo, tronco)." },
+    { "sigla": "Vómito", "definicion": "Expulsión forzada del contenido gástrico por la boca, usualmente precedida por náuseas. Caracterizar contenido, frecuencia, momento y desencadenantes.",
+      "tipos": [
+        "Alimentario — contenido reciente sin digerir o parcialmente digerido. Gastritis, intoxicación alimentaria, obstrucción alta.",
+        "Bilioso — verde-amarillento. Indica obstrucción intestinal distal al ámpula de Vater.",
+        "Hematemesis — con sangre roja o en borra de café. Sangrado del tracto digestivo alto.",
+        "Fecaloide — material con aspecto y olor fecal. Obstrucción intestinal baja avanzada o fístula colónica.",
+        "En proyectil — brusco, sin náuseas previas y con gran fuerza. Hipertensión endocraneana, estenosis pilórica en lactantes.",
+        "Posprandial inmediato — al poco tiempo de comer. Estenosis pilórica, gastroparesia.",
+        "Matutino en ayunas — característico del embarazo y de la hipertensión endocraneana."
+      ],
+      "ejemplos": [
+        "Vómito bilioso + dolor cólico abdominal + distensión → sospechar obstrucción intestinal.",
+        "Vómito hematemesis + melena → hemorragia digestiva alta activa.",
+        "Vómito en proyectil + cefalea matutina + bradicardia → tríada de hipertensión endocraneana.",
+        "Vómito en proyectil en lactante varón 3-6 semanas + 'oliva pilórica' palpable → estenosis hipertrófica del píloro."
+      ]
+    },
     { "sigla": "Vómito en proyectil", "definicion": "Expulsión brusca del contenido gástrico, sin náuseas previas y con gran fuerza. Sospechar hipertensión endocraneana en niños y adultos." }
   ]
 }
