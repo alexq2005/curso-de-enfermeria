@@ -13,7 +13,6 @@ import {
   TouchableOpacity,
   Linking,
   Alert,
-  findNodeHandle,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -51,28 +50,25 @@ export function CursoModuloScreen({ route, navigation }: Props) {
   const progress = getModuloProgress(moduloId);
 
   // ── Scroll-to-sub (deep link desde BuscadorScreen) ─────────────
+  // Trackeamos posiciones via onLayout puro en JS (más confiable que
+  // measureLayout durante el primer layout pass, que puede devolver
+  // coordenadas relativas a un sistema de referencia aún no settled).
   const scrollRef = useRef<ScrollView | null>(null);
-  const subRefs = useRef<Record<string, View | null>>({});
-  // Pending target; cleared after the first successful scroll so re-layouts
-  // (e.g. marking a sub as read) don't yank the viewport again.
+  const subOffsetsRef = useRef<Record<string, number>>({}); // y relativa al subs container
+  const subsContainerYRef = useRef<number | null>(null); // y del subs container dentro del scroll content
+  // Pending target; se vacía tras el primer scroll para que un re-layout
+  // posterior (ej. marcar como leído) no vuelva a yankear la viewport.
   const pendingSubIdRef = useRef<string | null>(subId ?? null);
 
-  const scrollToPendingSub = useCallback(() => {
+  const tryScrollToPending = useCallback(() => {
     const target = pendingSubIdRef.current;
     if (!target) return;
-    const subView = subRefs.current[target];
+    const subY = subOffsetsRef.current[target];
+    const containerY = subsContainerYRef.current;
     const scroll = scrollRef.current;
-    if (!subView || !scroll) return;
-    const scrollNode = findNodeHandle(scroll);
-    if (scrollNode == null) return;
-    subView.measureLayout(
-      scrollNode,
-      (_x, y) => {
-        scroll.scrollTo({ y: Math.max(0, y - 12), animated: false });
-        pendingSubIdRef.current = null;
-      },
-      () => {},
-    );
+    if (subY == null || containerY == null || !scroll) return;
+    scroll.scrollTo({ y: Math.max(0, containerY + subY - 12), animated: false });
+    pendingSubIdRef.current = null;
   }, []);
 
   useEffect(() => {
@@ -159,14 +155,22 @@ export function CursoModuloScreen({ route, navigation }: Props) {
         </ImageBackground>
 
         {/* Subtemas */}
-        <View style={{ paddingHorizontal: rs.space(18), paddingTop: rs.space(20) }}>
+        <View
+          onLayout={(e) => {
+            subsContainerYRef.current = e.nativeEvent.layout.y;
+            tryScrollToPending();
+          }}
+          style={{ paddingHorizontal: rs.space(18), paddingTop: rs.space(20) }}
+        >
           {modulo.subs.map((sub) => {
             const read = isRead(sub.id);
             return (
               <View
                 key={sub.id}
-                ref={(r) => { subRefs.current[sub.id] = r; }}
-                onLayout={scrollToPendingSub}
+                onLayout={(e) => {
+                  subOffsetsRef.current[sub.id] = e.nativeEvent.layout.y;
+                  if (pendingSubIdRef.current === sub.id) tryScrollToPending();
+                }}
                 style={{ marginBottom: rs.space(28) }}
               >
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(12), gap: rs.space(10) }}>
