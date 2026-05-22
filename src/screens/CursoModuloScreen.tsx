@@ -9,7 +9,6 @@ import {
   ScrollView,
   StatusBar,
   ImageBackground,
-  StyleSheet,
   TouchableOpacity,
   Linking,
   Alert,
@@ -40,7 +39,7 @@ const CARD_STYLES: Record<CursoCardVariant, { bg: string; border: string; bgDark
 };
 
 export function CursoModuloScreen({ route, navigation }: Props) {
-  const { colors, isDark } = useTheme();
+  const { colors } = useTheme();
   const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
   const { moduloId, subId } = route.params;

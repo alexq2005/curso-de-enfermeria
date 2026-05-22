@@ -282,7 +282,7 @@ export function CursoScreen() {
           )}
 
           {/* Lista de módulos */}
-          {data.modulos.map((m, idx) => {
+          {data.modulos.map((m) => {
             const locked = m.isPremium && !isPremium;
             const prog = getModuloProgress(m.id);
             return (
