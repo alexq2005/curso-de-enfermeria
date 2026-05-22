@@ -1,7 +1,7 @@
 # Roadmap — Manual de Enfermería
 
-> **Última actualización**: 2026-05-21
-> **Versión actual**: v1.0.0 (versionCode 1)
+> **Última actualización**: 2026-05-22
+> **Versión actual**: v1.0.0 (versionCode 1) · main con 21 commits en preparación de v1.1.0
 > **Política**: este documento se actualiza al cerrar cada release y al iniciar cada milestone. Mover items de "planeado" a "en progreso" → "completado" según avanza el trabajo.
 
 ---
@@ -46,12 +46,18 @@ Lo que incluye:
 
 ### Must-have
 - [ ] **Telemetría opcional** (Sentry no instalado aún — el README mencionaba "DSN ya scaffold" pero no existe en código; pendiente desde 0)
-- [x] **Scroll-to-sub** desde BuscadorScreen — `CursoModuloScreen` consume `route.params.subId` con `measureLayout` + `scrollTo` (2026-05-21)
+- [x] **Scroll-to-sub** desde BuscadorScreen — `CursoModuloScreen` consume `route.params.subId` con `onLayout`-based tracking (2026-05-21, fix de measureLayout a JS-based en mismo día)
 - [ ] **Pre-tests E2E** con Maestro o Detox para flujos críticos (onboarding, navegación módulo, toggle tema, buscador)
 - [ ] **Auditoría de accesibilidad**: TalkBack labels, contraste WCAG AA en dark mode, escalado de fuente del sistema
 - [x] **Highlight de matches en BuscadorScreen** — componente `HighlightedText` accent-insensitive con mapeo posicional normalizado→original (2026-05-21)
+- [x] **Buscador inteligente (tokenize + ranking + plural-strip)** — algoritmo de búsqueda multi-palabra con stopwords ES, scoring por tokens, bonus por title/sigla match, sort por relevancia (2026-05-22)
 - [ ] **Tablet layout** básico (md breakpoint en `useResponsiveScale`) — primitiva `isTablet` ya existe, falta consumirla en screens
 - [ ] **Crash analytics local**: log de errores en archivo (offline) consultable desde Settings → Diagnóstico
+
+### Mejoras descubiertas en uso real (no estaban en plan original)
+- [x] **Botones Volver visibles** en BuscadorScreen y GlosarioScreen — bug pre-existente: ambas screens tenían `headerShown: false` sin back button propio (2026-05-22)
+- [x] **Glosario ampliado** de 94 a 178 entradas + schema extendido con `tipos?` y `ejemplos?` opcionales (2026-05-22)
+- [x] **27 términos clínicos enriquecidos** con tipos y ejemplos clínicos (ver "Tracker de glosario" abajo)
 
 ### Nice-to-have
 - [ ] Animación de transición entre módulos
@@ -61,10 +67,107 @@ Lo que incluye:
 
 ### Bugs conocidos a resolver
 - [x] Storage key compartido con Patologías (`@patologias_theme`) — migrado a `@manual_theme` con lectura legacy de respaldo (2026-05-21)
-- [x] TS errors pre-existentes en `EmergencyBadge.tsx` y `colors.ts` — resueltos eliminando dead code heredado de Patologías (`EmergencyBadge`, `BODY_SYSTEM_*`, `EMERGENCY_LEVEL_*`, `SCALE_*`, `LAB_*`, `PROTOCOL_*`) · 0 TS errors en tsc --noEmit (2026-05-21)
-- [ ] `react-native-encrypted-storage` no mockeado en `jest.setup.js` — `App.test.tsx` falla con `TurboModuleRegistry` error · pre-existente, no bloqueante para release
+- [x] TS errors pre-existentes en `EmergencyBadge.tsx` y `colors.ts` — resueltos eliminando dead code heredado de Patologías (2026-05-21)
+- [x] 8 ESLint errors pre-existentes (`no-unused-vars` en 5 screens) — limpiados (2026-05-22)
+- [x] `react-native-encrypted-storage` no mockeado en `jest.setup.js` — mock agregado, `App.test.tsx` pasa 1/1 (2026-05-21)
+- [ ] **Gradle bundle task no detecta cambios en `glosario.json`/`curso.json` como inputs** — descubierto 2026-05-22 al cambiar solo data sin tocar código. Workaround: `--rerun-tasks` en gradle + `--reset-cache` en RN bundle. Fix real: declarar JSON como input explícito del task `bundleReleaseJsAndAssets`.
 
 **Criterio de release**: 0 crashes en Sentry durante 7 días con >50 instalaciones.
+
+### 🟡 Puntos sin resolver de la sesión 2026-05-22
+El usuario reportó "veo la app incompleta" con 4 ejes (multi-select). Atendido el eje #1 (contenido magro) y #4 (glosario corto). Pendientes para próxima sesión con detalle específico del usuario:
+- [ ] **"Faltan secciones enteras en algún módulo"** — requiere identificar qué módulo se ve truncado. Pedir screenshot/nombre del módulo afectado.
+- [ ] **"Una pantalla se renderiza mal o parcial"** — requiere identificar la pantalla afectada. Sin reproducción específica.
+
+---
+
+## 📘 Tracker de glosario — Fase 2 y siguientes
+
+**Estado actual (2026-05-22)**: 178 entradas · 27 enriquecidas con `tipos` + `ejemplos`.
+
+**Schema extendido** (backward-compatible):
+```ts
+interface Entry {
+  sigla: string;       // término o sigla (mismo field name)
+  definicion: string;
+  tipos?: string[];    // clasificación de variantes (1 línea c/u)
+  ejemplos?: string[]; // escenarios clínicos típicos (1 línea c/u)
+}
+```
+
+**Criterio de inclusión**: signos, síntomas, terminología procedimental y anatomo-funcional. NO entidades clínicas completas (esas viven en app Patologías).
+
+### ✅ Enriquecidos (27)
+**Respiratorios**: Apnea, Disnea, Taquipnea, Cianosis, Hipoxia, Crepitantes, Sibilancias, Hemoptisis.
+**Cardiovasculares**: Bradicardia, Taquicardia, Síncope, Edema, Soplo cardíaco.
+**Neurológicos**: Cefalea, Convulsión.
+**Digestivos**: Vómito (umbrella), Hematemesis, Melena, Disfagia.
+**Urinarios**: Oliguria.
+**Dermatológicos / generales**: Palidez, Ictericia.
+**Procedimentales**: Sondaje, Catéter, Cánula, Drenaje, Decúbito.
+
+### 🔜 Candidatos prioritarios para Fase 2 (~30-40 términos)
+
+**Respiratorios**:
+- [ ] Bradipnea · Eupnea · Ortopnea · Hiperpnea
+- [ ] Tiraje · Estridor · Roncus
+- [ ] Hipoxemia (vs Hipoxia — distinción crítica) · Hipercapnia
+- [ ] Esputo (caracterizar tipos)
+
+**Cardiovasculares**:
+- [ ] Hipotensión (ortostática, distributiva, hipovolémica)
+- [ ] Palpitaciones · Lipotimia
+- [ ] Edema (ya enriquecido pero con más profundidad: anasarca vs localizado)
+- [ ] Ingurgitación yugular · Frialdad distal · Relleno capilar
+
+**Neurológicos**:
+- [ ] Disartria · Afasia (motora/sensitiva/mixta)
+- [ ] Hemiparesia · Hemiplejía
+- [ ] Anisocoria · Midriasis · Miosis
+- [ ] Niveles de conciencia: Somnolencia, Obnubilación, Estupor, Coma
+- [ ] Parestesia · Vértigo (periférico vs central)
+
+**Digestivos**:
+- [ ] Hematoquecia · Pirosis
+- [ ] Náuseas · Borborigmos · Distensión abdominal
+
+**Urinarios**:
+- [ ] Anuria (vs Oliguria) · Poliuria · Polaquiuria · Disuria · Hematuria · Tenesmo
+
+**Dermatológicos / generales**:
+- [ ] Equimosis · Petequias · Eritema
+- [ ] Diaforesis · Astenia · Adinamia
+
+**Procedimentales**:
+- [ ] Aspiración de secreciones · Permeable · Extravasación · Flebitis
+- [ ] Sonda nasogástrica (SNG) · Sonda vesical (Foley) — actualmente solo definición
+
+### 📋 Política de enriquecimiento
+
+Al elegir candidatos:
+1. **Frecuencia clínica** en el contenido del Manual (rastrear menciones en `curso.json`).
+2. **Existencia de tipos naturales** — si el término no se sub-clasifica de forma útil, omitir `tipos` y dejar solo `ejemplos`.
+3. **Diferenciación útil** — terminos que se confunden frecuentemente (hipoxia vs hipoxemia, melena vs pseudomelena, mareo vs vértigo) son alta prioridad.
+4. **Tamaño**: 2-7 tipos, 3-4 ejemplos. Más de eso = mover a un subtema de un módulo, no a glosario.
+5. **No solape con Patologías**: si entidad clínica completa con etiología/cuidados → app Patologías.
+
+### 🛠️ Workflow para futuras sesiones de enriquecimiento
+
+```bash
+# 1. Editar src/data/glosario.json (agregar tipos/ejemplos a una entrada existente)
+# 2. Validar JSON + contar entradas enriquecidas:
+PYTHONIOENCODING=utf-8 python -c "import json; g=json.load(open('src/data/glosario.json',encoding='utf-8')); print(sum(1 for e in g['entries'] if 'tipos' in e or 'ejemplos' in e), '/', len(g['entries']))"
+
+# 3. Pre-bundle con --reset-cache (importante por bug del task input):
+npx react-native bundle --platform android --dev false --reset-cache --entry-file index.js \
+  --bundle-output android/app/src/main/assets/index.android.bundle \
+  --assets-dest android/app/src/main/res/
+
+# 4. Gradle con --rerun-tasks (idem):
+cd android && ./gradlew app:assembleFreeRelease --rerun-tasks
+
+# 5. Reinstalar y smoke test visual en emulador
+```
 
 ---
 
@@ -171,14 +274,17 @@ Lo que incluye:
 
 ## ⚙️ Deuda técnica permanente (siempre activa)
 
-- [ ] Subir cobertura de tests (actual: snapshots + util tests · target: 60% líneas en hooks/utils)
+- [ ] Subir cobertura de tests (actual: smoke App.test.tsx · target: 60% líneas en hooks/utils)
 - [ ] Migrar Class components remanentes a functional + hooks (actual: solo ErrorBoundary, OK)
 - [ ] Reducir tamaño de APK (actualmente ~70 MB free release · target: <50 MB)
   - Imágenes WebP en vez de JPG
   - Tree-shaking de iconos MaterialCommunity (1MB+ del set completo)
   - Hermes optimizations
 - [ ] Refactor periódico de `curso.json` por módulo si supera 200 KB por archivo
-- [ ] Limpieza de TS errors pre-existentes (3 actuales en EmergencyBadge/colors)
+- [x] ~~Limpieza de TS errors pre-existentes (3 en EmergencyBadge/colors)~~ → resuelto 2026-05-21
+- [x] ~~8 ESLint errors `no-unused-vars` pre-existentes~~ → resuelto 2026-05-22
+- [ ] **Declarar `src/data/*.json` como input del gradle bundle task** — actualmente cambios solo en data no disparan re-bundle. Workaround usar `--rerun-tasks`.
+- [ ] **Inline-style warnings ESLint (~270)** — convención del proyecto: estilos paramétricos con `rs.font/rs.space` no migrables a StyleSheet.create. Considerar `eslintrc` config para silenciar la regla en archivos con `useResponsiveScale`.
 
 ---
 

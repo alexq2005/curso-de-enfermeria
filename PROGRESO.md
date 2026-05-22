@@ -4,6 +4,60 @@
 
 ---
 
+## 2026-05-22 — Sesión 9: Buscador inteligente + glosario expandido + back buttons
+
+### Resumen
+Tres líneas de trabajo en una sesión:
+
+1. **Bugs descubiertos en validación visual**:
+   - Scroll-to-sub no funcionaba (measureLayout daba y=0 durante primer layout pass) → fix con `onLayout`-based tracking en JS.
+   - Buscador y Glosario sin botón Volver visible (bug pre-existente desde v1.0, headerShown:false sin back affordance propio) → agregado ← junto al badge identitario en ambos heros.
+
+2. **Buscador inteligente**: el algoritmo original era substring exacto, fallaba con queries multi-palabra. Rediseño con tokenize + stopwords ES + plural-stripping + scoring por tokens hallados + bonus por title/sigla match. Resultados:
+   - "ta" → TA glosario al top (score 22).
+   - "presion arterial" → NIBP, TA, TAS + M03 Tensión arterial (era 0 sub matches antes).
+   - "tecnicas de medicion" → HD + M01/M03/M04/M05/M07 (era 0 resultados antes).
+
+3. **Glosario expandido + schema enriquecido**: pasó de 94 a 178 entradas. Schema extendido con `tipos?` y `ejemplos?` opcionales (backward-compatible). 27 términos de alto valor enriquecidos con tipos + ejemplos clínicos en grupos: respiratorios (8), cardiovasculares (5), neurológicos (2), digestivos (4), urinario (1), dermatológicos/generales (2), procedimentales (5).
+
+4. **Cleanup técnico**: 0 ESLint errors (eran 8 pre-existentes), 0 TS errors, jest 1/1 passed, app smoke OK.
+
+### Archivos modificados (sesión completa)
+
+| Archivo | Cambio |
+|---------|--------|
+| `src/screens/CursoModuloScreen.tsx` | scroll-to-sub con onLayout tracking |
+| `src/screens/BuscadorScreen.tsx` | tokenize + ranking + back button + HighlightedText multi-token |
+| `src/screens/GlosarioScreen.tsx` | back button + render de tipos/ejemplos en cada entry |
+| `src/data/glosario.json` | 94 → 178 entradas; 27 enriquecidas con tipos/ejemplos |
+| `src/components/CollapsibleSection.tsx` | lint cleanup (useEffect unused) |
+| `src/screens/CursoScreen.tsx` | lint cleanup (idx unused) |
+| `src/screens/PremiumScreen.tsx` | lint cleanup (isDark, isPremium, restoring) |
+| `src/screens/TermsScreen.tsx` | lint cleanup (neuCard import) |
+| `ROADMAP.md` | tracker de glosario + items completados de v1.1 + bug del gradle task |
+| `PROGRESO.md` | esta entrada |
+| `android/app/src/main/assets/index.android.bundle` | regenerado 4 veces |
+
+### Commits creados (10+ en sesión total)
+Ver `git log eabd4da..HEAD` para detalle. Highlights:
+- `feat(buscador): tokenize + ranking + plural-stripping`
+- `feat(glosario): expand to 177 entries + structured tipos/ejemplos`
+- `feat(glosario): enrich vómito, hematemesis, melena, palidez`
+- `feat(glosario): enrich 7 cardio-respiratorios + urinario + digestivo`
+- `fix(nav): add back button to BuscadorScreen and GlosarioScreen`
+- `fix(buscador): replace measureLayout with onLayout-based scroll tracking`
+- `chore(lint): clear 8 pre-existing no-unused-vars errors`
+
+### Bug del build descubierto
+Gradle bundle task no detecta `glosario.json`/`curso.json` como inputs → en cambios solo-data, salta el bundling con cache stale. Workaround: `--rerun-tasks` + `--reset-cache`. Anotado en ROADMAP como deuda técnica con fix propuesto (declarar JSON como input explícito del task).
+
+### Pendientes para próxima sesión
+- Identificar qué módulo se ve "incompleto" / qué pantalla "renderiza mal" (feedback abierto del usuario).
+- Continuar enriquecimiento de glosario por sistemas (lista priorizada en ROADMAP → "Tracker de glosario · Fase 2").
+- Considerar agregar crosslinks desde subtemas de M03 (Signos vitales) hacia patologías relacionadas en app Patologías.
+
+---
+
 ## 2026-05-21 — Sesion 8: v1.1 quick wins (cleanup + scroll-to-sub + highlight)
 
 ### Resumen
