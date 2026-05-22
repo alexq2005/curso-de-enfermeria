@@ -4,10 +4,11 @@
 // ============================================================
 
 import React, { useMemo, useState } from 'react';
-import { View, Text, TextInput, FlatList, StatusBar } from 'react-native';
+import { View, Text, TextInput, FlatList, StatusBar, TouchableOpacity } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 
 import { useTheme } from '../context/ThemeContext';
 import { useResponsiveScale } from '../utils/responsive';
@@ -30,6 +31,7 @@ export function GlosarioScreen() {
   const { colors, isDark } = useTheme();
   const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation();
   const [query, setQuery] = useState('');
 
   const filtered = useMemo(() => {
@@ -55,6 +57,23 @@ export function GlosarioScreen() {
         }}
       >
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(10), marginBottom: rs.space(8) }}>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel="Volver"
+            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            style={{
+              width: rs.space(36),
+              height: rs.space(36),
+              borderRadius: 10,
+              backgroundColor: 'rgba(255,255,255,0.18)',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <MaterialCommunityIcons name="arrow-left" size={rs.font(20)} color="#fff" />
+          </TouchableOpacity>
           <View
             style={{
               width: rs.space(40),

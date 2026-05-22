@@ -198,6 +198,23 @@ export function BuscadorScreen() {
         }}
       >
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(10), marginBottom: rs.space(8) }}>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel="Volver"
+            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            style={{
+              width: rs.space(36),
+              height: rs.space(36),
+              borderRadius: 10,
+              backgroundColor: 'rgba(255,255,255,0.18)',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <MaterialCommunityIcons name="arrow-left" size={rs.font(20)} color="#fff" />
+          </TouchableOpacity>
           <View
             style={{
               width: rs.space(40),
