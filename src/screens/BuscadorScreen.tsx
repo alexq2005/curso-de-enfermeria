@@ -310,7 +310,7 @@ export function BuscadorScreen() {
           <View style={{ flex: 1 }}>
             <Text style={{ fontSize: rs.font(22), fontWeight: '800', color: '#fff' }}>Buscar</Text>
             <Text style={{ fontSize: rs.font(11), color: 'rgba(255,255,255,0.85)' }}>
-              {SUB_INDEX.length} subtemas + {GLOSARIO_INDEX.length} siglas
+              {SUB_INDEX.length} subtemas + {GLOSARIO_INDEX.length} términos
             </Text>
           </View>
         </View>
@@ -367,7 +367,7 @@ export function BuscadorScreen() {
             <View style={{ alignItems: 'center', marginTop: rs.space(60) }}>
               <MaterialCommunityIcons name="text-search-variant" size={rs.font(46)} color={colors.textLight} />
               <Text style={{ fontSize: rs.font(13), color: colors.textLight, marginTop: 12, textAlign: 'center', paddingHorizontal: rs.space(20), lineHeight: rs.font(20) }}>
-                Escribí al menos 2 caracteres para buscar.{'\n'}Probá: "sondaje", "RCP", "EPP", "dosis", "úlcera", "FAV"...
+                Escribí al menos 2 caracteres para buscar.{'\n'}Probá: "disnea", "RCP", "EPP", "úlcera", "taquipnea", "TA"...
               </Text>
             </View>
           ) : (

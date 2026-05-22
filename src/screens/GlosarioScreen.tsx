@@ -17,6 +17,8 @@ import glosarioData from '../data/glosario.json';
 interface Entry {
   sigla: string;
   definicion: string;
+  tipos?: string[];
+  ejemplos?: string[];
 }
 
 const ALL_ENTRIES: Entry[] = (glosarioData.entries as Entry[])
@@ -89,7 +91,7 @@ export function GlosarioScreen() {
           <View style={{ flex: 1 }}>
             <Text style={{ fontSize: rs.font(22), fontWeight: '800', color: '#fff' }}>Glosario</Text>
             <Text style={{ fontSize: rs.font(11), color: 'rgba(255,255,255,0.85)' }}>
-              {ALL_ENTRIES.length} siglas y abreviaturas
+              {ALL_ENTRIES.length} términos y siglas clínicas
             </Text>
           </View>
         </View>
@@ -176,6 +178,32 @@ export function GlosarioScreen() {
             <Text style={{ fontSize: rs.font(13), color: colors.textSecondary, lineHeight: rs.font(20) }}>
               {item.definicion}
             </Text>
+            {item.tipos && item.tipos.length > 0 && (
+              <View style={{ marginTop: rs.space(8) }}>
+                <Text style={{ fontSize: rs.font(11), fontWeight: '800', color: colors.primary, letterSpacing: 0.4, textTransform: 'uppercase', marginBottom: rs.space(3) }}>
+                  Tipos
+                </Text>
+                {item.tipos.map((t, i) => (
+                  <View key={i} style={{ flexDirection: 'row', marginBottom: rs.space(2) }}>
+                    <Text style={{ color: colors.primary, marginRight: rs.space(6), fontSize: rs.font(12), fontWeight: '700' }}>•</Text>
+                    <Text style={{ flex: 1, fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(18) }}>{t}</Text>
+                  </View>
+                ))}
+              </View>
+            )}
+            {item.ejemplos && item.ejemplos.length > 0 && (
+              <View style={{ marginTop: rs.space(8) }}>
+                <Text style={{ fontSize: rs.font(11), fontWeight: '800', color: colors.secondary, letterSpacing: 0.4, textTransform: 'uppercase', marginBottom: rs.space(3) }}>
+                  Ejemplos clínicos
+                </Text>
+                {item.ejemplos.map((e, i) => (
+                  <View key={i} style={{ flexDirection: 'row', marginBottom: rs.space(2) }}>
+                    <Text style={{ color: colors.secondary, marginRight: rs.space(6), fontSize: rs.font(12), fontWeight: '700' }}>•</Text>
+                    <Text style={{ flex: 1, fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(18) }}>{e}</Text>
+                  </View>
+                ))}
+              </View>
+            )}
           </View>
         )}
       />

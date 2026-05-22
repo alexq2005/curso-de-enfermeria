@@ -94,6 +94,289 @@
     { "sigla": "UPP", "definicion": "Úlcera por presión — lesión de piel y/o tejido subyacente por presión sostenida." },
     { "sigla": "UTI", "definicion": "Unidad de Terapia Intensiva — área hospitalaria de cuidados críticos." },
     { "sigla": "VNI", "definicion": "Ventilación no invasiva — ventilación mecánica con máscara (sin tubo endotraqueal): CPAP, BiPAP." },
-    { "sigla": "VO", "definicion": "Vía oral — administración por la boca." }
+    { "sigla": "VO", "definicion": "Vía oral — administración por la boca." },
+
+    { "sigla": "Adinamia", "definicion": "Pérdida de la iniciativa motora; debilidad extrema que dificulta el movimiento. Más profunda que la astenia." },
+    { "sigla": "Afasia", "definicion": "Pérdida de la capacidad de producir o comprender el lenguaje por lesión cerebral. Puede ser motora (Broca), sensitiva (Wernicke) o mixta." },
+    { "sigla": "Anisocoria", "definicion": "Pupilas de distinto tamaño. Signo de alarma neurológica — sugiere hipertensión endocraneana o lesión del III par." },
+    { "sigla": "Anuria", "definicion": "Diuresis menor a 100 mL en 24 h. Signo de insuficiencia renal aguda o obstrucción urinaria completa." },
+    { "sigla": "Apex cardíaco", "definicion": "Punto de máxima impulsión del corazón en la pared torácica — habitualmente 5° EIC línea medioclavicular izquierda." },
+    { "sigla": "Apnea", "definicion": "Ausencia de respiración por más de 10 segundos. Observar SatO₂, color, esfuerzo respiratorio y conciencia.",
+      "tipos": [
+        "Obstructiva — vía aérea bloqueada con esfuerzo respiratorio presente.",
+        "Central — fallo del centro respiratorio sin esfuerzo (ej. sobredosis de opioides).",
+        "Mixta — combinación de obstructiva + central."
+      ],
+      "ejemplos": [
+        "Apnea del sueño obstructiva en paciente obeso roncador.",
+        "Apnea por sobredosis de opioides (revertir con naloxona).",
+        "Apnea del prematuro por inmadurez del centro respiratorio."
+      ]
+    },
+    { "sigla": "Astenia", "definicion": "Sensación subjetiva de cansancio o falta de energía sin causa proporcional al esfuerzo realizado." },
+    { "sigla": "Borborigmos", "definicion": "Ruidos hidroaéreos intestinales audibles a distancia. Aumentados en diarrea u obstrucción inicial; ausentes en íleo paralítico." },
+    { "sigla": "Bradicardia", "definicion": "Frecuencia cardíaca menor a 60 lpm en adulto. Puede ser fisiológica (atletas) o patológica (BAV, hipotiroidismo, fármacos)." },
+    { "sigla": "Bradipnea", "definicion": "Frecuencia respiratoria menor a 12 rpm en adulto. Sospechar depresión del SNC, opioides, hipotermia o fatiga muscular respiratoria." },
+    { "sigla": "Cefalea", "definicion": "Dolor de cabeza. Evaluar inicio (súbito = alarma), localización, intensidad, síntomas asociados (fotofobia, vómitos, focalidad).",
+      "tipos": [
+        "Tensional — bilateral, opresiva ('como casco'), leve-moderada. La más frecuente.",
+        "Migrañosa — unilateral, pulsátil, intensa, con fotofobia/náuseas. Puede tener aura.",
+        "En racimos (cluster) — unilateral periorbitaria muy intensa, lagrimeo y rinorrea ipsilateral.",
+        "Súbita ('en estallido') — sospechar hemorragia subaracnoidea (HSA). Emergencia.",
+        "Secundaria a HTA — opresiva occipital con TA muy elevada."
+      ],
+      "ejemplos": [
+        "Cefalea súbita 'la peor de mi vida' → TAC urgente, sospechar HSA.",
+        "Cefalea matutina + vómitos + papiledema → hipertensión endocraneana.",
+        "Migraña con aura visual (escotomas) previa al dolor."
+      ]
+    },
+    { "sigla": "Cianosis", "definicion": "Coloración azulada de piel y mucosas por desaturación de hemoglobina. Central (labios, lengua) indica hipoxemia; periférica (uñas, lechos) indica baja perfusión.",
+      "tipos": [
+        "Central — en labios, lengua y mucosas. Indica hipoxemia (SatO₂ baja).",
+        "Periférica — en uñas, manos, pies. Indica vasoconstricción o baja perfusión local."
+      ],
+      "ejemplos": [
+        "Cianosis central en EPOC reagudizado con insuficiencia respiratoria.",
+        "Cianosis periférica en shock cardiogénico con extremidades frías.",
+        "Cianosis diferencial (solo en miembros inferiores) en cardiopatías congénitas."
+      ]
+    },
+    { "sigla": "Coma", "definicion": "Ausencia total de respuesta a estímulos verbales y dolorosos. Glasgow ≤ 8. Requiere protección de vía aérea." },
+    { "sigla": "Convulsión", "definicion": "Actividad eléctrica cerebral anormal con manifestaciones motoras, sensitivas o de conciencia. Proteger vía aérea, lateralizar, NO introducir objetos en la boca.",
+      "tipos": [
+        "Tónico-clónica generalizada — rigidez (tónica) seguida de sacudidas rítmicas (clónica). Pérdida de conciencia.",
+        "Ausencia — desconexión breve (5-30 s), más en niños. Mirada fija, parpadeo.",
+        "Parcial simple — afecta una zona corporal, sin pérdida de conciencia.",
+        "Parcial compleja — con alteración de conciencia, automatismos.",
+        "Estado epiléptico — convulsión >5 min o sin recuperación entre crisis. Emergencia."
+      ],
+      "ejemplos": [
+        "Convulsión tónico-clónica con relajación de esfínteres y mordedura de lengua.",
+        "Estado epiléptico: iniciar diazepam EV o midazolam IM.",
+        "Convulsión febril en niño < 5 años: descartar infección del SNC."
+      ]
+    },
+    { "sigla": "Crepitantes", "definicion": "Ruidos respiratorios discontinuos, finos o gruesos, en inspiración. Sugieren ocupación alveolar (edema agudo de pulmón, neumonía)." },
+    { "sigla": "Decúbito", "definicion": "Posición del paciente acostado: supino (boca arriba), prono (boca abajo), lateral (de costado), Fowler (semisentado 30-45°), Trendelenburg (cabeza más baja que pies).",
+      "tipos": [
+        "Supino — boca arriba. Default para exámenes y muchos procedimientos.",
+        "Prono — boca abajo. Mejora oxigenación en SDRA grave.",
+        "Lateral (izquierdo/derecho) — para drenaje postural, embarazo (lateral izquierdo).",
+        "Fowler — semisentado 30-45°. Mejora ventilación; default en disneicos.",
+        "Semi-Fowler — 15-30°. Profilaxis de aspiración en alimentación enteral.",
+        "Trendelenburg — cabeza más baja que pies. Antiguamente usado en shock (hoy controvertido)."
+      ],
+      "ejemplos": [
+        "Decúbito Fowler 45° para administrar O₂ por máscara en EPOC reagudizado.",
+        "Decúbito prono en paciente con SDRA por COVID-19.",
+        "Semi-Fowler 30° permanente en paciente con SNG y nutrición enteral."
+      ]
+    },
+    { "sigla": "Diaforesis", "definicion": "Sudoración profusa, fría y pegajosa. Signo de activación simpática: shock, hipoglucemia, IAM, dolor severo." },
+    { "sigla": "Disartria", "definicion": "Dificultad para articular palabras por compromiso motor (no del lenguaje). El paciente sabe qué decir pero no puede pronunciarlo correctamente." },
+    { "sigla": "Disfagia", "definicion": "Dificultad para deglutir. Puede ser orofaríngea (atragantamiento, aspiración) o esofágica (sensación de stop retroesternal). Riesgo de neumonía aspirativa." },
+    { "sigla": "Disnea", "definicion": "Sensación subjetiva de falta de aire. Objetivable por uso de músculos accesorios, taquipnea, tiraje y SatO₂ disminuida. Clasificar por escala NYHA o mMRC.",
+      "tipos": [
+        "De esfuerzo — aparece al realizar actividad física.",
+        "De reposo — presente sin actividad. Mayor gravedad.",
+        "Ortopnea — aparece al acostarse, mejora al incorporarse.",
+        "Paroxística nocturna — despierta al paciente con sensación de ahogo (típica de IC izquierda).",
+        "Súbita — instalación brusca: sospechar TEP, neumotórax, edema agudo de pulmón."
+      ],
+      "ejemplos": [
+        "Disnea CF II (NYHA): al subir escaleras o caminar rápido.",
+        "Disnea CF IV: en reposo, paciente no puede hablar oraciones completas.",
+        "Ortopnea: el paciente duerme con 3 almohadas (clave de IC)."
+      ]
+    },
+    { "sigla": "Distensión abdominal", "definicion": "Aumento del perímetro abdominal por gas, líquido (ascitis) o masa. Evaluar timpanismo vs matidez en percusión." },
+    { "sigla": "Disuria", "definicion": "Dolor o ardor al orinar. Sugiere infección urinaria, litiasis o uretritis." },
+    { "sigla": "Edema", "definicion": "Acumulación de líquido en el intersticio. Generalizado (anasarca), localizado (extremidades, párpados). Con godet positivo si deja fóvea a la presión.",
+      "tipos": [
+        "Con fóvea (godet positivo) — deja depresión al presionar. Típico de IC, insuficiencia renal, hipoalbuminemia.",
+        "Sin fóvea — no deja huella. Típico de mixedema, linfedema.",
+        "Generalizado (anasarca) — edema masivo de todo el cuerpo.",
+        "Localizado — limitado a una zona (miembro, párpados, cara)."
+      ],
+      "ejemplos": [
+        "Edema bimaleolar con godet 2+ en IC derecha.",
+        "Edema palpebral matutino en síndrome nefrótico.",
+        "Linfedema unilateral post mastectomía con vaciamiento ganglionar."
+      ]
+    },
+    { "sigla": "Equimosis", "definicion": "Mancha violácea por extravasación sanguínea subcutánea, mayor a 1 cm. Evoluciona en colores (violeta → verde → amarillo) según degradación de la hemoglobina." },
+    { "sigla": "Eritema", "definicion": "Enrojecimiento de la piel que desaparece a la presión (vitropresión positiva). Diferencia de petequias y equimosis (que no desaparecen)." },
+    { "sigla": "Esputo", "definicion": "Material expulsado desde la vía aérea por la tos. Describir cantidad, color y consistencia: mucoso, mucopurulento, purulento, hemoptoico, herrumbroso." },
+    { "sigla": "Estridor", "definicion": "Ruido respiratorio agudo, predominantemente inspiratorio, audible sin estetoscopio. Indica obstrucción de vía aérea superior — emergencia." },
+    { "sigla": "Estupor", "definicion": "Nivel de conciencia con respuesta solo a estímulos dolorosos vigorosos. Más profundo que la obnubilación, menos que el coma." },
+    { "sigla": "Eupnea", "definicion": "Respiración normal: 12-20 rpm en adulto, rítmica, sin esfuerzo ni ruidos. Patrón de referencia para comparar." },
+    { "sigla": "Fóvea", "definicion": "Depresión visible que persiste tras presionar con el pulgar la piel sobre un edema. También llamado signo de Godet. Se gradúa 1+ a 4+ según profundidad y duración." },
+    { "sigla": "Frialdad distal", "definicion": "Disminución de la temperatura en manos y pies. Signo de mala perfusión periférica: shock, hipotermia, oclusión arterial." },
+    { "sigla": "Hematemesis", "definicion": "Vómito de sangre roja (sangrado activo del tracto digestivo superior) o en borra de café (sangre ya digerida por ácido gástrico)." },
+    { "sigla": "Hematoquecia", "definicion": "Emisión de sangre roja por el recto. Sugiere sangrado distal del tracto digestivo (colon, recto) o sangrado alto masivo." },
+    { "sigla": "Hematuria", "definicion": "Presencia de sangre en la orina. Macroscópica (visible) o microscópica (solo en sedimento). Causas: ITU, litiasis, tumores, glomerulonefritis." },
+    { "sigla": "Hemiparesia", "definicion": "Debilidad muscular en un hemicuerpo. Signo focal típico de ACV. Evaluar fuerza por escala 0-5." },
+    { "sigla": "Hemiplejía", "definicion": "Parálisis completa de un hemicuerpo. Pérdida total de la motricidad voluntaria de un lado." },
+    { "sigla": "Hemoptisis", "definicion": "Expectoración de sangre desde la vía aérea inferior. Cuantificar: leve (< 30 mL/día), moderada, masiva (> 600 mL/24 h — emergencia)." },
+    { "sigla": "Hipercapnia", "definicion": "Aumento de la PaCO₂ por encima de 45 mmHg. Indica fallo ventilatorio. Manifestaciones: somnolencia, cefalea, asterixis." },
+    { "sigla": "Hiperpnea", "definicion": "Aumento de la profundidad de la respiración (volumen corriente), con o sin aumento de la frecuencia. Típica en acidosis metabólica (respiración de Kussmaul)." },
+    { "sigla": "Hipotensión", "definicion": "Tensión arterial sistólica < 90 mmHg o caída ≥ 40 mmHg sobre la basal. Sintomática si genera mareo, síncope o signos de hipoperfusión." },
+    { "sigla": "Hipoxemia", "definicion": "Disminución de la PaO₂ en sangre arterial (< 80 mmHg) o SatO₂ < 90 %. Se corrige con O₂ suplementario." },
+    { "sigla": "Hipoxia", "definicion": "Falta de oxígeno a nivel tisular. No es lo mismo que hipoxemia: puede haber hipoxia con PaO₂ normal.",
+      "tipos": [
+        "Hipoxémica — por PaO₂ baja en sangre arterial. La más común (EPOC, neumonía, TEP).",
+        "Anémica — por hemoglobina insuficiente para transportar O₂ (anemia severa, hemorragia).",
+        "Circulatoria (isquémica) — por baja perfusión tisular. Shock, IAM, ACV.",
+        "Histotóxica — el tejido no puede usar el O₂. Intoxicación por cianuro o CO."
+      ],
+      "ejemplos": [
+        "Hipoxia hipoxémica en EPOC reagudizado con SatO₂ 85%.",
+        "Hipoxia anémica en paciente con hemorragia digestiva masiva.",
+        "Hipoxia histotóxica en intoxicación por CO en incendio (HbCO elevada)."
+      ]
+    },
+    { "sigla": "Ictericia", "definicion": "Coloración amarilla de piel, mucosas y escleras por hiperbilirrubinemia (> 2-3 mg/dL). Primero visible en escleras.",
+      "tipos": [
+        "Prehepática (hemolítica) — por destrucción aumentada de glóbulos rojos. Predomina bilirrubina indirecta.",
+        "Hepática (hepatocelular) — por daño del hepatocito (hepatitis, cirrosis). Ambas bilirrubinas elevadas.",
+        "Post-hepática (obstructiva) — por bloqueo de vía biliar (cálculo, tumor). Predomina bilirrubina directa, coluria, acolia."
+      ],
+      "ejemplos": [
+        "Ictericia + coluria + acolia + prurito → pensar obstrucción de vía biliar.",
+        "Ictericia neonatal fisiológica de aparición entre 24-72 h de vida.",
+        "Ictericia + anemia + esplenomegalia → hemólisis."
+      ]
+    },
+    { "sigla": "Ingurgitación yugular", "definicion": "Distensión visible de las venas yugulares con el paciente a 45°. Signo de aumento de presión venosa central: insuficiencia cardíaca derecha, taponamiento, sobrecarga de volumen." },
+    { "sigla": "Lipotimia", "definicion": "Sensación de desmayo inminente sin pérdida completa de la conciencia. Diferenciar de síncope (sí hay pérdida)." },
+    { "sigla": "Mareo", "definicion": "Sensación inespecífica de inestabilidad. Diferenciar de vértigo (sensación de movimiento) y lipotimia (sensación de desmayo)." },
+    { "sigla": "Melena", "definicion": "Deposición negra, pegajosa, fétida (alquitranada). Sugiere sangrado del tracto digestivo superior con sangre ya digerida." },
+    { "sigla": "Midriasis", "definicion": "Pupilas dilatadas (> 5 mm). Causas: simpaticomiméticos, cocaína, atropina, lesión del III par. Bilateral arreactiva = signo de gravedad." },
+    { "sigla": "Miosis", "definicion": "Pupilas contraídas (< 2 mm). Típica de intoxicación por opioides u organofosforados, lesión protuberancial." },
+    { "sigla": "Murmullo vesicular", "definicion": "Ruido respiratorio normal a la auscultación pulmonar, suave, predominio inspiratorio. Disminuido o ausente en derrame, neumotórax, consolidación." },
+    { "sigla": "Náuseas", "definicion": "Sensación desagradable de necesidad inminente de vomitar, sin que necesariamente ocurra. Puede acompañar sialorrea, palidez y sudoración." },
+    { "sigla": "Obnubilación", "definicion": "Disminución leve del nivel de conciencia: respuesta lenta, somnolencia que cede con estímulos verbales. Glasgow 13-14." },
+    { "sigla": "Oliguria", "definicion": "Diuresis menor a 0,5 mL/kg/h (~400 mL/día en adulto). Signo precoz de insuficiencia renal aguda o hipovolemia." },
+    { "sigla": "Ortopnea", "definicion": "Disnea que aparece en decúbito y mejora al incorporarse. Típica de insuficiencia cardíaca izquierda. Cuantificar por número de almohadas que el paciente necesita para dormir." },
+    { "sigla": "Palidez", "definicion": "Disminución del color rosado normal de piel y mucosas. Generalizada en anemia, shock; localizada en oclusión arterial." },
+    { "sigla": "Palpitaciones", "definicion": "Percepción consciente del latido cardíaco. Puede ser fisiológica (ejercicio, ansiedad) o patológica (arritmias)." },
+    { "sigla": "Parestesia", "definicion": "Sensación anormal espontánea: hormigueo, adormecimiento, pinchazos. Sugiere compromiso de nervio periférico o vía sensitiva." },
+    { "sigla": "Petequias", "definicion": "Manchas puntiformes rojo-violáceas (< 3 mm) por extravasación sanguínea capilar. No desaparecen a la vitropresión. Sospechar trombocitopenia o vasculitis." },
+    { "sigla": "Pirosis", "definicion": "Sensación de ardor retroesternal ascendente. Síntoma cardinal de reflujo gastroesofágico." },
+    { "sigla": "Polaquiuria", "definicion": "Aumento de la frecuencia urinaria con volúmenes pequeños. Diferenciar de poliuria (volúmenes grandes). Sugiere irritación vesical (ITU, litiasis)." },
+    { "sigla": "Poliuria", "definicion": "Diuresis mayor a 3 L/día. Causas: diabetes mellitus descompensada, diabetes insípida, diuréticos, fase poliúrica de IRA." },
+    { "sigla": "Relleno capilar", "definicion": "Tiempo que tarda el lecho ungueal en recuperar su color tras presión. Normal < 2 segundos. Prolongado indica mala perfusión periférica." },
+    { "sigla": "Roncus", "definicion": "Ruidos respiratorios continuos, graves, audibles en inspiración y espiración. Indican secreciones en vía aérea media-grande. Mejoran con la tos." },
+    { "sigla": "Sibilancias", "definicion": "Ruidos respiratorios continuos, agudos, predominantemente espiratorios. Indican obstrucción de vía aérea inferior (asma, EPOC, bronquiolitis)." },
+    { "sigla": "Sondaje", "definicion": "Introducción de una sonda (tubo flexible) en una cavidad o conducto natural con fines diagnósticos, terapéuticos o de evacuación. Ver técnicas detalladas en M07.",
+      "tipos": [
+        "Vesical (uretral) — sonda Foley en vejiga. Diuresis, retención, cirugía.",
+        "Nasogástrica (SNG) — por fosa nasal hasta estómago. Descompresión, nutrición, lavado.",
+        "Nasoyeyunal — más allá del estómago. Pacientes con reflujo o aspiración.",
+        "Rectal — para administración de medicación, evacuación, enemas."
+      ],
+      "ejemplos": [
+        "Sondaje vesical en paciente postoperatorio con retención urinaria.",
+        "Sondaje nasogástrico para descompresión en obstrucción intestinal.",
+        "Sonda Foley con balón inflado con agua estéril (NO solución fisiológica)."
+      ]
+    },
+    { "sigla": "Sonda nasogástrica (SNG)", "definicion": "Tubo introducido por fosa nasal hasta el estómago. Indicaciones: descompresión, nutrición enteral, lavado, administración de fármacos." },
+    { "sigla": "Sonda vesical (Foley)", "definicion": "Tubo introducido por uretra hasta la vejiga con balón de fijación. Indicaciones: monitoreo de diuresis, retención urinaria, cirugía, pacientes críticos." },
+    { "sigla": "Aspiración de secreciones", "definicion": "Procedimiento de remoción de secreciones de la vía aérea mediante sonda y presión negativa. Indicado en pacientes con tos ineficaz o vía aérea artificial." },
+    { "sigla": "Catéter", "definicion": "Tubo de pequeño calibre que se introduce en un vaso, cavidad o conducto. Tipos según ubicación y propósito.",
+      "tipos": [
+        "Venoso periférico (CVP) — abocath en vena de mano/antebrazo. Calibres 14G-24G.",
+        "Venoso central (CVC) — en yugular, subclavia o femoral. Para drogas vasoactivas, nutrición parenteral, PVC.",
+        "Central de inserción periférica (PICC) — CVC insertado por vena periférica. Estancias largas.",
+        "Arterial — en radial o femoral. Monitoreo invasivo de TA y gasometrías frecuentes.",
+        "Tunelizado (Hickman, Permcath) — para hemodiálisis crónica o quimioterapia.",
+        "Implantable (port-a-cath) — bajo la piel. Quimioterapia ambulatoria."
+      ],
+      "ejemplos": [
+        "Abocath 18G en vena cefálica para hidratación de urgencia.",
+        "PICC en paciente con antibioterapia EV por 6 semanas.",
+        "Catéter arterial radial en paciente crítico con drogas vasoactivas."
+      ]
+    },
+    { "sigla": "Cánula", "definicion": "Tubo corto que se inserta en una cavidad natural para mantenerla permeable o administrar O₂.",
+      "tipos": [
+        "Nasal (bigotera) — O₂ a bajo flujo (1-6 L/min). FiO₂ 24-44%.",
+        "Orofaríngea (cánula de Mayo / Guedel) — mantiene la lengua fuera de la vía aérea en pacientes inconscientes sin reflejo nauseoso.",
+        "Nasofaríngea — pacientes inconscientes con reflejo nauseoso conservado.",
+        "Traqueostomía — tubo introducido por traqueostoma. Con/sin balón, fenestrada/no fenestrada.",
+        "Cánula de alto flujo — sistema con calentamiento y humidificación, hasta 60 L/min."
+      ],
+      "ejemplos": [
+        "Cánula nasal 3 L/min en paciente con SatO₂ 92% al aire ambiente.",
+        "Cánula de Mayo en paciente inconsciente para mantener vía aérea permeable.",
+        "Cánula de traqueostomía con balón en paciente con ARM prolongada."
+      ]
+    },
+    { "sigla": "Drenaje", "definicion": "Dispositivo que permite la salida de líquido o aire desde una cavidad. Cuantificar débito y aspecto en cada turno.",
+      "tipos": [
+        "Pleural (Bülau / tubo de tórax) — neumotórax, hemotórax, derrame. Sello de agua.",
+        "Penrose — tubo de látex blando, drenaje pasivo de pequeñas cavidades.",
+        "Jackson-Pratt — bulbo en acordeón, aspiración suave continua post-cirugía.",
+        "Hemovac — drenaje aspirativo de mayor capacidad.",
+        "Kehr — en T, en vía biliar tras cirugía hepatobiliar.",
+        "Ventricular externo — LCR en hipertensión endocraneana."
+      ],
+      "ejemplos": [
+        "Drenaje pleural Bülau con burbujeo intermitente (fuga aérea en neumotórax).",
+        "Jackson-Pratt post mastectomía: medir débito cada 8 h.",
+        "Drenaje Kehr post colecistectomía: lechada biliar 200-400 mL/día normal."
+      ]
+    },
+    { "sigla": "Permeable", "definicion": "Que permite el paso de fluido. Aplicado a vías venosas, sondas y catéteres: verificar permeabilidad antes y durante su uso." },
+    { "sigla": "Extravasación", "definicion": "Salida accidental de líquido o medicación al tejido perivascular durante una infusión EV. Riesgo aumentado con fármacos vesicantes (vasopresores, quimioterápicos)." },
+    { "sigla": "Flebitis", "definicion": "Inflamación de la pared venosa. Signos: dolor, eritema, calor, cordón palpable. Causa frecuente de retiro de vía periférica. Escala de Maddox grado 0-4." },
+    { "sigla": "Síncope", "definicion": "Pérdida brusca y transitoria de la conciencia con caída del tono postural, por hipoperfusión cerebral global. Recuperación espontánea.",
+      "tipos": [
+        "Vasovagal (neurocardiogénico) — el más frecuente. Estímulos: dolor, calor, estrés. Pródromos típicos.",
+        "Ortostático — al pararse. Por hipovolemia, fármacos antihipertensivos, neuropatía autonómica.",
+        "Cardiogénico — por arritmias o cardiopatía estructural. Alto riesgo de muerte súbita.",
+        "Situacional — por tos, micción, defecación, deglución."
+      ],
+      "ejemplos": [
+        "Síncope vasovagal en joven al ver sangre (pródromos: náuseas, palidez, sudor).",
+        "Síncope cardiogénico súbito sin pródromos: sospechar arritmia maligna.",
+        "Síncope ortostático en anciano hipertenso medicado con varios antihipertensivos."
+      ]
+    },
+    { "sigla": "Somnolencia", "definicion": "Tendencia al sueño con despertar fácil ante estímulos verbales. Primer escalón en el deterioro del nivel de conciencia." },
+    { "sigla": "Soplo cardíaco", "definicion": "Ruido cardíaco anormal por flujo turbulento. Caracterizar foco, momento (sistólico/diastólico), intensidad (escala 1-6) e irradiación.",
+      "tipos": [
+        "Sistólico de eyección — entre R1 y R2, foco aórtico/pulmonar. Estenosis aórtica/pulmonar.",
+        "Sistólico de regurgitación — pansistólico. Insuficiencia mitral/tricuspídea, CIV.",
+        "Diastólico — entre R2 y R1. Siempre patológico. Insuficiencia aórtica, estenosis mitral.",
+        "Continuo — sistólico y diastólico. Ductus arterioso persistente, fístula arteriovenosa.",
+        "Funcional (inocente) — sistólico suave, sin cardiopatía. Frecuente en niños y embarazadas."
+      ],
+      "ejemplos": [
+        "Soplo sistólico 3/6 en foco aórtico irradiado a cuello → estenosis aórtica.",
+        "Soplo pansistólico 2/6 en ápex irradiado a axila → insuficiencia mitral.",
+        "Soplo diastólico en decrescendo en foco aórtico → insuficiencia aórtica."
+      ]
+    },
+    { "sigla": "Taquicardia", "definicion": "Frecuencia cardíaca mayor a 100 lpm en adulto en reposo. Sinusal, supraventricular o ventricular. Buscar causa: dolor, fiebre, hipovolemia, hipoxia." },
+    { "sigla": "Taquipnea", "definicion": "Frecuencia respiratoria mayor a 20 rpm en adulto. Signo precoz de descompensación clínica — a veces previo a la caída de SatO₂.",
+      "tipos": [
+        "Compensadora — por acidosis metabólica (Kussmaul: profunda y rápida).",
+        "Por hipoxia — neumonía, EPOC, TEP, edema agudo de pulmón.",
+        "Por dolor o ansiedad — superficial, sin tiraje, mejora con calma del paciente.",
+        "Séptica — acompaña a otros signos del qSOFA (TA, conciencia)."
+      ],
+      "ejemplos": [
+        "FR 28 rpm + uso de músculos accesorios → trabajo respiratorio aumentado.",
+        "FR 32 rpm + glucemia 480 mg/dL → respiración de Kussmaul en cetoacidosis.",
+        "FR 24 rpm + TA 88/50 + alteración mental → qSOFA positivo, sospechar sepsis."
+      ]
+    },
+    { "sigla": "Tenesmo", "definicion": "Sensación dolorosa y persistente de necesidad de defecar (rectal) u orinar (vesical), aun con el órgano vacío." },
+    { "sigla": "Tiraje", "definicion": "Retracción visible de partes blandas del tórax durante la inspiración (intercostal, subcostal, supraesternal). Indica dificultad respiratoria importante." },
+    { "sigla": "Vértigo", "definicion": "Sensación ilusoria de movimiento (del paciente o del entorno). Diferenciar de mareo. Causas: periférico (laberinto) o central (cerebelo, tronco)." },
+    { "sigla": "Vómito en proyectil", "definicion": "Expulsión brusca del contenido gástrico, sin náuseas previas y con gran fuerza. Sospechar hipertensión endocraneana en niños y adultos." }
   ]
 }
