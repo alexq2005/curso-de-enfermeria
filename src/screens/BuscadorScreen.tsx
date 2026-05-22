@@ -26,6 +26,7 @@ interface IndexEntry {
   moduloTitle: string;
   subId: string;
   subTitle: string;
+  subTitleNorm: string;
   haystack: string;
   preview: string;
 }
@@ -33,6 +34,7 @@ interface IndexEntry {
 interface GlosarioEntry {
   kind: 'glosario';
   sigla: string;
+  siglaNorm: string;
   definicion: string;
   haystack: string;
 }
@@ -41,6 +43,35 @@ type IdxEntry = IndexEntry | GlosarioEntry;
 
 function normalize(text: string): string {
   return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+// \u2500\u2500 Tokenization + ranking \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+// Queries multi-palabra ("presion arterial", "tecnicas de medicion") fallaban
+// con un substring-exacto porque la data usa otras formas exactas ("Tensi\u00f3n
+// arterial", "T\u00e9cnica" sin "de medici\u00f3n"). Tokenizamos, descartamos stopwords
+// y rankeamos por n\u00famero de tokens hallados + bonus por title/sigla match.
+const SPANISH_STOPWORDS = new Set([
+  'de', 'la', 'el', 'los', 'las', 'y', 'o', 'u', 'en', 'a', 'un', 'una', 'unos', 'unas',
+  'con', 'por', 'para', 'del', 'al', 'es', 'son', 'que', 'se', 'su', 'lo',
+]);
+
+function tokenizeQuery(normalizedQuery: string): string[] {
+  return normalizedQuery
+    .split(/\s+/)
+    .filter(t => t.length >= 2 && !SPANISH_STOPWORDS.has(t));
+}
+
+// Crude plural stripping: "tecnicas" \u2192 tambi\u00e9n probar "tecnica".
+function tokenForms(token: string): string[] {
+  if (token.length > 3 && token.endsWith('s')) return [token, token.slice(0, -1)];
+  return [token];
+}
+
+function hasToken(haystack: string, token: string): boolean {
+  for (const form of tokenForms(token)) {
+    if (haystack.includes(form)) return true;
+  }
+  return false;
 }
 
 // \u2500\u2500 Highlight helpers \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
@@ -75,14 +106,35 @@ function findMatchRanges(text: string, normalizedQuery: string): Array<{ start: 
 
 interface HighlightedTextProps {
   text: string;
-  query: string; // already normalized
+  tokens: string[]; // already normalized
   baseStyle: StyleProp<TextStyle>;
   highlightStyle: StyleProp<TextStyle>;
   numberOfLines?: number;
 }
 
-function HighlightedText({ text, query, baseStyle, highlightStyle, numberOfLines }: HighlightedTextProps) {
-  const ranges = useMemo(() => findMatchRanges(text, query), [text, query]);
+function HighlightedText({ text, tokens, baseStyle, highlightStyle, numberOfLines }: HighlightedTextProps) {
+  const ranges = useMemo(() => {
+    if (tokens.length === 0) return [];
+    const all: Array<{ start: number; end: number }> = [];
+    for (const t of tokens) {
+      for (const form of tokenForms(t)) {
+        all.push(...findMatchRanges(text, form));
+      }
+    }
+    // Sort by start, merge overlapping/adjacent ranges so two tokens that
+    // match consecutive characters render as a single highlight pill.
+    all.sort((a, b) => a.start - b.start);
+    const merged: Array<{ start: number; end: number }> = [];
+    for (const r of all) {
+      const last = merged[merged.length - 1];
+      if (last && r.start <= last.end) {
+        last.end = Math.max(last.end, r.end);
+      } else {
+        merged.push({ start: r.start, end: r.end });
+      }
+    }
+    return merged;
+  }, [text, tokens]);
   if (ranges.length === 0) {
     return <Text style={baseStyle} numberOfLines={numberOfLines}>{text}</Text>;
   }
@@ -139,6 +191,7 @@ const SUB_INDEX: IndexEntry[] = data.modulos.flatMap(m =>
       moduloTitle: m.title,
       subId: sub.id,
       subTitle: sub.title,
+      subTitleNorm: normalize(sub.title),
       haystack: normalize(fullText),
       preview: blockTexts.replace(/\s+/g, ' ').slice(0, 140).trim(),
     };
@@ -149,6 +202,7 @@ const GLOSARIO_INDEX: GlosarioEntry[] = (glosarioData.entries as { sigla: string
   e => ({
     kind: 'glosario' as const,
     sigla: e.sigla,
+    siglaNorm: normalize(e.sigla),
     definicion: e.definicion,
     haystack: normalize(`${e.sigla} ${e.definicion}`),
   }),
@@ -161,14 +215,40 @@ export function BuscadorScreen() {
   const navigation = useNavigation<Nav>();
   const [query, setQuery] = useState('');
 
-  const normalizedQuery = useMemo(() => normalize(query.trim()), [query]);
+  const tokens = useMemo(() => tokenizeQuery(normalize(query.trim())), [query]);
 
   const results = useMemo(() => {
-    if (normalizedQuery.length < 2) return [] as IdxEntry[];
-    const subMatches = SUB_INDEX.filter(e => e.haystack.includes(normalizedQuery));
-    const glosMatches = GLOSARIO_INDEX.filter(e => e.haystack.includes(normalizedQuery));
-    return [...glosMatches, ...subMatches].slice(0, 50);
-  }, [normalizedQuery]);
+    if (tokens.length === 0) return [] as IdxEntry[];
+    // Score formula: primary = tokens hallados en haystack (×10).
+    // Bonus por hits en title/sigla — empuja resultados con coincidencia
+    // exacta de sigla o título por encima de matches enterrados en el body.
+    const scoredSubs = SUB_INDEX
+      .map(e => {
+        let primary = 0, bonus = 0;
+        for (const t of tokens) {
+          if (hasToken(e.haystack, t)) primary++;
+          if (hasToken(e.subTitleNorm, t)) bonus += 2;
+        }
+        return { entry: e as IdxEntry, score: primary * 10 + bonus };
+      })
+      .filter(x => x.score > 0);
+    const scoredGlos = GLOSARIO_INDEX
+      .map(e => {
+        let primary = 0, bonus = 0;
+        for (const t of tokens) {
+          if (hasToken(e.haystack, t)) primary++;
+          if (e.siglaNorm === t) bonus += 10;
+          else if (e.siglaNorm.startsWith(t)) bonus += 5;
+          else if (hasToken(e.siglaNorm, t)) bonus += 2;
+        }
+        return { entry: e as IdxEntry, score: primary * 10 + bonus };
+      })
+      .filter(x => x.score > 0);
+    return [...scoredGlos, ...scoredSubs]
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 50)
+      .map(x => x.entry);
+  }, [tokens]);
 
   const highlightStyle: StyleProp<TextStyle> = {
     backgroundColor: colors.searchHighlight,
@@ -321,14 +401,14 @@ export function BuscadorScreen() {
                   </Text>
                   <HighlightedText
                     text={item.sigla}
-                    query={normalizedQuery}
+                    tokens={tokens}
                     baseStyle={{ fontSize: rs.font(15), fontWeight: '900', color: colors.text, marginLeft: 4 }}
                     highlightStyle={highlightStyle}
                   />
                 </View>
                 <HighlightedText
                   text={item.definicion}
-                  query={normalizedQuery}
+                  tokens={tokens}
                   baseStyle={{ fontSize: rs.font(13), color: colors.textSecondary, lineHeight: rs.font(19) }}
                   highlightStyle={highlightStyle}
                 />
@@ -368,13 +448,13 @@ export function BuscadorScreen() {
               </View>
               <HighlightedText
                 text={item.subTitle}
-                query={normalizedQuery}
+                tokens={tokens}
                 baseStyle={{ fontSize: rs.font(15), fontWeight: '700', color: colors.text, marginBottom: rs.space(4) }}
                 highlightStyle={highlightStyle}
               />
               <HighlightedText
                 text={item.preview}
-                query={normalizedQuery}
+                tokens={tokens}
                 baseStyle={{ fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(18) }}
                 highlightStyle={highlightStyle}
                 numberOfLines={2}
