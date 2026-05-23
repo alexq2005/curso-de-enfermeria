@@ -171,7 +171,21 @@
         "Bradicardia + uso reciente de propranolol → suspender beta-bloqueante."
       ]
     },
-    { "sigla": "Bradipnea", "definicion": "Frecuencia respiratoria menor a 12 rpm en adulto. Sospechar depresión del SNC, opioides, hipotermia o fatiga muscular respiratoria." },
+    { "sigla": "Bradipnea", "definicion": "Frecuencia respiratoria menor a 12 rpm en adulto (< 20 rpm en niños pequeños). Signo tardío de deterioro neurológico o claudicación respiratoria — más grave que la taquipnea porque suele preceder a la apnea.",
+      "tipos": [
+        "Por depresión del SNC — sedación, opioides, benzodiacepinas, alcohol, intoxicación, hipertensión endocraneana.",
+        "Por fatiga muscular respiratoria — preludio a paro respiratorio en asma grave, EPOC reagudizado, ELA avanzada.",
+        "Por hipotermia — bradicardia + bradipnea + obnubilación. Recalentamiento progresivo.",
+        "Fisiológica — durante el sueño profundo, en atletas entrenados.",
+        "Por alteración metabólica — hipotiroidismo severo (mixedema), hipoglucemia profunda."
+      ],
+      "ejemplos": [
+        "FR 6 rpm + miosis puntiforme + coma → intoxicación por opioides, naloxona 0,4 mg EV.",
+        "FR 8 rpm en asmática que antes estaba con FR 36 + cianosis + obnubilación → claudicación inminente, intubación + UTI.",
+        "Bradipnea + bradicardia + hipotermia accidental → ABC, recalentar gradualmente, monitoreo continuo.",
+        "Bradipnea post-quirúrgica con saturación normal → fentanyl residual, observar, valorar reversión."
+      ]
+    },
     { "sigla": "Cefalea", "definicion": "Dolor de cabeza. Evaluar inicio (súbito = alarma), localización, intensidad, síntomas asociados (fotofobia, vómitos, focalidad).",
       "tipos": [
         "Tensional — bilateral, opresiva ('como casco'), leve-moderada. La más frecuente.",
@@ -319,7 +333,23 @@
     },
     { "sigla": "Equimosis", "definicion": "Mancha violácea por extravasación sanguínea subcutánea, mayor a 1 cm. Evoluciona en colores (violeta → verde → amarillo) según degradación de la hemoglobina." },
     { "sigla": "Eritema", "definicion": "Enrojecimiento de la piel que desaparece a la presión (vitropresión positiva). Diferencia de petequias y equimosis (que no desaparecen)." },
-    { "sigla": "Esputo", "definicion": "Material expulsado desde la vía aérea por la tos. Describir cantidad, color y consistencia: mucoso, mucopurulento, purulento, hemoptoico, herrumbroso." },
+    { "sigla": "Esputo", "definicion": "Material expulsado desde la vía aérea inferior mediante la tos. Diferenciar de la saliva (que es producida por glándulas salivales orales). La caracterización por aspecto + cantidad + olor orienta a la etiología.",
+      "tipos": [
+        "Mucoso (seroso) — claro, transparente, fluido. Bronquitis viral, asma, EPOC en fase estable.",
+        "Mucopurulento — amarillo o verdoso, más espeso. Infección bacteriana de vía aérea.",
+        "Purulento — francamente verdoso o amarillo intenso, denso, fétido. Neumonía bacteriana, bronquiectasias infectadas, absceso pulmonar.",
+        "Herrumbroso — pardo-anaranjado por sangre digerida. CLÁSICO de neumonía neumocócica.",
+        "Hemoptoico — mezclado con sangre roja. Bronquitis aguda, TBC, neoplasia, bronquiectasias.",
+        "Espumoso rosado — rosa, espumoso, abundante. Edema agudo de pulmón cardiogénico.",
+        "En boca de pescado / jalea de grosella — purulento abundante con halitosis fétida. Absceso pulmonar, bronquiectasias supuradas."
+      ],
+      "ejemplos": [
+        "Esputo herrumbroso + fiebre alta + dolor torácico pleurítico + consolidación lobar → neumonía neumocócica clásica.",
+        "Esputo espumoso rosado abundante + ortopnea + crepitantes bibasales + ingurgitación yugular → edema agudo de pulmón cardiogénico.",
+        "Esputo hemoptoico persistente en tosedor crónico tabaquista > 50 años → broncoscopia urgente, descartar tumor pulmonar.",
+        "Esputo purulento abundante de madrugada en bronquiectasias → drenaje postural + kinesia respiratoria + ATB dirigido por cultivo."
+      ]
+    },
     { "sigla": "Estridor", "definicion": "Ruido respiratorio agudo, audible sin estetoscopio. Localizar el momento del ciclo orienta al nivel de la obstrucción de la vía aérea superior. SIEMPRE emergencia, no demorar evaluación de vía aérea.",
       "tipos": [
         "Inspiratorio — obstrucción supraglótica/glótica (sobre las cuerdas vocales). Epiglotitis, edema angioneurótico, cuerpo extraño laríngeo.",
@@ -341,7 +371,15 @@
         "Estatus epiléptico postictal prolongado: estupor por horas tras crisis tónico-clónica — descartar nueva crisis sutil con EEG."
       ]
     },
-    { "sigla": "Eupnea", "definicion": "Respiración normal: 12-20 rpm en adulto, rítmica, sin esfuerzo ni ruidos. Patrón de referencia para comparar." },
+    { "sigla": "Eupnea", "definicion": "Respiración normal: 12-20 rpm en adulto, rítmica, simétrica, sin esfuerzo, sin uso de músculos accesorios, sin ruidos audibles a distancia. Patrón de referencia para comparar todas las alteraciones (taquipnea, bradipnea, disnea, ortopnea, Kussmaul, etc.).",
+      "ejemplos": [
+        "Adulto en reposo: 12-20 rpm.",
+        "Recién nacido: 30-60 rpm es normal (no es taquipnea).",
+        "Lactante (1-12 meses): 24-40 rpm.",
+        "Niño preescolar (1-5 años): 20-30 rpm.",
+        "Atleta entrenado en reposo: puede tener 10-12 rpm fisiológicas, no es bradipnea patológica."
+      ]
+    },
     { "sigla": "Fóvea", "definicion": "Depresión visible que persiste tras presionar con el pulgar la piel sobre un edema (signo de Godet). Se evalúa en zonas óseas: pretibial, dorso del pie, sacro. Técnica: presionar firme 5-15 s y medir profundidad + tiempo de recuperación.",
       "tipos": [
         "Godet 1+ (leve): depresión ~2 mm, desaparece rápidamente (< 10 s). Edema apenas detectable.",
@@ -444,8 +482,34 @@
         "Esputo herrumbroso (mezclado con sangre oscura) en neumonía neumocócica clásica."
       ]
     },
-    { "sigla": "Hipercapnia", "definicion": "Aumento de la PaCO₂ por encima de 45 mmHg. Indica fallo ventilatorio. Manifestaciones: somnolencia, cefalea, asterixis." },
-    { "sigla": "Hiperpnea", "definicion": "Aumento de la profundidad de la respiración (volumen corriente), con o sin aumento de la frecuencia. Típica en acidosis metabólica (respiración de Kussmaul)." },
+    { "sigla": "Hipercapnia", "definicion": "Aumento de la PaCO₂ arterial por encima de 45 mmHg. Indica fallo ventilatorio (no de oxigenación). El CO₂ retenido produce acidosis respiratoria y, si es severa, narcosis carbónica.",
+      "tipos": [
+        "Aguda — instalación en minutos a horas, sin compensación renal. pH < 7,35. Manifestaciones neurológicas predominantes (cefalea, somnolencia, asterixis, coma).",
+        "Crónica — instalación en semanas o meses. Compensación renal con bicarbonato elevado. pH casi normal. Ejemplo típico: EPOC severo crónico.",
+        "Crónica reagudizada — paciente con hipercapnia crónica que sufre una descompensación aguda. Bicarbonato alto pero pH ahora bajo.",
+        "Permisiva (terapéutica) — toleración intencional de PaCO₂ alta durante ventilación protectiva en SDRA, para reducir baro/volutrauma."
+      ],
+      "ejemplos": [
+        "PaCO₂ 70 + pH 7,18 + obnubilación en EPOC: hipercapnia aguda o reagudización, considerar VNI o IOT.",
+        "PaCO₂ 60 + pH 7,36 + bicarbonato 36 en EPOC estable → hipercapnia crónica compensada, no requiere intervención aguda.",
+        "Cefalea matutina + somnolencia diurna + EPOC → sospechar hipoventilación nocturna, polisomnografía con CO₂.",
+        "Asterixis flapping + temblor de manos en posición extendida + EPOC reagudizado → signo de narcosis carbónica."
+      ]
+    },
+    { "sigla": "Hiperpnea", "definicion": "Aumento del VOLUMEN corriente respiratorio (la profundidad), con o sin aumento de la frecuencia. Diferencia con la taquipnea (que es solo frecuencia aumentada): la hiperpnea es respiración 'profunda', no necesariamente rápida.",
+      "tipos": [
+        "Fisiológica — durante ejercicio físico o post-ejercicio para reposición de la deuda de O₂.",
+        "Respiración de Kussmaul — hiperpnea + taquipnea (profunda Y rápida) por compensación de acidosis metabólica. Típica de cetoacidosis diabética, IRA con uremia, intoxicación por metanol/etilenglicol.",
+        "Por estímulo central — ansiedad, dolor severo, hipoxia (estímulo del centro respiratorio).",
+        "Por hipertermia — fiebre alta, golpe de calor."
+      ],
+      "ejemplos": [
+        "Kussmaul + glucemia 480 mg/dL + cuerpos cetónicos en orina + aliento a manzana → cetoacidosis diabética.",
+        "Hiperpnea + hipocapnia + parestesias periorales y carpopedales → hiperventilación por ansiedad (síndrome de Da Costa).",
+        "Hiperpnea + alteración mental + creatinina 8 mg/dL → acidosis metabólica urémica, considerar diálisis.",
+        "Hiperpnea + acidosis severa con anion gap aumentado tras ingesta de líquido sospechoso → intoxicación por metanol o etilenglicol, fomepizol + diálisis."
+      ]
+    },
     { "sigla": "Hipotensión", "definicion": "TA sistólica < 90 mmHg, TAM < 65 mmHg, o caída ≥ 40 mmHg sobre la basal. Lo clínicamente relevante no es el número sino los signos de hipoperfusión (mareo, oliguria, alteración mental, frialdad distal, relleno capilar > 2 s).",
       "tipos": [
         "Hipovolémica — pérdida de volumen. Hemorragia, deshidratación, quemaduras, tercer espacio.",
@@ -609,7 +673,20 @@
         "Oliguria intraoperatoria → diferenciar entre baja perfusión (líquidos) vs daño tubular (suspender nefrotóxicos)."
       ]
     },
-    { "sigla": "Ortopnea", "definicion": "Disnea que aparece en decúbito y mejora al incorporarse. Típica de insuficiencia cardíaca izquierda. Cuantificar por número de almohadas que el paciente necesita para dormir." },
+    { "sigla": "Ortopnea", "definicion": "Disnea que aparece en decúbito y mejora al incorporarse. Mecanismo: redistribución de volumen al lecho pulmonar al acostarse. Característica clásica de la IC izquierda, pero también aparece en EPOC severo, ascitis masiva, parálisis diafragmática.",
+      "tipos": [
+        "Cuantificación por almohadas: 1 almohada (normal), 2 almohadas, 3 o más almohadas, sentado para dormir (ortopnea de 4 almohadas).",
+        "Disnea paroxística nocturna (DPN) — variante: el paciente se despierta sofocado a las 2-3 h del sueño, debe sentarse en el borde de la cama o asomarse a la ventana para mejorar. Más específica de IC.",
+        "Trepopnea — disnea solo en uno de los decúbitos laterales. Pleura unilateral grande, parálisis frénica unilateral.",
+        "Platipnea — paradoja inversa: disnea al pararse, mejora en decúbito. Cortocircuito intracardíaco, síndrome hepatopulmonar."
+      ],
+      "ejemplos": [
+        "Paciente con IC duerme con 3 almohadas y reporta DPN a las 2 AM → IC izquierda descompensada, optimizar diuréticos y betabloqueantes.",
+        "Trepopnea izquierda + matidez en hemitórax izquierdo → derrame pleural masivo izquierdo, evaluar drenaje.",
+        "EPOC severo que duerme sentado por broncoespasmo nocturno → optimizar broncodilatadores + considerar oxígeno domiciliario.",
+        "Ortopnea + abdomen tenso a tensión en cirrótico con ascitis masiva → paracentesis evacuadora."
+      ]
+    },
     { "sigla": "Palidez", "definicion": "Disminución del color rosado normal de piel y mucosas. Evaluar en conjuntivas, lecho ungueal y mucosa oral (más fiable que la piel, sobre todo en pieles oscuras).",
       "tipos": [
         "Generalizada — todo el cuerpo. Anemia, shock, hipotiroidismo, vasoconstricción intensa.",
@@ -674,7 +751,20 @@
         "TRC ausente en dedo tras canulación arterial radial → posible isquemia, retirar catéter y reevaluar test de Allen."
       ]
     },
-    { "sigla": "Roncus", "definicion": "Ruidos respiratorios continuos, graves, audibles en inspiración y espiración. Indican secreciones en vía aérea media-grande. Mejoran con la tos." },
+    { "sigla": "Roncus", "definicion": "Ruidos respiratorios continuos, graves, de tonalidad baja (como un ronquido), audibles en ambas fases del ciclo. Indican secreciones espesas o estrechamiento en vía aérea media-grande. Característica clave: se MODIFICAN o desaparecen con la tos (a diferencia de los crepitantes).",
+      "tipos": [
+        "Por secreciones — los más frecuentes. Bronquitis aguda, EPOC reagudizado, bronquiectasias. Mejoran con la tos o kinesia respiratoria.",
+        "Por estrechamiento de la pared — bronquitis crónica, edema bronquial, infiltración tumoral. NO mejoran con la tos.",
+        "Difusos — bronquitis aguda, EPOC, asma con broncoespasmo y secreciones.",
+        "Localizados — sospechar lesión focal: tumor endobronquial, cuerpo extraño, infiltrado consolidativo."
+      ],
+      "ejemplos": [
+        "Roncus difusos + tos productiva + fiebre en EPOC reagudizado → broncodilatadores + ATB + kinesia respiratoria.",
+        "Roncus que desaparecen tras toser → confirma origen por secreciones movilizables.",
+        "Roncus localizados persistentes en un lóbulo en tabaquista crónico → broncoscopia para descartar tumor endobronquial.",
+        "Roncus + sibilancias en asmático con sobreinfección → 'tórax musical' con broncoespasmo + secreciones."
+      ]
+    },
     { "sigla": "Sibilancias", "definicion": "Ruidos respiratorios continuos, musicales, predominantemente espiratorios. Indican obstrucción de vía aérea inferior por broncoespasmo o secreciones espesas.",
       "tipos": [
         "Espiratorias — las más comunes. Asma, EPOC, bronquiolitis.",
