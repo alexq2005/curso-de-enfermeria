@@ -257,7 +257,22 @@
       ]
     },
     { "sigla": "Diaforesis", "definicion": "Sudoración profusa, fría y pegajosa. Signo de activación simpática: shock, hipoglucemia, IAM, dolor severo." },
-    { "sigla": "Disartria", "definicion": "Dificultad para articular palabras por compromiso motor (no del lenguaje). El paciente sabe qué decir pero no puede pronunciarlo correctamente." },
+    { "sigla": "Disartria", "definicion": "Trastorno motor de la articulación de palabras. El paciente conserva el lenguaje (gramática, contenido, comprensión) pero deforma los sonidos. Diferencia clave vs afasia: la afasia rompe el lenguaje, la disartria solo la articulación.",
+      "tipos": [
+        "Fláccida — debilidad muscular bulbar. Voz nasal, débil, con escape aéreo. Causas: miastenia gravis, ELA bulbar, parálisis facial bilateral.",
+        "Espástica — lesión de motoneurona superior bilateral (ej. ACVs múltiples). Voz forzada, lenta, monótona.",
+        "Atáxica — lesión cerebelosa. Habla escándida (como ebrio), con explosiones de volumen y mala coordinación.",
+        "Hipocinética — Parkinson. Voz monótona, baja, apresurada (festinante), con palilalia.",
+        "Hipercinética — coreas, distonías, tics. Voz con interrupciones bruscas y movimientos involuntarios.",
+        "Mixta — combinación. Típica de ELA (fláccida + espástica), esclerosis múltiple."
+      ],
+      "ejemplos": [
+        "Disartria súbita + asimetría facial + debilidad de un brazo → ACV (uno de los 3 signos del FAST), código stroke.",
+        "Disartria progresiva + fasciculaciones linguales + atrofia → ELA bulbar.",
+        "Disartria escándida + dismetría + nistagmo → síndrome cerebeloso, descartar EM, ACV cerebeloso, intoxicación.",
+        "Voz monótona + temblor de reposo + bradicinesia → disartria hipocinética del Parkinson."
+      ]
+    },
     { "sigla": "Disfagia", "definicion": "Dificultad para deglutir. Caracterizar localización (oro-faríngea vs esofágica), tipo (sólidos, líquidos, ambos) y evolución (progresiva o intermitente).",
       "tipos": [
         "Orofaríngea — alteración del inicio de la deglución. Atragantamiento, tos, regurgitación nasal. Riesgo de aspiración. Causas: ACV, Parkinson, ELA, miastenia gravis.",
@@ -358,8 +373,35 @@
         "Pseudohematuria: orina rojiza por rifampicina, remolacha, betalaína, hemoglobinuria, mioglobinuria. SOMF negativo descarta."
       ]
     },
-    { "sigla": "Hemiparesia", "definicion": "Debilidad muscular en un hemicuerpo. Signo focal típico de ACV. Evaluar fuerza por escala 0-5." },
-    { "sigla": "Hemiplejía", "definicion": "Parálisis completa de un hemicuerpo. Pérdida total de la motricidad voluntaria de un lado." },
+    { "sigla": "Hemiparesia", "definicion": "Debilidad muscular en un hemicuerpo, con fuerza parcialmente preservada. Signo focal típico de lesión del sistema nervioso central contralateral. Cuantificar por escala 0-5 del Medical Research Council (MRC).",
+      "tipos": [
+        "Braquial — predominio en miembro superior. Lesión cortical (territorio de cerebral media).",
+        "Crural — predominio en miembro inferior. Lesión cortical anterior (cerebral anterior) o medular.",
+        "Faciobraquial — cara + miembro superior. Lesión del territorio de cerebral media.",
+        "Faciobraquiocrural (completa) — cara + ambos miembros del mismo lado. Lesión extensa o cápsula interna.",
+        "Por escala MRC: 0/5 (nada) · 1/5 (contracción visible sin movimiento) · 2/5 (movimiento sin gravedad) · 3/5 (vence gravedad) · 4/5 (vence resistencia parcial) · 5/5 (fuerza normal)."
+      ],
+      "ejemplos": [
+        "Hemiparesia faciobraquiocrural derecha + afasia → ACV de arteria cerebral media izquierda, código stroke.",
+        "Hemiparesia crural unilateral progresiva → descartar masa parasagital frontal (meningioma).",
+        "Hemiparesia faciobraquial fluctuante + en jóvenes con migrañas → migraña hemipléjica (diagnóstico de exclusión).",
+        "Hemiparesia post-ictal (parálisis de Todd): déficit motor transitorio tras convulsión, resuelve en horas a días."
+      ]
+    },
+    { "sigla": "Hemiplejía", "definicion": "Parálisis completa de un hemicuerpo (fuerza 0/5 en MRC). Pérdida total de motricidad voluntaria. Más severa que la hemiparesia.",
+      "tipos": [
+        "Fláccida — fase aguda inicial post-ACV. Tono muscular disminuido, ROT abolidos, shock medular. Dura días a semanas.",
+        "Espástica — fase crónica. Tono aumentado, hiperreflexia, Babinski positivo, postura típica (flexión MS + extensión MI). Se establece a partir de 2-4 semanas.",
+        "Alterna — parálisis de un lado del cuerpo con compromiso de pares craneales contralaterales. Lesión a nivel del tronco cerebral.",
+        "Funcional (conversiva) — sin sustrato neurológico orgánico. Diagnóstico de exclusión; trastorno conversivo o simulación."
+      ],
+      "ejemplos": [
+        "Hemiplejía fláccida derecha + afasia global súbita → ACV maligno de ACM izquierda, evaluar trombectomía dentro de la ventana terapéutica.",
+        "Hemiplejía espástica con postura de Wernicke-Mann (MS en flexión, MI en extensión) → secuela crónica de ACV antiguo.",
+        "Hemiplejía alterna (parálisis facial izquierda + hemiplejía derecha del cuerpo) → síndrome de Millard-Gubler, lesión en protuberancia.",
+        "Hemiplejía con incongruencias en el examen (cede a la distracción, no respeta territorios anatómicos) → sospechar trastorno conversivo."
+      ]
+    },
     { "sigla": "Hemoptisis", "definicion": "Expectoración de sangre proveniente del tracto respiratorio bajo (laringe, tráquea, bronquios, pulmón). Diferenciar de hematemesis (digestiva) y epistaxis posterior (nasal).",
       "tipos": [
         "Leve — < 30 mL/24 h. Esputo hemoptoico, manchas de sangre. Bronquitis, TBC, neumonía.",
@@ -432,8 +474,34 @@
       ]
     },
     { "sigla": "Ingurgitación yugular", "definicion": "Distensión visible de las venas yugulares con el paciente a 45°. Signo de aumento de presión venosa central: insuficiencia cardíaca derecha, taponamiento, sobrecarga de volumen." },
-    { "sigla": "Lipotimia", "definicion": "Sensación de desmayo inminente sin pérdida completa de la conciencia. Diferenciar de síncope (sí hay pérdida)." },
-    { "sigla": "Mareo", "definicion": "Sensación inespecífica de inestabilidad. Diferenciar de vértigo (sensación de movimiento) y lipotimia (sensación de desmayo)." },
+    { "sigla": "Lipotimia", "definicion": "Sensación de desmayo inminente sin llegar a perder la conciencia. Equivale a presíncope. Diferencia clave vs síncope: en lipotimia el paciente NO llega a caer, en síncope sí hay pérdida completa con caída.",
+      "tipos": [
+        "Vasovagal — la más frecuente. Pródromos típicos: náuseas, palidez, sudoración fría, visión borrosa, oscurecimiento. Desencadenantes: dolor, calor, estrés, ver sangre, bipedestación prolongada.",
+        "Ortostática — al pararse desde decúbito. Caída de TA ≥ 20/10 mmHg. Causas: hipovolemia, fármacos (antihipertensivos, diuréticos, antidepresivos tricíclicos), neuropatía autonómica.",
+        "Cardiogénica — pródromo breve o ausente. Sospechar arritmia (bradicardia, bloqueo, TV no sostenida) o cardiopatía estructural. ECG mandatorio.",
+        "Situacional — durante o post tos, micción, defecación, deglución, ejercicio."
+      ],
+      "ejemplos": [
+        "Lipotimia vasovagal típica en joven al ver sangre durante extracción: acostar con MMII elevados, evolución espontánea favorable.",
+        "Lipotimia al pararse en anciano polimedicado: medir TA decúbito + de pie (a los 1 y 3 min), evaluar suspender o reducir antihipertensivos.",
+        "Lipotimia sin pródromos en paciente con palpitaciones previas → cardiogénica, ECG urgente + Holter ambulatorio.",
+        "Lipotimia post-micción nocturna en varón mayor → micción-síncope situacional, recomendar orinar sentado."
+      ]
+    },
+    { "sigla": "Mareo", "definicion": "Síntoma inespecífico que el paciente usa para varios cuadros distintos. La PRIMERA pregunta clínica es: ¿qué tipo de mareo? Discriminar entre 4 patrones reorienta todo el diagnóstico.",
+      "tipos": [
+        "Vértigo — ilusión de movimiento (giratorio). Origen vestibular (periférico o central).",
+        "Desequilibrio (ataxia) — inestabilidad al caminar SIN ilusión de movimiento. Origen cerebeloso, propioceptivo, vestibular crónico.",
+        "Presíncope (lipotimia) — sensación de desmayo inminente, oscurecimiento visual, palidez. Origen cardiovascular o vasovagal.",
+        "Mareo inespecífico — sensación vaga de 'no estar bien', no encaja en los 3 anteriores. Frecuente en ansiedad, depresión, hiperventilación, polimedicación."
+      ],
+      "ejemplos": [
+        "'Me mareo' + sensación de que todo gira al cambiar de posición + dura segundos → vértigo posicional paroxístico benigno (BPPV).",
+        "'Me mareo' al pararme + visión negra + sudoración → presíncope ortostático. Medir TA decúbito y de pie.",
+        "'Me mareo' al caminar + base de sustentación amplia + cae a un lado → desequilibrio cerebeloso, descartar ACV de circulación posterior.",
+        "'Me mareo todo el día' + ansiedad + sin desencadenantes claros → mareo inespecífico, descartar polimedicación y trastornos del ánimo."
+      ]
+    },
     { "sigla": "Melena", "definicion": "Deposición negra, pegajosa, fétida (alquitranada). Sugiere sangrado del tracto digestivo superior con sangre ya digerida por el ácido gástrico y enzimas intestinales.",
       "tipos": [
         "Melena verdadera — por sangrado del tracto digestivo alto (esófago, estómago, duodeno).",
@@ -516,7 +584,22 @@
       ]
     },
     { "sigla": "Palpitaciones", "definicion": "Percepción consciente del latido cardíaco. Puede ser fisiológica (ejercicio, ansiedad) o patológica (arritmias)." },
-    { "sigla": "Parestesia", "definicion": "Sensación anormal espontánea: hormigueo, adormecimiento, pinchazos. Sugiere compromiso de nervio periférico o vía sensitiva." },
+    { "sigla": "Parestesia", "definicion": "Sensación anormal espontánea no dolorosa: hormigueo, adormecimiento, pinchazos, sensación de 'piel acartonada'. La DISTRIBUCIÓN topográfica orienta al nivel del compromiso del sistema nervioso.",
+      "tipos": [
+        "Mononeuropatía — territorio de un solo nervio. Mano dormida en territorio del mediano (túnel carpiano), pie caído por compresión del peroneo común.",
+        "Polineuropatía 'en guante y bota' — distribución simétrica distal en MMSS y MMII. Diabetes, alcoholismo, quimioterapia, déficit de vitamina B12.",
+        "Radicular — sigue dermatoma de una raíz. Hernia discal cervical o lumbar (ej. C6 dolor en pulgar, L5 en dorso del pie).",
+        "Por compresión medular — nivel sensitivo bilateral por debajo de la lesión. Urgencia: tumor, hematoma, absceso.",
+        "Por ACV — hemicorporal, súbita, asociada a otros signos focales.",
+        "Migratoria/transitoria — esclerosis múltiple, aura migrañosa, ataque isquémico transitorio."
+      ],
+      "ejemplos": [
+        "Parestesias bilaterales 'en guante y bota' + diabetes mal controlada por años → polineuropatía diabética.",
+        "Parestesia hemicorporal súbita + disartria + caída facial → ACV agudo, código stroke.",
+        "Parestesia que despierta de noche en mano dominante + atrofia tenar → síndrome del túnel carpiano severo.",
+        "Parestesia ascendente desde pies + debilidad progresiva días post-infección viral → sospechar Guillain-Barré (emergencia)."
+      ]
+    },
     { "sigla": "Petequias", "definicion": "Manchas puntiformes rojo-violáceas (< 3 mm) por extravasación sanguínea capilar. No desaparecen a la vitropresión. Sospechar trombocitopenia o vasculitis." },
     { "sigla": "Pirosis", "definicion": "Sensación de ardor retroesternal ascendente. Síntoma cardinal de reflujo gastroesofágico." },
     { "sigla": "Polaquiuria", "definicion": "Aumento de la frecuencia urinaria con volúmenes pequeños. Diferenciar de poliuria (volúmenes grandes). Sugiere irritación vesical (ITU, litiasis)." },
@@ -694,7 +777,20 @@
         "Tiraje + frecuencia respiratoria 28 + uso de músculos accesorios → escala mMRC alta, valorar VNI."
       ]
     },
-    { "sigla": "Vértigo", "definicion": "Sensación ilusoria de movimiento (del paciente o del entorno). Diferenciar de mareo. Causas: periférico (laberinto) o central (cerebelo, tronco)." },
+    { "sigla": "Vértigo", "definicion": "Ilusión de movimiento (giratorio, del paciente o del entorno) sin que el movimiento exista. Lo más importante clínicamente es diferenciar periférico (laberinto/nervio vestibular, benigno) vs central (tronco/cerebelo, potencialmente grave).",
+      "tipos": [
+        "Periférico — intenso, paroxístico, breve, con náuseas/vómitos. Empeora con movimientos cefálicos. Nistagmo horizontorrotatorio que fatiga. Sin focalidad neurológica. Causas: BPPV (el más común), neuritis vestibular, enfermedad de Ménière (vértigo + hipoacusia + acúfenos).",
+        "Central — menos intenso pero persistente, sin posición de alivio clara. Nistagmo vertical/multidireccional que NO fatiga. Con focalidad: diplopía, disartria, dismetría, hemiparesia. Causas: ACV de circulación posterior, EM, tumores de fosa posterior.",
+        "Posicional (BPPV) — desencadenado por cambios de posición de la cabeza (acostarse, girar en la cama). Maniobra de Dix-Hallpike positiva. Tratamiento: maniobra de Epley.",
+        "Recurrente (Ménière) — crisis de vértigo > 20 min + hipoacusia neurosensorial + acúfenos + sensación de plenitud auricular."
+      ],
+      "ejemplos": [
+        "Vértigo + nistagmo horizontal + sin focalidad → vértigo periférico, probable BPPV, intentar maniobras de reposición.",
+        "Vértigo + dismetría + diplopía + cefalea súbita → ACV de circulación posterior (cerebeloso/troncoencefálico), TAC + neurología urgente.",
+        "Crisis recurrentes de vértigo de horas + acúfeno unilateral + hipoacusia progresiva → enfermedad de Ménière.",
+        "HINTS (Head Impulse, Nystagmus, Test of Skew): herramienta clínica para diferenciar periférico vs central — más sensible que TAC inicial."
+      ]
+    },
     { "sigla": "Vómito", "definicion": "Expulsión forzada del contenido gástrico por la boca, usualmente precedida por náuseas. Caracterizar contenido, frecuencia, momento y desencadenantes.",
       "tipos": [
         "Alimentario — contenido reciente sin digerir o parcialmente digerido. Gastritis, intoxicación alimentaria, obstrucción alta.",
