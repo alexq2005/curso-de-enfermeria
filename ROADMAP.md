@@ -97,9 +97,9 @@ interface Entry {
 
 **Criterio de inclusión**: signos, síntomas, terminología procedimental y anatomo-funcional. NO entidades clínicas completas (esas viven en app Patologías).
 
-### ✅ Enriquecidos (49)
+### ✅ Enriquecidos (54)
 **Respiratorios** (11): Apnea, Disnea, Taquipnea, Cianosis, Hipoxia, Hipoxemia, Estridor, Tiraje, Crepitantes, Sibilancias, Hemoptisis.
-**Cardiovasculares** (6): Bradicardia, Taquicardia, Hipotensión, Síncope, Edema, Soplo cardíaco.
+**Cardiovasculares** (11): Bradicardia, Taquicardia, Hipotensión, Síncope, Edema, Soplo cardíaco, **Palpitaciones**, **Ingurgitación yugular**, **Frialdad distal**, **Relleno capilar**, **Fóvea** (godet con grados 1+ a 4+).
 **Neurológicos** (17): Cefalea, Convulsión, Afasia, Somnolencia, Obnubilación, Estupor, Coma (gradient completo), Anisocoria, Midriasis, Miosis, **Hemiparesia**, **Hemiplejía**, **Disartria**, **Mareo** (umbrella diferencial), **Vértigo**, **Lipotimia**, **Parestesia**.
 **Digestivos** (4): Vómito (umbrella), Hematemesis, Melena, Disfagia.
 **Urinarios** (3): Oliguria, Anuria, Hematuria.
@@ -113,9 +113,7 @@ interface Entry {
 - [ ] Roncus · Hipercapnia
 - [ ] Esputo (caracterizar tipos: mucoso, mucopurulento, herrumbroso, hemoptoico)
 
-**Cardiovasculares**:
-- [ ] Palpitaciones · Lipotimia
-- [ ] Ingurgitación yugular · Frialdad distal · Relleno capilar
+**Cardiovasculares**: ✅ Módulo cardiovascular cerrado en esta fase (11 términos enriquecidos).
 
 **Neurológicos**: ✅ Módulo neurológico cerrado en esta fase (17 términos enriquecidos).
 
