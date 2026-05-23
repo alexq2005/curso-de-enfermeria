@@ -998,9 +998,51 @@
         "Sonda Foley con balón inflado con agua estéril (NO solución fisiológica)."
       ]
     },
-    { "sigla": "Sonda nasogástrica (SNG)", "definicion": "Tubo introducido por fosa nasal hasta el estómago. Indicaciones: descompresión, nutrición enteral, lavado, administración de fármacos." },
-    { "sigla": "Sonda vesical (Foley)", "definicion": "Tubo introducido por uretra hasta la vejiga con balón de fijación. Indicaciones: monitoreo de diuresis, retención urinaria, cirugía, pacientes críticos." },
-    { "sigla": "Aspiración de secreciones", "definicion": "Procedimiento de remoción de secreciones de la vía aérea mediante sonda y presión negativa. Indicado en pacientes con tos ineficaz o vía aérea artificial." },
+    { "sigla": "Sonda nasogástrica (SNG)", "definicion": "Tubo introducido por fosa nasal hasta el estómago. Verificación de posición OBLIGATORIA antes del primer uso: aspiración de contenido + medición de pH (gástrico < 5,5) + Rx de control. La auscultación con aire NO es confiable como único método.",
+      "tipos": [
+        "Salem (doble luz, 14-18 Fr) — descompresión gástrica continua. Luz secundaria evita succión de mucosa. Obstrucción intestinal, postoperatorio abdominal.",
+        "Levin (luz única, 14-16 Fr) — descompresión intermitente, lavado gástrico, administración de medicación VO suspendida.",
+        "Fina de alimentación (8-12 Fr) — nutrición enteral. Más cómoda, menos reflujo. Verificar posición antes de cada uso por desplazamiento.",
+        "Sengstaken-Blakemore — triple luz con dos balones (esofágico + gástrico). Compresión hemostática en sangrado por várices esofágicas refractario. Uso transitorio (< 24 h) por riesgo de necrosis.",
+        "De colostomía / yeyunostomía — colocada quirúrgicamente, no por fosa nasal."
+      ],
+      "ejemplos": [
+        "Colocación de SNG en paciente consciente: posición Fowler, medir distancia (nariz-lóbulo-xifoides), lubricar, introducir mientras el paciente traga sorbos de agua.",
+        "Paciente con obstrucción intestinal + vómitos biliosos abundantes → SNG Salem con aspiración continua a baja presión.",
+        "Antes de administrar fármacos por SNG: verificar posición + lavar con 20 mL agua tibia + administrar fármaco diluido + lavar con 20 mL post.",
+        "SNG desplazada (la marca externa cambió) en paciente con NE → STOP nutrición, Rx de control antes de reiniciar (riesgo de aspiración masiva)."
+      ]
+    },
+    { "sigla": "Sonda vesical (Foley)", "definicion": "Tubo introducido por uretra hasta vejiga con balón de fijación en el extremo. Calibres habituales: 14-16 Fr en mujer, 16-18 Fr en varón, 8-10 Fr pediátrico. Balón inflado con AGUA ESTÉRIL (NO solución fisiológica — cristaliza y obstruye la válvula).",
+      "tipos": [
+        "Corto plazo (< 14 días) — postoperatorio, retención aguda, monitoreo de diuresis horaria en paciente crítico.",
+        "Prolongada / permanente (> 30 días) — vejiga neurógena, obstrucción no quirúrgica, cuidados paliativos. Recambio cada 4-6 semanas.",
+        "Intermitente (autocateterismo) — paciente con vejiga neurógena que puede autocateterizarse 4-6 veces/día. Menor tasa de ITU que Foley permanente.",
+        "Tres vías (irrigación continua) — calibre grueso (20-24 Fr), tercera vía para irrigación con SF post-cirugía urológica (RTU, hematuria con coágulos).",
+        "Suprapúbica — colocada quirúrgicamente a través de pared abdominal. Alternativa cuando uretra no disponible (estrechez, trauma uretral)."
+      ],
+      "ejemplos": [
+        "Colocación en mujer: posición ginecológica, antisepsia perineal con clorhexidina, separar labios, identificar meato uretral entre clítoris y vagina, introducir 5-7 cm hasta retorno de orina + 2 cm más + inflar balón.",
+        "Colocación en varón: paciente decúbito supino, pene perpendicular al cuerpo, introducir 18-20 cm hasta retorno + 2 cm más + inflar. Si hay resistencia: NO forzar, considerar HBP o estrechez uretral.",
+        "Retiro: desinflar balón completo con jeringa (aspirar pasivamente, no inyectar), retirar suave durante una espiración. NO cortar la sonda (riesgo de balón residual en vejiga).",
+        "Prevención de CAUTI: revaluar indicación a diario, retirar lo antes posible, sistema de drenaje cerrado, bolsa por debajo del nivel de la vejiga."
+      ]
+    },
+    { "sigla": "Aspiración de secreciones", "definicion": "Remoción mecánica de secreciones de la vía aérea con sonda conectada a presión negativa. Indicada cuando la tos es ineficaz o hay vía aérea artificial. Reglas básicas: técnica estéril en VA artificial, presión ≤ 120-150 mmHg en adultos, pasada ≤ 10-15 s, pre/post-oxigenar al 100%.",
+      "tipos": [
+        "Orofaríngea — sonda rígida tipo Yankauer por boca. Saliva, vómito, sangrado oral. Técnica limpia.",
+        "Nasofaríngea — sonda blanda por fosa nasal. Pacientes con tos ineficaz, ACV, postoperatorio. Lubricar la sonda.",
+        "Endotraqueal (sistema abierto) — por TET o traqueostomía. Técnica estéril estricta: guantes, sonda y solución estériles.",
+        "Endotraqueal (sistema cerrado, in-line) — sonda dentro de circuito ventilatorio. No requiere desconectar el ventilador. Menos hipoxia y contaminación.",
+        "Profunda (subglótica) — para pacientes con secreciones por encima del balón del TET. Reduce NAV (neumonía asociada a ventilador)."
+      ],
+      "ejemplos": [
+        "Paciente intubado con secreciones audibles + caída de SatO₂ → aspiración endotraqueal estéril, pre-oxigenar al 100% × 30 s antes.",
+        "Anciano post-ACV con disfagia y secreciones acumuladas en boca → aspiración orofaríngea con Yankauer + cabecera a 30°.",
+        "Lactante con bronquiolitis y vías nasales obstruidas → aspiración suave con sonda K-30 + solución fisiológica nasal previa.",
+        "Aspiración con bradicardia y desaturación marcada → STOP inmediato, ventilar con AMBU al 100%, recuperar SatO₂ antes de reintentar."
+      ]
+    },
     { "sigla": "Catéter", "definicion": "Tubo de pequeño calibre que se introduce en un vaso, cavidad o conducto. Tipos según ubicación y propósito.",
       "tipos": [
         "Venoso periférico (CVP) — abocath en vena de mano/antebrazo. Calibres 14G-24G.",
@@ -1045,8 +1087,36 @@
         "Drenaje Kehr post colecistectomía: lechada biliar 200-400 mL/día normal."
       ]
     },
-    { "sigla": "Permeable", "definicion": "Que permite el paso de fluido. Aplicado a vías venosas, sondas y catéteres: verificar permeabilidad antes y durante su uso." },
-    { "sigla": "Extravasación", "definicion": "Salida accidental de líquido o medicación al tejido perivascular durante una infusión EV. Riesgo aumentado con fármacos vesicantes (vasopresores, quimioterápicos)." },
+    { "sigla": "Permeable", "definicion": "Estado de un acceso vascular, sonda o drenaje que permite el flujo libre de fluido. Verificar permeabilidad ANTES de cada administración o conexión es regla básica de enfermería — una vía 'permeable a la vista' puede no serlo en uso real.",
+      "tipos": [
+        "Vía venosa periférica permeable — retorno venoso al bajar la solución, sin dolor a la infusión, sin edema/eritema local. Lavar con SF 5-10 mL c/turno y entre fármacos.",
+        "Vía venosa central permeable — retorno de sangre al aspirar suavemente, fácil infusión sin resistencia. Heparinizar lúmenes no usados según protocolo.",
+        "Sonda nasogástrica permeable — drena contenido a aspiración o cae por gravedad. Lavar con 20-30 mL de agua tibia c/turno y tras administración de fármacos.",
+        "Sonda vesical permeable — diuresis continua o intermitente sin obstrucción, sin globo vesical palpable. Si no drena: aspirar suave con jeringa, recambiar si persiste.",
+        "Drenaje permeable — débito continuo o intermitente proporcional al esperado. Sin coágulos visibles en el trayecto."
+      ],
+      "ejemplos": [
+        "VVP que NO retorna sangre + administra a presión + dolor a la infusión → considerar extravasación o trombosis, retirar y recolocar en otro sitio.",
+        "CVC sin retorno tras 48 h sin uso → probar instilación de SF, valorar trombolisis (uroquinasa) según protocolo, no forzar.",
+        "Foley que dejó de drenar + globo vesical palpable + dolor hipogástrico → obstrucción por coágulos o sedimento, lavar con SF 20 mL, recambiar si persiste.",
+        "SNG que no drena ni pasa fluido al instilar → desplazada o acodada, verificar marca externa, considerar Rx de control."
+      ]
+    },
+    { "sigla": "Extravasación", "definicion": "Salida de líquido o medicación al tejido perivascular durante una infusión EV. La gravedad depende del fármaco (irritante vs vesicante) y del volumen. Conducta clave: STOP infusión, NO retirar la vía inmediatamente, aspirar el remanente por la misma vía antes de retirarla.",
+      "tipos": [
+        "De solución no irritante — SF, ringer, glucosa al 5%. Dolor leve, edema localizado. Pronóstico bueno con frío local + elevación.",
+        "Irritante — antibióticos como vancomicina, KCl no diluido, fenitoína, ciprofloxacino. Eritema, dolor, induración. Riesgo de flebitis química.",
+        "Vesicante — vasopresores (noradrenalina, dopamina), quimioterápicos (doxorrubicina, vincristina, cisplatino), soluciones hiperosmolares (NaCl 3%, dextrosa > 10%). Riesgo de necrosis tisular y úlcera profunda.",
+        "Por dispositivo de contraste yodado — TAC con contraste. Volúmenes grandes (50-100 mL) pueden producir síndrome compartimental.",
+        "Por nutrición parenteral periférica — alta osmolaridad. Flebitis química casi inevitable a > 7-10 días."
+      ],
+      "ejemplos": [
+        "Extravasación de noradrenalina en VVP → STOP infusión, aspirar remanente, infiltrar fentolamina 5-10 mg en SF en el sitio, calor local NO frío (revierte vasoconstricción).",
+        "Extravasación de calcio gluconato → STOP, aspirar, infiltrar con hialuronidasa subcutánea para dispersar.",
+        "Extravasación de contraste yodado 80 mL en antebrazo + tensión + parestesias → evaluar síndrome compartimental, consulta de cirugía vascular.",
+        "Prevención: vesicantes y vasopresores SIEMPRE por vía venosa central, no periférica salvo emergencia con monitoreo estricto."
+      ]
+    },
     { "sigla": "Flebitis", "definicion": "Inflamación de la pared venosa. La complicación más frecuente de las vías venosas periféricas. La escala visual de Maddox/INS estandariza la valoración y la decisión de retirar la vía.",
       "tipos": [
         "Mecánica — por fricción del catéter contra el endotelio. Calibre grande en vena pequeña, mala fijación, articulaciones.",
