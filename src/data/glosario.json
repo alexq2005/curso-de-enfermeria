@@ -155,7 +155,21 @@
       ]
     },
     { "sigla": "Astenia", "definicion": "Sensación subjetiva de cansancio o falta de energía sin causa proporcional al esfuerzo realizado." },
-    { "sigla": "Borborigmos", "definicion": "Ruidos hidroaéreos intestinales audibles a distancia. Aumentados en diarrea u obstrucción inicial; ausentes en íleo paralítico." },
+    { "sigla": "Borborigmos", "definicion": "Ruidos hidroaéreos producidos por la peristalsis intestinal con desplazamiento de gas y líquido. Normales 5-30/min audibles con estetoscopio. La auscultación debe ser previa a la palpación abdominal (que altera el peristaltismo).",
+      "tipos": [
+        "Normales — 5-30/min, intermitentes. Sin patología.",
+        "Aumentados (hiperperistaltismo) — > 30/min, intensos. Diarrea, gastroenteritis, ansiedad, fase inicial de obstrucción intestinal.",
+        "Metálicos / de lucha — agudos, intensos, intermitentes con calma. Obstrucción intestinal mecánica establecida.",
+        "Disminuidos — < 5/min, débiles, requieren auscultar > 1 minuto para detectar. Posoperatorio temprano, peritonitis incipiente, hipopotasemia.",
+        "Ausentes (silencio abdominal) — sin ruidos tras 3-5 min de auscultación en los 4 cuadrantes. ÍLEO paralítico, peritonitis avanzada, isquemia mesentérica. EMERGENCIA quirúrgica si signos peritoneales."
+      ],
+      "ejemplos": [
+        "Borborigmos aumentados + diarrea acuosa profusa + cólicos → gastroenteritis aguda.",
+        "Borborigmos metálicos de lucha + vómito bilioso + distensión + ausencia de gases → obstrucción intestinal mecánica.",
+        "Silencio abdominal 5 min + defensa muscular + dolor difuso intenso → peritonitis avanzada, consulta quirúrgica urgente.",
+        "Borborigmos disminuidos en posoperatorio de cirugía abdominal 24-48 h → íleo paralítico fisiológico, esperar reanudación con gases."
+      ]
+    },
     { "sigla": "Bradicardia", "definicion": "Frecuencia cardíaca menor a 60 lpm en adulto. Evaluar si es sintomática (hipotensión, mareo, síncope, alteración mental, signos de hipoperfusión).",
       "tipos": [
         "Sinusal — origen en nodo sinusal, ritmo regular. Fisiológica en atletas y durante el sueño.",
@@ -316,7 +330,23 @@
         "Ortopnea: el paciente duerme con 3 almohadas (clave de IC)."
       ]
     },
-    { "sigla": "Distensión abdominal", "definicion": "Aumento del perímetro abdominal por gas, líquido (ascitis) o masa. Evaluar timpanismo vs matidez en percusión." },
+    { "sigla": "Distensión abdominal", "definicion": "Aumento visible del perímetro abdominal. Identificar el contenido determina el manejo. Mnemotecnia clásica 'las 6 F' (en inglés): Fat, Fluid, Flatus, Feces, Fetus, Fatal mass (grasa, líquido, gas, heces, feto, masa).",
+      "tipos": [
+        "Por gas (flatus) — timpanismo difuso a la percusión. Aerofagia, obstrucción intestinal, íleo paralítico, SIBO.",
+        "Por líquido (fluid / ascitis) — matidez desplazable, signo de la oleada positivo, matidez en flancos. Cirrosis, IC derecha, síndrome nefrótico, carcinomatosis peritoneal.",
+        "Por heces (feces) — masa palpable en fosa ilíaca izquierda o trayecto colónico. Constipación crónica, fecaloma en ancianos.",
+        "Por embarazo (fetus) — abdomen globuloso, datable por altura uterina. Confirmar con beta-hCG si dudas.",
+        "Por masa (fatal mass) — tumor sólido palpable. Hepatomegalia, esplenomegalia, neoplasia, quiste de ovario gigante.",
+        "Por grasa (fat) — obesidad central, pseudo-distensión. Sin matidez ni masas anormales.",
+        "Mixta — combinación frecuente. Ej. cirrótico con ascitis + meteorismo + estreñimiento."
+      ],
+      "ejemplos": [
+        "Distensión + matidez en flancos + signo de la oleada + cirrosis conocida → ascitis, paracentesis diagnóstica y eventualmente evacuadora.",
+        "Distensión + timpanismo + ausencia de gases por 24 h + vómitos biliosos → obstrucción intestinal, descompresión SNG + Rx de abdomen.",
+        "Distensión + fecaloma palpable + estreñimiento de semanas en anciano → desimpactación manual / enemas.",
+        "Distensión generalizada + obstrucción mecánica + asas dilatadas en Rx + niveles hidroaéreos → laparotomía exploradora si no resuelve."
+      ]
+    },
     { "sigla": "Disuria", "definicion": "Dolor, ardor o molestia al orinar. El momento del dolor durante el chorro orienta a la localización: uretra (inicial), vejiga (final), pielonefritis (lumbar concomitante).",
       "tipos": [
         "Inicial — dolor al comenzar la micción. Sugiere uretritis (gonocócica, no gonocócica).",
@@ -435,7 +465,20 @@
         "Hematemesis + melena + TA 80/50 + FC 130 → hemorragia digestiva alta con shock hipovolémico."
       ]
     },
-    { "sigla": "Hematoquecia", "definicion": "Emisión de sangre roja por el recto. Sugiere sangrado distal del tracto digestivo (colon, recto) o sangrado alto masivo." },
+    { "sigla": "Hematoquecia", "definicion": "Emisión de sangre roja brillante por el recto, mezclada o no con materia fecal. Sugiere sangrado del tracto digestivo bajo (colon, recto, ano). Excepción: una hematoquecia masiva en paciente inestable puede ser HDA alta con tránsito acelerado.",
+      "tipos": [
+        "Rojo brillante en papel higiénico — sangrado anal/perianal. Hemorroides internas, fisura anal.",
+        "Rojo oscuro mezclado con materia fecal — sangrado de colon izquierdo o sigmoides. Diverticulosis, EII, cáncer colorrectal.",
+        "Borgoña / rojo vinoso — sangrado de colon derecho o intestino delgado distal. Angiodisplasia, divertículo de Meckel.",
+        "Masiva con inestabilidad hemodinámica — sospechar HDA con tránsito acelerado (úlcera péptica masiva, várices esofágicas)."
+      ],
+      "ejemplos": [
+        "Hematoquecia + dolor anal post-defecación + estreñimiento → fisura anal, dieta + cremas locales.",
+        "Hematoquecia indolora intermitente + cambio del ritmo evacuatorio + > 50 años → colonoscopia, descartar cáncer colorrectal.",
+        "Hematoquecia + diarrea mucosanguinolenta + dolor abdominal + fiebre → EII (colitis ulcerosa) o colitis infecciosa.",
+        "Hematoquecia masiva + TA 80/50 + FC 130 → resucitación con volumen + endoscopia alta (descartar HDA con tránsito acelerado) ANTES de colonoscopia."
+      ]
+    },
     { "sigla": "Hematuria", "definicion": "Presencia de sangre en la orina. Diferenciar el momento del chorro orienta a la localización del sangrado en el árbol urinario.",
       "tipos": [
         "Macroscópica — visible a simple vista. Orina rojiza o color té. > 1 mL de sangre por L de orina.",
@@ -664,7 +707,23 @@
       ]
     },
     { "sigla": "Murmullo vesicular", "definicion": "Ruido respiratorio normal a la auscultación pulmonar, suave, predominio inspiratorio. Disminuido o ausente en derrame, neumotórax, consolidación." },
-    { "sigla": "Náuseas", "definicion": "Sensación desagradable de necesidad inminente de vomitar, sin que necesariamente ocurra. Puede acompañar sialorrea, palidez y sudoración." },
+    { "sigla": "Náuseas", "definicion": "Sensación subjetiva desagradable de necesidad inminente de vomitar, sin que necesariamente ocurra. Mediada por el centro del vómito en el bulbo. Acompaña sialorrea, palidez, sudoración fría, taquicardia y bradicardia paradójica vagal.",
+      "tipos": [
+        "Gastrointestinal periférica — por irritación gástrica o intestinal. Gastritis, gastroenteritis, obstrucción, distensión, isquemia mesentérica.",
+        "Central por hipertensión endocraneana — náuseas matutinas + cefalea + vómito en proyectil. Tumores, HSA, hidrocefalia.",
+        "Vestibular — por movimiento o lesión del aparato vestibular. Cinetosis, neuritis vestibular, Ménière, BPPV.",
+        "Metabólica — uremia, cetoacidosis, hipercalcemia, hipotiroidismo, insuficiencia suprarrenal.",
+        "Por fármacos / tóxicos — quimioterapia (altamente emetógena), opioides, digoxina, ATB, hierro oral, alcohol.",
+        "Gestacional — del embarazo, sobre todo primer trimestre. Hiperémesis gravídica si severa con deshidratación y cetonuria.",
+        "Psicógena — anticipatoria (pre-quimio), por ansiedad, por olores aversivos."
+      ],
+      "ejemplos": [
+        "Náuseas + cefalea matutina + vómito en proyectil sin esfuerzo → hipertensión endocraneana, TAC urgente.",
+        "Náuseas + vértigo + nistagmo + cambios de posición → vestibular periférico (BPPV), maniobra de Epley.",
+        "Náuseas refractarias post-quimioterapia → setrones (ondansetrón) + dexametasona + aprepitant si altamente emetógena.",
+        "Náuseas matutinas en mujer joven con amenorrea → embarazo, prueba beta-hCG."
+      ]
+    },
     { "sigla": "Obnubilación", "definicion": "Disminución leve-moderada del nivel de conciencia: respuesta enlentecida, desorientación parcial, somnolencia que cede con estímulos verbales repetidos. Glasgow 11-13. Más profunda que la somnolencia, menos que el estupor.",
       "ejemplos": [
         "Sepsis en anciano: obnubilación + fiebre + foco infeccioso. La alteración del sensorio puede ser el ÚNICO signo precoz.",
@@ -747,7 +806,21 @@
       ]
     },
     { "sigla": "Petequias", "definicion": "Manchas puntiformes rojo-violáceas (< 3 mm) por extravasación sanguínea capilar. No desaparecen a la vitropresión. Sospechar trombocitopenia o vasculitis." },
-    { "sigla": "Pirosis", "definicion": "Sensación de ardor retroesternal ascendente. Síntoma cardinal de reflujo gastroesofágico." },
+    { "sigla": "Pirosis", "definicion": "Sensación de ardor retroesternal ascendente. Síntoma cardinal del reflujo gastroesofágico (ERGE). Diferenciar de ángor: la pirosis típica es retroesternal baja, ascendente, post-prandial, calma con antiácidos.",
+      "tipos": [
+        "Post-prandial — aparece minutos a 1 h después de comer, especialmente con comidas grasas, cítricos, picantes, alcohol o café.",
+        "Nocturna (en decúbito) — al acostarse, despierta al paciente. Sugiere ERGE más severo, riesgo de esofagitis/aspiración.",
+        "Por esfuerzo o agacharse — aumenta presión intra-abdominal y favorece el reflujo. Frecuente en obesidad, embarazo.",
+        "Inducida — por fármacos relajantes del esfínter esofágico inferior: nitratos, bloqueantes cálcicos, anticolinérgicos, β-agonistas.",
+        "Crónica con signos de alarma — pérdida de peso, disfagia progresiva, anemia, vómito persistente, hematemesis. Indica endoscopia urgente."
+      ],
+      "ejemplos": [
+        "Pirosis post-prandial ocasional + alimentos grasos → cambios higiénico-dietéticos, antiácidos a demanda.",
+        "Pirosis nocturna 3-4 veces por semana + regurgitación ácida → ERGE moderada, IBP por 8 semanas + elevar cabecera 30°.",
+        "Pirosis crónica + disfagia progresiva a sólidos + adelgazamiento → endoscopia urgente, descartar esofagitis erosiva, esófago de Barrett o adenocarcinoma esofágico.",
+        "Pirosis 'atípica' retroesternal con esfuerzo + factores de riesgo cardiovascular → NO asumir ERGE, descartar cardiopatía isquémica con ECG/troponinas."
+      ]
+    },
     { "sigla": "Polaquiuria", "definicion": "Aumento de la frecuencia urinaria con volúmenes pequeños cada vez (en general < 200 mL por micción). Diuresis total puede ser normal o incluso baja. Diferencia clave vs poliuria: en polaquiuria el volumen TOTAL no aumenta, solo se reparte en más micciones.",
       "tipos": [
         "Por irritación vesical — ITU baja, litiasis vesical, tumor vesical, post-radioterapia. Suele asociar disuria.",
