@@ -97,8 +97,8 @@ interface Entry {
 
 **Criterio de inclusión**: signos, síntomas, terminología procedimental y anatomo-funcional. NO entidades clínicas completas (esas viven en app Patologías).
 
-### ✅ Enriquecidos (54)
-**Respiratorios** (11): Apnea, Disnea, Taquipnea, Cianosis, Hipoxia, Hipoxemia, Estridor, Tiraje, Crepitantes, Sibilancias, Hemoptisis.
+### ✅ Enriquecidos (61)
+**Respiratorios** (18): Apnea, Disnea, Taquipnea, Cianosis, Hipoxia, Hipoxemia, Estridor, Tiraje, Crepitantes, Sibilancias, Hemoptisis, **Bradipnea**, **Eupnea** (referencia normal), **Ortopnea** (con DPN, trepopnea, platipnea), **Hiperpnea** (con Kussmaul), **Roncus**, **Hipercapnia**, **Esputo** (7 tipos por aspecto).
 **Cardiovasculares** (11): Bradicardia, Taquicardia, Hipotensión, Síncope, Edema, Soplo cardíaco, **Palpitaciones**, **Ingurgitación yugular**, **Frialdad distal**, **Relleno capilar**, **Fóvea** (godet con grados 1+ a 4+).
 **Neurológicos** (17): Cefalea, Convulsión, Afasia, Somnolencia, Obnubilación, Estupor, Coma (gradient completo), Anisocoria, Midriasis, Miosis, **Hemiparesia**, **Hemiplejía**, **Disartria**, **Mareo** (umbrella diferencial), **Vértigo**, **Lipotimia**, **Parestesia**.
 **Digestivos** (4): Vómito (umbrella), Hematemesis, Melena, Disfagia.
@@ -108,10 +108,7 @@ interface Entry {
 
 ### 🔜 Candidatos prioritarios para Fase 2 (~30-40 términos)
 
-**Respiratorios**:
-- [ ] Bradipnea · Eupnea · Ortopnea · Hiperpnea
-- [ ] Roncus · Hipercapnia
-- [ ] Esputo (caracterizar tipos: mucoso, mucopurulento, herrumbroso, hemoptoico)
+**Respiratorios**: ✅ Módulo respiratorio cerrado en esta fase (18 términos enriquecidos).
 
 **Cardiovasculares**: ✅ Módulo cardiovascular cerrado en esta fase (11 términos enriquecidos).
 
