@@ -317,7 +317,21 @@
       ]
     },
     { "sigla": "Distensión abdominal", "definicion": "Aumento del perímetro abdominal por gas, líquido (ascitis) o masa. Evaluar timpanismo vs matidez en percusión." },
-    { "sigla": "Disuria", "definicion": "Dolor o ardor al orinar. Sugiere infección urinaria, litiasis o uretritis." },
+    { "sigla": "Disuria", "definicion": "Dolor, ardor o molestia al orinar. El momento del dolor durante el chorro orienta a la localización: uretra (inicial), vejiga (final), pielonefritis (lumbar concomitante).",
+      "tipos": [
+        "Inicial — dolor al comenzar la micción. Sugiere uretritis (gonocócica, no gonocócica).",
+        "Total — dolor durante toda la micción. Cistitis aguda.",
+        "Terminal — dolor al final con sensación de no haber terminado. Cistitis del trígono, cistopatía intersticial.",
+        "Con tenesmo vesical — sensación dolorosa persistente de necesidad de orinar tras vaciar. ITU baja, prostatitis aguda.",
+        "Con dolor lumbar / puñopercusión positiva — sospechar pielonefritis aguda (ITU alta)."
+      ],
+      "ejemplos": [
+        "Disuria total + polaquiuria + orina turbia + sin fiebre → ITU baja (cistitis) no complicada. Sedimento + urocultivo + ATB empírico.",
+        "Disuria inicial + secreción uretral purulenta en varón joven → uretritis, descartar gonorrea/clamidia.",
+        "Disuria + fiebre alta + dolor lumbar unilateral + Giordano positivo → pielonefritis aguda, internación + ATB EV.",
+        "Disuria + dolor perineal + fiebre + próstata dolorosa al tacto → prostatitis aguda en varón, ATB prolongado."
+      ]
+    },
     { "sigla": "Edema", "definicion": "Acumulación de líquido en el intersticio. Generalizado (anasarca), localizado (extremidades, párpados). Con godet positivo si deja fóvea a la presión.",
       "tipos": [
         "Con fóvea (godet positivo) — deja depresión al presionar. Típico de IC, insuficiencia renal, hipoalbuminemia.",
@@ -734,8 +748,37 @@
     },
     { "sigla": "Petequias", "definicion": "Manchas puntiformes rojo-violáceas (< 3 mm) por extravasación sanguínea capilar. No desaparecen a la vitropresión. Sospechar trombocitopenia o vasculitis." },
     { "sigla": "Pirosis", "definicion": "Sensación de ardor retroesternal ascendente. Síntoma cardinal de reflujo gastroesofágico." },
-    { "sigla": "Polaquiuria", "definicion": "Aumento de la frecuencia urinaria con volúmenes pequeños. Diferenciar de poliuria (volúmenes grandes). Sugiere irritación vesical (ITU, litiasis)." },
-    { "sigla": "Poliuria", "definicion": "Diuresis mayor a 3 L/día. Causas: diabetes mellitus descompensada, diabetes insípida, diuréticos, fase poliúrica de IRA." },
+    { "sigla": "Polaquiuria", "definicion": "Aumento de la frecuencia urinaria con volúmenes pequeños cada vez (en general < 200 mL por micción). Diuresis total puede ser normal o incluso baja. Diferencia clave vs poliuria: en polaquiuria el volumen TOTAL no aumenta, solo se reparte en más micciones.",
+      "tipos": [
+        "Por irritación vesical — ITU baja, litiasis vesical, tumor vesical, post-radioterapia. Suele asociar disuria.",
+        "Por compresión externa — embarazo (útero gestante), hiperplasia prostática severa, masa pélvica, fecaloma.",
+        "Por reducción de capacidad vesical — vejiga hiperactiva, vejiga neurógena, fibrosis post-radio o cirugía.",
+        "Diurna aislada — frecuente en estrés y ansiedad. Sin nicturia, sin disuria, sedimento normal.",
+        "Nocturna (nicturia) — micciones nocturnas. IC, hiperplasia prostática, apnea del sueño, diabetes mellitus."
+      ],
+      "ejemplos": [
+        "Polaquiuria + disuria + tenesmo vesical + orina turbia en mujer joven → ITU baja, sedimento + urocultivo + ATB empírico.",
+        "Polaquiuria diurna y nocturna en varón > 60 años + chorro débil + goteo postmiccional → hiperplasia prostática benigna (HBP).",
+        "Polaquiuria + nicturia 3 veces/noche en paciente con IC descompensada → redistribución de fluidos al recostarse.",
+        "Polaquiuria en última semana del embarazo → fisiológica por compresión de útero gestante sobre la vejiga."
+      ]
+    },
+    { "sigla": "Poliuria", "definicion": "Diuresis mayor a 3 L/día en adulto (> 50 mL/kg/día). Diferenciar de polaquiuria (frecuencia aumentada con volumen pequeño). Buscar sed concomitante (polidipsia) y cuantificar densidad urinaria.",
+      "tipos": [
+        "Osmótica — por exceso de solutos en orina. Diabetes mellitus descompensada (glucosuria), manitol, hipercalcemia, alimentación parenteral. Densidad urinaria normal o alta.",
+        "Acuosa por diabetes insípida central — déficit de ADH (hipófisis). Orina muy diluida (densidad < 1010). Responde a desmopresina.",
+        "Acuosa por diabetes insípida nefrogénica — riñón no responde a ADH. Litio, hipercalcemia, hipopotasemia crónica, hereditaria. NO responde a desmopresina.",
+        "Por diuréticos — esperable en pacientes con furosemida, tiazidas, antagonistas de aldosterona.",
+        "Fase poliúrica post-IRA — tras recuperación de necrosis tubular aguda. Riesgo de deshidratación y desequilibrios electrolíticos.",
+        "Polidipsia psicógena — ingesta hídrica excesiva sin causa fisiológica. Diagnóstico de exclusión."
+      ],
+      "ejemplos": [
+        "Poliuria + polidipsia + pérdida de peso + glucemia 350 mg/dL → debut de diabetes mellitus.",
+        "Poliuria abundante (10 L/día) tras neurocirugía hipofisaria + orina diluida → diabetes insípida central, prueba con desmopresina.",
+        "Paciente con litio crónico + poliuria + sed → diabetes insípida nefrogénica iatrogénica, ajustar dosis o suspender.",
+        "Anciano con IRA recuperándose, diuresis 4 L/día durante días → fase poliúrica, monitorear electrolitos y reponer."
+      ]
+    },
     { "sigla": "Relleno capilar", "definicion": "Tiempo en segundos que tarda el lecho ungueal o pulpejo en recuperar su color rosado tras presionarlo unos 5 s. Técnica: presionar a la altura del corazón, en ambiente cálido. Marcador rápido y barato de perfusión periférica.",
       "tipos": [
         "Normal: < 2 segundos. Buena perfusión.",
@@ -920,7 +963,19 @@
         "FR 24 rpm + TA 88/50 + alteración mental → qSOFA positivo, sospechar sepsis."
       ]
     },
-    { "sigla": "Tenesmo", "definicion": "Sensación dolorosa y persistente de necesidad de defecar (rectal) u orinar (vesical), aun con el órgano vacío." },
+    { "sigla": "Tenesmo", "definicion": "Sensación dolorosa y persistente de necesidad de evacuar el órgano (vejiga o recto), aun cuando ya está vacío. Refleja irritación o inflamación intensa de la pared. Diferenciar tenesmo vesical de rectal cambia totalmente el diagnóstico.",
+      "tipos": [
+        "Vesical — necesidad imperiosa y dolorosa de orinar tras vaciar la vejiga. Cistitis aguda, prostatitis, tumor vesical, cistopatía intersticial, post-RTU.",
+        "Rectal — necesidad imperiosa y dolorosa de defecar con expulsión escasa o nula. Proctitis (infecciosa o post-radioterapia), cáncer de recto, colitis ulcerosa, disentería.",
+        "Doble — vesical + rectal por proceso pélvico extenso. Tumores pélvicos avanzados, abscesos pelvianos."
+      ],
+      "ejemplos": [
+        "Tenesmo vesical + disuria + polaquiuria + orina turbia → ITU baja sintomática.",
+        "Tenesmo rectal + diarrea mucosanguinolenta + dolor abdominal → colitis ulcerosa o disentería bacilar (Shigella).",
+        "Tenesmo rectal persistente + cambio del ritmo evacuatorio + adelgazamiento en > 50 años → descartar cáncer de recto, colonoscopia.",
+        "Tenesmo doble + sangrado por ambas vías + paciente con tumor pélvico conocido → progresión por invasión local."
+      ]
+    },
     { "sigla": "Tiraje", "definicion": "Retracción visible de partes blandas del tórax durante la inspiración por uso de músculos accesorios. Marcador de trabajo respiratorio aumentado. La localización y combinación orienta a la gravedad.",
       "tipos": [
         "Subcostal — debajo de las costillas. El más común y precoz. Leve a moderado.",
