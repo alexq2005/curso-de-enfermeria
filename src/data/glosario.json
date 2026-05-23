@@ -112,7 +112,21 @@
         "Diferencial clave: disartria mantiene el lenguaje (gramática, contenido) pero deforma la articulación; afasia rompe el lenguaje en sí."
       ]
     },
-    { "sigla": "Anisocoria", "definicion": "Pupilas de distinto tamaño. Signo de alarma neurológica — sugiere hipertensión endocraneana o lesión del III par." },
+    { "sigla": "Anisocoria", "definicion": "Pupilas de distinto tamaño (diferencia > 1 mm). Evaluar simetría, reactividad, contexto. La anisocoria aguda en paciente con deterioro de conciencia es una EMERGENCIA neurológica.",
+      "tipos": [
+        "Fisiológica — diferencia < 1 mm constante, reactivas, sin contexto clínico. Hasta 20 % de la población.",
+        "Por lesión del III par (oculomotor) — midriasis arreactiva del lado afectado. Pensar herniación uncal por aumento de PIC, aneurisma de comunicante posterior.",
+        "Síndrome de Horner — miosis + ptosis + anhidrosis ipsilateral. Lesión de cadena simpática cervical (Pancoast, disección carotídea).",
+        "Farmacológica — uso unilateral de gotas (atropina, pilocarpina), exposición a plantas (datura), parches de escopolamina.",
+        "Traumática (iridoplejía) — antecedente de trauma ocular directo. Pupila irregular sin respuesta consensuada."
+      ],
+      "ejemplos": [
+        "Anisocoria + deterioro brusco de conciencia + cefalea súbita → sospechar HSA o herniación. TAC urgente.",
+        "Anisocoria con midriasis arreactiva del lado de un hematoma epidural → herniación inminente, neurocirugía emergente.",
+        "Anisocoria + ptosis + miosis + reciente dolor cervical → síndrome de Horner por disección carotídea (riesgo de ACV).",
+        "Anisocoria mínima descubierta de rutina en paciente asintomático con foto vieja igual → anisocoria fisiológica, no requiere estudio."
+      ]
+    },
     { "sigla": "Anuria", "definicion": "Diuresis menor a 100 mL en 24 h (algunos autores < 50 mL). Más grave que la oliguria. Sugiere obstrucción completa o injuria renal severa.",
       "tipos": [
         "Verdadera — no se produce orina. Causas: necrosis cortical bilateral, glomerulonefritis fulminante, oclusión vascular bilateral.",
@@ -183,7 +197,23 @@
         "Cianosis diferencial (solo en miembros inferiores) en cardiopatías congénitas."
       ]
     },
-    { "sigla": "Coma", "definicion": "Ausencia total de respuesta a estímulos verbales y dolorosos. Glasgow ≤ 8. Requiere protección de vía aérea." },
+    { "sigla": "Coma", "definicion": "Ausencia total de respuesta a estímulos verbales y dolorosos. Glasgow ≤ 8. Sin reflejos de protección — IOT inmediata. Identificar causa rápidamente porque el tiempo a tratamiento define pronóstico.",
+      "tipos": [
+        "Estructural — lesión SNC focal. ACV extenso (hemorrágico o isquémico), HSA, hematoma subdural/epidural, tumor con sangrado, herniación. Pupilas asimétricas o focalidad.",
+        "Metabólico — alteración bioquímica difusa. Hipoglucemia, hiponatremia/hipernatremia severa, uremia, encefalopatía hepática, hipotiroidismo. Pupilas simétricas, sin focalidad.",
+        "Anóxico — secuela de paro cardiorrespiratorio o hipoxia prolongada. Reflejos del tronco abolidos = mal pronóstico.",
+        "Tóxico — sobredosis u intoxicación. Opioides (miosis puntiforme + bradipnea), benzodiacepinas, alcohol, monóxido de carbono.",
+        "Traumático — TEC con lesión axonal difusa o hematoma intracraneal. Glasgow al ingreso valor pronóstico clave.",
+        "Inducido (sedación profunda) — farmacológico controlado en UTI con propofol/midazolam para ARM, hipertensión endocraneana, estatus refractario."
+      ],
+      "ejemplos": [
+        "Coma + hipoglucemia 30 mg/dL → ampolla de glucosado al 25 % EV, despertar dramático en minutos (reversible si se trata pronto).",
+        "Coma + pupilas mióticas puntiformes + bradipnea → opioides, naloxona 0,4 mg EV.",
+        "Coma + anisocoria con midriasis arreactiva derecha + hemiparesia izquierda → herniación uncal, TAC urgente.",
+        "Coma post-paro recuperado: hipotermia terapéutica 32-36 °C por 24 h para protección neurológica.",
+        "Glasgow 6 en TEC: intubación, manejo de PIC, evaluación neuroquirúrgica."
+      ]
+    },
     { "sigla": "Convulsión", "definicion": "Actividad eléctrica cerebral anormal con manifestaciones motoras, sensitivas o de conciencia. Proteger vía aérea, lateralizar, NO introducir objetos en la boca.",
       "tipos": [
         "Tónico-clónica generalizada — rigidez (tónica) seguida de sacudidas rítmicas (clónica). Pérdida de conciencia.",
@@ -288,7 +318,14 @@
         "Postextubación con estridor inspiratorio → edema laríngeo, considerar dexametasona y reintubación si progresa."
       ]
     },
-    { "sigla": "Estupor", "definicion": "Nivel de conciencia con respuesta solo a estímulos dolorosos vigorosos. Más profundo que la obnubilación, menos que el coma." },
+    { "sigla": "Estupor", "definicion": "Nivel de conciencia con respuesta solo a estímulos dolorosos vigorosos (pellizco trapecio, presión supraorbitaria), sin respuesta a estímulos verbales. Glasgow 9-10. Inminencia de coma — asegurar vía aérea pronto.",
+      "ejemplos": [
+        "ACV extenso del territorio de cerebral media: estupor + hemiplejía + desviación de la mirada.",
+        "Intoxicación etílica grave: estupor + olor enólico + bradipnea. Riesgo de broncoaspiración — decúbito lateral, observar vía aérea.",
+        "Encefalopatía hepática estadio III: estupor con respuesta a estímulos dolorosos, asterixis ausente, hiperreflexia.",
+        "Estatus epiléptico postictal prolongado: estupor por horas tras crisis tónico-clónica — descartar nueva crisis sutil con EEG."
+      ]
+    },
     { "sigla": "Eupnea", "definicion": "Respiración normal: 12-20 rpm en adulto, rítmica, sin esfuerzo ni ruidos. Patrón de referencia para comparar." },
     { "sigla": "Fóvea", "definicion": "Depresión visible que persiste tras presionar con el pulgar la piel sobre un edema. También llamado signo de Godet. Se gradúa 1+ a 4+ según profundidad y duración." },
     { "sigla": "Frialdad distal", "definicion": "Disminución de la temperatura en manos y pies. Signo de mala perfusión periférica: shock, hipotermia, oclusión arterial." },
@@ -409,11 +446,46 @@
         "Melena + úlcera péptica conocida + AINEs → reagudización ulcerosa con sangrado."
       ]
     },
-    { "sigla": "Midriasis", "definicion": "Pupilas dilatadas (> 5 mm). Causas: simpaticomiméticos, cocaína, atropina, lesión del III par. Bilateral arreactiva = signo de gravedad." },
-    { "sigla": "Miosis", "definicion": "Pupilas contraídas (< 2 mm). Típica de intoxicación por opioides u organofosforados, lesión protuberancial." },
+    { "sigla": "Midriasis", "definicion": "Dilatación pupilar (> 5 mm). Lo crítico no es el tamaño sino la REACTIVIDAD a la luz. La midriasis bilateral arreactiva en paciente comatoso es signo de daño troncoencefálico grave.",
+      "tipos": [
+        "Reactiva — se contrae al estímulo lumínico. Activación simpática fisiológica (oscuridad, miedo, dolor, ejercicio) o farmacológica reversible.",
+        "Arreactiva unilateral — sospechar lesión del III par: herniación uncal, aneurisma de comunicante posterior, lesión orbitaria.",
+        "Arreactiva bilateral — emergencia: muerte encefálica, herniación central, intoxicación severa por simpaticomiméticos, anoxia cerebral.",
+        "Farmacológica — atropina/anticolinérgicos tópicos o sistémicos (escopolamina, antihistamínicos), cocaína, anfetaminas, alucinógenos.",
+        "Por trauma — iridoplejía postraumática unilateral. Antecedente de trauma ocular cerrado."
+      ],
+      "ejemplos": [
+        "Midriasis arreactiva unilateral en paciente con TEC y deterioro de conciencia → herniación uncal, neurocirugía urgente.",
+        "Midriasis bilateral arreactiva post-paro cardiorrespiratorio prolongado → mal pronóstico neurológico.",
+        "Joven con midriasis bilateral + taquicardia + agitación + sudoración → intoxicación simpaticomimética (cocaína, anfetaminas).",
+        "Midriasis tras consulta oftalmológica con dilatadores → fisiológica farmacológica, dura 4-6 h."
+      ]
+    },
+    { "sigla": "Miosis", "definicion": "Pupila contraída (< 2 mm). Refleja predominio parasimpático o inhibición simpática. La miosis puntiforme + bradipnea + coma es el signo cardinal de intoxicación por opioides.",
+      "tipos": [
+        "Puntiforme (< 1 mm) — pinpoint pupils. Opioides (heroína, morfina, fentanilo), organofosforados, lesión protuberancial. EMERGENCIA.",
+        "Fisiológica — respuesta normal a luz, acomodación cercana, sueño. Bilateral simétrica.",
+        "Por fármacos — pilocarpina, opioides, antipsicóticos, clonidina, betabloqueantes oculares.",
+        "Sindrome de Horner — miosis + ptosis + anhidrosis. Lesión simpática unilateral.",
+        "Argyll-Robertson — miosis bilateral que NO reacciona a luz pero SÍ a acomodación. Sífilis terciaria, diabetes avanzada."
+      ],
+      "ejemplos": [
+        "Coma + miosis puntiforme + bradipnea (FR 6) → intoxicación por opioides, naloxona 0,4 mg EV (dosis-respuesta).",
+        "Miosis + sudoración profusa + sialorrea + fasciculaciones + bradicardia → intoxicación por organofosforados, atropina + pralidoxima.",
+        "Miosis unilateral + ptosis ipsilateral + anhidrosis hemifacial → síndrome de Horner, evaluar disección carotídea o tumor de Pancoast.",
+        "Miosis bilateral en paciente con sífilis no tratada que reacciona a acomodación pero no a luz → pupila de Argyll-Robertson."
+      ]
+    },
     { "sigla": "Murmullo vesicular", "definicion": "Ruido respiratorio normal a la auscultación pulmonar, suave, predominio inspiratorio. Disminuido o ausente en derrame, neumotórax, consolidación." },
     { "sigla": "Náuseas", "definicion": "Sensación desagradable de necesidad inminente de vomitar, sin que necesariamente ocurra. Puede acompañar sialorrea, palidez y sudoración." },
-    { "sigla": "Obnubilación", "definicion": "Disminución leve del nivel de conciencia: respuesta lenta, somnolencia que cede con estímulos verbales. Glasgow 13-14." },
+    { "sigla": "Obnubilación", "definicion": "Disminución leve-moderada del nivel de conciencia: respuesta enlentecida, desorientación parcial, somnolencia que cede con estímulos verbales repetidos. Glasgow 11-13. Más profunda que la somnolencia, menos que el estupor.",
+      "ejemplos": [
+        "Sepsis en anciano: obnubilación + fiebre + foco infeccioso. La alteración del sensorio puede ser el ÚNICO signo precoz.",
+        "Encefalopatía hepática estadio II: obnubilación + asterixis + fetor hepático.",
+        "Hiponatremia < 125 mEq/L: obnubilación + náuseas + cefalea.",
+        "Postoperatorio inmediato con narcóticos: obnubilación esperable; monitorear FR y SatO₂."
+      ]
+    },
     { "sigla": "Oliguria", "definicion": "Diuresis menor a 0,5 mL/kg/h por 6 h consecutivas (~400 mL/día en adulto, < 1 mL/kg/h en pediatría). Signo precoz de IRA y de hipovolemia/shock.",
       "tipos": [
         "Prerrenal (funcional) — hipoperfusión renal sin daño parenquimatoso. Hipovolemia, IC, sepsis, shock. Se corrige al restaurar perfusión.",
@@ -556,7 +628,14 @@
         "Síncope ortostático en anciano hipertenso medicado con varios antihipertensivos."
       ]
     },
-    { "sigla": "Somnolencia", "definicion": "Tendencia al sueño con despertar fácil ante estímulos verbales. Primer escalón en el deterioro del nivel de conciencia." },
+    { "sigla": "Somnolencia", "definicion": "Tendencia al sueño con despertar fácil ante estímulos verbales. Primer escalón del deterioro del nivel de conciencia. Glasgow ~14-15. Paciente orientado al despertar.",
+      "ejemplos": [
+        "Post-anestesia general: somnolencia esperable en las primeras horas, evolución hacia vigilia normal.",
+        "Sedación con benzodiacepinas para procedimientos cortos (endoscopia, cardioversión).",
+        "Encefalopatía hepática estadio I: somnolencia fluctuante + asterixis incipiente.",
+        "Hipoglucemia leve (< 60 mg/dL) en diabético: somnolencia + sudoración + temblor — corregir VO si tolera."
+      ]
+    },
     { "sigla": "Soplo cardíaco", "definicion": "Ruido cardíaco anormal por flujo turbulento. Caracterizar foco, momento (sistólico/diastólico), intensidad (escala 1-6) e irradiación.",
       "tipos": [
         "Sistólico de eyección — entre R1 y R2, foco aórtico/pulmonar. Estenosis aórtica/pulmonar.",
