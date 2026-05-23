@@ -97,13 +97,13 @@ interface Entry {
 
 **Criterio de inclusión**: signos, síntomas, terminología procedimental y anatomo-funcional. NO entidades clínicas completas (esas viven en app Patologías).
 
-### ✅ Enriquecidos (70)
+### ✅ Enriquecidos (76)
 **Respiratorios** (18): Apnea, Disnea, Taquipnea, Cianosis, Hipoxia, Hipoxemia, Estridor, Tiraje, Crepitantes, Sibilancias, Hemoptisis, **Bradipnea**, **Eupnea** (referencia normal), **Ortopnea** (con DPN, trepopnea, platipnea), **Hiperpnea** (con Kussmaul), **Roncus**, **Hipercapnia**, **Esputo** (7 tipos por aspecto).
 **Cardiovasculares** (11): Bradicardia, Taquicardia, Hipotensión, Síncope, Edema, Soplo cardíaco, **Palpitaciones**, **Ingurgitación yugular**, **Frialdad distal**, **Relleno capilar**, **Fóvea** (godet con grados 1+ a 4+).
 **Neurológicos** (17): Cefalea, Convulsión, Afasia, Somnolencia, Obnubilación, Estupor, Coma (gradient completo), Anisocoria, Midriasis, Miosis, **Hemiparesia**, **Hemiplejía**, **Disartria**, **Mareo** (umbrella diferencial), **Vértigo**, **Lipotimia**, **Parestesia**.
 **Digestivos** (9): Vómito (umbrella), Hematemesis, Melena, Disfagia, **Hematoquecia**, **Pirosis**, **Náuseas** (7 tipos por origen), **Borborigmos** (gradient: aumentados → metálicos → disminuidos → ausentes), **Distensión abdominal** (las 6 F's).
 **Urinarios** (7): Oliguria, Anuria, Hematuria, **Poliuria** (6 tipos incluyendo DI central vs nefrogénica), **Polaquiuria**, **Disuria**, **Tenesmo** (vesical vs rectal vs doble).
-**Dermatológicos / generales** (2): Palidez, Ictericia.
+**Dermatológicos / generales** (8): Palidez, Ictericia, **Equimosis** (con Cullen, Grey-Turner, ojos de mapache), **Petequias** (vs púrpura vs equimosis), **Eritema** (con UPP grado I), **Diaforesis** (fría vs caliente vs nocturna), **Astenia**, **Adinamia**.
 **Procedimentales** (6): Sondaje, Catéter, Cánula, Drenaje, Decúbito, Flebitis (con escala de Maddox).
 
 ### 🔜 Candidatos prioritarios para Fase 2 (~30-40 términos)
@@ -118,9 +118,7 @@ interface Entry {
 
 **Urinarios**: ✅ Módulo urinario cerrado en esta fase (7 términos enriquecidos).
 
-**Dermatológicos / generales**:
-- [ ] Equimosis · Petequias · Eritema
-- [ ] Diaforesis · Astenia · Adinamia
+**Dermatológicos / generales**: ✅ Módulo cerrado en esta fase (8 términos enriquecidos).
 
 **Procedimentales**:
 - [ ] Aspiración de secreciones · Permeable · Extravasación
