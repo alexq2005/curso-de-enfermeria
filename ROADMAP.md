@@ -97,10 +97,10 @@ interface Entry {
 
 **Criterio de inclusión**: signos, síntomas, terminología procedimental y anatomo-funcional. NO entidades clínicas completas (esas viven en app Patologías).
 
-### ✅ Enriquecidos (42)
+### ✅ Enriquecidos (49)
 **Respiratorios** (11): Apnea, Disnea, Taquipnea, Cianosis, Hipoxia, Hipoxemia, Estridor, Tiraje, Crepitantes, Sibilancias, Hemoptisis.
 **Cardiovasculares** (6): Bradicardia, Taquicardia, Hipotensión, Síncope, Edema, Soplo cardíaco.
-**Neurológicos** (10): Cefalea, Convulsión, Afasia, **Somnolencia**, **Obnubilación**, **Estupor**, **Coma** (gradient completo), **Anisocoria**, **Midriasis**, **Miosis**.
+**Neurológicos** (17): Cefalea, Convulsión, Afasia, Somnolencia, Obnubilación, Estupor, Coma (gradient completo), Anisocoria, Midriasis, Miosis, **Hemiparesia**, **Hemiplejía**, **Disartria**, **Mareo** (umbrella diferencial), **Vértigo**, **Lipotimia**, **Parestesia**.
 **Digestivos** (4): Vómito (umbrella), Hematemesis, Melena, Disfagia.
 **Urinarios** (3): Oliguria, Anuria, Hematuria.
 **Dermatológicos / generales** (2): Palidez, Ictericia.
@@ -117,11 +117,7 @@ interface Entry {
 - [ ] Palpitaciones · Lipotimia
 - [ ] Ingurgitación yugular · Frialdad distal · Relleno capilar
 
-**Neurológicos**:
-- [ ] Disartria (motora pura, no lingüística — par con Afasia)
-- [ ] Hemiparesia · Hemiplejía
-- [ ] Parestesia · Vértigo (periférico vs central)
-- [ ] Mareo (vs vértigo vs lipotimia — distinción clínica)
+**Neurológicos**: ✅ Módulo neurológico cerrado en esta fase (17 términos enriquecidos).
 
 **Digestivos**:
 - [ ] Hematoquecia · Pirosis
