@@ -342,8 +342,36 @@
       ]
     },
     { "sigla": "Eupnea", "definicion": "Respiración normal: 12-20 rpm en adulto, rítmica, sin esfuerzo ni ruidos. Patrón de referencia para comparar." },
-    { "sigla": "Fóvea", "definicion": "Depresión visible que persiste tras presionar con el pulgar la piel sobre un edema. También llamado signo de Godet. Se gradúa 1+ a 4+ según profundidad y duración." },
-    { "sigla": "Frialdad distal", "definicion": "Disminución de la temperatura en manos y pies. Signo de mala perfusión periférica: shock, hipotermia, oclusión arterial." },
+    { "sigla": "Fóvea", "definicion": "Depresión visible que persiste tras presionar con el pulgar la piel sobre un edema (signo de Godet). Se evalúa en zonas óseas: pretibial, dorso del pie, sacro. Técnica: presionar firme 5-15 s y medir profundidad + tiempo de recuperación.",
+      "tipos": [
+        "Godet 1+ (leve): depresión ~2 mm, desaparece rápidamente (< 10 s). Edema apenas detectable.",
+        "Godet 2+ (moderado): depresión ~4 mm, recupera en 10-15 s. Edema clínicamente evidente.",
+        "Godet 3+ (marcado): depresión ~6 mm, recupera en 1 minuto aprox. Edema significativo.",
+        "Godet 4+ (severo): depresión > 8 mm, persiste > 2-5 minutos. Edema masivo, miembros engrosados y tensos.",
+        "Sin fóvea (no-godet) — no deja huella aunque haya edema. Linfedema, mixedema (hipotiroidismo), edema crónico fibrosado."
+      ],
+      "ejemplos": [
+        "Godet 2+ bimaleolar simétrico al final del día en paciente con IC crónica → sobrecarga de volumen leve, ajustar diuréticos.",
+        "Godet 3+ pretibial unilateral + dolor + calor → trombosis venosa profunda, ecodoppler urgente.",
+        "Godet 4+ generalizado (anasarca) en paciente con cirrosis avanzada o síndrome nefrótico → restricción hidrosalina, diuréticos, albúmina si severa.",
+        "Edema sin fóvea de dorso de pies + cara abotagada + bradicardia → mixedema por hipotiroidismo severo."
+      ]
+    },
+    { "sigla": "Frialdad distal", "definicion": "Disminución palpable de la temperatura en extremidades distales (manos, pies, nariz, orejas). Marcador de mala perfusión periférica. Su distribución (simétrica vs unilateral) y velocidad de instalación orientan al mecanismo.",
+      "tipos": [
+        "Por vasoconstricción simpática — frialdad simétrica + palidez + sudoración. Shock hipovolémico/cardiogénico, hipotermia, hipoglucemia, dolor agudo.",
+        "Por oclusión arterial aguda — frialdad unilateral súbita + dolor + palidez + ausencia de pulsos. EMERGENCIA vascular ('las 6 P': pain, pallor, pulselessness, paresthesia, paralysis, poikilothermia).",
+        "Por enfermedad arterial crónica — frialdad gradual + claudicación intermitente + atrofia cutánea + pérdida de vello distal. Aterosclerosis, diabetes.",
+        "Por fenómeno de Raynaud — frialdad episódica desencadenada por frío/estrés con secuencia palidez → cianosis → eritema en dedos. Primario o secundario a colagenopatías.",
+        "Por shock distributivo en fase fría — paradójicamente frío y vasoconstricción tras la fase caliente inicial. Sepsis avanzada, anafilaxia tardía."
+      ],
+      "ejemplos": [
+        "Frialdad distal simétrica + TA 80/50 + FC 120 + relleno capilar > 3 s → shock, restaurar volumen y buscar causa.",
+        "Frialdad súbita unilateral de miembro inferior + dolor + sin pulso pedio → oclusión arterial aguda, ecodoppler urgente + heparina + cirugía vascular.",
+        "Frialdad gradual + claudicación a < 100 m en tabaquista → enfermedad arterial periférica grado IIB de Fontaine, evaluar índice tobillo-brazo (ITB).",
+        "Crisis de palidez → cianosis → eritema en dedos al lavar platos con agua fría en mujer joven → fenómeno de Raynaud, descartar colagenopatía."
+      ]
+    },
     { "sigla": "Hematemesis", "definicion": "Vómito de sangre proveniente del tracto digestivo superior. Caracterizar el aspecto orienta al tiempo de sangrado y origen.",
       "tipos": [
         "Roja brillante — sangrado activo en curso. Várices esofágicas rotas, desgarro de Mallory-Weiss, lesiones agudas.",
@@ -473,7 +501,20 @@
         "Ictericia + anemia + esplenomegalia → hemólisis."
       ]
     },
-    { "sigla": "Ingurgitación yugular", "definicion": "Distensión visible de las venas yugulares con el paciente a 45°. Signo de aumento de presión venosa central: insuficiencia cardíaca derecha, taponamiento, sobrecarga de volumen." },
+    { "sigla": "Ingurgitación yugular", "definicion": "Distensión visible de las venas yugulares — refleja aumento de la presión venosa central (PVC). Se evalúa con paciente semisentado a 30-45° con cabeza apoyada y cuello relajado. Medir altura del pulso venoso sobre el ángulo de Louis (esternal) + 5 cm = PVC.",
+      "tipos": [
+        "Grado 1 (leve) — visible solo en decúbito 30°. PVC ~8-10 cm H₂O.",
+        "Grado 2 (moderada) — visible a 45°. PVC ~10-14 cm H₂O. Sobrecarga de volumen, IC inicial.",
+        "Grado 3 (severa) — visible aun sentado o de pie. PVC > 15 cm H₂O. IC descompensada, taponamiento.",
+        "Con reflujo hepatoyugular positivo — la presión sostenida sobre el hipocondrio derecho durante 10-15 s aumenta la altura del pulso venoso. Sensible para IC derecha incipiente."
+      ],
+      "ejemplos": [
+        "IY grado 2 + edema bimaleolar + hepatomegalia → IC derecha descompensada.",
+        "IY grado 3 + hipotensión + ruidos cardíacos apagados (tríada de Beck) → taponamiento cardíaco.",
+        "IY que aumenta paradójicamente con la inspiración (signo de Kussmaul) → pericarditis constrictiva, miocardiopatía restrictiva.",
+        "Reflujo hepatoyugular positivo sin IY franca → IC derecha incipiente o sobrecarga de volumen."
+      ]
+    },
     { "sigla": "Lipotimia", "definicion": "Sensación de desmayo inminente sin llegar a perder la conciencia. Equivale a presíncope. Diferencia clave vs síncope: en lipotimia el paciente NO llega a caer, en síncope sí hay pérdida completa con caída.",
       "tipos": [
         "Vasovagal — la más frecuente. Pródromos típicos: náuseas, palidez, sudoración fría, visión borrosa, oscurecimiento. Desencadenantes: dolor, calor, estrés, ver sangre, bipedestación prolongada.",
@@ -583,7 +624,21 @@
         "Palidez + ictericia leve + esplenomegalia → anemia hemolítica."
       ]
     },
-    { "sigla": "Palpitaciones", "definicion": "Percepción consciente del latido cardíaco. Puede ser fisiológica (ejercicio, ansiedad) o patológica (arritmias)." },
+    { "sigla": "Palpitaciones", "definicion": "Percepción consciente y desagradable del latido cardíaco. Caracterizar cómo se sienten (forma, ritmo, duración, desencadenantes) orienta al diagnóstico. ECG durante el episodio es la prueba clave.",
+      "tipos": [
+        "Regulares rápidas — taquicardia sinusal (fiebre, anemia, hipertiroidismo, ansiedad) o supraventricular paroxística (inicio/fin súbitos).",
+        "Irregulares — fibrilación auricular (totalmente irregular, sin ondas P), extrasístoles auriculares o ventriculares aisladas.",
+        "Salto/pausa (skip beat) — extrasístoles. Sensación de 'el corazón se paró un instante' seguida de un latido fuerte (compensador).",
+        "En cuello (signo del sapo) — TSV o disociación AV (contracción auricular contra válvulas cerradas). Pulso visible en yugular.",
+        "Sostenidas con sintomatología — taquicardia ventricular, riesgo de inestabilidad. ECG inmediato."
+      ],
+      "ejemplos": [
+        "Palpitaciones irregulares + déficit de pulso + antecedente de HTA → FA, ECG + ecocardiograma + score CHA₂DS₂-VASc.",
+        "Palpitaciones de inicio y fin súbitos en joven sin cardiopatía → TSV, maniobras vagales (Valsalva modificado), si no responde adenosina.",
+        "Palpitaciones de 'saltos' aisladas en paciente ansioso, ECG normal → extrasístoles benignas, tranquilizar.",
+        "Palpitaciones + síncope + antecedente familiar de muerte súbita → estudiar canalopatías (Brugada, QT largo)."
+      ]
+    },
     { "sigla": "Parestesia", "definicion": "Sensación anormal espontánea no dolorosa: hormigueo, adormecimiento, pinchazos, sensación de 'piel acartonada'. La DISTRIBUCIÓN topográfica orienta al nivel del compromiso del sistema nervioso.",
       "tipos": [
         "Mononeuropatía — territorio de un solo nervio. Mano dormida en territorio del mediano (túnel carpiano), pie caído por compresión del peroneo común.",
@@ -604,7 +659,21 @@
     { "sigla": "Pirosis", "definicion": "Sensación de ardor retroesternal ascendente. Síntoma cardinal de reflujo gastroesofágico." },
     { "sigla": "Polaquiuria", "definicion": "Aumento de la frecuencia urinaria con volúmenes pequeños. Diferenciar de poliuria (volúmenes grandes). Sugiere irritación vesical (ITU, litiasis)." },
     { "sigla": "Poliuria", "definicion": "Diuresis mayor a 3 L/día. Causas: diabetes mellitus descompensada, diabetes insípida, diuréticos, fase poliúrica de IRA." },
-    { "sigla": "Relleno capilar", "definicion": "Tiempo que tarda el lecho ungueal en recuperar su color tras presión. Normal < 2 segundos. Prolongado indica mala perfusión periférica." },
+    { "sigla": "Relleno capilar", "definicion": "Tiempo en segundos que tarda el lecho ungueal o pulpejo en recuperar su color rosado tras presionarlo unos 5 s. Técnica: presionar a la altura del corazón, en ambiente cálido. Marcador rápido y barato de perfusión periférica.",
+      "tipos": [
+        "Normal: < 2 segundos. Buena perfusión.",
+        "Prolongado leve: 2-3 segundos. Vasoconstricción incipiente, evaluar contexto.",
+        "Prolongado: > 3 segundos. Hipoperfusión significativa, signo de shock incipiente.",
+        "Marcadamente prolongado: > 5 segundos. Hipoperfusión severa.",
+        "Ausente: el color no retorna. Oclusión arterial completa de ese segmento."
+      ],
+      "ejemplos": [
+        "TRC 4 segundos + TA limítrofe + FC 110 + alteración mental → shock séptico (criterio del qSOFA ampliado), iniciar resucitación con fluidos.",
+        "TRC normal en mano cálida pero prolongado en pie frío → puede ser local (vasoconstricción ambiental, oclusión arterial periférica), no sistémico.",
+        "Lactante con TRC > 3 s + somnolencia + mala alimentación → shock pediátrico, ABC + acceso vascular urgente.",
+        "TRC ausente en dedo tras canulación arterial radial → posible isquemia, retirar catéter y reevaluar test de Allen."
+      ]
+    },
     { "sigla": "Roncus", "definicion": "Ruidos respiratorios continuos, graves, audibles en inspiración y espiración. Indican secreciones en vía aérea media-grande. Mejoran con la tos." },
     { "sigla": "Sibilancias", "definicion": "Ruidos respiratorios continuos, musicales, predominantemente espiratorios. Indican obstrucción de vía aérea inferior por broncoespasmo o secreciones espesas.",
       "tipos": [
