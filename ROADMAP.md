@@ -97,14 +97,14 @@ interface Entry {
 
 **Criterio de inclusión**: signos, síntomas, terminología procedimental y anatomo-funcional. NO entidades clínicas completas (esas viven en app Patologías).
 
-### ✅ Enriquecidos (35)
-**Respiratorios** (10): Apnea, Disnea, Taquipnea, Cianosis, Hipoxia, **Hipoxemia**, **Estridor**, **Tiraje**, Crepitantes, Sibilancias, Hemoptisis.
-**Cardiovasculares** (6): Bradicardia, Taquicardia, **Hipotensión**, Síncope, Edema, Soplo cardíaco.
-**Neurológicos** (3): Cefalea, Convulsión, **Afasia**.
+### ✅ Enriquecidos (42)
+**Respiratorios** (11): Apnea, Disnea, Taquipnea, Cianosis, Hipoxia, Hipoxemia, Estridor, Tiraje, Crepitantes, Sibilancias, Hemoptisis.
+**Cardiovasculares** (6): Bradicardia, Taquicardia, Hipotensión, Síncope, Edema, Soplo cardíaco.
+**Neurológicos** (10): Cefalea, Convulsión, Afasia, **Somnolencia**, **Obnubilación**, **Estupor**, **Coma** (gradient completo), **Anisocoria**, **Midriasis**, **Miosis**.
 **Digestivos** (4): Vómito (umbrella), Hematemesis, Melena, Disfagia.
-**Urinarios** (3): Oliguria, **Anuria**, **Hematuria**.
+**Urinarios** (3): Oliguria, Anuria, Hematuria.
 **Dermatológicos / generales** (2): Palidez, Ictericia.
-**Procedimentales** (6): Sondaje, Catéter, Cánula, Drenaje, Decúbito, **Flebitis** (con escala de Maddox).
+**Procedimentales** (6): Sondaje, Catéter, Cánula, Drenaje, Decúbito, Flebitis (con escala de Maddox).
 
 ### 🔜 Candidatos prioritarios para Fase 2 (~30-40 términos)
 
@@ -120,9 +120,8 @@ interface Entry {
 **Neurológicos**:
 - [ ] Disartria (motora pura, no lingüística — par con Afasia)
 - [ ] Hemiparesia · Hemiplejía
-- [ ] Anisocoria · Midriasis · Miosis
-- [ ] Niveles de conciencia: Somnolencia, Obnubilación, Estupor, Coma
 - [ ] Parestesia · Vértigo (periférico vs central)
+- [ ] Mareo (vs vértigo vs lipotimia — distinción clínica)
 
 **Digestivos**:
 - [ ] Hematoquecia · Pirosis
