@@ -97,31 +97,28 @@ interface Entry {
 
 **Criterio de inclusión**: signos, síntomas, terminología procedimental y anatomo-funcional. NO entidades clínicas completas (esas viven en app Patologías).
 
-### ✅ Enriquecidos (27)
-**Respiratorios**: Apnea, Disnea, Taquipnea, Cianosis, Hipoxia, Crepitantes, Sibilancias, Hemoptisis.
-**Cardiovasculares**: Bradicardia, Taquicardia, Síncope, Edema, Soplo cardíaco.
-**Neurológicos**: Cefalea, Convulsión.
-**Digestivos**: Vómito (umbrella), Hematemesis, Melena, Disfagia.
-**Urinarios**: Oliguria.
-**Dermatológicos / generales**: Palidez, Ictericia.
-**Procedimentales**: Sondaje, Catéter, Cánula, Drenaje, Decúbito.
+### ✅ Enriquecidos (35)
+**Respiratorios** (10): Apnea, Disnea, Taquipnea, Cianosis, Hipoxia, **Hipoxemia**, **Estridor**, **Tiraje**, Crepitantes, Sibilancias, Hemoptisis.
+**Cardiovasculares** (6): Bradicardia, Taquicardia, **Hipotensión**, Síncope, Edema, Soplo cardíaco.
+**Neurológicos** (3): Cefalea, Convulsión, **Afasia**.
+**Digestivos** (4): Vómito (umbrella), Hematemesis, Melena, Disfagia.
+**Urinarios** (3): Oliguria, **Anuria**, **Hematuria**.
+**Dermatológicos / generales** (2): Palidez, Ictericia.
+**Procedimentales** (6): Sondaje, Catéter, Cánula, Drenaje, Decúbito, **Flebitis** (con escala de Maddox).
 
 ### 🔜 Candidatos prioritarios para Fase 2 (~30-40 términos)
 
 **Respiratorios**:
 - [ ] Bradipnea · Eupnea · Ortopnea · Hiperpnea
-- [ ] Tiraje · Estridor · Roncus
-- [ ] Hipoxemia (vs Hipoxia — distinción crítica) · Hipercapnia
-- [ ] Esputo (caracterizar tipos)
+- [ ] Roncus · Hipercapnia
+- [ ] Esputo (caracterizar tipos: mucoso, mucopurulento, herrumbroso, hemoptoico)
 
 **Cardiovasculares**:
-- [ ] Hipotensión (ortostática, distributiva, hipovolémica)
 - [ ] Palpitaciones · Lipotimia
-- [ ] Edema (ya enriquecido pero con más profundidad: anasarca vs localizado)
 - [ ] Ingurgitación yugular · Frialdad distal · Relleno capilar
 
 **Neurológicos**:
-- [ ] Disartria · Afasia (motora/sensitiva/mixta)
+- [ ] Disartria (motora pura, no lingüística — par con Afasia)
 - [ ] Hemiparesia · Hemiplejía
 - [ ] Anisocoria · Midriasis · Miosis
 - [ ] Niveles de conciencia: Somnolencia, Obnubilación, Estupor, Coma
@@ -132,14 +129,14 @@ interface Entry {
 - [ ] Náuseas · Borborigmos · Distensión abdominal
 
 **Urinarios**:
-- [ ] Anuria (vs Oliguria) · Poliuria · Polaquiuria · Disuria · Hematuria · Tenesmo
+- [ ] Poliuria · Polaquiuria · Disuria · Tenesmo
 
 **Dermatológicos / generales**:
 - [ ] Equimosis · Petequias · Eritema
 - [ ] Diaforesis · Astenia · Adinamia
 
 **Procedimentales**:
-- [ ] Aspiración de secreciones · Permeable · Extravasación · Flebitis
+- [ ] Aspiración de secreciones · Permeable · Extravasación
 - [ ] Sonda nasogástrica (SNG) · Sonda vesical (Foley) — actualmente solo definición
 
 ### 📋 Política de enriquecimiento
@@ -150,6 +147,9 @@ Al elegir candidatos:
 3. **Diferenciación útil** — terminos que se confunden frecuentemente (hipoxia vs hipoxemia, melena vs pseudomelena, mareo vs vértigo) son alta prioridad.
 4. **Tamaño**: 2-7 tipos, 3-4 ejemplos. Más de eso = mover a un subtema de un módulo, no a glosario.
 5. **No solape con Patologías**: si entidad clínica completa con etiología/cuidados → app Patologías.
+
+### 🔍 Issue UX descubierto (2026-05-22)
+GlosarioScreen ordena resultados de búsqueda **alfabéticamente**, no por relevancia. Ejemplo: buscar "hipotension" muestra Bradicardia (B) antes que Hipotensión (H), porque ambas matchean pero la sort key es la sigla. El BuscadorScreen sí rankea por scoring; el Glosario quedó atrás. Fix futuro: reusar la misma lógica de scoring + sort en GlosarioScreen.filter().
 
 ### 🛠️ Workflow para futuras sesiones de enriquecimiento
 
