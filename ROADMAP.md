@@ -97,14 +97,14 @@ interface Entry {
 
 **Criterio de inclusión**: signos, síntomas, terminología procedimental y anatomo-funcional. NO entidades clínicas completas (esas viven en app Patologías).
 
-### ✅ Enriquecidos (76)
+### ✅ Enriquecidos (81) — Fase 2 COMPLETA · todos los módulos cerrados
 **Respiratorios** (18): Apnea, Disnea, Taquipnea, Cianosis, Hipoxia, Hipoxemia, Estridor, Tiraje, Crepitantes, Sibilancias, Hemoptisis, **Bradipnea**, **Eupnea** (referencia normal), **Ortopnea** (con DPN, trepopnea, platipnea), **Hiperpnea** (con Kussmaul), **Roncus**, **Hipercapnia**, **Esputo** (7 tipos por aspecto).
 **Cardiovasculares** (11): Bradicardia, Taquicardia, Hipotensión, Síncope, Edema, Soplo cardíaco, **Palpitaciones**, **Ingurgitación yugular**, **Frialdad distal**, **Relleno capilar**, **Fóvea** (godet con grados 1+ a 4+).
 **Neurológicos** (17): Cefalea, Convulsión, Afasia, Somnolencia, Obnubilación, Estupor, Coma (gradient completo), Anisocoria, Midriasis, Miosis, **Hemiparesia**, **Hemiplejía**, **Disartria**, **Mareo** (umbrella diferencial), **Vértigo**, **Lipotimia**, **Parestesia**.
 **Digestivos** (9): Vómito (umbrella), Hematemesis, Melena, Disfagia, **Hematoquecia**, **Pirosis**, **Náuseas** (7 tipos por origen), **Borborigmos** (gradient: aumentados → metálicos → disminuidos → ausentes), **Distensión abdominal** (las 6 F's).
 **Urinarios** (7): Oliguria, Anuria, Hematuria, **Poliuria** (6 tipos incluyendo DI central vs nefrogénica), **Polaquiuria**, **Disuria**, **Tenesmo** (vesical vs rectal vs doble).
 **Dermatológicos / generales** (8): Palidez, Ictericia, **Equimosis** (con Cullen, Grey-Turner, ojos de mapache), **Petequias** (vs púrpura vs equimosis), **Eritema** (con UPP grado I), **Diaforesis** (fría vs caliente vs nocturna), **Astenia**, **Adinamia**.
-**Procedimentales** (6): Sondaje, Catéter, Cánula, Drenaje, Decúbito, Flebitis (con escala de Maddox).
+**Procedimentales** (11): Sondaje, Catéter, Cánula, Drenaje, Decúbito, Flebitis (Maddox), **Aspiración de secreciones**, **Permeable**, **Extravasación** (con manejo de vesicantes), **Sonda nasogástrica (SNG)** (Salem/Levin/fina/Sengstaken), **Sonda vesical (Foley)** (corto/prolongada/intermitente/3 vías/suprapúbica + CAUTI).
 
 ### 🔜 Candidatos prioritarios para Fase 2 (~30-40 términos)
 
@@ -120,9 +120,24 @@ interface Entry {
 
 **Dermatológicos / generales**: ✅ Módulo cerrado en esta fase (8 términos enriquecidos).
 
-**Procedimentales**:
-- [ ] Aspiración de secreciones · Permeable · Extravasación
-- [ ] Sonda nasogástrica (SNG) · Sonda vesical (Foley) — actualmente solo definición
+**Procedimentales**: ✅ Módulo procedimental cerrado en esta fase (11 términos enriquecidos).
+
+## ✅ FASE 2 COMPLETA · 7 de 7 módulos cerrados
+
+81 entradas enriquecidas sobre 178 totales (46%). Las 97 restantes son **siglas/abreviaturas** que conservan solo `definicion` por diseño — no requieren tipos/ejemplos (son acrónimos con un solo significado: ECG, RCP, EPP, TET, UCO, UI, VO, VNI, etc.).
+
+**Cobertura por sistema final**:
+
+| Sistema | Enriquecidos | Resaltados |
+|---------|-------------:|------------|
+| 🫁 Respiratorio | 18 | Apnea, Disnea, Hipoxia/Hipoxemia, Estridor, Esputo (7 tipos) |
+| 🧠 Neurológico | 17 | Coma (6 etiologías), gradient de conciencia, signos pupilares, Vértigo (HINTS) |
+| ❤️ Cardiovascular | 11 | Hipotensión (6 tipos shock), Soplo (escala 1-6), Fóvea (Godet 1+ a 4+) |
+| 🩹 Procedimental | 11 | Maddox flebitis, manejo de extravasación, CAUTI prevention |
+| 🩸 Digestivo | 9 | Vómito (7 tipos), Distensión (6 F's), trampa hematoquecia masiva |
+| 🌡️ Dermato/general | 8 | Cullen/Grey-Turner, petequias vs púrpura vs equimosis |
+| 💧 Urinario | 7 | DI central vs nefrogénica, momento del chorro en disuria |
+| **Total** | **81** | |
 
 ### 📋 Política de enriquecimiento
 
