@@ -96,7 +96,22 @@
     { "sigla": "VNI", "definicion": "Ventilación no invasiva — ventilación mecánica con máscara (sin tubo endotraqueal): CPAP, BiPAP." },
     { "sigla": "VO", "definicion": "Vía oral — administración por la boca." },
 
-    { "sigla": "Adinamia", "definicion": "Pérdida de la iniciativa motora; debilidad extrema que dificulta el movimiento. Más profunda que la astenia." },
+    { "sigla": "Adinamia", "definicion": "Pérdida de la iniciativa motora con incapacidad real para iniciar movimientos voluntarios. Más profunda que la astenia: en astenia el paciente PUEDE moverse pero está cansado; en adinamia NO puede o no inicia el movimiento aunque quiera.",
+      "tipos": [
+        "Por encefalopatía — hepática, urémica, séptica, metabólica. Suele acompañar obnubilación.",
+        "Por sepsis avanzada — adinamia + alteración del sensorio + hipotensión + signos de hipoperfusión.",
+        "Por deshidratación severa — adinamia + mucosas secas + signo del pliegue + oliguria.",
+        "Por depresión mayor severa — adinamia + abulia + anhedonia + mutismo. Cuadro psiquiátrico grave.",
+        "Por intoxicación / sobredosis — depresores del SNC (benzodiacepinas, opioides, alcohol).",
+        "Por enfermedad neuromuscular grave — ELA avanzada, Guillain-Barré progresivo, miastenia con crisis."
+      ],
+      "ejemplos": [
+        "Adinamia + ictericia + asterixis + cirrosis conocida → encefalopatía hepática, descartar HDA o infección como gatillo.",
+        "Adinamia + fiebre + TA 80/45 + lactato 5 mmol/L → sepsis severa con hipoperfusión, resucitación + ATB precoz.",
+        "Adinamia + abulia + sin respuesta a estímulos + antecedente de depresión → episodio depresivo mayor con catatonía, consulta psiquiátrica urgente.",
+        "Adinamia progresiva en días + debilidad ascendente + arreflexia tras infección viral → Guillain-Barré, neurología + UTI."
+      ]
+    },
     { "sigla": "Afasia", "definicion": "Trastorno adquirido del lenguaje por lesión cerebral. NO confundir con disartria (que es articulatoria, no lingüística). Generalmente por lesiones en hemisferio dominante (izquierdo en 95 % de diestros).",
       "tipos": [
         "Motora (de Broca) — habla NO fluente, frases cortas, esfuerzo. Comprensión preservada. El paciente sabe qué decir pero no puede expresarlo. Lesión frontal inferior izquierda.",
@@ -154,7 +169,22 @@
         "Apnea del prematuro por inmadurez del centro respiratorio."
       ]
     },
-    { "sigla": "Astenia", "definicion": "Sensación subjetiva de cansancio o falta de energía sin causa proporcional al esfuerzo realizado." },
+    { "sigla": "Astenia", "definicion": "Sensación subjetiva de cansancio, falta de energía o agotamiento desproporcionado al esfuerzo realizado. Síntoma muy inespecífico — la duración, ritmo (matinal vs vespertino), red flags y respuesta al reposo orientan al origen.",
+      "tipos": [
+        "Aguda — < 1 mes. Infecciones virales, post-quirúrgica, deshidratación, sueño insuficiente.",
+        "Crónica — > 6 meses. Síndrome de fatiga crónica, anemia, hipotiroidismo, depresión, cáncer, IC, IRC, enfermedades autoinmunes.",
+        "Matutina (cansancio al despertar) — depresión, apnea del sueño, dolor crónico.",
+        "Vespertina (que empeora durante el día y mejora con reposo) — sugiere causa orgánica (anemia, IC, EPOC).",
+        "Que empeora con el ejercicio y mejora con reposo (claudicación-like) — descartar miastenia gravis, miopatías.",
+        "Red flags — adelgazamiento, fiebre, sudoración nocturna, adenopatías, sangrados. Estudio inmediato."
+      ],
+      "ejemplos": [
+        "Astenia + palidez + uñas frágiles + caída de cabello + menorragia → anemia ferropénica, hemograma + ferritina.",
+        "Astenia + intolerancia al frío + aumento de peso + estreñimiento + bradicardia → hipotiroidismo, TSH.",
+        "Astenia + pérdida de peso + sudoración nocturna + adenopatías cervicales → sospecha de linfoma, biopsia ganglionar.",
+        "Astenia + anhedonia + insomnio + ideación pesimista → depresión mayor, screening con PHQ-9."
+      ]
+    },
     { "sigla": "Borborigmos", "definicion": "Ruidos hidroaéreos producidos por la peristalsis intestinal con desplazamiento de gas y líquido. Normales 5-30/min audibles con estetoscopio. La auscultación debe ser previa a la palpación abdominal (que altera el peristaltismo).",
       "tipos": [
         "Normales — 5-30/min, intermitentes. Sin patología.",
@@ -284,7 +314,21 @@
         "Semi-Fowler 30° permanente en paciente con SNG y nutrición enteral."
       ]
     },
-    { "sigla": "Diaforesis", "definicion": "Sudoración profusa, fría y pegajosa. Signo de activación simpática: shock, hipoglucemia, IAM, dolor severo." },
+    { "sigla": "Diaforesis", "definicion": "Sudoración profusa, generalmente generalizada. La calidad (fría vs caliente) y el contexto orientan al mecanismo. Diaforesis fría en piel pálida es signo de mala perfusión.",
+      "tipos": [
+        "Fría (sudoración fría y pegajosa) — activación simpática por hipoperfusión o estímulo intenso. Shock, hipoglucemia, IAM, dolor agudo, anafilaxia.",
+        "Caliente — termorregulación o vasodilatación. Fiebre alta, ejercicio, sofocos menopáusicos, hipertiroidismo, golpe de calor.",
+        "Nocturna — sudoración profusa durante el sueño con cambio de pijama/sábanas. TBC, linfoma, infecciones crónicas, menopausia, apnea del sueño.",
+        "Hiperhidrosis primaria — sudoración palmar/plantar/axilar excesiva sin causa subyacente. Idiopática, generalmente desde la juventud.",
+        "Asimétrica / focal — síndrome de Horner (anhidrosis hemifacial), neuropatía autonómica, lesión medular."
+      ],
+      "ejemplos": [
+        "Diaforesis fría + dolor torácico opresivo + palidez en > 50 años → sospechar IAM, ECG + troponinas urgentes.",
+        "Diaforesis profusa + temblor + confusión + glucemia 40 mg/dL → hipoglucemia severa, glucosa EV.",
+        "Diaforesis nocturna + adelgazamiento + tos crónica de semanas → TBC, BAAR x3 + Rx tórax.",
+        "Diaforesis caliente + taquicardia + bocio + temblor + pérdida de peso → tirotoxicosis, TSH + T4."
+      ]
+    },
     { "sigla": "Disartria", "definicion": "Trastorno motor de la articulación de palabras. El paciente conserva el lenguaje (gramática, contenido, comprensión) pero deforma los sonidos. Diferencia clave vs afasia: la afasia rompe el lenguaje, la disartria solo la articulación.",
       "tipos": [
         "Fláccida — debilidad muscular bulbar. Voz nasal, débil, con escape aéreo. Causas: miastenia gravis, ELA bulbar, parálisis facial bilateral.",
@@ -375,8 +419,39 @@
         "Linfedema unilateral post mastectomía con vaciamiento ganglionar."
       ]
     },
-    { "sigla": "Equimosis", "definicion": "Mancha violácea por extravasación sanguínea subcutánea, mayor a 1 cm. Evoluciona en colores (violeta → verde → amarillo) según degradación de la hemoglobina." },
-    { "sigla": "Eritema", "definicion": "Enrojecimiento de la piel que desaparece a la presión (vitropresión positiva). Diferencia de petequias y equimosis (que no desaparecen)." },
+    { "sigla": "Equimosis", "definicion": "Extravasación sanguínea subcutánea > 1 cm, que NO desaparece a la vitropresión (a diferencia del eritema). La secuencia de colores permite datar aproximadamente el momento del traumatismo.",
+      "tipos": [
+        "Por trauma — la causa más común. Antecedente de golpe, caída, presión.",
+        "Espontánea — sin trauma proporcionado al sangrado. Sospechar trombocitopenia, anticoagulación excesiva, déficit de factores, vasculopatía senil, vasculitis.",
+        "Cronología por color: 0-2 días rojo-violáceo · 2-5 días azul-negro · 5-7 días verdoso · 7-10 días amarillento · 10-14 días marrón (resolución).",
+        "Periorbitaria bilateral ('ojos de mapache') — clásica de fractura de base de cráneo (lámina cribosa).",
+        "Periumbilical (signo de Cullen) — hemorragia retroperitoneal: pancreatitis aguda hemorrágica, embarazo ectópico roto.",
+        "En flancos (signo de Grey-Turner) — hemorragia retroperitoneal, mismas causas que Cullen."
+      ],
+      "ejemplos": [
+        "Equimosis múltiples en distintas etapas evolutivas en niño → ALERTA por maltrato infantil, notificar protocolo.",
+        "Equimosis 'ojos de mapache' tras TEC + otorragia + rinorraquia → fractura de base de cráneo.",
+        "Equimosis espontáneas en MMII en anciano con warfarina y RIN 4,2 → anticoagulación excesiva, suspender + vitamina K.",
+        "Equimosis periumbilical en paciente con dolor epigástrico irradiado a espalda + amilasa elevada → pancreatitis aguda hemorrágica."
+      ]
+    },
+    { "sigla": "Eritema", "definicion": "Enrojecimiento de la piel por vasodilatación de los capilares dérmicos. Característica clave: DESAPARECE a la vitropresión (signo distintivo vs petequias, púrpura y equimosis, que NO desaparecen).",
+      "tipos": [
+        "Localizado inflamatorio — celulitis, erisipela, picaduras, dermatitis de contacto. Calor + dolor + edema.",
+        "Generalizado (exantema) — virales (sarampión, rubéola, parvovirus), reacciones medicamentosas (DRESS, SJS/NET), enfermedades sistémicas (lupus).",
+        "Nodoso — nódulos eritematosos dolorosos pretibiales. Sarcoidosis, TBC, estreptococo, Behcet, fármacos.",
+        "Multiforme — lesiones 'en diana' (target). Reacciones a fármacos, infecciones por HSV.",
+        "Migratorio — eritema crónico migratorio en enfermedad de Lyme (puerta de entrada por garrapata).",
+        "Fijo medicamentoso — placa recurrente en la misma localización al re-exponerse al fármaco causal.",
+        "Por presión (úlcera por presión grado I) — eritema no blanqueable en zona de apoyo, primer estadio de UPP."
+      ],
+      "ejemplos": [
+        "Eritema doloroso + edema + calor + límite mal definido en pierna + fiebre → celulitis, ATB sistémico.",
+        "Eritema bien delimitado en cara con bordes elevados ('en alas de mariposa') + escamas → considerar erisipela o lupus.",
+        "Eritema generalizado + descamación + fiebre tras nuevo medicamento → reacción medicamentosa severa, suspender fármaco urgente.",
+        "Eritema no blanqueable persistente en sacro de paciente encamado → UPP grado I, redistribuir presión, registrar."
+      ]
+    },
     { "sigla": "Esputo", "definicion": "Material expulsado desde la vía aérea inferior mediante la tos. Diferenciar de la saliva (que es producida por glándulas salivales orales). La caracterización por aspecto + cantidad + olor orienta a la etiología.",
       "tipos": [
         "Mucoso (seroso) — claro, transparente, fluido. Bronquitis viral, asma, EPOC en fase estable.",
@@ -805,7 +880,21 @@
         "Parestesia ascendente desde pies + debilidad progresiva días post-infección viral → sospechar Guillain-Barré (emergencia)."
       ]
     },
-    { "sigla": "Petequias", "definicion": "Manchas puntiformes rojo-violáceas (< 3 mm) por extravasación sanguínea capilar. No desaparecen a la vitropresión. Sospechar trombocitopenia o vasculitis." },
+    { "sigla": "Petequias", "definicion": "Manchas puntiformes rojo-violáceas < 3 mm por extravasación capilar. NO desaparecen a la vitropresión (criterio que las diferencia de exantemas eritematosos). Lesiones intermedias (3-10 mm) se llaman púrpura; > 1 cm equimosis.",
+      "tipos": [
+        "Por trombocitopenia — distribución gravitacional/distal (MMII, mucosas). Plaquetas usualmente < 30.000. Riesgo de sangrado mayor.",
+        "Por vasculitis — vasculitis leucocitoclástica, púrpura de Schönlein-Henoch. Lesiones palpables en MMII (vs no palpables en trombocitopenia).",
+        "Por sepsis meningocócica — petequias en tronco que progresan rápidamente a púrpura confluente. EMERGENCIA, ATB inmediato.",
+        "Por aumento de presión venosa (tusígenas o vómitos) — limitadas a cara y cuello tras esfuerzos. Benignas, transitorias.",
+        "Por déficit de vitamina C (escorbuto) — petequias perifoliculares + sangrado gingival + cicatrización pobre. Raro hoy salvo desnutrición severa o alcoholismo."
+      ],
+      "ejemplos": [
+        "Petequias en MMII + fiebre alta + cefalea + rigidez de nuca en joven → meningococcemia, ATB EV inmediato y aislamiento respiratorio.",
+        "Petequias generalizadas + plaquetas 8.000 + sin sangrado → trombocitopenia severa (PTI, sepsis, fármacos), considerar transfusión si < 10.000 o sangrado.",
+        "Petequias palpables en MMII en paciente con artralgias y dolor abdominal en niño → púrpura de Schönlein-Henoch, evaluar función renal.",
+        "Petequias en cara y cuello tras vómito intenso o ataque de tos → tusígenas/eméticas, benignas, no requieren estudio."
+      ]
+    },
     { "sigla": "Pirosis", "definicion": "Sensación de ardor retroesternal ascendente. Síntoma cardinal del reflujo gastroesofágico (ERGE). Diferenciar de ángor: la pirosis típica es retroesternal baja, ascendente, post-prandial, calma con antiácidos.",
       "tipos": [
         "Post-prandial — aparece minutos a 1 h después de comer, especialmente con comidas grasas, cítricos, picantes, alcohol o café.",
