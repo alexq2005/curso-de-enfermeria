@@ -97,12 +97,12 @@ interface Entry {
 
 **Criterio de inclusión**: signos, síntomas, terminología procedimental y anatomo-funcional. NO entidades clínicas completas (esas viven en app Patologías).
 
-### ✅ Enriquecidos (61)
+### ✅ Enriquecidos (65)
 **Respiratorios** (18): Apnea, Disnea, Taquipnea, Cianosis, Hipoxia, Hipoxemia, Estridor, Tiraje, Crepitantes, Sibilancias, Hemoptisis, **Bradipnea**, **Eupnea** (referencia normal), **Ortopnea** (con DPN, trepopnea, platipnea), **Hiperpnea** (con Kussmaul), **Roncus**, **Hipercapnia**, **Esputo** (7 tipos por aspecto).
 **Cardiovasculares** (11): Bradicardia, Taquicardia, Hipotensión, Síncope, Edema, Soplo cardíaco, **Palpitaciones**, **Ingurgitación yugular**, **Frialdad distal**, **Relleno capilar**, **Fóvea** (godet con grados 1+ a 4+).
 **Neurológicos** (17): Cefalea, Convulsión, Afasia, Somnolencia, Obnubilación, Estupor, Coma (gradient completo), Anisocoria, Midriasis, Miosis, **Hemiparesia**, **Hemiplejía**, **Disartria**, **Mareo** (umbrella diferencial), **Vértigo**, **Lipotimia**, **Parestesia**.
 **Digestivos** (4): Vómito (umbrella), Hematemesis, Melena, Disfagia.
-**Urinarios** (3): Oliguria, Anuria, Hematuria.
+**Urinarios** (7): Oliguria, Anuria, Hematuria, **Poliuria** (6 tipos incluyendo DI central vs nefrogénica), **Polaquiuria**, **Disuria**, **Tenesmo** (vesical vs rectal vs doble).
 **Dermatológicos / generales** (2): Palidez, Ictericia.
 **Procedimentales** (6): Sondaje, Catéter, Cánula, Drenaje, Decúbito, Flebitis (con escala de Maddox).
 
@@ -118,8 +118,7 @@ interface Entry {
 - [ ] Hematoquecia · Pirosis
 - [ ] Náuseas · Borborigmos · Distensión abdominal
 
-**Urinarios**:
-- [ ] Poliuria · Polaquiuria · Disuria · Tenesmo
+**Urinarios**: ✅ Módulo urinario cerrado en esta fase (7 términos enriquecidos).
 
 **Dermatológicos / generales**:
 - [ ] Equimosis · Petequias · Eritema
