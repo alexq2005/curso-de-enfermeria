@@ -97,9 +97,36 @@
     { "sigla": "VO", "definicion": "Vía oral — administración por la boca." },
 
     { "sigla": "Adinamia", "definicion": "Pérdida de la iniciativa motora; debilidad extrema que dificulta el movimiento. Más profunda que la astenia." },
-    { "sigla": "Afasia", "definicion": "Pérdida de la capacidad de producir o comprender el lenguaje por lesión cerebral. Puede ser motora (Broca), sensitiva (Wernicke) o mixta." },
+    { "sigla": "Afasia", "definicion": "Trastorno adquirido del lenguaje por lesión cerebral. NO confundir con disartria (que es articulatoria, no lingüística). Generalmente por lesiones en hemisferio dominante (izquierdo en 95 % de diestros).",
+      "tipos": [
+        "Motora (de Broca) — habla NO fluente, frases cortas, esfuerzo. Comprensión preservada. El paciente sabe qué decir pero no puede expresarlo. Lesión frontal inferior izquierda.",
+        "Sensitiva (de Wernicke) — habla FLUENTE pero sin sentido (jergafasia), parafasias. Comprensión alterada. Lesión temporal superior izquierda.",
+        "Global — pérdida de producción y comprensión. Lesión extensa que afecta áreas de Broca y Wernicke. Mal pronóstico.",
+        "De conducción — repetición severamente alterada con habla y comprensión preservadas. Lesión del fascículo arqueado.",
+        "Anómica — solo dificultad para nombrar objetos. La forma más leve."
+      ],
+      "ejemplos": [
+        "Afasia de Broca + hemiparesia derecha + desviación de la mirada a izquierda → ACV de arteria cerebral media izquierda.",
+        "Paciente fluido que habla 'palabras nuevas' sin sentido + no comprende órdenes simples → afasia de Wernicke.",
+        "Afasia global → pérdida total de comunicación, comunicarse por gestos simples (sí/no con cabeza), tableros pictográficos.",
+        "Diferencial clave: disartria mantiene el lenguaje (gramática, contenido) pero deforma la articulación; afasia rompe el lenguaje en sí."
+      ]
+    },
     { "sigla": "Anisocoria", "definicion": "Pupilas de distinto tamaño. Signo de alarma neurológica — sugiere hipertensión endocraneana o lesión del III par." },
-    { "sigla": "Anuria", "definicion": "Diuresis menor a 100 mL en 24 h. Signo de insuficiencia renal aguda o obstrucción urinaria completa." },
+    { "sigla": "Anuria", "definicion": "Diuresis menor a 100 mL en 24 h (algunos autores < 50 mL). Más grave que la oliguria. Sugiere obstrucción completa o injuria renal severa.",
+      "tipos": [
+        "Verdadera — no se produce orina. Causas: necrosis cortical bilateral, glomerulonefritis fulminante, oclusión vascular bilateral.",
+        "Falsa (retención urinaria) — la orina se produce pero no sale por obstrucción uretral o disfunción vesical. CONFIRMAR siempre con vejiga vacía vs globo vesical antes de diagnosticar IRA.",
+        "Post-renal obstructiva — obstrucción bilateral o de monorreno funcional. Tumores, litiasis, hiperplasia prostática severa, ligadura quirúrgica accidental.",
+        "Prerrenal severa — hipoperfusión extrema. Shock hipovolémico o cardiogénico avanzado."
+      ],
+      "ejemplos": [
+        "Anuria + globo vesical palpable hipogástrico → retención urinaria, colocar Foley urgente.",
+        "Anuria post-cirugía pélvica → descartar lesión bilateral de uréteres (TAC con contraste).",
+        "Anuria + creatinina 6 mg/dL + K⁺ 7 mEq/L → IRA establecida, considerar diálisis de urgencia.",
+        "Pseudo-anuria: la SNG drena 0 mL pero la sonda Foley está obstruida → lavar/recambiar Foley antes de alarmar."
+      ]
+    },
     { "sigla": "Apex cardíaco", "definicion": "Punto de máxima impulsión del corazón en la pared torácica — habitualmente 5° EIC línea medioclavicular izquierda." },
     { "sigla": "Apnea", "definicion": "Ausencia de respiración por más de 10 segundos. Observar SatO₂, color, esfuerzo respiratorio y conciencia.",
       "tipos": [
@@ -248,7 +275,19 @@
     { "sigla": "Equimosis", "definicion": "Mancha violácea por extravasación sanguínea subcutánea, mayor a 1 cm. Evoluciona en colores (violeta → verde → amarillo) según degradación de la hemoglobina." },
     { "sigla": "Eritema", "definicion": "Enrojecimiento de la piel que desaparece a la presión (vitropresión positiva). Diferencia de petequias y equimosis (que no desaparecen)." },
     { "sigla": "Esputo", "definicion": "Material expulsado desde la vía aérea por la tos. Describir cantidad, color y consistencia: mucoso, mucopurulento, purulento, hemoptoico, herrumbroso." },
-    { "sigla": "Estridor", "definicion": "Ruido respiratorio agudo, predominantemente inspiratorio, audible sin estetoscopio. Indica obstrucción de vía aérea superior — emergencia." },
+    { "sigla": "Estridor", "definicion": "Ruido respiratorio agudo, audible sin estetoscopio. Localizar el momento del ciclo orienta al nivel de la obstrucción de la vía aérea superior. SIEMPRE emergencia, no demorar evaluación de vía aérea.",
+      "tipos": [
+        "Inspiratorio — obstrucción supraglótica/glótica (sobre las cuerdas vocales). Epiglotitis, edema angioneurótico, cuerpo extraño laríngeo.",
+        "Espiratorio — obstrucción subglótica baja (intratorácica). Cuerpo extraño bronquial, traqueomalacia.",
+        "Bifásico — obstrucción fija a nivel de glotis o tráquea proximal. Más severo. Estenosis subglótica, masa traqueal."
+      ],
+      "ejemplos": [
+        "Niño 3 años fiebre alta + estridor inspiratorio + babeo + posición de trípode → epiglotitis (emergencia, NO examinar la garganta).",
+        "Adulto + estridor inspiratorio súbito + edema labial tras ATB → anafilaxia, adrenalina IM 0,3 mg.",
+        "Niño con estridor bifásico crónico desde RN → sospechar laringomalacia o estenosis subglótica congénita.",
+        "Postextubación con estridor inspiratorio → edema laríngeo, considerar dexametasona y reintubación si progresa."
+      ]
+    },
     { "sigla": "Estupor", "definicion": "Nivel de conciencia con respuesta solo a estímulos dolorosos vigorosos. Más profundo que la obnubilación, menos que el coma." },
     { "sigla": "Eupnea", "definicion": "Respiración normal: 12-20 rpm en adulto, rítmica, sin esfuerzo ni ruidos. Patrón de referencia para comparar." },
     { "sigla": "Fóvea", "definicion": "Depresión visible que persiste tras presionar con el pulgar la piel sobre un edema. También llamado signo de Godet. Se gradúa 1+ a 4+ según profundidad y duración." },
@@ -265,7 +304,23 @@
       ]
     },
     { "sigla": "Hematoquecia", "definicion": "Emisión de sangre roja por el recto. Sugiere sangrado distal del tracto digestivo (colon, recto) o sangrado alto masivo." },
-    { "sigla": "Hematuria", "definicion": "Presencia de sangre en la orina. Macroscópica (visible) o microscópica (solo en sedimento). Causas: ITU, litiasis, tumores, glomerulonefritis." },
+    { "sigla": "Hematuria", "definicion": "Presencia de sangre en la orina. Diferenciar el momento del chorro orienta a la localización del sangrado en el árbol urinario.",
+      "tipos": [
+        "Macroscópica — visible a simple vista. Orina rojiza o color té. > 1 mL de sangre por L de orina.",
+        "Microscópica — solo detectable en sedimento (≥ 3 hematíes por campo). Hallazgo de laboratorio.",
+        "Inicial — al comenzar la micción. Sugiere origen uretral.",
+        "Terminal — al final de la micción. Sugiere origen vesical (trígono).",
+        "Total — durante toda la micción. Sangrado más alto: renal, ureteral o vesical difuso.",
+        "Con coágulos — vesical o uretral (los renales se disuelven en el descenso ureteral)."
+      ],
+      "ejemplos": [
+        "Hematuria + dolor lumbar cólico irradiado a genitales → litiasis renal/ureteral.",
+        "Hematuria total + síndrome miccional (disuria, polaquiuria) + fiebre → ITU complicada.",
+        "Hematuria indolora total en adulto > 50 años + tabaquista → descartar tumor vesical (urgente).",
+        "Hematuria microscópica + edema + HTA + proteinuria → sospechar glomerulonefritis.",
+        "Pseudohematuria: orina rojiza por rifampicina, remolacha, betalaína, hemoglobinuria, mioglobinuria. SOMF negativo descarta."
+      ]
+    },
     { "sigla": "Hemiparesia", "definicion": "Debilidad muscular en un hemicuerpo. Signo focal típico de ACV. Evaluar fuerza por escala 0-5." },
     { "sigla": "Hemiplejía", "definicion": "Parálisis completa de un hemicuerpo. Pérdida total de la motricidad voluntaria de un lado." },
     { "sigla": "Hemoptisis", "definicion": "Expectoración de sangre proveniente del tracto respiratorio bajo (laringe, tráquea, bronquios, pulmón). Diferenciar de hematemesis (digestiva) y epistaxis posterior (nasal).",
@@ -284,8 +339,36 @@
     },
     { "sigla": "Hipercapnia", "definicion": "Aumento de la PaCO₂ por encima de 45 mmHg. Indica fallo ventilatorio. Manifestaciones: somnolencia, cefalea, asterixis." },
     { "sigla": "Hiperpnea", "definicion": "Aumento de la profundidad de la respiración (volumen corriente), con o sin aumento de la frecuencia. Típica en acidosis metabólica (respiración de Kussmaul)." },
-    { "sigla": "Hipotensión", "definicion": "Tensión arterial sistólica < 90 mmHg o caída ≥ 40 mmHg sobre la basal. Sintomática si genera mareo, síncope o signos de hipoperfusión." },
-    { "sigla": "Hipoxemia", "definicion": "Disminución de la PaO₂ en sangre arterial (< 80 mmHg) o SatO₂ < 90 %. Se corrige con O₂ suplementario." },
+    { "sigla": "Hipotensión", "definicion": "TA sistólica < 90 mmHg, TAM < 65 mmHg, o caída ≥ 40 mmHg sobre la basal. Lo clínicamente relevante no es el número sino los signos de hipoperfusión (mareo, oliguria, alteración mental, frialdad distal, relleno capilar > 2 s).",
+      "tipos": [
+        "Hipovolémica — pérdida de volumen. Hemorragia, deshidratación, quemaduras, tercer espacio.",
+        "Cardiogénica — fallo de bomba. IAM extenso, taponamiento, arritmias graves, miocardiopatías.",
+        "Distributiva — vasodilatación inadecuada. Sepsis, anafilaxia, shock neurogénico.",
+        "Obstructiva — obstrucción al flujo. TEP masivo, neumotórax a tensión, taponamiento cardíaco.",
+        "Ortostática — caída ≥ 20/10 mmHg al pasar de decúbito a parado. Por hipovolemia, fármacos, neuropatía autonómica, ancianos.",
+        "Iatrogénica — sobredosis de antihipertensivos, anestesia, sedación, vasodilatadores."
+      ],
+      "ejemplos": [
+        "TA 75/40 + FC 130 + piel fría sudorosa + paciente politraumatizado → shock hipovolémico hemorrágico.",
+        "TA 80/50 + FC 110 + fiebre + foco infeccioso + lactato elevado → shock séptico (distributivo).",
+        "Caída de TA al pararse + mareo + paciente con varios antihipertensivos → ortostática iatrogénica, revisar polimedicación.",
+        "TA 70/40 sin respuesta a líquidos + ingurgitación yugular + ruidos cardíacos apagados → taponamiento (obstructivo)."
+      ]
+    },
+    { "sigla": "Hipoxemia", "definicion": "Disminución del O₂ en sangre arterial: PaO₂ < 80 mmHg o SatO₂ < 90 %. NO es lo mismo que hipoxia (hipoxia = falta de O₂ tisular). Una causa hipoxia hipoxémica, pero hay hipoxias con PaO₂ normal.",
+      "tipos": [
+        "Por hipoventilación — PaCO₂ aumentada. Sedación, opioides, fatiga muscular, depresión del SNC. Mejora con ventilación.",
+        "Por alteración V/Q — mismatch ventilación/perfusión. EPOC, neumonía, atelectasia. La más frecuente. Mejora con O₂ suplementario.",
+        "Por shunt — sangre pasa sin oxigenarse. SDRA, edema agudo de pulmón, cardiopatías congénitas cianóticas. NO mejora con O₂ al 100 %.",
+        "Por difusión alterada — engrosamiento de membrana alveolocapilar. Fibrosis pulmonar.",
+        "Por baja FiO₂ ambiente — altura geográfica > 3000 m, accidente en cabina presurizada."
+      ],
+      "ejemplos": [
+        "PaO₂ 55 mmHg con FiO₂ 21 % + PaCO₂ 65 → hipoxemia por hipoventilación (intoxicación por opioides).",
+        "PaO₂ 50 mmHg que NO mejora con O₂ al 100 % → sospechar shunt anatómico o SDRA grave.",
+        "Hipoxemia con A-a aumentado + crepitantes bibasales + esputo rosado → edema agudo de pulmón."
+      ]
+    },
     { "sigla": "Hipoxia", "definicion": "Falta de oxígeno a nivel tisular. No es lo mismo que hipoxemia: puede haber hipoxia con PaO₂ normal.",
       "tipos": [
         "Hipoxémica — por PaO₂ baja en sangre arterial. La más común (EPOC, neumonía, TEP).",
@@ -445,7 +528,21 @@
     },
     { "sigla": "Permeable", "definicion": "Que permite el paso de fluido. Aplicado a vías venosas, sondas y catéteres: verificar permeabilidad antes y durante su uso." },
     { "sigla": "Extravasación", "definicion": "Salida accidental de líquido o medicación al tejido perivascular durante una infusión EV. Riesgo aumentado con fármacos vesicantes (vasopresores, quimioterápicos)." },
-    { "sigla": "Flebitis", "definicion": "Inflamación de la pared venosa. Signos: dolor, eritema, calor, cordón palpable. Causa frecuente de retiro de vía periférica. Escala de Maddox grado 0-4." },
+    { "sigla": "Flebitis", "definicion": "Inflamación de la pared venosa. La complicación más frecuente de las vías venosas periféricas. La escala visual de Maddox/INS estandariza la valoración y la decisión de retirar la vía.",
+      "tipos": [
+        "Mecánica — por fricción del catéter contra el endotelio. Calibre grande en vena pequeña, mala fijación, articulaciones.",
+        "Química — irritación por la solución infundida. pH extremos, osmolaridad alta, drogas vesicantes (KCl, vancomicina, fenitoína, soluciones hipertónicas).",
+        "Infecciosa (séptica) — colonización bacteriana del trayecto venoso. Riesgo de bacteriemia. Hemocultivos antes de retirar.",
+        "Postinfusional — aparece tras retirar la vía. Más frecuente en internaciones largas."
+      ],
+      "ejemplos": [
+        "Maddox grado 0 — sin signos. Continuar uso, revisar c/turno.",
+        "Maddox grado 1 — eritema en el sitio sin dolor. Observar y reevaluar a las 2 h.",
+        "Maddox grado 2 — eritema + dolor o edema. Retirar vía, recolocar en otro miembro.",
+        "Maddox grado 3 — eritema + dolor + cordón venoso palpable. Retirar, calor local, considerar AINE.",
+        "Maddox grado 4 — eritema + dolor + cordón palpable + fiebre/exudado. Hemocultivos + ATB + cultivo del catéter."
+      ]
+    },
     { "sigla": "Síncope", "definicion": "Pérdida brusca y transitoria de la conciencia con caída del tono postural, por hipoperfusión cerebral global. Recuperación espontánea.",
       "tipos": [
         "Vasovagal (neurocardiogénico) — el más frecuente. Estímulos: dolor, calor, estrés. Pródromos típicos.",
@@ -503,7 +600,21 @@
       ]
     },
     { "sigla": "Tenesmo", "definicion": "Sensación dolorosa y persistente de necesidad de defecar (rectal) u orinar (vesical), aun con el órgano vacío." },
-    { "sigla": "Tiraje", "definicion": "Retracción visible de partes blandas del tórax durante la inspiración (intercostal, subcostal, supraesternal). Indica dificultad respiratoria importante." },
+    { "sigla": "Tiraje", "definicion": "Retracción visible de partes blandas del tórax durante la inspiración por uso de músculos accesorios. Marcador de trabajo respiratorio aumentado. La localización y combinación orienta a la gravedad.",
+      "tipos": [
+        "Subcostal — debajo de las costillas. El más común y precoz. Leve a moderado.",
+        "Intercostal — entre las costillas. Moderado.",
+        "Supraesternal (yugular) — en el hueco supraesternal. Indica esfuerzo respiratorio mayor.",
+        "Supraclavicular — encima de las clavículas. Severo.",
+        "Universal — múltiples sitios simultáneamente + aleteo nasal + cabeceo en lactantes. Inminente claudicación."
+      ],
+      "ejemplos": [
+        "Lactante bronquiolítico con tiraje subcostal leve + SatO₂ 94 % → observación, kinesia respiratoria, oxígeno si SatO₂ < 92 %.",
+        "Asmático con tiraje universal + cianosis + somnolencia → claudicación inminente, intubación + UTI.",
+        "Adulto post-extubación con tiraje supraesternal + estridor → edema laríngeo, valorar reintubación.",
+        "Tiraje + frecuencia respiratoria 28 + uso de músculos accesorios → escala mMRC alta, valorar VNI."
+      ]
+    },
     { "sigla": "Vértigo", "definicion": "Sensación ilusoria de movimiento (del paciente o del entorno). Diferenciar de mareo. Causas: periférico (laberinto) o central (cerebelo, tronco)." },
     { "sigla": "Vómito", "definicion": "Expulsión forzada del contenido gástrico por la boca, usualmente precedida por náuseas. Caracterizar contenido, frecuencia, momento y desencadenantes.",
       "tipos": [
