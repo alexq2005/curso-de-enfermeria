@@ -34,8 +34,18 @@ function useFadeIn(duration = 400, delay = 0) {
 
   useEffect(() => {
     Animated.parallel([
-      Animated.timing(opacity, { toValue: 1, duration, delay, useNativeDriver: true }),
-      Animated.timing(translateY, { toValue: 0, duration, delay, useNativeDriver: true }),
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration,
+        delay,
+        useNativeDriver: true,
+      }),
+      Animated.timing(translateY, {
+        toValue: 0,
+        duration,
+        delay,
+        useNativeDriver: true,
+      }),
     ]).start();
   }, [opacity, translateY, duration, delay]);
 
@@ -135,25 +145,38 @@ export function PrivacyPolicyScreen({ navigation }: Props) {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
 
       {/* Header */}
       <LinearGradient
         colors={[colors.gradientStart, colors.gradientEnd]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        style={[styles.header, { paddingTop: insets.top + rs.space(SPACING.lg) }]}
+        style={[
+          styles.header,
+          { paddingTop: insets.top + rs.space(SPACING.lg) },
+        ]}
       >
         <TouchableOpacity
           style={styles.backButton}
           onPress={() => navigation.goBack()}
           hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
         >
-          <MaterialCommunityIcons name="arrow-left" size={rs.font(22)} color={colors.gradientText} />
+          <MaterialCommunityIcons
+            name="arrow-left"
+            size={rs.font(22)}
+            color={colors.gradientText}
+          />
         </TouchableOpacity>
         <Animated.View style={{ opacity, transform: [{ translateY }] }}>
           <Text style={styles.headerTitle}>Politica de Privacidad</Text>
-          <Text style={styles.headerSubtitle}>Ultima actualizacion: Marzo 2026</Text>
+          <Text style={styles.headerSubtitle}>
+            Ultima actualizacion: Marzo 2026
+          </Text>
         </Animated.View>
       </LinearGradient>
 
@@ -168,14 +191,18 @@ export function PrivacyPolicyScreen({ navigation }: Props) {
         {/* Intro */}
         <View style={[styles.introCard, neuCard(colors)]}>
           <View style={styles.offlineRow}>
-            <MaterialCommunityIcons name="wifi-off" size={rs.font(20)} color={colors.success} />
+            <MaterialCommunityIcons
+              name="wifi-off"
+              size={rs.font(20)}
+              color={colors.success}
+            />
             <Text style={[styles.offlineBadge, { color: colors.success }]}>
               App 100% offline — sin envio de datos
             </Text>
           </View>
           <Text style={styles.introText}>
-            Tu privacidad es importante para nosotros. Esta politica explica como Patologias de
-            Enfermeria maneja la informacion en tu dispositivo.
+            Tu privacidad es importante para nosotros. Esta politica explica
+            como Manual de Enfermeria maneja la informacion en tu dispositivo.
           </Text>
         </View>
 

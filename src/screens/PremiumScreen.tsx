@@ -38,8 +38,18 @@ function useFadeIn(duration = 400, delay = 0) {
 
   useEffect(() => {
     Animated.parallel([
-      Animated.timing(opacity, { toValue: 1, duration, delay, useNativeDriver: true }),
-      Animated.timing(translateY, { toValue: 0, duration, delay, useNativeDriver: true }),
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration,
+        delay,
+        useNativeDriver: true,
+      }),
+      Animated.timing(translateY, {
+        toValue: 0,
+        duration,
+        delay,
+        useNativeDriver: true,
+      }),
     ]).start();
   }, [opacity, translateY, duration, delay]);
 
@@ -53,21 +63,22 @@ function useFadeIn(duration = 400, delay = 0) {
 type Props = NativeStackScreenProps<RootStackParamList, 'PremiumScreen'>;
 
 const PREMIUM_FEATURES = [
-  { icon: 'book-open-variant', text: 'Todas las patologías sin restricción' },
-  { icon: 'heart-multiple', text: 'Favoritos ilimitados' },
-  { icon: 'note-multiple', text: 'Notas ilimitadas' },
-  { icon: 'brain', text: 'Quiz interactivo completo' },
-  { icon: 'scale-balance', text: 'Escalas clínicas completas' },
-  { icon: 'flask-outline', text: 'Valores de laboratorio' },
-  { icon: 'hospital-building', text: 'Protocolos de emergencia' },
-  { icon: 'stethoscope', text: 'Diagnósticos NANDA/NIC/NOC' },
-  { icon: 'chart-line', text: 'Dashboard de progreso' },
+  { icon: 'book-open-variant', text: 'Los 10 módulos del curso completos' },
+  {
+    icon: 'file-document-multiple-outline',
+    text: '56 subtemas con 178 bloques de contenido',
+  },
+  { icon: 'book-alphabet', text: 'Glosario clínico de 178 términos' },
+  { icon: 'magnify', text: 'Buscador global de contenidos' },
+  { icon: 'chart-line', text: 'Seguimiento de progreso de lectura' },
+  { icon: 'theme-light-dark', text: 'Modo claro y oscuro' },
+  { icon: 'wifi-off', text: '100% offline — sin conexión necesaria' },
 ];
 
 const FREE_FEATURES = [
-  { icon: 'book-outline', text: '3 patologías por sistema (33 total)' },
-  { icon: 'heart-outline', text: 'Hasta 5 favoritos' },
-  { icon: 'note-outline', text: 'Hasta 5 notas' },
+  { icon: 'book-outline', text: 'Módulos 1 y 2 completos' },
+  { icon: 'book-alphabet', text: 'Glosario clínico de 178 términos' },
+  { icon: 'magnify', text: 'Buscador global de contenidos' },
 ];
 
 // ─────────────────────────────────────────────
@@ -79,9 +90,15 @@ export function PremiumScreen({ navigation }: Props) {
   const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
   const {
-    isCodeActivated, isTrialActive, trialDaysLeft, trialExpired,
-    isSubscribed, purchasing,
-    activateWithCode, restoreSubscription, purchaseSubscription,
+    isCodeActivated,
+    isTrialActive,
+    trialDaysLeft,
+    trialExpired,
+    isSubscribed,
+    purchasing,
+    activateWithCode,
+    restoreSubscription,
+    purchaseSubscription,
   } = usePremium();
 
   const styles = createStyles(colors, rs);
@@ -89,7 +106,9 @@ export function PremiumScreen({ navigation }: Props) {
 
   const [code, setCode] = useState('');
   const [activating, setActivating] = useState(false);
-  const [activationResult, setActivationResult] = useState<'success' | 'error' | null>(null);
+  const [activationResult, setActivationResult] = useState<
+    'success' | 'error' | null
+  >(null);
 
   const handleActivate = useCallback(async () => {
     if (!code.trim()) return;
@@ -116,8 +135,20 @@ export function PremiumScreen({ navigation }: Props) {
   const renderStatusBanner = () => {
     if (isCodeActivated) {
       return (
-        <View style={[styles.statusBanner, { backgroundColor: colors.success + '18', borderColor: colors.success + '40' }]}>
-          <MaterialCommunityIcons name="check-decagram" size={rs.font(18)} color={colors.success} />
+        <View
+          style={[
+            styles.statusBanner,
+            {
+              backgroundColor: colors.success + '18',
+              borderColor: colors.success + '40',
+            },
+          ]}
+        >
+          <MaterialCommunityIcons
+            name="check-decagram"
+            size={rs.font(18)}
+            color={colors.success}
+          />
           <Text style={[styles.statusText, { color: colors.success }]}>
             Activado con codigo de acceso
           </Text>
@@ -126,8 +157,20 @@ export function PremiumScreen({ navigation }: Props) {
     }
     if (isSubscribed) {
       return (
-        <View style={[styles.statusBanner, { backgroundColor: colors.success + '18', borderColor: colors.success + '40' }]}>
-          <MaterialCommunityIcons name="crown" size={rs.font(18)} color={colors.success} />
+        <View
+          style={[
+            styles.statusBanner,
+            {
+              backgroundColor: colors.success + '18',
+              borderColor: colors.success + '40',
+            },
+          ]}
+        >
+          <MaterialCommunityIcons
+            name="crown"
+            size={rs.font(18)}
+            color={colors.success}
+          />
           <Text style={[styles.statusText, { color: colors.success }]}>
             Suscripcion activa
           </Text>
@@ -136,17 +179,42 @@ export function PremiumScreen({ navigation }: Props) {
     }
     if (isTrialActive) {
       return (
-        <View style={[styles.statusBanner, { backgroundColor: colors.primary + '18', borderColor: colors.primary + '40' }]}>
-          <MaterialCommunityIcons name="clock-outline" size={rs.font(18)} color={colors.primary} />
+        <View
+          style={[
+            styles.statusBanner,
+            {
+              backgroundColor: colors.primary + '18',
+              borderColor: colors.primary + '40',
+            },
+          ]}
+        >
+          <MaterialCommunityIcons
+            name="clock-outline"
+            size={rs.font(18)}
+            color={colors.primary}
+          />
           <Text style={[styles.statusText, { color: colors.primary }]}>
-            Prueba gratuita: {trialDaysLeft} {trialDaysLeft === 1 ? 'dia' : 'dias'} restantes
+            Prueba gratuita: {trialDaysLeft}{' '}
+            {trialDaysLeft === 1 ? 'dia' : 'dias'} restantes
           </Text>
         </View>
       );
     }
     return (
-      <View style={[styles.statusBanner, { backgroundColor: colors.warning + '18', borderColor: colors.warning + '40' }]}>
-        <MaterialCommunityIcons name="clock-alert-outline" size={rs.font(18)} color={colors.warning} />
+      <View
+        style={[
+          styles.statusBanner,
+          {
+            backgroundColor: colors.warning + '18',
+            borderColor: colors.warning + '40',
+          },
+        ]}
+      >
+        <MaterialCommunityIcons
+          name="clock-alert-outline"
+          size={rs.font(18)}
+          color={colors.warning}
+        />
         <Text style={[styles.statusText, { color: colors.warning }]}>
           Prueba gratuita expirada
         </Text>
@@ -156,16 +224,27 @@ export function PremiumScreen({ navigation }: Props) {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
 
       {/* Header with clinical photo */}
       <ImageBackground
         source={require('../assets/images/conditions/surgery.jpg')}
-        style={[styles.header, { paddingTop: insets.top + rs.space(SPACING.lg) }]}
+        style={[
+          styles.header,
+          { paddingTop: insets.top + rs.space(SPACING.lg) },
+        ]}
         resizeMode="cover"
       >
         <LinearGradient
-          colors={[colors.gradientStart + 'DD', colors.gradientEnd + 'BB', 'transparent']}
+          colors={[
+            colors.gradientStart + 'DD',
+            colors.gradientEnd + 'BB',
+            'transparent',
+          ]}
           start={{ x: 0, y: 0 }}
           end={{ x: 0.5, y: 1 }}
           style={StyleSheet.absoluteFillObject}
@@ -175,17 +254,35 @@ export function PremiumScreen({ navigation }: Props) {
           onPress={() => navigation.goBack()}
           hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
         >
-          <MaterialCommunityIcons name="arrow-left" size={rs.font(22)} color="#FFFFFF" />
+          <MaterialCommunityIcons
+            name="arrow-left"
+            size={rs.font(22)}
+            color="#FFFFFF"
+          />
         </TouchableOpacity>
-        <Animated.View style={[styles.headerContent, { opacity, transform: [{ translateY }] }]}>
-          <Text style={[styles.headerTitle, { color: '#FFFFFF' }]}>Premium</Text>
-          <Text style={[styles.headerSubtitle, { color: 'rgba(255,255,255,0.85)' }]}>Acceso completo a todos los contenidos</Text>
+        <Animated.View
+          style={[
+            styles.headerContent,
+            { opacity, transform: [{ translateY }] },
+          ]}
+        >
+          <Text style={[styles.headerTitle, { color: '#FFFFFF' }]}>
+            Premium
+          </Text>
+          <Text
+            style={[styles.headerSubtitle, { color: 'rgba(255,255,255,0.85)' }]}
+          >
+            Acceso completo a todos los contenidos
+          </Text>
         </Animated.View>
       </ImageBackground>
 
       <ScrollView
         style={styles.scroll}
-        contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + rs.space(SPACING.xxxl) }]}
+        contentContainerStyle={[
+          styles.scrollContent,
+          { paddingBottom: insets.bottom + rs.space(SPACING.xxxl) },
+        ]}
         showsVerticalScrollIndicator={false}
       >
         {/* Status banner */}
@@ -194,13 +291,26 @@ export function PremiumScreen({ navigation }: Props) {
         {/* Premium features */}
         <View style={[styles.card, neuCard(colors)]}>
           <View style={styles.cardHeader}>
-            <MaterialCommunityIcons name="star" size={rs.font(18)} color={colors.primary} />
+            <MaterialCommunityIcons
+              name="star"
+              size={rs.font(18)}
+              color={colors.primary}
+            />
             <Text style={styles.cardTitle}>Con Premium</Text>
           </View>
           {PREMIUM_FEATURES.map((item, i) => (
             <View key={i} style={styles.featureRow}>
-              <View style={[styles.featureIconWrap, { backgroundColor: colors.success + '18' }]}>
-                <MaterialCommunityIcons name="check" size={rs.font(13)} color={colors.success} />
+              <View
+                style={[
+                  styles.featureIconWrap,
+                  { backgroundColor: colors.success + '18' },
+                ]}
+              >
+                <MaterialCommunityIcons
+                  name="check"
+                  size={rs.font(13)}
+                  color={colors.success}
+                />
               </View>
               <MaterialCommunityIcons
                 name={item.icon as any}
@@ -216,13 +326,28 @@ export function PremiumScreen({ navigation }: Props) {
         {/* Free features */}
         <View style={[styles.card, neuCardSubtle(colors)]}>
           <View style={styles.cardHeader}>
-            <MaterialCommunityIcons name="lock-open-outline" size={rs.font(18)} color={colors.textSecondary} />
-            <Text style={[styles.cardTitle, { color: colors.textSecondary }]}>Version gratuita</Text>
+            <MaterialCommunityIcons
+              name="lock-open-outline"
+              size={rs.font(18)}
+              color={colors.textSecondary}
+            />
+            <Text style={[styles.cardTitle, { color: colors.textSecondary }]}>
+              Version gratuita
+            </Text>
           </View>
           {FREE_FEATURES.map((item, i) => (
             <View key={i} style={styles.featureRow}>
-              <View style={[styles.featureIconWrap, { backgroundColor: colors.warning + '18' }]}>
-                <MaterialCommunityIcons name="minus" size={rs.font(13)} color={colors.warning} />
+              <View
+                style={[
+                  styles.featureIconWrap,
+                  { backgroundColor: colors.warning + '18' },
+                ]}
+              >
+                <MaterialCommunityIcons
+                  name="minus"
+                  size={rs.font(13)}
+                  color={colors.warning}
+                />
               </View>
               <MaterialCommunityIcons
                 name={item.icon as any}
@@ -230,7 +355,11 @@ export function PremiumScreen({ navigation }: Props) {
                 color={colors.textSecondary}
                 style={styles.featureIcon}
               />
-              <Text style={[styles.featureText, { color: colors.textSecondary }]}>{item.text}</Text>
+              <Text
+                style={[styles.featureText, { color: colors.textSecondary }]}
+              >
+                {item.text}
+              </Text>
             </View>
           ))}
         </View>
@@ -259,15 +388,39 @@ export function PremiumScreen({ navigation }: Props) {
                   <ActivityIndicator size="small" color="#fff" />
                 ) : (
                   <>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(8) }}>
-                      <MaterialCommunityIcons name="crown" size={rs.font(22)} color="#FFD700" />
-                      <Text style={{ fontSize: rs.font(18), fontWeight: '800', color: '#fff' }}>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        gap: rs.space(8),
+                      }}
+                    >
+                      <MaterialCommunityIcons
+                        name="crown"
+                        size={rs.font(22)}
+                        color="#FFD700"
+                      />
+                      <Text
+                        style={{
+                          fontSize: rs.font(18),
+                          fontWeight: '800',
+                          color: '#fff',
+                        }}
+                      >
                         Suscribirse a Premium
                       </Text>
                     </View>
-                    <Text style={{ fontSize: rs.font(13), color: 'rgba(255,255,255,0.8)', marginTop: rs.space(4) }}>
+                    <Text
+                      style={{
+                        fontSize: rs.font(13),
+                        color: 'rgba(255,255,255,0.8)',
+                        marginTop: rs.space(4),
+                      }}
+                    >
                       Suscripcion mensual via Google Play
-                      {isTrialActive ? ` · ${trialDaysLeft} dias de prueba restantes` : ''}
+                      {isTrialActive
+                        ? ` · ${trialDaysLeft} dias de prueba restantes`
+                        : ''}
                     </Text>
                   </>
                 )}
@@ -275,13 +428,29 @@ export function PremiumScreen({ navigation }: Props) {
             </TouchableOpacity>
 
             {trialExpired && (
-              <View style={{
-                flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-                gap: rs.space(6), paddingVertical: rs.space(8),
-              }}>
-                <MaterialCommunityIcons name="alert-circle" size={rs.font(14)} color={colors.error} />
-                <Text style={{ fontSize: rs.font(12), color: colors.error, fontWeight: '600' }}>
-                  Tu período de prueba de 15 días ha finalizado. Suscribite para continuar.
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: rs.space(6),
+                  paddingVertical: rs.space(8),
+                }}
+              >
+                <MaterialCommunityIcons
+                  name="alert-circle"
+                  size={rs.font(14)}
+                  color={colors.error}
+                />
+                <Text
+                  style={{
+                    fontSize: rs.font(12),
+                    color: colors.error,
+                    fontWeight: '600',
+                  }}
+                >
+                  Tu período de prueba de 15 días ha finalizado. Suscribite para
+                  continuar.
                 </Text>
               </View>
             )}
@@ -292,15 +461,24 @@ export function PremiumScreen({ navigation }: Props) {
         {!isCodeActivated && !isSubscribed && (
           <View style={[styles.card, neuCard(colors)]}>
             <View style={styles.cardHeader}>
-              <MaterialCommunityIcons name="key-variant" size={rs.font(18)} color={colors.primary} />
+              <MaterialCommunityIcons
+                name="key-variant"
+                size={rs.font(18)}
+                color={colors.primary}
+              />
               <Text style={styles.cardTitle}>Codigo de activacion</Text>
             </View>
             <Text style={styles.activationDescription}>
-              Si recibiste un codigo de acceso, ingresalo aqui para activar Premium de forma permanente.
+              Si recibiste un codigo de acceso, ingresalo aqui para activar
+              Premium de forma permanente.
             </Text>
             <View style={[styles.inputRow]}>
               <TextInput
-                style={[styles.codeInput, neuInset(colors), { color: colors.text }]}
+                style={[
+                  styles.codeInput,
+                  neuInset(colors),
+                  { color: colors.text },
+                ]}
                 value={code}
                 onChangeText={setCode}
                 placeholder="Ej: ENFER-2024-XXXX"
@@ -310,29 +488,57 @@ export function PremiumScreen({ navigation }: Props) {
                 editable={!activating}
               />
               <TouchableOpacity
-                style={[styles.activateBtn, activating && styles.activateBtnDisabled]}
+                style={[
+                  styles.activateBtn,
+                  activating && styles.activateBtnDisabled,
+                ]}
                 onPress={handleActivate}
                 disabled={activating || !code.trim()}
                 activeOpacity={0.8}
               >
-                {activating
-                  ? <ActivityIndicator size="small" color="#fff" />
-                  : <Text style={styles.activateBtnText}>Activar</Text>
-                }
+                {activating ? (
+                  <ActivityIndicator size="small" color="#fff" />
+                ) : (
+                  <Text style={styles.activateBtnText}>Activar</Text>
+                )}
               </TouchableOpacity>
             </View>
 
             {activationResult === 'success' && (
-              <View style={[styles.feedbackBanner, { backgroundColor: colors.success + '18', borderColor: colors.success + '40' }]}>
-                <MaterialCommunityIcons name="check-circle" size={rs.font(16)} color={colors.success} />
+              <View
+                style={[
+                  styles.feedbackBanner,
+                  {
+                    backgroundColor: colors.success + '18',
+                    borderColor: colors.success + '40',
+                  },
+                ]}
+              >
+                <MaterialCommunityIcons
+                  name="check-circle"
+                  size={rs.font(16)}
+                  color={colors.success}
+                />
                 <Text style={[styles.feedbackText, { color: colors.success }]}>
                   Codigo valido. Premium activado correctamente.
                 </Text>
               </View>
             )}
             {activationResult === 'error' && (
-              <View style={[styles.feedbackBanner, { backgroundColor: colors.error + '18', borderColor: colors.error + '40' }]}>
-                <MaterialCommunityIcons name="close-circle" size={rs.font(16)} color={colors.error} />
+              <View
+                style={[
+                  styles.feedbackBanner,
+                  {
+                    backgroundColor: colors.error + '18',
+                    borderColor: colors.error + '40',
+                  },
+                ]}
+              >
+                <MaterialCommunityIcons
+                  name="close-circle"
+                  size={rs.font(16)}
+                  color={colors.error}
+                />
                 <Text style={[styles.feedbackText, { color: colors.error }]}>
                   Codigo invalido o ya utilizado.
                 </Text>
@@ -347,7 +553,11 @@ export function PremiumScreen({ navigation }: Props) {
           onPress={handleRestore}
           activeOpacity={0.7}
         >
-          <MaterialCommunityIcons name="restore" size={rs.font(17)} color={colors.textSecondary} />
+          <MaterialCommunityIcons
+            name="restore"
+            size={rs.font(17)}
+            color={colors.textSecondary}
+          />
           <Text style={styles.restoreText}>Restaurar compra</Text>
         </TouchableOpacity>
       </ScrollView>

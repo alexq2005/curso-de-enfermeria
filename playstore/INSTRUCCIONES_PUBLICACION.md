@@ -61,9 +61,9 @@ Opción 3 — Figma: Importar SVG > Exportar @1x PNG
 
 1. Ir a **Monetización > Productos > Suscripciones**
 2. Crear suscripción:
-   - **ID del producto**: `patologias_premium_monthly`
+   - **ID del producto**: `curso_premium_monthly`
    - **Nombre**: Premium Mensual
-   - **Descripción**: Acceso completo a todas las patologías y herramientas
+   - **Descripción**: Acceso completo a los 10 módulos del curso
 3. Agregar plan base:
    - **Período de facturación**: 1 mes
    - **Precio**: USD $4.99 (o el precio que elijas)
@@ -104,7 +104,7 @@ Completar formulario indicando:
 - [ ] Ficha completa (título, descripción, capturas, ícono, feature graphic)
 - [ ] Clasificación de contenido completada
 - [ ] Política de privacidad publicada y URL configurada
-- [ ] Suscripción `patologias_premium_monthly` creada con precio y trial
+- [ ] Suscripción `curso_premium_monthly` creada con precio y trial
 - [ ] AAB subido
 - [ ] Notas de versión agregadas
 - [ ] Declaración de app médica completada
