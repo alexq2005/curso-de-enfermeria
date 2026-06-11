@@ -3,7 +3,16 @@
 // ============================================================
 
 import React, { useCallback, useRef, useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Alert, Modal, TextInput } from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  StatusBar,
+  TouchableOpacity,
+  Alert,
+  Modal,
+  TextInput,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
@@ -22,9 +31,9 @@ type ThemeMode = 'light' | 'dark' | 'system';
 const APP_VERSION = '1.0.0';
 
 const THEME_OPTIONS: { mode: ThemeMode; label: string; icon: string }[] = [
-  { mode: 'light',  label: 'Claro',    icon: 'white-balance-sunny' },
-  { mode: 'dark',   label: 'Oscuro',   icon: 'weather-night' },
-  { mode: 'system', label: 'Sistema',  icon: 'theme-light-dark' },
+  { mode: 'light', label: 'Claro', icon: 'white-balance-sunny' },
+  { mode: 'dark', label: 'Oscuro', icon: 'weather-night' },
+  { mode: 'system', label: 'Sistema', icon: 'theme-light-dark' },
 ];
 
 export function SettingsScreen() {
@@ -45,7 +54,9 @@ export function SettingsScreen() {
     if (isCodeActivated) return;
     tapCountRef.current += 1;
     if (tapTimerRef.current) clearTimeout(tapTimerRef.current);
-    tapTimerRef.current = setTimeout(() => { tapCountRef.current = 0; }, 2000);
+    tapTimerRef.current = setTimeout(() => {
+      tapCountRef.current = 0;
+    }, 2000);
     if (tapCountRef.current >= 5) {
       tapCountRef.current = 0;
       setUnlockCode('');
@@ -59,7 +70,10 @@ export function SettingsScreen() {
     if (success) {
       setShowUnlockModal(false);
       setUnlockCode('');
-      Alert.alert('Premium activado', 'Todo el contenido del Curso ha sido desbloqueado.');
+      Alert.alert(
+        'Premium activado',
+        'Todo el contenido del Curso ha sido desbloqueado.',
+      );
     } else {
       setUnlockError(true);
     }
@@ -67,11 +81,40 @@ export function SettingsScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>
-      <ScrollView contentContainerStyle={{ padding: rs.space(20), paddingBottom: insets.bottom + rs.space(40) }}>
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
+      <ScrollView
+        contentContainerStyle={{
+          padding: rs.space(20),
+          paddingBottom: insets.bottom + rs.space(40),
+        }}
+      >
         <Section title="Apariencia" colors={colors} rs={rs} isDark={isDark}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(10), marginBottom: rs.space(10) }}>
-            <MaterialCommunityIcons name={isDark ? 'weather-night' : 'white-balance-sunny'} size={rs.font(20)} color={colors.text} />
-            <Text style={{ fontSize: rs.font(14), color: colors.text, fontWeight: '600' }}>Tema de la app</Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: rs.space(10),
+              marginBottom: rs.space(10),
+            }}
+          >
+            <MaterialCommunityIcons
+              name={isDark ? 'weather-night' : 'white-balance-sunny'}
+              size={rs.font(20)}
+              color={colors.text}
+            />
+            <Text
+              style={{
+                fontSize: rs.font(14),
+                color: colors.text,
+                fontWeight: '600',
+              }}
+            >
+              Tema de la app
+            </Text>
           </View>
           <View style={{ flexDirection: 'row', gap: rs.space(8) }}>
             {THEME_OPTIONS.map(opt => {
@@ -81,12 +124,19 @@ export function SettingsScreen() {
                   key={opt.mode}
                   onPress={() => setThemeMode(opt.mode)}
                   activeOpacity={0.85}
+                  accessibilityRole="button"
+                  accessibilityState={{ selected: active }}
+                  accessibilityLabel={`Tema ${opt.label}`}
                   style={{
                     flex: 1,
                     paddingVertical: rs.space(10),
                     borderRadius: 12,
                     alignItems: 'center',
-                    backgroundColor: active ? colors.primary : (isDark ? colors.surfaceElevated : colors.neuInsetBg),
+                    backgroundColor: active
+                      ? colors.primary
+                      : isDark
+                      ? colors.surfaceElevated
+                      : colors.neuInsetBg,
                     borderWidth: 1,
                     borderColor: active ? colors.primary : colors.borderLight,
                   }}
@@ -111,8 +161,16 @@ export function SettingsScreen() {
             })}
           </View>
           {themeMode === 'system' && (
-            <Text style={{ fontSize: rs.font(11), color: colors.textLight, marginTop: rs.space(8), lineHeight: rs.font(16) }}>
-              Sigue automáticamente el tema del dispositivo (actualmente {isDark ? 'oscuro' : 'claro'}).
+            <Text
+              style={{
+                fontSize: rs.font(11),
+                color: colors.textLight,
+                marginTop: rs.space(8),
+                lineHeight: rs.font(16),
+              }}
+            >
+              Sigue automáticamente el tema del dispositivo (actualmente{' '}
+              {isDark ? 'oscuro' : 'claro'}).
             </Text>
           )}
         </Section>
@@ -128,13 +186,33 @@ export function SettingsScreen() {
         </Section>
 
         <Section title="Información" colors={colors} rs={rs} isDark={isDark}>
-          <Row icon="information-outline" label="Acerca de" onPress={() => navigation.navigate('AboutScreen')} colors={colors} rs={rs} />
-          <Row icon="file-document-outline" label="Términos de uso" onPress={() => navigation.navigate('Terms')} colors={colors} rs={rs} />
-          <Row icon="shield-account-outline" label="Política de privacidad" onPress={() => navigation.navigate('PrivacyPolicy')} colors={colors} rs={rs} />
+          <Row
+            icon="information-outline"
+            label="Acerca de"
+            onPress={() => navigation.navigate('AboutScreen')}
+            colors={colors}
+            rs={rs}
+          />
+          <Row
+            icon="file-document-outline"
+            label="Términos de uso"
+            onPress={() => navigation.navigate('Terms')}
+            colors={colors}
+            rs={rs}
+          />
+          <Row
+            icon="shield-account-outline"
+            label="Política de privacidad"
+            onPress={() => navigation.navigate('PrivacyPolicy')}
+            colors={colors}
+            rs={rs}
+          />
           <Row
             icon="tag-outline"
             label="Versión"
-            subtitle={isCodeActivated ? `${APP_VERSION} · Premium` : APP_VERSION}
+            subtitle={
+              isCodeActivated ? `${APP_VERSION} · Premium` : APP_VERSION
+            }
             onPress={handleVersionTap}
             colors={colors}
             rs={rs}
@@ -151,42 +229,74 @@ export function SettingsScreen() {
         animationType="fade"
         onRequestClose={() => setShowUnlockModal(false)}
       >
-        <View style={{
-          flex: 1, backgroundColor: 'rgba(0,0,0,0.55)',
-          justifyContent: 'center', alignItems: 'center',
-          paddingHorizontal: rs.space(32),
-        }}>
-          <View style={{
-            width: '100%',
-            backgroundColor: isDark ? colors.surface : colors.neuSurface,
-            borderRadius: 24,
-            padding: rs.space(24),
-            elevation: 10,
-            borderWidth: 1,
-            borderColor: colors.borderLight,
-          }}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: 'rgba(0,0,0,0.55)',
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingHorizontal: rs.space(32),
+          }}
+        >
+          <View
+            style={{
+              width: '100%',
+              backgroundColor: isDark ? colors.surface : colors.neuSurface,
+              borderRadius: 24,
+              padding: rs.space(24),
+              elevation: 10,
+              borderWidth: 1,
+              borderColor: colors.borderLight,
+            }}
+          >
             <View style={{ alignItems: 'center', marginBottom: rs.space(20) }}>
-              <View style={{
-                width: 56, height: 56, borderRadius: 18,
-                backgroundColor: colors.primary + '15',
-                alignItems: 'center', justifyContent: 'center',
-                marginBottom: rs.space(12),
-              }}>
-                <MaterialCommunityIcons name="lock-open-variant-outline" size={28} color={colors.primary} />
+              <View
+                style={{
+                  width: 56,
+                  height: 56,
+                  borderRadius: 18,
+                  backgroundColor: colors.primary + '15',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: rs.space(12),
+                }}
+              >
+                <MaterialCommunityIcons
+                  name="lock-open-variant-outline"
+                  size={28}
+                  color={colors.primary}
+                />
               </View>
-              <Text style={{ fontSize: rs.font(18), fontWeight: '800', color: colors.text }}>
+              <Text
+                style={{
+                  fontSize: rs.font(18),
+                  fontWeight: '800',
+                  color: colors.text,
+                }}
+              >
                 Desbloquear Premium
               </Text>
-              <Text style={{ fontSize: rs.font(13), color: colors.textSecondary, textAlign: 'center', marginTop: rs.space(4) }}>
+              <Text
+                style={{
+                  fontSize: rs.font(13),
+                  color: colors.textSecondary,
+                  textAlign: 'center',
+                  marginTop: rs.space(4),
+                }}
+              >
                 Ingresa el código de activación
               </Text>
             </View>
 
             <TextInput
               value={unlockCode}
-              onChangeText={(t) => { setUnlockCode(t); setUnlockError(false); }}
+              onChangeText={t => {
+                setUnlockCode(t);
+                setUnlockError(false);
+              }}
               placeholder="Código de activación"
               placeholderTextColor={colors.textLight}
+              accessibilityLabel="Código de activación"
               secureTextEntry
               autoFocus
               style={{
@@ -202,7 +312,14 @@ export function SettingsScreen() {
               }}
             />
             {unlockError && (
-              <Text style={{ fontSize: rs.font(12), color: colors.error, marginBottom: rs.space(12), marginLeft: rs.space(4) }}>
+              <Text
+                style={{
+                  fontSize: rs.font(12),
+                  color: colors.error,
+                  marginBottom: rs.space(12),
+                  marginLeft: rs.space(4),
+                }}
+              >
                 Código incorrecto. Intenta de nuevo.
               </Text>
             )}
@@ -210,6 +327,8 @@ export function SettingsScreen() {
             <TouchableOpacity
               onPress={handleUnlockSubmit}
               activeOpacity={0.85}
+              accessibilityRole="button"
+              accessibilityLabel="Activar Premium con el código ingresado"
               style={{
                 backgroundColor: colors.primary,
                 borderRadius: 14,
@@ -218,7 +337,13 @@ export function SettingsScreen() {
                 marginBottom: rs.space(10),
               }}
             >
-              <Text style={{ fontSize: rs.font(15), fontWeight: '700', color: '#fff' }}>
+              <Text
+                style={{
+                  fontSize: rs.font(15),
+                  fontWeight: '700',
+                  color: '#fff',
+                }}
+              >
                 Activar
               </Text>
             </TouchableOpacity>
@@ -226,9 +351,18 @@ export function SettingsScreen() {
             <TouchableOpacity
               onPress={() => setShowUnlockModal(false)}
               activeOpacity={0.7}
+              accessibilityRole="button"
+              accessibilityLabel="Cancelar"
+              hitSlop={{ top: 8, bottom: 8, left: 24, right: 24 }}
               style={{ alignItems: 'center', paddingVertical: rs.space(8) }}
             >
-              <Text style={{ fontSize: rs.font(14), color: colors.textSecondary, fontWeight: '600' }}>
+              <Text
+                style={{
+                  fontSize: rs.font(14),
+                  color: colors.textSecondary,
+                  fontWeight: '600',
+                }}
+              >
                 Cancelar
               </Text>
             </TouchableOpacity>
@@ -251,7 +385,16 @@ function Section({ title, children, colors, rs, isDark }: any) {
         borderColor: colors.borderLight,
       }}
     >
-      <Text style={{ fontSize: rs.font(11), fontWeight: '800', color: colors.textLight, textTransform: 'uppercase', letterSpacing: 0.6, marginBottom: rs.space(8) }}>
+      <Text
+        style={{
+          fontSize: rs.font(11),
+          fontWeight: '800',
+          color: colors.textLight,
+          textTransform: 'uppercase',
+          letterSpacing: 0.6,
+          marginBottom: rs.space(8),
+        }}
+      >
         {title}
       </Text>
       {children}
@@ -259,27 +402,80 @@ function Section({ title, children, colors, rs, isDark }: any) {
   );
 }
 
-function Row({ icon, label, subtitle, onPress, colors, rs, trailingIcon, trailingColor }: any) {
+function Row({
+  icon,
+  label,
+  subtitle,
+  onPress,
+  colors,
+  rs,
+  trailingIcon,
+  trailingColor,
+}: any) {
   return (
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={onPress ? 0.7 : 1}
       disabled={!onPress}
-      style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingVertical: rs.space(10) }}
+      accessibilityRole={onPress ? 'button' : 'text'}
+      accessibilityLabel={subtitle ? `${label}, ${subtitle}` : label}
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingVertical: rs.space(10),
+      }}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: rs.space(10), flex: 1 }}>
-        <MaterialCommunityIcons name={icon} size={rs.font(20)} color={trailingColor || colors.text} />
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: rs.space(10),
+          flex: 1,
+        }}
+      >
+        <MaterialCommunityIcons
+          name={icon}
+          size={rs.font(20)}
+          color={trailingColor || colors.text}
+        />
         <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: rs.font(14), color: trailingColor || colors.text }}>{label}</Text>
+          <Text
+            style={{
+              fontSize: rs.font(14),
+              color: trailingColor || colors.text,
+            }}
+          >
+            {label}
+          </Text>
           {subtitle && (
-            <Text style={{ fontSize: rs.font(12), color: colors.textLight, marginTop: 2 }}>{subtitle}</Text>
+            <Text
+              style={{
+                fontSize: rs.font(12),
+                color: colors.textLight,
+                marginTop: 2,
+              }}
+            >
+              {subtitle}
+            </Text>
           )}
         </View>
       </View>
-      {trailingIcon
-        ? <MaterialCommunityIcons name={trailingIcon} size={rs.font(20)} color={trailingColor || colors.textLight} />
-        : (onPress && <MaterialCommunityIcons name="chevron-right" size={rs.font(20)} color={colors.textLight} />)
-      }
+      {trailingIcon ? (
+        <MaterialCommunityIcons
+          name={trailingIcon}
+          size={rs.font(20)}
+          color={trailingColor || colors.textLight}
+        />
+      ) : (
+        onPress && (
+          <MaterialCommunityIcons
+            name="chevron-right"
+            size={rs.font(20)}
+            color={colors.textLight}
+          />
+        )
+      )}
     </TouchableOpacity>
   );
 }

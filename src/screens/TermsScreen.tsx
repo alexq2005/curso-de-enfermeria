@@ -33,8 +33,18 @@ function useFadeIn(duration = 400, delay = 0) {
 
   useEffect(() => {
     Animated.parallel([
-      Animated.timing(opacity, { toValue: 1, duration, delay, useNativeDriver: true }),
-      Animated.timing(translateY, { toValue: 0, duration, delay, useNativeDriver: true }),
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration,
+        delay,
+        useNativeDriver: true,
+      }),
+      Animated.timing(translateY, {
+        toValue: 0,
+        duration,
+        delay,
+        useNativeDriver: true,
+      }),
     ]).start();
   }, [opacity, translateY, duration, delay]);
 
@@ -149,25 +159,40 @@ export function TermsScreen({ navigation }: Props) {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
 
       {/* Header */}
       <LinearGradient
         colors={[colors.gradientStart, colors.gradientEnd]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        style={[styles.header, { paddingTop: insets.top + rs.space(SPACING.lg) }]}
+        style={[
+          styles.header,
+          { paddingTop: insets.top + rs.space(SPACING.lg) },
+        ]}
       >
         <TouchableOpacity
           style={styles.backButton}
           onPress={() => navigation.goBack()}
+          accessibilityRole="button"
+          accessibilityLabel="Volver"
           hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
         >
-          <MaterialCommunityIcons name="arrow-left" size={rs.font(22)} color={colors.gradientText} />
+          <MaterialCommunityIcons
+            name="arrow-left"
+            size={rs.font(22)}
+            color={colors.gradientText}
+          />
         </TouchableOpacity>
         <Animated.View style={{ opacity, transform: [{ translateY }] }}>
           <Text style={styles.headerTitle}>Terminos y Condiciones</Text>
-          <Text style={styles.headerSubtitle}>Ultima actualizacion: Marzo 2026</Text>
+          <Text style={styles.headerSubtitle}>
+            Ultima actualizacion: Marzo 2026
+          </Text>
         </Animated.View>
       </LinearGradient>
 
@@ -180,24 +205,44 @@ export function TermsScreen({ navigation }: Props) {
         showsVerticalScrollIndicator={false}
       >
         {/* Medical disclaimer highlight */}
-        <View style={[styles.disclaimerCard, { borderColor: colors.warning + '50', backgroundColor: colors.warning + '10' }]}>
+        <View
+          style={[
+            styles.disclaimerCard,
+            {
+              borderColor: colors.warning + '50',
+              backgroundColor: colors.warning + '10',
+            },
+          ]}
+        >
           <View style={styles.disclaimerHeader}>
-            <MaterialCommunityIcons name="alert-circle" size={rs.font(22)} color={colors.warning} />
+            <MaterialCommunityIcons
+              name="alert-circle"
+              size={rs.font(22)}
+              color={colors.warning}
+            />
             <Text style={[styles.disclaimerTitle, { color: colors.warning }]}>
               Aviso Medico Importante
             </Text>
           </View>
           <Text style={[styles.disclaimerText, { color: colors.text }]}>
-            Esta aplicacion es una herramienta educativa de referencia. NO reemplaza el juicio
-            clinico profesional ni el diagnostico medico. Siempre consulta con un profesional
-            de la salud calificado para decisiones clinicas.
+            Esta aplicacion es una herramienta educativa de referencia. NO
+            reemplaza el juicio clinico profesional ni el diagnostico medico.
+            Siempre consulta con un profesional de la salud calificado para
+            decisiones clinicas.
           </Text>
         </View>
 
         {/* Sections */}
         {SECTIONS.map((section, i) => (
           <View key={i} style={styles.section}>
-            <Text style={[styles.sectionTitle, section.title.includes('IMPORTANTE') && { color: colors.warning }]}>
+            <Text
+              style={[
+                styles.sectionTitle,
+                section.title.includes('IMPORTANTE') && {
+                  color: colors.warning,
+                },
+              ]}
+            >
               {section.title}
             </Text>
             <Text style={styles.sectionContent}>{section.content}</Text>

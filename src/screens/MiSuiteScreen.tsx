@@ -38,7 +38,8 @@ const APPS: AppEntry[] = [
     id: 'curso',
     name: 'Manual de Enfermería',
     tagline: 'CÓMO se hace',
-    description: '10 módulos: fundamentos, anatomía, técnicas, emergencias y comunicación clínica.',
+    description:
+      '10 módulos: fundamentos, anatomía, técnicas, emergencias y comunicación clínica.',
     icon: 'school',
     scheme: 'curso://',
     pkg: 'com.cursoenfermeria.free',
@@ -49,7 +50,8 @@ const APPS: AppEntry[] = [
     id: 'patologias',
     name: 'Patologías de Enfermería',
     tagline: 'QUÉ tiene el paciente',
-    description: '151 patologías por sistema con NANDA-NIC-NOC, escalas, valores de laboratorio y protocolos.',
+    description:
+      '151 patologías por sistema con NANDA-NIC-NOC, escalas, valores de laboratorio y protocolos.',
     icon: 'stethoscope',
     scheme: 'patologias://',
     pkg: 'com.patologiasenfermeria.free',
@@ -60,7 +62,8 @@ const APPS: AppEntry[] = [
     id: 'farmacologia',
     name: 'Guía Farmacológica',
     tagline: 'QUÉ le doy al paciente',
-    description: '2.877 fármacos con dosis, vías, mecanismo, interacciones y compatibilidades EV.',
+    description:
+      '2.877 fármacos con dosis, vías, mecanismo, interacciones y compatibilidades EV.',
     icon: 'pill',
     scheme: 'farmacologia://',
     pkg: 'com.guiafarmacologica.free',
@@ -104,35 +107,52 @@ export function MiSuiteScreen() {
     setStatuses(Object.fromEntries(APPS.map(a => [a.id, 'checking'])));
   }, []);
 
-  const handlePress = useCallback((app: AppEntry) => {
-    if (app.isCurrent) return;
-    const status = statuses[app.id];
-    if (status === 'installed') {
-      Linking.openURL(app.scheme).catch(() => {
+  const handlePress = useCallback(
+    (app: AppEntry) => {
+      if (app.isCurrent) return;
+      const status = statuses[app.id];
+      if (status === 'installed') {
+        Linking.openURL(app.scheme).catch(() => {
+          const playUrl = `market://details?id=${app.pkg}`;
+          Linking.openURL(playUrl).catch(() =>
+            Linking.openURL(
+              `https://play.google.com/store/apps/details?id=${app.pkg}`,
+            ),
+          );
+        });
+      } else {
         const playUrl = `market://details?id=${app.pkg}`;
         Linking.openURL(playUrl).catch(() =>
-          Linking.openURL(`https://play.google.com/store/apps/details?id=${app.pkg}`),
+          Linking.openURL(
+            `https://play.google.com/store/apps/details?id=${app.pkg}`,
+          ),
         );
-      });
-    } else {
-      const playUrl = `market://details?id=${app.pkg}`;
-      Linking.openURL(playUrl).catch(() =>
-        Linking.openURL(`https://play.google.com/store/apps/details?id=${app.pkg}`),
-      );
-    }
-  }, [statuses]);
+      }
+    },
+    [statuses],
+  );
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
 
-      <ScrollView contentContainerStyle={{ paddingBottom: insets.bottom + rs.space(40) }}>
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: insets.bottom + rs.space(40) }}
+      >
         {/* Hero */}
         <LinearGradient
           colors={[colors.gradientStart, colors.gradientEnd]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
-          style={{ paddingTop: insets.top + rs.space(20), paddingBottom: rs.space(30), paddingHorizontal: rs.space(24) }}
+          style={{
+            paddingTop: insets.top + rs.space(20),
+            paddingBottom: rs.space(30),
+            paddingHorizontal: rs.space(24),
+          }}
         >
           <View
             style={{
@@ -145,18 +165,39 @@ export function MiSuiteScreen() {
               marginBottom: rs.space(12),
             }}
           >
-            <MaterialCommunityIcons name="apps" size={rs.font(32)} color="#fff" />
+            <MaterialCommunityIcons
+              name="apps"
+              size={rs.font(32)}
+              color="#fff"
+            />
           </View>
-          <Text style={{ fontSize: rs.font(26), fontWeight: '800', color: '#fff', letterSpacing: -0.5 }}>
+          <Text
+            style={{
+              fontSize: rs.font(26),
+              fontWeight: '800',
+              color: '#fff',
+              letterSpacing: -0.5,
+            }}
+          >
             Mi suite de enfermería
           </Text>
-          <Text style={{ fontSize: rs.font(13), color: 'rgba(255,255,255,0.85)', marginTop: 6, lineHeight: rs.font(19) }}>
-            Tres apps que se complementan: aprendé, consultá patologías y verificá fármacos sin salir del ecosistema.
+          <Text
+            style={{
+              fontSize: rs.font(13),
+              color: 'rgba(255,255,255,0.85)',
+              marginTop: 6,
+              lineHeight: rs.font(19),
+            }}
+          >
+            Tres apps que se complementan: aprendé, consultá patologías y
+            verificá fármacos sin salir del ecosistema.
           </Text>
         </LinearGradient>
 
         {/* Lista de apps */}
-        <View style={{ paddingHorizontal: rs.space(16), paddingTop: rs.space(20) }}>
+        <View
+          style={{ paddingHorizontal: rs.space(16), paddingTop: rs.space(20) }}
+        >
           {APPS.map(app => {
             const status = statuses[app.id] || 'checking';
             const isCurrent = app.isCurrent;
@@ -167,6 +208,14 @@ export function MiSuiteScreen() {
                 activeOpacity={isCurrent ? 1 : 0.85}
                 onPress={() => handlePress(app)}
                 disabled={isCurrent}
+                accessibilityRole="button"
+                accessibilityLabel={
+                  isCurrent
+                    ? `${app.name}, estás usando esta app`
+                    : status === 'installed'
+                    ? `Abrir ${app.name}`
+                    : `Descargar ${app.name} desde Google Play`
+                }
                 style={{
                   backgroundColor: isDark ? colors.surface : colors.neuSurface,
                   borderRadius: 18,
@@ -203,13 +252,32 @@ export function MiSuiteScreen() {
                       justifyContent: 'center',
                     }}
                   >
-                    <MaterialCommunityIcons name={app.icon} size={rs.font(26)} color="#fff" />
+                    <MaterialCommunityIcons
+                      name={app.icon}
+                      size={rs.font(26)}
+                      color="#fff"
+                    />
                   </View>
                   <View style={{ flex: 1 }}>
-                    <Text style={{ fontSize: rs.font(10), fontWeight: '800', color: 'rgba(255,255,255,0.85)', letterSpacing: 1 }}>
+                    <Text
+                      style={{
+                        fontSize: rs.font(10),
+                        fontWeight: '800',
+                        color: 'rgba(255,255,255,0.85)',
+                        letterSpacing: 1,
+                      }}
+                    >
                       {app.tagline.toUpperCase()}
                     </Text>
-                    <Text style={{ fontSize: rs.font(16), fontWeight: '800', color: '#fff', marginTop: 2 }} numberOfLines={2}>
+                    <Text
+                      style={{
+                        fontSize: rs.font(16),
+                        fontWeight: '800',
+                        color: '#fff',
+                        marginTop: 2,
+                      }}
+                      numberOfLines={2}
+                    >
                       {app.name}
                     </Text>
                   </View>
@@ -222,7 +290,14 @@ export function MiSuiteScreen() {
                         borderRadius: 8,
                       }}
                     >
-                      <Text style={{ fontSize: rs.font(9), fontWeight: '900', color: app.gradient[1], letterSpacing: 0.5 }}>
+                      <Text
+                        style={{
+                          fontSize: rs.font(9),
+                          fontWeight: '900',
+                          color: app.gradient[1],
+                          letterSpacing: 0.5,
+                        }}
+                      >
                         ESTÁS AQUÍ
                       </Text>
                     </View>
@@ -231,29 +306,93 @@ export function MiSuiteScreen() {
 
                 {/* Body */}
                 <View style={{ padding: rs.space(14) }}>
-                  <Text style={{ fontSize: rs.font(13), color: colors.textSecondary, lineHeight: rs.font(19), marginBottom: rs.space(12) }}>
+                  <Text
+                    style={{
+                      fontSize: rs.font(13),
+                      color: colors.textSecondary,
+                      lineHeight: rs.font(19),
+                      marginBottom: rs.space(12),
+                    }}
+                  >
                     {app.description}
                   </Text>
 
                   {/* Action button */}
                   {!isCurrent && (
-                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                      }}
+                    >
                       {status === 'checking' && (
-                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                          <ActivityIndicator size="small" color={colors.textLight} />
-                          <Text style={{ fontSize: rs.font(12), color: colors.textLight }}>Detectando...</Text>
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            gap: 8,
+                          }}
+                        >
+                          <ActivityIndicator
+                            size="small"
+                            color={colors.textLight}
+                          />
+                          <Text
+                            style={{
+                              fontSize: rs.font(12),
+                              color: colors.textLight,
+                            }}
+                          >
+                            Detectando...
+                          </Text>
                         </View>
                       )}
                       {status === 'installed' && (
-                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                          <MaterialCommunityIcons name="check-circle" size={rs.font(16)} color="#16A34A" />
-                          <Text style={{ fontSize: rs.font(12), color: '#16A34A', fontWeight: '700' }}>Instalada</Text>
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            gap: 6,
+                          }}
+                        >
+                          <MaterialCommunityIcons
+                            name="check-circle"
+                            size={rs.font(16)}
+                            color="#16A34A"
+                          />
+                          <Text
+                            style={{
+                              fontSize: rs.font(12),
+                              color: '#16A34A',
+                              fontWeight: '700',
+                            }}
+                          >
+                            Instalada
+                          </Text>
                         </View>
                       )}
                       {status === 'missing' && (
-                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                          <MaterialCommunityIcons name="download" size={rs.font(16)} color={colors.textLight} />
-                          <Text style={{ fontSize: rs.font(12), color: colors.textLight }}>No instalada</Text>
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            gap: 6,
+                          }}
+                        >
+                          <MaterialCommunityIcons
+                            name="download"
+                            size={rs.font(16)}
+                            color={colors.textLight}
+                          />
+                          <Text
+                            style={{
+                              fontSize: rs.font(12),
+                              color: colors.textLight,
+                            }}
+                          >
+                            No instalada
+                          </Text>
                         </View>
                       )}
 
@@ -268,11 +407,21 @@ export function MiSuiteScreen() {
                           borderRadius: 999,
                         }}
                       >
-                        <Text style={{ fontSize: rs.font(12), color: '#fff', fontWeight: '800' }}>
+                        <Text
+                          style={{
+                            fontSize: rs.font(12),
+                            color: '#fff',
+                            fontWeight: '800',
+                          }}
+                        >
                           {status === 'installed' ? 'Abrir' : 'Descargar'}
                         </Text>
                         <MaterialCommunityIcons
-                          name={status === 'installed' ? 'open-in-new' : 'google-play'}
+                          name={
+                            status === 'installed'
+                              ? 'open-in-new'
+                              : 'google-play'
+                          }
                           size={rs.font(14)}
                           color="#fff"
                         />
@@ -295,8 +444,16 @@ export function MiSuiteScreen() {
               marginTop: rs.space(8),
             }}
           >
-            <Text style={{ fontSize: rs.font(11), color: colors.textLight, lineHeight: rs.font(17), textAlign: 'center' }}>
-              ★ Cada app es independiente. Usalas juntas para tener el ecosistema completo de estudio + referencia clínica.
+            <Text
+              style={{
+                fontSize: rs.font(11),
+                color: colors.textLight,
+                lineHeight: rs.font(17),
+                textAlign: 'center',
+              }}
+            >
+              ★ Cada app es independiente. Usalas juntas para tener el
+              ecosistema completo de estudio + referencia clínica.
             </Text>
           </View>
         </View>

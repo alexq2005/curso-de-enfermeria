@@ -107,7 +107,9 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
     },
   ).current;
 
-  const viewabilityConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
+  const viewabilityConfig = useRef({
+    viewAreaCoveragePercentThreshold: 50,
+  }).current;
 
   const handleSkip = useCallback(() => {
     onComplete();
@@ -116,7 +118,10 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
 
   const handleNext = useCallback(() => {
     if (currentIndex < SLIDES.length - 1) {
-      flatListRef.current?.scrollToIndex({ index: currentIndex + 1, animated: true });
+      flatListRef.current?.scrollToIndex({
+        index: currentIndex + 1,
+        animated: true,
+      });
     } else {
       handleSkip();
     }
@@ -151,7 +156,12 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
           />
 
           {/* Content */}
-          <View style={[styles.slideContent, { paddingTop: insets.top + rs.space(60) }]}>
+          <View
+            style={[
+              styles.slideContent,
+              { paddingTop: insets.top + rs.space(60) },
+            ]}
+          >
             {/* Subtitle badge */}
             <View style={styles.subtitleBadge}>
               <Text style={[styles.subtitleText, { fontSize: rs.font(11) }]}>
@@ -169,11 +179,21 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
           </View>
 
           {/* Bottom text */}
-          <View style={[styles.bottomText, { paddingBottom: insets.bottom + rs.space(140) }]}>
+          <View
+            style={[
+              styles.bottomText,
+              { paddingBottom: insets.bottom + rs.space(140) },
+            ]}
+          >
             <Text style={[styles.title, { fontSize: rs.font(26) }]}>
               {item.title}
             </Text>
-            <Text style={[styles.description, { fontSize: rs.font(14), marginTop: rs.space(12) }]}>
+            <Text
+              style={[
+                styles.description,
+                { fontSize: rs.font(14), marginTop: rs.space(12) },
+              ]}
+            >
               {item.description}
             </Text>
           </View>
@@ -208,10 +228,7 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
       return (
         <Animated.View
           key={index}
-          style={[
-            styles.dot,
-            { width: dotWidth, opacity: dotOpacity },
-          ]}
+          style={[styles.dot, { width: dotWidth, opacity: dotOpacity }]}
         />
       );
     });
@@ -220,7 +237,11 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
 
       {/* Slides */}
       <FlatList
@@ -242,11 +263,20 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
       />
 
       {/* Floating bottom controls */}
-      <View style={[styles.controls, { paddingBottom: Math.max(insets.bottom, SPACING.lg) + SPACING.md }]}>
+      <View
+        style={[
+          styles.controls,
+          { paddingBottom: Math.max(insets.bottom, SPACING.lg) + SPACING.md },
+        ]}
+      >
         {/* Skip (non-last pages) */}
         <TouchableOpacity
           onPress={handleSkip}
           activeOpacity={0.7}
+          accessibilityRole="button"
+          accessibilityLabel="Omitir introducción"
+          disabled={isLastPage}
+          hitSlop={{ top: 12, bottom: 12, left: 8, right: 8 }}
           style={styles.skipButton}
         >
           <Text style={[styles.skipText, { fontSize: rs.font(14) }]}>
@@ -261,6 +291,11 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
         <TouchableOpacity
           onPress={handleNext}
           activeOpacity={0.85}
+          accessibilityRole="button"
+          accessibilityLabel={
+            isLastPage ? 'Comenzar a usar la app' : 'Siguiente diapositiva'
+          }
+          hitSlop={{ top: 12, bottom: 12, left: 8, right: 8 }}
           style={styles.nextButton}
         >
           <Text style={[styles.nextText, { fontSize: rs.font(14) }]}>

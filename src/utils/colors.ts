@@ -5,25 +5,25 @@
 export type ThemeColors = typeof LIGHT_COLORS;
 
 export const LIGHT_COLORS = {
-  primary: '#0EA5E9',         // Azul médico — diferenciado de Patologias (violeta)
+  primary: '#0EA5E9', // Azul médico — diferenciado de Patologias (violeta)
   primaryLight: '#7DD3FC',
   primaryDark: '#0369A1',
-  secondary: '#00B894',       // Verde menta — calido y profesional
-  accent: '#FD79A8',          // Rosa suave
-  background: '#F8F9FC',      // Gris calido con toque violeta
+  secondary: '#00B894', // Verde menta — calido y profesional
+  accent: '#FD79A8', // Rosa suave
+  background: '#F8F9FC', // Gris calido con toque violeta
   surface: '#FFFFFF',
   surfaceElevated: '#FFFFFF',
-  text: '#2D3047',            // Azul oscuro calido (no negro puro)
-  textSecondary: '#636E83',   // Gris calido medio
-  textLight: '#9BA4B5',       // Gris calido claro
-  border: '#E8ECF2',          // Borde calido
+  text: '#2D3047', // Azul oscuro calido (no negro puro)
+  textSecondary: '#636E83', // Gris calido medio (4.9:1 sobre background)
+  textLight: '#67738C', // Gris calido claro (4.5:1 sobre background — antes #9BA4B5 daba 2.4:1)
+  border: '#E8ECF2', // Borde calido
   borderLight: '#F2F4F8',
-  error: '#E55050',           // Rojo mas suave
-  warning: '#FDAD5A',         // Amarillo ambar calido
-  success: '#2ECC71',         // Verde esmeralda vibrante
-  info: '#54A0FF',            // Azul cielo amigable
+  error: '#E55050', // Rojo mas suave
+  warning: '#FDAD5A', // Amarillo ambar calido
+  success: '#2ECC71', // Verde esmeralda vibrante
+  info: '#54A0FF', // Azul cielo amigable
   emergency: '#E55050',
-  nursing: '#6C5CE7',         // Mismo que primary para coherencia
+  nursing: '#6C5CE7', // Mismo que primary para coherencia
   cardBackground: '#FFFFFF',
   shadow: '#000000',
   overlay: 'rgba(0,0,0,0.4)',
@@ -50,23 +50,23 @@ export const LIGHT_COLORS = {
 };
 
 export const DARK_COLORS: ThemeColors = {
-  primary: '#38BDF8',         // Azul claro — legible sobre oscuro
+  primary: '#38BDF8', // Azul claro — legible sobre oscuro
   primaryLight: '#7DD3FC',
   primaryDark: '#6C5CE7',
-  secondary: '#55EFC4',       // Verde menta brillante
+  secondary: '#55EFC4', // Verde menta brillante
   accent: '#FD79A8',
-  background: '#161B2E',      // Azul noche calido (no negro muerto)
-  surface: '#1E2640',         // Superficie elevada calida
+  background: '#161B2E', // Azul noche calido (no negro muerto)
+  surface: '#1E2640', // Superficie elevada calida
   surfaceElevated: '#2A3250', // Aun mas elevada
-  text: '#F0F1F5',            // Blanco calido (no blanco puro)
-  textSecondary: '#9BA4B8',   // Gris medio legible
-  textLight: '#636E83',       // Gris sutil
-  border: '#2A3250',          // Borde coherente con superficie
+  text: '#F0F1F5', // Blanco calido (no blanco puro)
+  textSecondary: '#9BA4B8', // Gris medio legible (6:1 sobre surface)
+  textLight: '#8C96AD', // Gris sutil (5:1 sobre surface — antes #636E83 daba 2.9:1)
+  border: '#2A3250', // Borde coherente con superficie
   borderLight: '#1E2640',
-  error: '#FF6B6B',           // Rojo coral — suave para dark mode
-  warning: '#FECA57',         // Amarillo calido
-  success: '#55EFC4',         // Verde menta
-  info: '#74B9FF',            // Azul cielo suave
+  error: '#FF6B6B', // Rojo coral — suave para dark mode
+  warning: '#FECA57', // Amarillo calido
+  success: '#55EFC4', // Verde menta
+  info: '#74B9FF', // Azul cielo suave
   emergency: '#FF6B6B',
   nursing: '#A29BFE',
   cardBackground: '#1E2640',

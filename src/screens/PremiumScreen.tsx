@@ -254,6 +254,8 @@ export function PremiumScreen({ navigation }: Props) {
         <TouchableOpacity
           style={styles.backButton}
           onPress={() => navigation.goBack()}
+          accessibilityRole="button"
+          accessibilityLabel="Volver"
           hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
         >
           <MaterialCommunityIcons
@@ -373,6 +375,9 @@ export function PremiumScreen({ navigation }: Props) {
               onPress={purchaseSubscription}
               disabled={purchasing}
               activeOpacity={0.85}
+              accessibilityRole="button"
+              accessibilityLabel="Suscribirse a Premium, suscripción mensual vía Google Play"
+              accessibilityState={{ disabled: purchasing }}
             >
               <LinearGradient
                 colors={[colors.gradientStart, colors.gradientEnd]}
@@ -555,6 +560,9 @@ export function PremiumScreen({ navigation }: Props) {
           onPress={handleRestore}
           disabled={restoring}
           activeOpacity={0.7}
+          accessibilityRole="button"
+          accessibilityLabel="Restaurar compra"
+          accessibilityState={{ disabled: restoring }}
         >
           {restoring ? (
             <ActivityIndicator size="small" color={colors.textSecondary} />
