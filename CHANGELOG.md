@@ -2,21 +2,34 @@
 
 ## [Unreleased]
 
+### Added
+- **Indicador de progreso de lectura** en CursoModuloScreen: barra fina bajo el header que se llena con el scroll (scaleX + native driver)
+- **Contador de resultados**: header "N resultados" en el Buscador y subtítulo dinámico "N de 178 términos" en el Glosario al filtrar
+- **Empty states con acción**: sin-resultados de Buscador y Glosario ahora muestran ícono en círculo, sugerencia y botón "Limpiar búsqueda"
+- **Candado premium claro** en la lista de módulos: scrim oscuro sobre la foto + mensaje "Contenido Premium — desbloquealo con PRO" con candado (antes solo un badge PRO chico)
+- **Loading del navigator**: ActivityIndicator centrado mientras carga el estado de onboarding (antes pantalla vacía)
+- **Estado "módulo no encontrado" útil** en CursoModuloScreen: ícono, mensaje y botón Volver
+- **CI con GitHub Actions** (`.github/workflows/ci.yml`): typecheck + ESLint + Jest en push/PR a `main`
+
+### Changed
+- **Tipografía de lectura** en CursoModuloScreen: cuerpo 15/24 (line-height 1.6×), jerarquía sub (18) > h4 (16) > cuerpo (15) > tablas (12.5); bullets alineados al line-height; espaciado vertical consistente entre bloques y subtemas
+- **Cards destacadas** (insight/tip/alert/warn) muestran su emoji identificador (estaba definido en `CARD_STYLES` pero sin renderizar)
+- **Contraste WCAG de `textLight`**: light `#9BA4B5` (2.4:1) → `#67738C` (4.5:1); dark `#636E83` (2.9:1) → `#8C96AD` (5:1)
+- **Accesibilidad transversal**: `accessibilityRole`/`Label`/`State` y `hitSlop` en todos los touchables de las 11 pantallas (cards de módulos, botones del hero, chips de tema, modal de activación, back buttons, Onboarding, MiSuite, Premium); "Omitir" del Onboarding deshabilitado en la última slide
+- **StatusBar explícito** (light-content sobre headers con gradiente) en Settings y About
+- **Estilos a `StyleSheet.create`** (factory memoizada por tema/escala) en CursoModuloScreen, CursoScreen, GlosarioScreen y BuscadorScreen: warnings de inline-styles 273 → 132 (los 60 de `no-bitwise` en `activation.ts` son intencionales)
+- **premiumLogic extraído a módulo puro** (`src/utils/premiumLogic.ts`): `computeTrialDaysLeft` / `computeIsPremium` / `computeTrialExpired` con guard de corrupción (NaN/Infinity → 0 días, fail-closed) y clamp superior (retroceder el reloj no extiende el trial). Storage corrupto re-inicializa el trial en el load. 22 tests nuevos (`__tests__/premiumLogic.test.ts`)
+
 ### Fixed
+- `headerBackground` del navigator recreaba el componente en cada render (`react/no-unstable-nested-components`) → componente estable `HeaderGradientBackground`
 - **Monetización heredada de Patologías**: `PLAY_STORE_URL` apuntaba al listing de Patologías → ahora `com.cursoenfermeria.free`; SKU `patologias_premium_monthly` → `curso_premium_monthly` (pendiente crearlo en Play Console); PremiumScreen vendía features de Patologías inexistentes (quiz, escalas, NANDA, dashboard) → listas veraces (10 módulos, 56 subtemas, 178 bloques, glosario 178, buscador, progreso, dark mode, offline); PrivacyPolicy con nombre de app corregido
 - **ErrorBoundary auto-crash**: el fallback usaba `useTheme()` estando por fuera de `ThemeProvider` → al capturar un error lanzaba y dejaba pantalla blanca. Ahora usa paleta light estática + `componentDidCatch` con `console.error`
 - **Restaurar compra sin feedback**: si fallaba no mostraba nada → banner "No se encontró una suscripción activa" + spinner durante la restauración
-
-### Changed
-- **premiumLogic extraído a módulo puro** (`src/utils/premiumLogic.ts`): `computeTrialDaysLeft` / `computeIsPremium` / `computeTrialExpired` con guard de corrupción (NaN/Infinity → 0 días, fail-closed) y clamp superior (retroceder el reloj no extiende el trial). Storage corrupto re-inicializa el trial en el load. 22 tests nuevos (`__tests__/premiumLogic.test.ts`)
 
 ### Removed
 - 5 dependencias sin uso: `@op-engineering/op-sqlite`, `@shopify/flash-list`, `@react-native-clipboard/clipboard`, `react-native-svg`, `@react-native/new-app-screen`
 - Código muerto heredado de Patologías: scripts `add_patho_batch1-5.py`, `add_patho_trauma.py`, `add_trauma_batch2.py`, `enrich_nanda.js`; componentes sin imports `PremiumGate`, `CollapsibleSection`, `ContentContainer`, `Skeleton`, `utils/animations`, `utils/typography`
 - `console.log` de debug en App.tsx y useOnboarding
-
-### Added
-- **CI con GitHub Actions** (`.github/workflows/ci.yml`): typecheck + ESLint + Jest en push/PR a `main`
 
 ### Docs
 - CLAUDE.md y ARCHITECTURE.md reescritos para esta app (describían íntegramente Patologías); README con conteos reales (glosario 178, estructura sin `src/config/`)

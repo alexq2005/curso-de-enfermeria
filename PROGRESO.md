@@ -4,6 +4,60 @@
 
 ---
 
+## 2026-06-11 — Sesión 11: Polish UX/UI — lectura, candado premium, glosario/buscador, accesibilidad
+
+### Resumen
+
+Pass de pulido visual incremental sobre las 11 pantallas, en 4 commits + docs. Sin dependencias nuevas, sin tocar lógica premium ni datos.
+
+1. **Experiencia de lectura (CursoModuloScreen)** — `feat(lectura)`:
+   - Tipografía de cuerpo 15/24 (line-height 1.6×) con jerarquía clara: título de sub (18) > h4 (16) > cuerpo (15) > tablas (12.5).
+   - **Indicador de progreso de lectura**: barra fina (3px) bajo el header que se llena con el scroll. Implementada con `Animated.ScrollView` + `scaleX` interpolado con native driver (no bloquea el hilo JS).
+   - Cards destacadas (insight/tip/alert/warn) ahora renderizan su emoji identificador — estaba definido en `CARD_STYLES` pero nunca se usaba.
+   - Bullets de listas alineados al line-height del texto; espaciado vertical consistente entre bloques y subtemas (28→32).
+   - Estado "módulo no encontrado" útil (ícono + mensaje + botón Volver).
+
+2. **Lista de módulos (CursoScreen)** — `feat(curso)`:
+   - Candado premium claro: scrim oscuro `rgba(15,23,42,0.32)` sobre la foto + fila "Contenido Premium — desbloquealo con PRO" con candado en lugar del contador de subtemas.
+   - a11y completa: labels descriptivos en cards (con estado bloqueado/progreso), botones del hero con role + hitSlop (touch target ≥44pt efectivo).
+   - 4 botones del hero deduplicados en subcomponente `HeaderAction`.
+
+3. **Glosario + Buscador** — `feat(glosario-buscador)`:
+   - Contador de resultados: subtítulo dinámico "N de 178 términos" (Glosario) y header "N resultados" (Buscador).
+   - Empty states con acción: ícono en círculo + sugerencia + botón "Limpiar búsqueda".
+   - Botón de borrar búsqueda ahora es `TouchableOpacity` con hitSlop y label (antes ícono con `onPress` de 18pt).
+   - Definiciones del glosario 13→14 con line-height 21.
+
+4. **Pass transversal de accesibilidad** — `fix(a11y)`:
+   - **Contraste WCAG**: `textLight` light `#9BA4B5` (2.4:1) → `#67738C` (4.5:1); dark `#636E83` (2.9:1) → `#8C96AD` (5:1). Verificado con cálculo de luminancia relativa.
+   - StatusBar light-content explícito en Settings y About (headers con gradiente).
+   - Roles/labels/states en: chips de tema, modal de activación, rows de Settings/About, mailto, cards de MiSuite, botones de Premium (suscribir/restaurar/back), back de Privacy/Terms, Omitir/Siguiente del Onboarding (+ Omitir deshabilitado en última slide).
+   - AppNavigator: `headerBackground` extraído a componente estable (fix `react/no-unstable-nested-components`) + ActivityIndicator en el loading inicial.
+
+### Decisiones técnicas
+- **Patrón de estilos**: factory `createStyles(colors, rs, isDark)` + `useMemo` (mismo patrón que PremiumScreen ya usaba). Estilos dinámicos por ítem (accents de módulo) quedan como objetos variable-only que la regla `no-inline-styles` no marca.
+- **StatusBar sigue `light-content` fijo** en pantallas con header/hero de gradiente azul: el fondo bajo la status bar es siempre oscuro en ambos temas — `dark-content` sería ilegible. Es theme-aware por diseño del fondo, no por condicional.
+- **No se agregaron filtros por tipo al Glosario**: `glosario.json` no tiene campo de categoría por entrada (`tipos` es contenido del término, no taxonomía) — no hay data para chips de filtro.
+- **`activation.ts` (60 warnings `no-bitwise`) no se tocó**: es lógica de premium (restricción dura) y los bitwise son intencionales (hashing).
+
+### Verificación
+- `npx tsc --noEmit`: 0 errores (después de cada commit)
+- `npm test -- --ci`: 23/23 tests, 2 suites (después de cada commit)
+- `npx eslint src --ext .ts,.tsx`: 0 errores; **warnings 273 → 132** (-141: los 4 screens refactorizados quedaron en 0 inline-styles; restan 132 = 60 `no-bitwise` intencionales de activation.ts + 72 inline-styles en pantallas no refactorizadas: Settings 23, MiSuite 21, About/Premium/ErrorBoundary/etc.)
+
+### Commits
+- `2a61bc9` feat(lectura): mejorar experiencia de lectura en CursoModuloScreen
+- `2554c06` feat(curso): pulir lista de modulos — candado premium claro y accesibilidad
+- `79a619a` feat(glosario-buscador): jerarquia de cards, contador de resultados y empty states con accion
+- `d740952` fix(a11y): contraste WCAG, StatusBar, roles y touch targets transversales
+
+### Pendientes (heredados + nuevos)
+- Regenerar y commitear el bundle JS (`index.android.bundle`) antes del próximo release — los cambios de src/ de hoy no están en el bundle commiteado (pendiente conocido, fuera de alcance).
+- Migrar los inline-styles restantes de Settings/MiSuite/About/Premium a StyleSheet (72 warnings).
+- Crear el producto `curso_premium_monthly` en Play Console.
+
+---
+
 ## 2026-06-10 — Sesión 10: Auditoría aplicada — monetización, ErrorBoundary, premiumLogic, CI, limpieza
 
 ### Resumen
