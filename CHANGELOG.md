@@ -1,5 +1,28 @@
 # Changelog
 
+## [Unreleased]
+
+### Fixed
+- **Monetización heredada de Patologías**: `PLAY_STORE_URL` apuntaba al listing de Patologías → ahora `com.cursoenfermeria.free`; SKU `patologias_premium_monthly` → `curso_premium_monthly` (pendiente crearlo en Play Console); PremiumScreen vendía features de Patologías inexistentes (quiz, escalas, NANDA, dashboard) → listas veraces (10 módulos, 56 subtemas, 178 bloques, glosario 178, buscador, progreso, dark mode, offline); PrivacyPolicy con nombre de app corregido
+- **ErrorBoundary auto-crash**: el fallback usaba `useTheme()` estando por fuera de `ThemeProvider` → al capturar un error lanzaba y dejaba pantalla blanca. Ahora usa paleta light estática + `componentDidCatch` con `console.error`
+- **Restaurar compra sin feedback**: si fallaba no mostraba nada → banner "No se encontró una suscripción activa" + spinner durante la restauración
+
+### Changed
+- **premiumLogic extraído a módulo puro** (`src/utils/premiumLogic.ts`): `computeTrialDaysLeft` / `computeIsPremium` / `computeTrialExpired` con guard de corrupción (NaN/Infinity → 0 días, fail-closed) y clamp superior (retroceder el reloj no extiende el trial). Storage corrupto re-inicializa el trial en el load. 22 tests nuevos (`__tests__/premiumLogic.test.ts`)
+
+### Removed
+- 5 dependencias sin uso: `@op-engineering/op-sqlite`, `@shopify/flash-list`, `@react-native-clipboard/clipboard`, `react-native-svg`, `@react-native/new-app-screen`
+- Código muerto heredado de Patologías: scripts `add_patho_batch1-5.py`, `add_patho_trauma.py`, `add_trauma_batch2.py`, `enrich_nanda.js`; componentes sin imports `PremiumGate`, `CollapsibleSection`, `ContentContainer`, `Skeleton`, `utils/animations`, `utils/typography`
+- `console.log` de debug en App.tsx y useOnboarding
+
+### Added
+- **CI con GitHub Actions** (`.github/workflows/ci.yml`): typecheck + ESLint + Jest en push/PR a `main`
+
+### Docs
+- CLAUDE.md y ARCHITECTURE.md reescritos para esta app (describían íntegramente Patologías); README con conteos reales (glosario 178, estructura sin `src/config/`)
+
+---
+
 ## [1.0.0] — 2026-05-06 (Manual de Enfermería · release inicial)
 
 ### Branding

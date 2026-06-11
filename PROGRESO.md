@@ -4,6 +4,50 @@
 
 ---
 
+## 2026-06-10 — Sesión 10: Auditoría aplicada — monetización, ErrorBoundary, premiumLogic, CI, limpieza
+
+### Resumen
+
+Sesión de remediación de una auditoría previa. Ocho frentes:
+
+1. **Monetización heredada de Patologías (CRÍTICO)**: `PLAY_STORE_URL` apuntaba al listing de Patologías (`com.patologiasenfermeria`) → corregido a `com.cursoenfermeria.free` (el AAB publicado es el flavor free). SKU `patologias_premium_monthly` → `curso_premium_monthly` (pendiente crearlo en Play Console). PremiumScreen vendía features de Patologías que no existen acá (quiz, escalas, NANDA/NIC/NOC, dashboard) → listas veraces: 10 módulos (m1-m2 gratis), 56 subtemas, 178 bloques, glosario 178, buscador, progreso, dark mode, offline. PrivacyPolicy decía "Patologias de Enfermeria" → "Manual de Enfermeria".
+2. **ErrorBoundary auto-crash**: el fallback llamaba `useTheme()` estando el boundary POR FUERA de ThemeProvider → al capturar cualquier error lanzaba y dejaba pantalla blanca. Fix: paleta light estática + `componentDidCatch` con `console.error`.
+3. **premiumLogic portado del ecosistema**: módulo puro `src/utils/premiumLogic.ts` con guard NaN/Infinity (fail-closed) y clamp superior anti clock-rollback. PremiumContext re-inicializa el trial si el storage está corrupto. 22 tests nuevos.
+4. **Feedback en Restaurar compra**: antes fallaba en silencio → banner de error + spinner.
+5. **Dependencias**: desinstaladas 5 sin uso (op-sqlite, flash-list, clipboard, react-native-svg, new-app-screen) tras grep exhaustivo.
+6. **Código muerto**: 8 scripts de Patologías (operaban sobre pathologies.json inexistente) + 6 componentes/utils sin imports, borrados en batches ≤5 con tsc+jest verdes entre batches.
+7. **CI**: `.github/workflows/ci.yml` con typecheck + eslint + jest (push/PR a main), adaptado del de Patologías sin los jobs de data-integrity.
+8. **Docs**: CLAUDE.md y ARCHITECTURE.md reescritos para ESTA app (eran copias de Patologías sin adaptar); README con glosario 178 (decía 94) y estructura real; basura del root borrada (13 png/jpg sin trackear, incl. heart.jpg que era un HTML 404 de 29 bytes).
+
+### Archivos modificados
+
+| Archivo | Cambio |
+|---------|--------|
+| `src/context/PremiumContext.tsx` | URL/SKU correctos + load con guard de corrupción + usa premiumLogic |
+| `src/screens/PremiumScreen.tsx` | features veraces + feedback de restore |
+| `src/screens/PrivacyPolicyScreen.tsx` | nombre de app |
+| `src/components/ErrorBoundary.tsx` | fallback sin useTheme + componentDidCatch |
+| `src/utils/premiumLogic.ts` | NUEVO — lógica premium pura |
+| `__tests__/premiumLogic.test.ts` | NUEVO — 22 tests |
+| `App.tsx`, `src/hooks/useOnboarding.ts` | console.log removidos |
+| `package.json` / `package-lock.json` | -5 dependencias |
+| `scripts/` (8), `src/components/` (4), `src/utils/` (2) | código muerto eliminado |
+| `.github/workflows/ci.yml` | NUEVO — CI |
+| `CLAUDE.md`, `ARCHITECTURE.md`, `README.md`, `CHANGELOG.md`, `playstore/INSTRUCCIONES_PUBLICACION.md` | docs corregidos |
+
+### Verificación
+- `npx tsc --noEmit`: 0 errores
+- `npm test -- --ci`: 23/23 tests (2 suites)
+- `npx eslint src --ext .ts,.tsx`: 0 errores (273 warnings preexistentes de inline-styles)
+
+### Pendientes
+- Crear el producto `curso_premium_monthly` en Play Console (Monetización > Suscripciones) — sin esto el botón Suscribirse solo abre el listing.
+- Integrar Google Play Billing real (restoreSubscription hoy solo lee EncryptedStorage local).
+- `scripts/fix_tildes.js` también referencia pathologies.json inexistente — quedó fuera del alcance de esta limpieza, evaluar borrarlo.
+- Regenerar y commitear el bundle JS (`index.android.bundle`) antes del próximo release — los cambios de src/ de hoy no están en el bundle commiteado.
+
+---
+
 ## 2026-05-22 — Sesión 9: Buscador inteligente + glosario expandido + back buttons
 
 ### Resumen

@@ -11,7 +11,7 @@ Forma parte de un ecosistema de 3 apps:
 
 - **10 módulos · 56 subtemas** estructurados con bloques tipados (párrafo, listas, cards de alerta, tablas, grids)
 - **Bloques clínicos**: insight, tip, alert, warn — con dark mode propio
-- **Glosario** de 94 siglas y abreviaturas (búsqueda accent-insensitive)
+- **Glosario** de 178 términos, siglas y abreviaturas (búsqueda accent-insensitive)
 - **Buscador full-text** en subtemas + glosario, navegación directa al contenido
 - **Progreso de lectura** por subtema con AsyncStorage debounceado
 - **Continuar último módulo** + carrusel "Recién visto"
@@ -40,13 +40,12 @@ Forma parte de un ecosistema de 3 apps:
 src/
 ├── assets/images/
 │   └── conditions/        # imágenes clínicas para módulos y onboarding
-├── components/            # ProgressBar, ErrorBoundary, etc.
-├── config/                # features flags
+├── components/            # ProgressBar, ErrorBoundary
 ├── context/               # ThemeContext, PremiumContext, CursoProgressContext
 ├── data/
-│   ├── curso.json         # 10 módulos · 56 subtemas (~2.5 MB)
-│   └── glosario.json      # 94 siglas
-├── hooks/                 # useResponsiveScale, useOnboarding, useFadeIn
+│   ├── curso.json         # 10 módulos · 56 subtemas · 178 bloques (~2.5 MB)
+│   └── glosario.json      # 178 entradas
+├── hooks/                 # useOnboarding
 ├── navigation/
 │   └── AppNavigator.tsx   # stack con 11 screens
 ├── screens/               # 11 pantallas (Curso, Modulo, Glosario, Buscador, MiSuite, Settings, etc.)
@@ -56,7 +55,8 @@ src/
 └── utils/
     ├── colors.ts          # LIGHT_COLORS + DARK_COLORS
     ├── cursoImages.ts     # mapeo imageKey → require()
-    └── responsive.ts      # escalado responsive
+    ├── premiumLogic.ts    # lógica premium pura (trial/gate) — testeada
+    └── responsive.ts      # escalado responsive (useResponsiveScale)
 ```
 
 ## Configuración Android
@@ -113,7 +113,7 @@ cd android && ./gradlew app:bundleFreeRelease
 |----------|---------|
 | Trial | 15 días de prueba con acceso completo |
 | Free después del trial | Módulos 1 y 2 abiertos · resto premium |
-| Suscripción | Mensual vía Google Play (`patologias_premium_monthly`) |
+| Suscripción | Mensual vía Google Play (`curso_premium_monthly`, pendiente de crear en Play Console) |
 | Activación por código | Easter egg: Settings → tap repetido en versión |
 
 ## Roadmap

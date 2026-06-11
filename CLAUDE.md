@@ -1,4 +1,9 @@
-# Patologias de Enfermeria — Project Instructions
+# Manual de Enfermería — Project Instructions
+
+App React Native 0.84.1 + TypeScript ("Manual de Enfermería", antes "Curso de
+Enfermería"). Curso integral offline con 10 módulos, glosario clínico y
+buscador global. Parte del ecosistema de 3 apps junto a Patologías de
+Enfermería y Guía Farmacológica.
 
 ## Build Commands
 
@@ -25,43 +30,68 @@ cd android && ./gradlew app:bundleFreeRelease
 adb install -g android/app/build/outputs/apk/free/release/app-free-release.apk
 ```
 
+## Verificación (correr tras cada cambio en src/)
+
+```bash
+npx tsc --noEmit                      # 0 errores esperados
+npm test -- --ci                      # todos los tests en verde
+npx eslint src --ext .ts,.tsx         # 0 errores (warnings de inline-styles OK)
+```
+
+CI en `.github/workflows/ci.yml` corre estos 3 jobs en push/PR a `main`.
+
 ## Critical Rules
 
 - **NEVER use Java 25** for Gradle builds — CMake crashes with `restricted method` error
-- **ALWAYS pre-bundle JS** before build — Metro BundleDownloader fails on Windows emulator
+- **ALWAYS pre-bundle JS** before build — Metro BundleDownloader fails on Windows emulator.
+  El bundle `android/app/src/main/assets/index.android.bundle` está COMMITEADO
+  a propósito (workaround del bug de Metro en Windows) — regenerarlo y
+  commitearlo cuando cambie src/ o los JSON de datos
 - **NEVER run `./gradlew clean`** — invalidates CMake cache, Java 25 can't rebuild
+- Gradle bundle task NO detecta cambios solo-data (curso.json/glosario.json):
+  usar `--rerun-tasks` + `--reset-cache` en esos casos
 - Emulator API 36 has ~600MB free — `pm uninstall` + `pm trim-caches` before install
 - Emulator takes ~25-40 seconds to initialize Hermes
 
 ## Project Structure
 
-- `src/data/pathologies.json` — 151 patologias (~2.4 MB), main data source
-- `src/context/PremiumContext.tsx` — trial (15 days), subscription, code activation
-- `src/utils/activation.ts` — SHA-256 code validation
-- `src/utils/scaleImages.ts` — maps 14 scale categories to clinical photos
-- `src/utils/conditionImages.ts` — maps 151 pathology IDs to 13 condition photos
-- `src/utils/systemImages.ts` — maps 12 body systems to photos
+- `src/data/curso.json` — 10 módulos · 56 subtemas · 178 bloques tipados (~2.5 MB), fuente principal
+- `src/data/glosario.json` — 178 entradas (sigla/término + significado, `tipos?`/`ejemplos?` opcionales)
+- `src/types/curso.ts` — discriminated unions de bloques (p, h4, list, ol, card, table, grid, image, crosslink)
+- `src/navigation/AppNavigator.tsx` — native-stack con 11 screens (SIN tabs)
+- `src/context/` — ThemeContext (light/dark/system), PremiumContext (trial/sub/código), CursoProgressContext (subtemas leídos)
+- `src/utils/premiumLogic.ts` — lógica premium PURA y testeada (REVENUE-CRITICAL, no tocar sin correr tests)
+- `src/utils/activation.ts` — validación de código por SHA-256 puro en JS
+- `src/utils/cursoImages.ts` — mapeo imageKey → assets bundleados
 - Contact email: alexq2005@gmail.com (in About, Terms, Privacy screens)
 
 ## Premium System
 
-- Trial: 15 days, stored in AsyncStorage `@patologias_trial_start`
-- Subscription SKU: `patologias_premium_monthly`
-- Code activation: Settings > Version row > tap 5 times > enter code
-- Free tier: 3 pathologies per system, 5 favorites, 5 notes
-- Flavor `free`: has restrictions + trial. Flavor `premium`: all unlocked always
-- `IS_PREMIUM_BUILD` = `!(IS_FREE)` — free flavor has IS_FREE=true
+- Free: módulos 1-2 (`isPremium: false` en curso.json) + glosario + buscador
+- Premium: los 10 módulos completos
+- Trial: 15 días, EncryptedStorage `@patologias_trial_start` (key legacy — NO renombrar,
+  resetearía el trial de instalaciones existentes)
+- Subscription SKU: `curso_premium_monthly` (PENDIENTE crear en Play Console)
+- Play Store listing: `com.cursoenfermeria.free` (se publica el flavor free)
+- Código de activación: input directo en PremiumScreen + easter egg en Settings
+  (tap 5× en la fila de versión); validación SHA-256 en `utils/activation.ts`
+- Flavor `free`: IS_FREE=true → gating + trial. Flavor `premium`: todo desbloqueado
+- `IS_PREMIUM_BUILD = !(BuildConfigModule.IS_FREE)`
+- Lógica derivada en `utils/premiumLogic.ts` (computeTrialDaysLeft con guard
+  NaN/Infinity fail-closed y clamp anti clock-rollback) — tests en
+  `__tests__/premiumLogic.test.ts`
 
 ## Design Preferences
 
-- Hero-style cards with photo backgrounds + gradient overlays (NOT flat icons)
-- Gradient quick action buttons with matching shadow colors
-- Primary color: Violeta #6D28D9
-- Neumorphic card style for light mode
-- Tab bar auto-hides on scroll (all 5 tab screens)
+- Color primario: Azul médico `#0EA5E9` (diferenciado de Patologías, violeta)
+- Hero cards con fotos clínicas + gradient overlays (NOT flat icons)
+- Neumorphic card style para light mode (`utils/neumorphism.ts`)
+- Dark mode completo (selector Claro/Oscuro/Sistema en Settings)
+- Responsive scaling vía `useResponsiveScale` (`utils/responsive.ts`)
 
 ## Play Store
 
-- AAB: `android/app/build/outputs/bundle/freeRelease/app-free-release.aab` (45 MB)
+- AAB: `android/app/build/outputs/bundle/freeRelease/app-free-release.aab`
+- applicationId: `com.cursoenfermeria` (premium) / `com.cursoenfermeria.free` (free)
 - All docs in `playstore/` folder
 - Privacy policy needs to be hosted publicly (GitHub Pages recommended)
