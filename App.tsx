@@ -7,7 +7,6 @@ import { CursoProgressProvider } from './src/context/CursoProgressContext';
 import { AppNavigator } from './src/navigation/AppNavigator';
 
 export default function App() {
-  console.log('[App] Rendering Curso de Enfermería root');
   return (
     <ErrorBoundary>
       <SafeAreaProvider>
