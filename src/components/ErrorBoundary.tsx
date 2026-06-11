@@ -1,7 +1,13 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useTheme } from '../context/ThemeContext';
+import { LIGHT_COLORS } from '../utils/colors';
+
+// NOTA: el fallback NO usa useTheme() a propósito — este boundary envuelve a
+// ThemeProvider en App.tsx, así que si llamara al hook durante un crash el
+// propio fallback lanzaría ("useTheme must be used within ThemeProvider") y
+// la app quedaría en pantalla blanca. Se usa la paleta light estática.
+const FALLBACK_COLORS = LIGHT_COLORS;
 
 interface Props {
   children: React.ReactNode;
@@ -19,6 +25,10 @@ export class ErrorBoundary extends React.Component<Props, State> {
     return { hasError: true, error };
   }
 
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error('[ErrorBoundary] Error capturado:', error, errorInfo.componentStack);
+  }
+
   handleRetry = () => {
     this.setState({ hasError: false, error: null });
   };
@@ -32,7 +42,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
 }
 
 function ErrorFallback({ error, onRetry }: { error: Error | null; onRetry: () => void }) {
-  const { colors, isDark } = useTheme();
+  const colors = FALLBACK_COLORS;
   return (
     <View
       style={{
@@ -57,7 +67,7 @@ function ErrorFallback({ error, onRetry }: { error: Error | null; onRetry: () =>
               fontSize: 11,
               color: colors.error,
               fontFamily: 'monospace',
-              backgroundColor: isDark ? colors.surface : '#FEF2F2',
+              backgroundColor: '#FEF2F2',
               padding: 12,
               borderRadius: 8,
             }}
