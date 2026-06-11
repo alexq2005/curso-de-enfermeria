@@ -120,13 +120,15 @@ export function PremiumScreen({ navigation }: Props) {
     if (ok) setCode('');
   }, [code, activateWithCode]);
 
-  const [, setRestoring] = useState(false);
+  const [restoring, setRestoring] = useState(false);
+  const [restoreFailed, setRestoreFailed] = useState(false);
   const handleRestore = useCallback(async () => {
     setRestoring(true);
+    setRestoreFailed(false);
     const restored = await restoreSubscription();
     setRestoring(false);
     if (!restored) {
-      setActivationResult(null);
+      setRestoreFailed(true);
     }
   }, [restoreSubscription]);
 
@@ -551,15 +553,40 @@ export function PremiumScreen({ navigation }: Props) {
         <TouchableOpacity
           style={[styles.restoreButton, neuCardSubtle(colors)]}
           onPress={handleRestore}
+          disabled={restoring}
           activeOpacity={0.7}
         >
-          <MaterialCommunityIcons
-            name="restore"
-            size={rs.font(17)}
-            color={colors.textSecondary}
-          />
+          {restoring ? (
+            <ActivityIndicator size="small" color={colors.textSecondary} />
+          ) : (
+            <MaterialCommunityIcons
+              name="restore"
+              size={rs.font(17)}
+              color={colors.textSecondary}
+            />
+          )}
           <Text style={styles.restoreText}>Restaurar compra</Text>
         </TouchableOpacity>
+        {restoreFailed && (
+          <View
+            style={[
+              styles.feedbackBanner,
+              {
+                backgroundColor: colors.error + '18',
+                borderColor: colors.error + '40',
+              },
+            ]}
+          >
+            <MaterialCommunityIcons
+              name="close-circle"
+              size={rs.font(16)}
+              color={colors.error}
+            />
+            <Text style={[styles.feedbackText, { color: colors.error }]}>
+              No se encontró una suscripción activa.
+            </Text>
+          </View>
+        )}
       </ScrollView>
     </View>
   );
