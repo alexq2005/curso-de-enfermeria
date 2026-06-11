@@ -9,6 +9,7 @@ import {
   ScrollView,
   TouchableOpacity,
   StatusBar,
+  StyleSheet,
   ImageBackground,
   Animated,
 } from 'react-native';
@@ -21,10 +22,11 @@ import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '../context/ThemeContext';
 import { usePremium } from '../context/PremiumContext';
 import { useCursoProgress } from '../context/CursoProgressContext';
-import { useResponsiveScale } from '../utils/responsive';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { getCursoImage } from '../utils/cursoImages';
 import { ProgressBar } from '../components/ProgressBar';
 import cursoData from '../data/curso.json';
+import type { ThemeColors } from '../utils/colors';
 import type { CursoData, CursoModulo } from '../types/curso';
 import type { RootStackParamList } from '../types';
 
@@ -32,11 +34,18 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'CursoScreen
 
 const data = cursoData as CursoData;
 
-export function CursoScreen() {
+function useCursoStyles() {
   const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  return useMemo(() => createStyles(colors, rs, isDark), [colors, rs, isDark]);
+}
+
+export function CursoScreen() {
+  const { colors } = useTheme();
   const { isPremium } = usePremium();
   const { globalProgress, getModuloProgress, lastModuloId, recentModuloIds } = useCursoProgress();
   const rs = useResponsiveScale();
+  const styles = useCursoStyles();
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
 
@@ -76,7 +85,7 @@ export function CursoScreen() {
   );
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.background }}>
+    <View style={styles.container}>
       <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
 
       <ScrollView
@@ -88,139 +97,58 @@ export function CursoScreen() {
           colors={[colors.gradientStart, colors.gradientEnd]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
-          style={{
-            paddingTop: insets.top + rs.space(20),
-            paddingBottom: rs.space(28),
-            paddingHorizontal: rs.space(24),
-          }}
+          style={[styles.hero, { paddingTop: insets.top + rs.space(20) }]}
         >
           <Animated.View style={{ opacity: fade }}>
-            <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-              <View style={{ flex: 1 }}>
-                <Text style={{ fontSize: rs.font(28), fontWeight: '800', color: '#fff', letterSpacing: -0.5 }}>
-                  Manual de Enfermería
-                </Text>
-                <Text style={{ fontSize: rs.font(13), color: 'rgba(255,255,255,0.85)', marginTop: 6 }}>
+            <View style={styles.heroTopRow}>
+              <View style={styles.heroTitleWrap}>
+                <Text style={styles.heroTitle}>Manual de Enfermería</Text>
+                <Text style={styles.heroSubtitle}>
                   Material integral: fundamentos, técnicas y emergencias
                 </Text>
               </View>
-              <View style={{ flexDirection: 'row', gap: rs.space(6), marginLeft: rs.space(8) }}>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('BuscadorScreen')}
-                  activeOpacity={0.8}
-                  style={{
-                    width: rs.space(38),
-                    height: rs.space(38),
-                    borderRadius: 12,
-                    backgroundColor: 'rgba(255,255,255,0.22)',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                  accessibilityLabel="Buscar"
-                >
-                  <MaterialCommunityIcons name="magnify" size={rs.font(20)} color="#fff" />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('GlosarioScreen')}
-                  activeOpacity={0.8}
-                  style={{
-                    width: rs.space(38),
-                    height: rs.space(38),
-                    borderRadius: 12,
-                    backgroundColor: 'rgba(255,255,255,0.22)',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                  accessibilityLabel="Glosario"
-                >
-                  <MaterialCommunityIcons name="book-alphabet" size={rs.font(20)} color="#fff" />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('MiSuite')}
-                  activeOpacity={0.8}
-                  style={{
-                    width: rs.space(38),
-                    height: rs.space(38),
-                    borderRadius: 12,
-                    backgroundColor: 'rgba(255,255,255,0.22)',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                  accessibilityLabel="Mi suite de enfermería"
-                >
-                  <MaterialCommunityIcons name="apps" size={rs.font(20)} color="#fff" />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('SettingsScreen')}
-                  activeOpacity={0.8}
-                  style={{
-                    width: rs.space(38),
-                    height: rs.space(38),
-                    borderRadius: 12,
-                    backgroundColor: 'rgba(255,255,255,0.22)',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                  accessibilityLabel="Configuración"
-                >
-                  <MaterialCommunityIcons name="cog-outline" size={rs.font(20)} color="#fff" />
-                </TouchableOpacity>
+              <View style={styles.heroActions}>
+                <HeaderAction icon="magnify" label="Buscar" onPress={() => navigation.navigate('BuscadorScreen')} />
+                <HeaderAction icon="book-alphabet" label="Glosario" onPress={() => navigation.navigate('GlosarioScreen')} />
+                <HeaderAction icon="apps" label="Mi suite de enfermería" onPress={() => navigation.navigate('MiSuite')} />
+                <HeaderAction icon="cog-outline" label="Configuración" onPress={() => navigation.navigate('SettingsScreen')} />
               </View>
             </View>
 
-            <View style={{ flexDirection: 'row', gap: rs.space(16), marginTop: rs.space(16) }}>
-              <Stat label="módulos" value={String(data.modulos.length)} rs={rs} />
-              <Stat label="subtemas" value={String(totalSubs)} rs={rs} />
-              <Stat label="leído" value={`${globalProgress.pct}%`} rs={rs} />
+            <View style={styles.statsRow}>
+              <Stat label="módulos" value={String(data.modulos.length)} />
+              <Stat label="subtemas" value={String(totalSubs)} />
+              <Stat label="leído" value={`${globalProgress.pct}%`} />
             </View>
 
-            <View style={{ marginTop: rs.space(14) }}>
+            <View style={styles.heroProgressWrap}>
               <ProgressBar progress={globalProgress.pct} fillColor="#fff" height={6} />
-              <Text style={{ fontSize: rs.font(11), color: 'rgba(255,255,255,0.85)', marginTop: 6 }}>
+              <Text style={styles.heroProgressLabel}>
                 {globalProgress.read} de {globalProgress.total} subtemas leídos
               </Text>
             </View>
           </Animated.View>
         </LinearGradient>
 
-        <Animated.View style={{ opacity: fade, paddingHorizontal: rs.space(16), paddingTop: rs.space(20) }}>
+        <Animated.View style={[styles.body, { opacity: fade }]}>
           {/* Continuar */}
           {lastModulo && (
             <TouchableOpacity
               activeOpacity={0.85}
               onPress={() => handlePress(lastModulo)}
-              style={{
-                backgroundColor: isDark ? colors.surface : colors.neuSurface,
-                borderRadius: 16,
-                padding: rs.space(14),
-                marginBottom: rs.space(16),
-                borderWidth: 1,
-                borderColor: lastModulo.gradient[1] + '40',
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: rs.space(12),
-              }}
+              accessibilityRole="button"
+              accessibilityLabel={`Continuar con ${lastModulo.title}, ${getModuloProgress(lastModulo.id).read} de ${lastModulo.subs.length} subtemas leídos`}
+              style={[styles.continueCard, { borderColor: lastModulo.gradient[1] + '40' }]}
             >
-              <View
-                style={{
-                  width: rs.space(46),
-                  height: rs.space(46),
-                  borderRadius: 12,
-                  backgroundColor: lastModulo.gradient[1] + '22',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
+              <View style={[styles.continueIconWrap, { backgroundColor: lastModulo.gradient[1] + '22' }]}>
                 <MaterialCommunityIcons name="play-circle" size={rs.font(26)} color={lastModulo.gradient[1]} />
               </View>
-              <View style={{ flex: 1 }}>
-                <Text style={{ fontSize: rs.font(10), fontWeight: '800', color: lastModulo.gradient[1], letterSpacing: 1 }}>
-                  CONTINUAR
-                </Text>
-                <Text style={{ fontSize: rs.font(15), fontWeight: '800', color: colors.text, marginTop: 2 }} numberOfLines={1}>
+              <View style={styles.continueBody}>
+                <Text style={[styles.continueKicker, { color: lastModulo.gradient[1] }]}>CONTINUAR</Text>
+                <Text style={styles.continueTitle} numberOfLines={1}>
                   {lastModulo.title}
                 </Text>
-                <Text style={{ fontSize: rs.font(11), color: colors.textLight, marginTop: 2 }}>
+                <Text style={styles.continueMeta}>
                   {getModuloProgress(lastModulo.id).read} / {lastModulo.subs.length} leídos
                 </Text>
               </View>
@@ -230,11 +158,9 @@ export function CursoScreen() {
 
           {/* Recién visto */}
           {recentModulos.length > 1 && (
-            <View style={{ marginBottom: rs.space(20) }}>
-              <Text style={{ fontSize: rs.font(13), fontWeight: '800', color: colors.text, marginBottom: rs.space(10), letterSpacing: 0.3 }}>
-                Recién visto
-              </Text>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: rs.space(10) }}>
+            <View style={styles.recentSection}>
+              <Text style={styles.recentHeading}>Recién visto</Text>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.recentList}>
                 {recentModulos.map(m => {
                   const prog = getModuloProgress(m.id);
                   return (
@@ -242,34 +168,25 @@ export function CursoScreen() {
                       key={m.id}
                       activeOpacity={0.85}
                       onPress={() => handlePress(m)}
-                      style={{
-                        width: rs.space(150),
-                        borderRadius: 14,
-                        overflow: 'hidden',
-                        elevation: 3,
-                        shadowColor: m.gradient[1],
-                        shadowOffset: { width: 0, height: 2 },
-                        shadowOpacity: 0.2,
-                        shadowRadius: 6,
-                      }}
+                      accessibilityRole="button"
+                      accessibilityLabel={`Módulo ${m.num}: ${m.title}, ${prog.pct}% leído`}
+                      style={[styles.recentCard, { shadowColor: m.gradient[1] }]}
                     >
                       <LinearGradient
                         colors={m.gradient}
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 1 }}
-                        style={{ padding: rs.space(12), height: rs.space(110), justifyContent: 'space-between' }}
+                        style={styles.recentGradient}
                       >
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <View style={styles.recentTopRow}>
                           <MaterialCommunityIcons name={m.iconName} size={rs.font(20)} color="#fff" />
-                          <Text style={{ fontSize: rs.font(10), fontWeight: '800', color: 'rgba(255,255,255,0.9)' }}>
-                            {prog.pct}%
-                          </Text>
+                          <Text style={styles.recentPct}>{prog.pct}%</Text>
                         </View>
                         <View>
-                          <Text style={{ fontSize: rs.font(10), fontWeight: '700', color: 'rgba(255,255,255,0.85)', letterSpacing: 0.8 }}>
+                          <Text style={styles.recentKicker}>
                             MÓDULO {String(m.num).padStart(2, '0')}
                           </Text>
-                          <Text style={{ fontSize: rs.font(12), fontWeight: '800', color: '#fff', marginTop: 2 }} numberOfLines={2}>
+                          <Text style={styles.recentTitle} numberOfLines={2}>
                             {m.title}
                           </Text>
                         </View>
@@ -290,74 +207,41 @@ export function CursoScreen() {
                 key={m.id}
                 activeOpacity={0.85}
                 onPress={() => handlePress(m)}
-                style={{
-                  height: rs.space(160),
-                  borderRadius: 22,
-                  overflow: 'hidden',
-                  marginBottom: rs.space(14),
-                  elevation: 6,
-                  shadowColor: m.gradient[1],
-                  shadowOffset: { width: 0, height: 6 },
-                  shadowOpacity: 0.28,
-                  shadowRadius: 14,
-                }}
+                accessibilityRole="button"
+                accessibilityLabel={
+                  locked
+                    ? `Módulo ${m.num}: ${m.title}. Contenido Premium bloqueado, toca para ver opciones`
+                    : `Módulo ${m.num}: ${m.title}, ${prog.read} de ${m.subs.length} subtemas leídos`
+                }
+                style={[styles.moduleCard, { shadowColor: m.gradient[1] }]}
               >
                 <ImageBackground
                   source={getCursoImage(m.imageKey)}
-                  style={{ flex: 1 }}
-                  imageStyle={{ borderRadius: 22 }}
+                  style={styles.moduleImage}
+                  imageStyle={styles.moduleImageRadius}
                 >
+                  {locked && <View style={styles.lockedScrim} />}
                   <LinearGradient
                     colors={['transparent', m.gradient[0] + '99', m.gradient[1] + 'F0']}
                     locations={[0, 0.45, 1]}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 0.4, y: 1 }}
-                    style={{ flex: 1, padding: rs.space(18), justifyContent: 'space-between', borderRadius: 22 }}
+                    style={styles.moduleGradient}
                   >
                     {/* Top row */}
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                      <View
-                        style={{
-                          width: rs.space(46),
-                          height: rs.space(46),
-                          borderRadius: 14,
-                          backgroundColor: 'rgba(255,255,255,0.22)',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
+                    <View style={styles.moduleTopRow}>
+                      <View style={styles.moduleIconWrap}>
                         <MaterialCommunityIcons name={m.iconName} size={rs.font(24)} color="#fff" />
                       </View>
 
                       {locked ? (
-                        <View
-                          style={{
-                            backgroundColor: 'rgba(255,255,255,0.95)',
-                            paddingHorizontal: rs.space(10),
-                            paddingVertical: rs.space(4),
-                            borderRadius: 10,
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            gap: 4,
-                          }}
-                        >
+                        <View style={styles.proBadge}>
                           <MaterialCommunityIcons name="lock" size={rs.font(11)} color="#D97706" />
-                          <Text style={{ fontSize: rs.font(9), fontWeight: '900', color: '#D97706', letterSpacing: 0.5 }}>
-                            PRO
-                          </Text>
+                          <Text style={styles.proBadgeText}>PRO</Text>
                         </View>
                       ) : (
-                        <View
-                          style={{
-                            backgroundColor: 'rgba(255,255,255,0.92)',
-                            width: rs.space(28),
-                            height: rs.space(28),
-                            borderRadius: 14,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <Text style={{ fontSize: rs.font(13), fontWeight: '900', color: m.gradient[1] }}>
+                        <View style={styles.numBadge}>
+                          <Text style={[styles.numBadgeText, { color: m.gradient[1] }]}>
                             {m.num}
                           </Text>
                         </View>
@@ -366,42 +250,35 @@ export function CursoScreen() {
 
                     {/* Bottom row */}
                     <View>
-                      <Text
-                        style={{
-                          fontSize: rs.font(11),
-                          fontWeight: '700',
-                          color: 'rgba(255,255,255,0.85)',
-                          letterSpacing: 1,
-                          marginBottom: 2,
-                        }}
-                      >
+                      <Text style={styles.moduleKicker}>
                         MÓDULO {String(m.num).padStart(2, '0')}
                       </Text>
-                      <Text
-                        style={{
-                          fontSize: rs.font(20),
-                          fontWeight: '800',
-                          color: '#fff',
-                          textShadowColor: 'rgba(0,0,0,0.3)',
-                          textShadowOffset: { width: 0, height: 1 },
-                          textShadowRadius: 4,
-                        }}
-                        numberOfLines={2}
-                      >
+                      <Text style={styles.moduleTitle} numberOfLines={2}>
                         {m.title}
                       </Text>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 6, gap: 6 }}>
-                        <MaterialCommunityIcons name="book-open-page-variant" size={rs.font(12)} color="rgba(255,255,255,0.85)" />
-                        <Text style={{ fontSize: rs.font(11), color: 'rgba(255,255,255,0.85)', fontWeight: '600' }}>
-                          {prog.read}/{m.subs.length} subtemas
-                        </Text>
-                        {prog.pct === 100 && (
-                          <MaterialCommunityIcons name="check-circle" size={rs.font(13)} color="#4ADE80" style={{ marginLeft: 4 }} />
-                        )}
-                      </View>
-                      <View style={{ marginTop: 8 }}>
-                        <ProgressBar progress={prog.pct} fillColor="#fff" trackColor="rgba(255,255,255,0.25)" height={4} />
-                      </View>
+                      {locked ? (
+                        <View style={styles.moduleMetaRow}>
+                          <MaterialCommunityIcons name="lock-outline" size={rs.font(13)} color="rgba(255,255,255,0.95)" />
+                          <Text style={styles.lockedMetaText}>
+                            Contenido Premium — desbloquealo con PRO
+                          </Text>
+                        </View>
+                      ) : (
+                        <>
+                          <View style={styles.moduleMetaRow}>
+                            <MaterialCommunityIcons name="book-open-page-variant" size={rs.font(12)} color="rgba(255,255,255,0.85)" />
+                            <Text style={styles.moduleMetaText}>
+                              {prog.read}/{m.subs.length} subtemas
+                            </Text>
+                            {prog.pct === 100 && (
+                              <MaterialCommunityIcons name="check-circle" size={rs.font(13)} color="#4ADE80" style={styles.moduleCheckIcon} />
+                            )}
+                          </View>
+                          <View style={styles.moduleProgressWrap}>
+                            <ProgressBar progress={prog.pct} fillColor="#fff" trackColor="rgba(255,255,255,0.25)" height={4} />
+                          </View>
+                        </>
+                      )}
                     </View>
                   </LinearGradient>
                 </ImageBackground>
@@ -410,17 +287,8 @@ export function CursoScreen() {
           })}
 
           {/* Footer info */}
-          <View
-            style={{
-              backgroundColor: isDark ? colors.surface : colors.neuSurface,
-              padding: rs.space(16),
-              borderRadius: 16,
-              marginTop: rs.space(8),
-              borderWidth: 1,
-              borderColor: colors.borderLight,
-            }}
-          >
-            <Text style={{ fontSize: rs.font(12), color: colors.textLight, lineHeight: rs.font(18), textAlign: 'center' }}>
+          <View style={styles.footerCard}>
+            <Text style={styles.footerText}>
               Material elaborado como guía de estudio. Verificá siempre los protocolos vigentes de tu institución y guías 2025-2026.
             </Text>
           </View>
@@ -430,13 +298,316 @@ export function CursoScreen() {
   );
 }
 
-function Stat({ value, label, rs }: { value: string; label: string; rs: ReturnType<typeof useResponsiveScale> }) {
+// ── Subcomponentes ──────────────────────────────────────────
+
+function HeaderAction({ icon, label, onPress }: { icon: string; label: string; onPress: () => void }) {
+  const rs = useResponsiveScale();
+  const styles = useCursoStyles();
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={0.8}
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      hitSlop={{ top: 8, bottom: 8, left: 4, right: 4 }}
+      style={styles.headerAction}
+    >
+      <MaterialCommunityIcons name={icon} size={rs.font(20)} color="#fff" />
+    </TouchableOpacity>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  const styles = useCursoStyles();
   return (
     <View>
-      <Text style={{ fontSize: rs.font(20), fontWeight: '800', color: '#fff' }}>{value}</Text>
-      <Text style={{ fontSize: rs.font(10), color: 'rgba(255,255,255,0.75)', textTransform: 'uppercase', letterSpacing: 0.5 }}>
-        {label}
-      </Text>
+      <Text style={styles.statValue}>{value}</Text>
+      <Text style={styles.statLabel}>{label}</Text>
     </View>
   );
 }
+
+// ── Styles factory ──────────────────────────────────────────
+
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale, isDark: boolean) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    // Hero
+    hero: {
+      paddingBottom: rs.space(28),
+      paddingHorizontal: rs.space(24),
+    },
+    heroTopRow: {
+      flexDirection: 'row',
+      alignItems: 'flex-start',
+      justifyContent: 'space-between',
+    },
+    heroTitleWrap: {
+      flex: 1,
+    },
+    heroTitle: {
+      fontSize: rs.font(28),
+      fontWeight: '800',
+      color: '#fff',
+      letterSpacing: -0.5,
+    },
+    heroSubtitle: {
+      fontSize: rs.font(13),
+      color: 'rgba(255,255,255,0.85)',
+      marginTop: 6,
+      lineHeight: rs.font(19),
+    },
+    heroActions: {
+      flexDirection: 'row',
+      gap: rs.space(6),
+      marginLeft: rs.space(8),
+    },
+    headerAction: {
+      width: rs.space(38),
+      height: rs.space(38),
+      borderRadius: 12,
+      backgroundColor: 'rgba(255,255,255,0.22)',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    statsRow: {
+      flexDirection: 'row',
+      gap: rs.space(16),
+      marginTop: rs.space(16),
+    },
+    statValue: {
+      fontSize: rs.font(20),
+      fontWeight: '800',
+      color: '#fff',
+    },
+    statLabel: {
+      fontSize: rs.font(10),
+      color: 'rgba(255,255,255,0.8)',
+      textTransform: 'uppercase',
+      letterSpacing: 0.5,
+    },
+    heroProgressWrap: {
+      marginTop: rs.space(14),
+    },
+    heroProgressLabel: {
+      fontSize: rs.font(11),
+      color: 'rgba(255,255,255,0.85)',
+      marginTop: 6,
+    },
+    // Body
+    body: {
+      paddingHorizontal: rs.space(16),
+      paddingTop: rs.space(20),
+    },
+    // Continuar
+    continueCard: {
+      backgroundColor: isDark ? colors.surface : colors.neuSurface,
+      borderRadius: 16,
+      padding: rs.space(14),
+      marginBottom: rs.space(16),
+      borderWidth: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: rs.space(12),
+    },
+    continueIconWrap: {
+      width: rs.space(46),
+      height: rs.space(46),
+      borderRadius: 12,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    continueBody: {
+      flex: 1,
+    },
+    continueKicker: {
+      fontSize: rs.font(10),
+      fontWeight: '800',
+      letterSpacing: 1,
+    },
+    continueTitle: {
+      fontSize: rs.font(15),
+      fontWeight: '800',
+      color: colors.text,
+      marginTop: 2,
+    },
+    continueMeta: {
+      fontSize: rs.font(11),
+      color: colors.textLight,
+      marginTop: 2,
+    },
+    // Recién visto
+    recentSection: {
+      marginBottom: rs.space(20),
+    },
+    recentHeading: {
+      fontSize: rs.font(13),
+      fontWeight: '800',
+      color: colors.text,
+      marginBottom: rs.space(10),
+      letterSpacing: 0.3,
+    },
+    recentList: {
+      gap: rs.space(10),
+    },
+    recentCard: {
+      width: rs.space(150),
+      borderRadius: 14,
+      overflow: 'hidden',
+      elevation: 3,
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.2,
+      shadowRadius: 6,
+    },
+    recentGradient: {
+      padding: rs.space(12),
+      height: rs.space(110),
+      justifyContent: 'space-between',
+    },
+    recentTopRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    recentPct: {
+      fontSize: rs.font(10),
+      fontWeight: '800',
+      color: 'rgba(255,255,255,0.9)',
+    },
+    recentKicker: {
+      fontSize: rs.font(10),
+      fontWeight: '700',
+      color: 'rgba(255,255,255,0.85)',
+      letterSpacing: 0.8,
+    },
+    recentTitle: {
+      fontSize: rs.font(12),
+      fontWeight: '800',
+      color: '#fff',
+      marginTop: 2,
+    },
+    // Module cards
+    moduleCard: {
+      height: rs.space(160),
+      borderRadius: 22,
+      overflow: 'hidden',
+      marginBottom: rs.space(14),
+      elevation: 6,
+      shadowOffset: { width: 0, height: 6 },
+      shadowOpacity: 0.28,
+      shadowRadius: 14,
+    },
+    moduleImage: {
+      flex: 1,
+    },
+    moduleImageRadius: {
+      borderRadius: 22,
+    },
+    lockedScrim: {
+      ...StyleSheet.absoluteFillObject,
+      backgroundColor: 'rgba(15,23,42,0.32)',
+      zIndex: 1,
+    },
+    moduleGradient: {
+      flex: 1,
+      padding: rs.space(18),
+      justifyContent: 'space-between',
+      borderRadius: 22,
+      zIndex: 2,
+    },
+    moduleTopRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+    },
+    moduleIconWrap: {
+      width: rs.space(46),
+      height: rs.space(46),
+      borderRadius: 14,
+      backgroundColor: 'rgba(255,255,255,0.22)',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    proBadge: {
+      backgroundColor: 'rgba(255,255,255,0.95)',
+      paddingHorizontal: rs.space(10),
+      paddingVertical: rs.space(4),
+      borderRadius: 10,
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 4,
+    },
+    proBadgeText: {
+      fontSize: rs.font(9),
+      fontWeight: '900',
+      color: '#D97706',
+      letterSpacing: 0.5,
+    },
+    numBadge: {
+      backgroundColor: 'rgba(255,255,255,0.92)',
+      width: rs.space(28),
+      height: rs.space(28),
+      borderRadius: 14,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    numBadgeText: {
+      fontSize: rs.font(13),
+      fontWeight: '900',
+    },
+    moduleKicker: {
+      fontSize: rs.font(11),
+      fontWeight: '700',
+      color: 'rgba(255,255,255,0.85)',
+      letterSpacing: 1,
+      marginBottom: 2,
+    },
+    moduleTitle: {
+      fontSize: rs.font(20),
+      fontWeight: '800',
+      color: '#fff',
+      textShadowColor: 'rgba(0,0,0,0.3)',
+      textShadowOffset: { width: 0, height: 1 },
+      textShadowRadius: 4,
+    },
+    moduleMetaRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginTop: 6,
+      gap: 6,
+    },
+    moduleMetaText: {
+      fontSize: rs.font(11),
+      color: 'rgba(255,255,255,0.85)',
+      fontWeight: '600',
+    },
+    lockedMetaText: {
+      fontSize: rs.font(11),
+      color: 'rgba(255,255,255,0.95)',
+      fontWeight: '700',
+    },
+    moduleCheckIcon: {
+      marginLeft: 4,
+    },
+    moduleProgressWrap: {
+      marginTop: 8,
+    },
+    // Footer
+    footerCard: {
+      backgroundColor: isDark ? colors.surface : colors.neuSurface,
+      padding: rs.space(16),
+      borderRadius: 16,
+      marginTop: rs.space(8),
+      borderWidth: 1,
+      borderColor: colors.borderLight,
+    },
+    footerText: {
+      fontSize: rs.font(12),
+      color: colors.textLight,
+      lineHeight: rs.font(18),
+      textAlign: 'center',
+    },
+  });
