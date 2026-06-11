@@ -13,15 +13,21 @@ import {
   validateActivationCode,
   saveActivation,
 } from '../utils/activation';
+import {
+  computeTrialDaysLeft,
+  computeIsPremium,
+  computeTrialExpired,
+} from '../utils/premiumLogic';
 
 // IS_FREE=true means free/restricted flavor, IS_FREE=false means premium/full flavor
 const IS_PREMIUM_BUILD: boolean = !(
   NativeModules.BuildConfigModule?.IS_FREE ?? true
 );
 
+// Claves legacy heredadas de Patologías — NO renombrar: cambiarlas resetearía
+// el trial/suscripción de instalaciones existentes.
 const TRIAL_START_KEY = '@patologias_trial_start';
 const SUBSCRIPTION_KEY = '@patologias_subscription';
-const TRIAL_DAYS = 15;
 
 // Google Play subscription product ID — PENDIENTE: crear este producto en
 // Play Console (Monetización > Productos > Suscripciones) antes de activar billing.
@@ -64,9 +70,13 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
       checkActivation(),
     ])
       .then(([trialRaw, subRaw, activated]) => {
-        // Trial start
-        if (trialRaw) {
-          setTrialStartDate(parseInt(trialRaw, 10));
+        // Trial start — si el valor persistido está corrupto (NaN tras
+        // parseInt), se re-inicializa el trial con Date.now() y se
+        // re-persiste: storage corrupto reinicia el trial, no lo regala
+        // perpetuo (computeTrialDaysLeft es fail-closed ante no-finitos).
+        const t = trialRaw ? parseInt(trialRaw, 10) : NaN;
+        if (trialRaw && Number.isFinite(t)) {
+          setTrialStartDate(t);
         } else {
           const now = Date.now();
           setTrialStartDate(now);
@@ -82,17 +92,17 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   // ── Derived state ─────────────────────────
-  const trialDaysLeft = (() => {
-    if (!trialStartDate) return TRIAL_DAYS;
-    const elapsed = Date.now() - trialStartDate;
-    const remaining = TRIAL_DAYS - Math.floor(elapsed / (1000 * 60 * 60 * 24));
-    return Math.max(0, remaining);
-  })();
+  const trialDaysLeft = computeTrialDaysLeft(trialStartDate, Date.now());
 
   const isTrialActive = trialDaysLeft > 0;
-  const trialExpired = !isTrialActive && !isSubscribed && !isCodeActivated;
-  const isPremium =
-    IS_PREMIUM_BUILD || isCodeActivated || isSubscribed || isTrialActive;
+  const flags = {
+    isPremiumBuild: IS_PREMIUM_BUILD,
+    isCodeActivated,
+    isSubscribed,
+    isTrialActive,
+  };
+  const trialExpired = computeTrialExpired(flags);
+  const isPremium = computeIsPremium(flags);
 
   // ── Actions ───────────────────────────────
   const activateSubscription = useCallback(() => {
