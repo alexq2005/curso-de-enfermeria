@@ -4,6 +4,64 @@
 
 ---
 
+## 2026-06-12 — Sesión 12: Enriquecimiento de contenido del glosario (+33 términos)
+
+### Resumen
+
+Pass de contenido educativo sobre `src/data/glosario.json` (178 entradas). Se enriquecieron **33 términos** que ganaban valor pedagógico con subtipos clínicos (`tipos`) y/o casos de presentación (`ejemplos`), replicando exactamente el estilo de las entradas ya enriquecidas (Astenia, Disnea, Cianosis): `tipos` con variantes/grados/estadios + "Red flags", y `ejemplos` con la forma "hallazgo + hallazgo → diagnóstico/conducta, estudio". Sin tocar código ni lógica; solo datos. 3 commits de contenido + docs.
+
+| Métrica | Antes | Después | Δ |
+|---------|-------|---------|---|
+| Total de entradas | 178 | 178 | 0 (invariante) |
+| Con `tipos` | 77 | 110 | +33 |
+| Con `ejemplos` | 81 | 114 | +33 |
+| Sin enriquecer (bare) | 97 | 64 | −33 |
+
+### Términos enriquecidos por lote
+
+1. **Lote 1 — cardiorrespiratorio (6)**: IAM, ICC, EAP, ACV, HTA, EPOC.
+2. **Lote 2 — paro/ritmos, urológico/UPP, infeccioso (12)**: FV, TV, BAV, AESP, PCR, ITU, UPP, TEP, TBC, SARM, SAOS, OVACE.
+3. **Lote 3 — PAE/taxonomías, examen físico, dispositivos (15)**: PAE, NANDA, NIC, NOC, SOAPIE, Apex cardíaco, Murmullo vesicular, Vómito en proyectil, SNG, NPT, CVC, PVC, PEG, FAV, VNI.
+
+### Decisiones de contenido (qué se dejó bare a propósito)
+
+Se mantuvieron sin `tipos`/`ejemplos` las siglas que NO se prestan a clasificación o casuística clínica:
+- **Mnemotecnias / protocolos de procedimiento**: ABCDE, ACLS, RCP, SBAR, OPQRST, FAST.
+- **Instituciones / paneles**: CDC, OMS, EAUN, RCN, NPUAP.
+- **EPP y dispositivos de ventilación manual**: EPP, AMBU, BVM.
+- **Unidades, vías y abreviaturas simples**: UI, CH, ATB, BZD, EV/IV, IM, ID, SC, SL, VO, MMII, FC, FR, TA, TAS, SatO₂, SF, EIC, FID, FII, SNC, SNP, SNA, HD, RIN, SCQ.
+- **Escalas de dolor**: BPS, CPOT, EVA, FLACC, PAINAD.
+- **Virus/vacuna/medición puntual**: HBV, HIV, BCG, NIBP.
+- **Cross-references ya cubiertos por una entrada hermana** (para no duplicar): PICC y CPAP (cubiertos por CVC y VNI), RTU, IVC, ARM/AVM, TEC, TET, CAUTI, FV/TV (compuesto), UCO, UTI, CAPS.
+
+### Contrato respetado (render)
+
+`GlosarioScreen.tsx` renderiza `tipos` bajo el encabezado **"Tipos"** y `ejemplos` bajo **"Ejemplos clínicos"** (bullets). Ambos campos son opcionales (`tipos?`, `ejemplos?`) y solo se muestran si tienen longitud > 0 — las entradas bare siguen mostrando únicamente la definición, sin cambios visuales.
+
+### Formato del JSON
+
+Se respetó el formato existente: entradas bare en una sola línea compacta `{ "sigla": ..., "definicion": ... }` y entradas enriquecidas multilínea con indent de 2/6/8 espacios. Las ediciones fueron quirúrgicas (reemplazo línea-por-entrada) para NO reformatear el archivo completo. Verificado por `git diff` (solo inserciones + la línea bare reemplazada).
+
+### Verificación
+
+- `node -e "...entries.length"`: **178** (invariante mantenido tras cada lote).
+- `npx tsc --noEmit`: 0 errores (tras cada lote).
+- `npm test -- --ci`: **23/23** tests, 2 suites (tras cada lote).
+- JSON válido (`require()` sin error) tras cada edición.
+
+### Commits
+
+- `1b5ad4f` content(glosario): enriquecer 6 terminos cardiorrespiratorios con tipos y ejemplos
+- `231f542` content(glosario): enriquecer 12 terminos de paro, urologico e infeccioso
+- `e4d0560` content(glosario): enriquecer 15 terminos de PAE, examen fisico y dispositivos
+
+### Pendientes
+
+- **Regenerar y commitear el bundle JS** (`android/app/src/main/assets/index.android.bundle`): los 33 términos enriquecidos viven en `src/data/glosario.json` y el bundle commiteado quedó desactualizado — regenerar antes del próximo release para que el contenido nuevo llegue a la app empaquetada.
+- Quedan 64 entradas bare; la mayoría son intencionales (ver "qué se dejó bare"). Si en el futuro se quiere ampliar cobertura, candidatos menores: PICC, CPAP, RTU (hoy cubiertos por cross-reference).
+
+---
+
 ## 2026-06-11 — Sesión 11: Polish UX/UI — lectura, candado premium, glosario/buscador, accesibilidad
 
 ### Resumen

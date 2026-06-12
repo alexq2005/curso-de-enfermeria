@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Added
+- **Glosario enriquecido (+33 términos)**: 33 entradas clínicas del glosario (de 178) sumaron secciones `Tipos` y `Ejemplos clínicos`, replicando el estilo de las ya enriquecidas (Astenia/Disnea). Cobertura: cardiorrespiratorio (IAM, ICC, EAP, ACV, HTA, EPOC), paro/ritmos (FV, TV, BAV, AESP, PCR), urológico/UPP/infeccioso (ITU, UPP, TEP, TBC, SARM, SAOS, OVACE), PAE y taxonomías (PAE, NANDA, NIC, NOC, SOAPIE), examen físico (Apex cardíaco, Murmullo vesicular, Vómito en proyectil) y accesos/dispositivos (SNG, NPT, CVC, PVC, PEG, FAV, VNI). Entradas con `tipos` 77 → 110, con `ejemplos` 81 → 114, sin enriquecer 97 → 64. Las siglas de procedimiento/institución/unidad (ABCDE, ACLS, SBAR, OPQRST, CDC, OMS, EPP, AMBU, UI, escalas de dolor, vías de administración) se dejaron sin `tipos`/`ejemplos` por no aportar valor clínico
 - **Indicador de progreso de lectura** en CursoModuloScreen: barra fina bajo el header que se llena con el scroll (scaleX + native driver)
 - **Contador de resultados**: header "N resultados" en el Buscador y subtítulo dinámico "N de 178 términos" en el Glosario al filtrar
 - **Empty states con acción**: sin-resultados de Buscador y Glosario ahora muestran ícono en círculo, sugerencia y botón "Limpiar búsqueda"
