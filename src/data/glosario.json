@@ -3,7 +3,20 @@
   "entries": [
     { "sigla": "ABCDE", "definicion": "Vía aérea, Buena ventilación, Circulación, Déficit neurológico, Exposición — secuencia primaria de evaluación en emergencia." },
     { "sigla": "ACLS", "definicion": "Advanced Cardiovascular Life Support — soporte vital cardiovascular avanzado (algoritmos de paro, arritmias, IAM)." },
-    { "sigla": "ACV", "definicion": "Accidente cerebrovascular — interrupción aguda del flujo sanguíneo cerebral (isquémico o hemorrágico)." },
+    { "sigla": "ACV", "definicion": "Accidente cerebrovascular — interrupción aguda del flujo sanguíneo cerebral. El tiempo es cerebro: identificar inicio de síntomas define la ventana de tratamiento.",
+      "tipos": [
+        "Isquémico — por trombo o émbolo que ocluye una arteria (≈ 80% de los casos).",
+        "Hemorrágico — por ruptura de un vaso (intraparenquimatoso o subaracnoideo).",
+        "AIT (accidente isquémico transitorio) — déficit que revierte en < 24 h sin lesión en imagen. Señal de alarma.",
+        "Red flags (escala FAST) — asimetría facial, debilidad de un brazo, alteración del habla, urgencia temporal."
+      ],
+      "ejemplos": [
+        "Asimetría facial + hemiparesia braquial + disartria de inicio súbito → activar código ACV y TC sin contraste urgente.",
+        "Cefalea súbita en estallido (la peor de su vida) + rigidez de nuca → sospecha de HSA, descartar hemorragia.",
+        "Déficit motor transitorio que revierte en 30 min → AIT, estudiar carótidas y FA para prevenir ACV mayor.",
+        "Inicio de síntomas hace < 4,5 h en ACV isquémico → candidato a trombólisis, registrar hora exacta."
+      ]
+    },
     { "sigla": "AESP", "definicion": "Actividad eléctrica sin pulso — ritmo cardíaco organizado en el monitor pero sin pulso palpable. Ritmo no desfibrilable." },
     { "sigla": "AMBU", "definicion": "Bolsa-válvula-máscara (Artificial Manual Breathing Unit) — dispositivo de ventilación manual con reservorio de O₂." },
     { "sigla": "ARM", "definicion": "Asistencia respiratoria mecánica — ventilación mecánica invasiva o no invasiva." },
@@ -21,11 +34,36 @@
     { "sigla": "CPAP", "definicion": "Continuous Positive Airway Pressure — presión positiva continua en la vía aérea (VNI)." },
     { "sigla": "CPOT", "definicion": "Critical-Care Pain Observation Tool — escala de dolor para pacientes críticos no comunicantes." },
     { "sigla": "CVC", "definicion": "Catéter venoso central — vía vascular central (yugular, subclavia, femoral)." },
-    { "sigla": "EAP", "definicion": "Edema agudo de pulmón — acumulación de líquido en alvéolos por insuficiencia cardíaca izquierda." },
+    { "sigla": "EAP", "definicion": "Edema agudo de pulmón — acumulación brusca de líquido en el intersticio y los alvéolos. Emergencia respiratoria: el paciente se ahoga, prefiere estar sentado y desatura.",
+      "tipos": [
+        "Cardiogénico — por falla del ventrículo izquierdo (IAM, crisis hipertensiva, valvulopatía). El más frecuente.",
+        "No cardiogénico (SDRA) — por aumento de permeabilidad capilar: sepsis, aspiración, inhalación de tóxicos.",
+        "Red flags — disnea súbita, ortopnea extrema, esputo rosado espumoso, SatO₂ < 90%, sudoración fría."
+      ],
+      "ejemplos": [
+        "Disnea súbita + ortopnea + crepitantes hasta vértices + esputo rosado espumoso → EAP cardiogénico, sentar al paciente y O₂.",
+        "Crisis hipertensiva (220/120) + disnea + desaturación → EAP por poscarga, oxígeno, nitritos y diuréticos EV.",
+        "Posición en tripode + tiraje + sudoración fría + saturación 85% → asistir ventilación, considerar VNI (CPAP)."
+      ]
+    },
     { "sigla": "EAUN", "definicion": "European Association of Urology Nurses — asociación europea de enfermería urológica." },
     { "sigla": "ECG", "definicion": "Electrocardiograma — registro de la actividad eléctrica cardíaca." },
     { "sigla": "EIC", "definicion": "Espacio intercostal — referencia anatómica para auscultación cardíaca." },
-    { "sigla": "EPOC", "definicion": "Enfermedad pulmonar obstructiva crónica — bronquitis crónica + enfisema; obstrucción no totalmente reversible." },
+    { "sigla": "EPOC", "definicion": "Enfermedad pulmonar obstructiva crónica — limitación del flujo aéreo no totalmente reversible, asociada al tabaquismo. Combina bronquitis crónica y enfisema.",
+      "tipos": [
+        "Bronquitis crónica predominante (\"blue bloater\") — tos productiva, cianosis, tendencia a la hipercapnia.",
+        "Enfisema predominante (\"pink puffer\") — disnea marcada, delgadez, tórax en tonel, taquipnea.",
+        "EPOC estable — manejo crónico con broncodilatadores y rehabilitación.",
+        "Reagudización (EPOC reagudizado) — aumento de disnea, tos y/o esputo purulento. Frecuente origen infeccioso.",
+        "Red flags — uso de músculos accesorios, somnolencia (narcosis por CO₂), cianosis, SatO₂ en descenso."
+      ],
+      "ejemplos": [
+        "Fumador de larga data + disnea de esfuerzo progresiva + tos matinal con expectoración → EPOC, espirometría.",
+        "Aumento de disnea + esputo purulento + fiebre → reagudización infecciosa, broncodilatadores y antibiótico.",
+        "EPOC reagudizado + SatO₂ 85% → oxígeno controlado a bajo flujo (objetivo 88-92%) para no abolir el estímulo.",
+        "Somnolencia + cefalea + temblor fino en EPOC → narcosis por CO₂, evaluar gases y soporte ventilatorio (VNI)."
+      ]
+    },
     { "sigla": "EPP", "definicion": "Equipo de protección personal — barbijo, guantes, antiparras, camisolín, etc." },
     { "sigla": "EV", "definicion": "Endovenoso (intravenoso) — vía de administración a través de una vena." },
     { "sigla": "EVA", "definicion": "Escala visual analógica — escala de dolor de 0 a 10 con regla deslizante." },
@@ -41,9 +79,51 @@
     { "sigla": "HBV", "definicion": "Hepatitis B virus — virus de la hepatitis B." },
     { "sigla": "HD", "definicion": "Hemodiálisis — técnica de depuración extracorpórea para insuficiencia renal." },
     { "sigla": "HIV", "definicion": "Human Immunodeficiency Virus — virus de la inmunodeficiencia humana." },
-    { "sigla": "HTA", "definicion": "Hipertensión arterial — TA persistentemente ≥ 140/90 mmHg." },
-    { "sigla": "IAM", "definicion": "Infarto agudo de miocardio — necrosis del músculo cardíaco por oclusión coronaria." },
-    { "sigla": "ICC", "definicion": "Insuficiencia cardíaca congestiva — incapacidad del corazón para bombear suficiente volumen." },
+    { "sigla": "HTA", "definicion": "Hipertensión arterial — TA persistentemente ≥ 140/90 mmHg. Factor de riesgo cardiovascular mayor, muchas veces asintomático (\"asesino silencioso\").",
+      "tipos": [
+        "Primaria (esencial) — sin causa identificable. > 90% de los casos.",
+        "Secundaria — por causa identificable: renal, endocrina (feocromocitoma, hiperaldosteronismo), fármacos.",
+        "Urgencia hipertensiva — TA muy elevada SIN daño de órgano blanco. Descenso gradual oral.",
+        "Emergencia hipertensiva — TA elevada CON daño agudo de órgano (EAP, ACV, IAM, encefalopatía). Descenso EV controlado.",
+        "Red flags — cefalea intensa, alteración visual, dolor torácico, disnea o foco neurológico con TA muy alta."
+      ],
+      "ejemplos": [
+        "TA 160/95 en 3 controles distintos sin síntomas → HTA crónica, confirmar con MAPA y educar sobre adherencia.",
+        "TA 210/120 + cefalea, sin compromiso de órgano → urgencia hipertensiva, antihipertensivo oral y reevaluar.",
+        "TA 200/130 + disnea + crepitantes → emergencia (EAP), tratamiento EV y monitoreo continuo.",
+        "Técnica de medición: reposo 5 min, brazo a la altura del corazón, manguito adecuado → evita lecturas falsas."
+      ]
+    },
+    { "sigla": "IAM", "definicion": "Infarto agudo de miocardio — necrosis del músculo cardíaco por oclusión coronaria. El ECG y la troponina definen el tipo y la urgencia de reperfusión.",
+      "tipos": [
+        "IAMCEST (con elevación del ST) — oclusión total. Reperfusión urgente: angioplastia primaria < 90 min o trombolíticos.",
+        "IAMSEST (sin elevación del ST) — oclusión parcial. Troponina elevada, ST descendido o T negativa. Estratificar riesgo.",
+        "Angina inestable — síndrome coronario agudo sin elevación de troponina.",
+        "Localización por derivaciones — anterior (V1-V4), inferior (II, III, aVF), lateral (I, aVL, V5-V6).",
+        "Red flags — dolor > 20 min que no cede con reposo ni nitritos, sudoración, hipotensión, signos de IC."
+      ],
+      "ejemplos": [
+        "Dolor opresivo retroesternal + irradiación a brazo izquierdo + sudoración + náuseas → SCA, ECG en < 10 min y troponina.",
+        "Supradesnivel del ST en II, III y aVF → IAMCEST inferior, activar código infarto y sala de hemodinamia.",
+        "Dolor torácico + ECG normal + troponina elevada → IAMSEST, antiagregación, anticoagulación y monitoreo.",
+        "IAM inferior + bradicardia + hipotensión → sospechar compromiso del nodo AV / VD, cautela con nitritos."
+      ]
+    },
+    { "sigla": "ICC", "definicion": "Insuficiencia cardíaca congestiva — incapacidad del corazón para bombear el volumen que el organismo necesita. Se clasifica por lado afectado y por capacidad funcional (NYHA).",
+      "tipos": [
+        "Izquierda — congestión pulmonar: disnea, ortopnea, disnea paroxística nocturna, crepitantes.",
+        "Derecha — congestión sistémica: edemas en MMII, ingurgitación yugular, hepatomegalia, ascitis.",
+        "Global (congestiva) — combinación de signos izquierdos y derechos.",
+        "Por fracción de eyección — con FEy reducida (sistólica) vs preservada (diastólica).",
+        "Clasificación funcional NYHA — I (sin síntomas), II (esfuerzos moderados), III (esfuerzos leves), IV (en reposo)."
+      ],
+      "ejemplos": [
+        "Disnea de esfuerzo + ortopnea + crepitantes bibasales + 3 almohadas para dormir → IC izquierda, Rx tórax y BNP.",
+        "Edemas con fóvea en MMII + ingurgitación yugular + hepatomegalia → IC derecha, balance hídrico y peso diario.",
+        "Disnea de reposo + imposibilidad de hablar oraciones completas → IC clase IV (NYHA), oxígeno y diuréticos EV.",
+        "Aumento de peso de 2 kg en 3 días + tobillos hinchados → descompensación, reforzar restricción hidrosalina."
+      ]
+    },
     { "sigla": "ID", "definicion": "Intradérmica — vía de administración entre dermis y epidermis (ángulo 5-15°)." },
     { "sigla": "IM", "definicion": "Intramuscular — vía de administración en el músculo (ángulo 90°)." },
     { "sigla": "ITU", "definicion": "Infección del tracto urinario." },
