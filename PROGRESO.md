@@ -57,7 +57,7 @@ Se respetó el formato existente: entradas bare en una sola línea compacta `{ "
 
 ### Pendientes
 
-- **Regenerar y commitear el bundle JS** (`android/app/src/main/assets/index.android.bundle`): los 33 términos enriquecidos viven en `src/data/glosario.json` y el bundle commiteado quedó desactualizado — regenerar antes del próximo release para que el contenido nuevo llegue a la app empaquetada.
+- ✅ **Bundle JS regenerado y commiteado** (2026-06-12): `npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/`. Verificado empíricamente que los 33 términos nuevos están en el bundle (grep ASCII con `-Encoding utf8`: "Dolor opresivo retroesternal", "SOAPIE", "Apex card" → PRESENTE). El contenido nuevo ya llegará a la app empaquetada en el próximo build.
 - Quedan 64 entradas bare; la mayoría son intencionales (ver "qué se dejó bare"). Si en el futuro se quiere ampliar cobertura, candidatos menores: PICC, CPAP, RTU (hoy cubiertos por cross-reference).
 
 ---
