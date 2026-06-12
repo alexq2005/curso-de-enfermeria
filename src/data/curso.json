@@ -723,7 +723,7 @@
             },
             {
               "type": "p",
-              "text": "OPQRST para anamnesis del dolor: Onset, Provoca/Palia, Quality, Radiación, Severidad, Tiempo."
+              "text": "OPQRST para anamnesis del dolor: Onset (Inicio), Provocation/Palliation (Provoca/Palia), Quality (Carácter del dolor), Radiation (Irradiación), Severity (Severidad), Time (Tiempo/evolución)."
             }
           ]
         }
@@ -2429,7 +2429,7 @@
               "items": [
                 "OVACE: maniobra de Heimlich en consciente; RCP si pierde conciencia.",
                 "Quemado mayor: ABC, retirar ropa no adherida, cubrir con paños limpios, Parkland (4 mL × kg × % SCQ, mitad en 8 h).",
-                "Politraumatizado: ABCDE — A (con control cervical), Breathing, Circulación, Déficit, Exposición.",
+                "Politraumatizado: ABCDE — Airway (Vía aérea, con control cervical), Breathing (Ventilación), Circulation (Circulación), Disability (Déficit neurológico), Exposure (Exposición).",
                 "ACV agudo: tiempo es cerebro. Tomografía urgente. Trombólisis si isquémico < 4,5 h."
               ]
             }
@@ -2474,10 +2474,10 @@
             {
               "type": "list",
               "items": [
-                "S — Situation: \"Paciente Pérez, 67 años, con dolor torácico de 30 min\".",
-                "B — Background: \"HTA, ex-tabaquista, ingresó hace 2 días por neumonía\".",
-                "A — Assessment: \"TA 90/60, FC 130, sudoroso, SatO₂ 88 %, ECG con supra ST\".",
-                "R — Recommendation: \"Solicito presencia médica, troponina, traslado a UCO\"."
+                "S — Situation (Situación): \"Paciente Pérez, 67 años, con dolor torácico de 30 min\".",
+                "B — Background (Antecedentes): \"HTA, ex-tabaquista, ingresó hace 2 días por neumonía\".",
+                "A — Assessment (Valoración): \"TA 90/60, FC 130, sudoroso, SatO₂ 88 %, ECG con supra ST\".",
+                "R — Recommendation (Recomendación): \"Solicito presencia médica, troponina, traslado a UCO\"."
               ]
             },
             {
