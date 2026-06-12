@@ -17,12 +17,36 @@
         "Inicio de síntomas hace < 4,5 h en ACV isquémico → candidato a trombólisis, registrar hora exacta."
       ]
     },
-    { "sigla": "AESP", "definicion": "Actividad eléctrica sin pulso — ritmo cardíaco organizado en el monitor pero sin pulso palpable. Ritmo no desfibrilable." },
+    { "sigla": "AESP", "definicion": "Actividad eléctrica sin pulso — ritmo organizado en el monitor pero SIN pulso palpable. Ritmo NO desfibrilable: la clave es RCP de calidad y tratar la causa reversible.",
+      "tipos": [
+        "Causas reversibles 5H — Hipovolemia, Hipoxia, Hidrogeniones (acidosis), Hipo/Hiperpotasemia, Hipotermia.",
+        "Causas reversibles 5T — Neumotórax a Tensión, Taponamiento cardíaco, Tóxicos, Trombosis pulmonar (TEP), Trombosis coronaria (IAM).",
+        "Red flags — ritmo en pantalla que engaña: SIEMPRE confirmar pulso central antes de descartar paro."
+      ],
+      "ejemplos": [
+        "Monitor con ritmo sinusal pero sin pulso carotídeo → AESP, iniciar RCP y adrenalina (no desfibrilar).",
+        "AESP post-trauma con yugulares ingurgitadas y MV abolido → neumotórax a tensión, descompresión inmediata.",
+        "AESP en paciente con TVP y disnea previa → sospechar TEP masivo como causa reversible."
+      ]
+    },
     { "sigla": "AMBU", "definicion": "Bolsa-válvula-máscara (Artificial Manual Breathing Unit) — dispositivo de ventilación manual con reservorio de O₂." },
     { "sigla": "ARM", "definicion": "Asistencia respiratoria mecánica — ventilación mecánica invasiva o no invasiva." },
     { "sigla": "ATB", "definicion": "Antibiótico." },
     { "sigla": "AVM", "definicion": "Asistencia ventilatoria mecánica (sinónimo de ARM)." },
-    { "sigla": "BAV", "definicion": "Bloqueo aurículo-ventricular — alteración de la conducción entre aurículas y ventrículos (1er, 2do o 3er grado)." },
+    { "sigla": "BAV", "definicion": "Bloqueo aurículo-ventricular — retraso o interrupción de la conducción del impulso entre aurículas y ventrículos. Se gradúa según la severidad en el ECG.",
+      "tipos": [
+        "1er grado — PR prolongado (> 0,20 s) pero toda P conduce. Suele ser benigno.",
+        "2do grado Mobitz I (Wenckebach) — PR que se alarga progresivamente hasta que una P no conduce.",
+        "2do grado Mobitz II — P bloqueadas de forma súbita con PR constante. Mayor riesgo de progresión.",
+        "3er grado (completo) — ninguna P conduce; aurículas y ventrículos laten independientes. Requiere marcapasos.",
+        "Red flags — bradicardia sintomática, síncope, hipotensión: preparar marcapasos transcutáneo y atropina."
+      ],
+      "ejemplos": [
+        "PR de 0,28 s constante en paciente asintomático → BAV de 1er grado, control y revisar fármacos frenadores.",
+        "PR que se alarga hasta saltear un latido y reinicia → Mobitz I, vigilar, suele ser benigno.",
+        "Bradicardia 35 lpm + P sin relación con QRS + síncope → BAV completo, marcapasos transitorio urgente."
+      ]
+    },
     { "sigla": "BCG", "definicion": "Bacilo de Calmette-Guérin — vacuna contra tuberculosis; también usado como inmunoterapia intravesical en cáncer de vejiga." },
     { "sigla": "BPS", "definicion": "Behavioral Pain Scale — escala de dolor por comportamiento, para pacientes intubados." },
     { "sigla": "BVM", "definicion": "Bag-Valve-Mask — sinónimo de AMBU." },
@@ -74,7 +98,18 @@
     { "sigla": "FII", "definicion": "Fosa ilíaca izquierda — cuadrante abdominal del colon sigmoide." },
     { "sigla": "FLACC", "definicion": "Face, Legs, Activity, Cry, Consolability — escala de dolor pediátrica observacional (2 meses-7 años)." },
     { "sigla": "FR", "definicion": "Frecuencia respiratoria — respiraciones por minuto (rpm). Normal adulto: 12-20." },
-    { "sigla": "FV", "definicion": "Fibrilación ventricular — ritmo desorganizado del ventrículo, sin gasto cardíaco. Ritmo desfibrilable." },
+    { "sigla": "FV", "definicion": "Fibrilación ventricular — actividad eléctrica caótica del ventrículo sin contracción efectiva ni gasto cardíaco. Causa de paro y ritmo DESFIBRILABLE.",
+      "tipos": [
+        "FV gruesa — ondas amplias. Mejor respuesta a la desfibrilación.",
+        "FV fina — ondas de baja amplitud, puede confundirse con asistolia. RCP de calidad para \"engrosarla\".",
+        "Red flags — paciente inconsciente, sin pulso y sin respiración: iniciar RCP y desfibrilar de inmediato."
+      ],
+      "ejemplos": [
+        "Trazado caótico sin complejos identificables + paciente sin pulso → FV, desfibrilar (descarga) y reanudar RCP.",
+        "Colapso súbito en paciente con IAM + FV en monitor → desfibrilación precoz, cada minuto cuenta.",
+        "FV refractaria tras varias descargas → continuar RCP, adrenalina y amiodarona según ACLS."
+      ]
+    },
     { "sigla": "FV/TV", "definicion": "Fibrilación ventricular / taquicardia ventricular — ritmos desfibrilables en paro cardíaco." },
     { "sigla": "HBV", "definicion": "Hepatitis B virus — virus de la hepatitis B." },
     { "sigla": "HD", "definicion": "Hemodiálisis — técnica de depuración extracorpórea para insuficiencia renal." },
@@ -126,7 +161,21 @@
     },
     { "sigla": "ID", "definicion": "Intradérmica — vía de administración entre dermis y epidermis (ángulo 5-15°)." },
     { "sigla": "IM", "definicion": "Intramuscular — vía de administración en el músculo (ángulo 90°)." },
-    { "sigla": "ITU", "definicion": "Infección del tracto urinario." },
+    { "sigla": "ITU", "definicion": "Infección del tracto urinario — colonización e invasión de la vía urinaria por microorganismos (con mayor frecuencia E. coli). Se clasifica según el nivel anatómico afectado.",
+      "tipos": [
+        "Baja (cistitis) — vejiga y uretra: disuria, polaquiuria, urgencia, dolor suprapúbico. Sin fiebre alta.",
+        "Alta (pielonefritis) — compromiso renal: fiebre, escalofríos, dolor lumbar, puño-percusión positiva.",
+        "Complicada — asociada a sonda, embarazo, obstrucción, inmunosupresión o varón.",
+        "Asociada a catéter (CAUTI/IACS) — infección en paciente con sonda vesical permanente.",
+        "Red flags — fiebre alta, vómitos, hipotensión o confusión (en el adulto mayor): riesgo de urosepsis."
+      ],
+      "ejemplos": [
+        "Disuria + polaquiuria + urgencia + orina turbia, sin fiebre → cistitis, urocultivo y tratamiento dirigido.",
+        "Fiebre 39 °C + dolor lumbar + puño-percusión positiva → pielonefritis, hemocultivos y antibiótico EV.",
+        "Adulto mayor con confusión aguda + orina fétida → sospechar ITU como causa del cuadro confusional.",
+        "Prevención de CAUTI: indicar sonda solo si es necesaria, técnica estéril y retiro precoz."
+      ]
+    },
     { "sigla": "IV", "definicion": "Intravenoso — sinónimo de EV." },
     { "sigla": "IVC", "definicion": "Irrigación vesical continua — lavado continuo de la vejiga con SF a través de sonda Foley de 3 vías." },
     { "sigla": "MMII", "definicion": "Miembros inferiores." },
@@ -138,10 +187,32 @@
     { "sigla": "NPUAP", "definicion": "National Pressure Ulcer Advisory Panel — clasificación de úlceras por presión." },
     { "sigla": "OPQRST", "definicion": "Onset, Provocation, Quality, Region, Severity, Time — mnemotecnia para evaluación del dolor." },
     { "sigla": "OMS", "definicion": "Organización Mundial de la Salud (WHO)." },
-    { "sigla": "OVACE", "definicion": "Obstrucción de vía aérea por cuerpo extraño — atragantamiento." },
+    { "sigla": "OVACE", "definicion": "Obstrucción de vía aérea por cuerpo extraño (atragantamiento) — emergencia frecuente, sobre todo al comer. El grado de obstrucción define la conducta inmediata.",
+      "tipos": [
+        "Obstrucción leve (parcial) — la persona tose con fuerza y puede hablar. Alentar la tos, no interferir.",
+        "Obstrucción grave (completa) — no puede toser, hablar ni respirar; signo universal (manos al cuello).",
+        "Red flags — cianosis, estridor, imposibilidad de emitir sonidos y pérdida de conciencia inminente."
+      ],
+      "ejemplos": [
+        "Adulto que tose enérgicamente y habla mientras come → obstrucción leve, animar a seguir tosiendo y vigilar.",
+        "Persona que se lleva las manos al cuello, no puede hablar ni respirar → obstrucción grave, maniobra de Heimlich.",
+        "Atragantamiento que evoluciona a inconsciencia → iniciar RCP y revisar la boca antes de las ventilaciones."
+      ]
+    },
     { "sigla": "PAE", "definicion": "Proceso de Atención de Enfermería — método científico y sistemático aplicado al cuidado, que permite brindar atención individualizada y de calidad. Comprende 5 etapas cíclicas: valoración (recolección de datos), diagnóstico (juicio clínico con taxonomía NANDA-I), planificación (objetivos NOC e intervenciones NIC), ejecución (implementación del plan) y evaluación (comparación de resultados). Fundamenta la autonomía profesional y promueve el pensamiento crítico." },
     { "sigla": "PAINAD", "definicion": "Pain Assessment in Advanced Dementia — escala de dolor para pacientes con demencia avanzada." },
-    { "sigla": "PCR", "definicion": "Paro cardiorrespiratorio — cese de la actividad cardíaca y respiratoria efectiva." },
+    { "sigla": "PCR", "definicion": "Paro cardiorrespiratorio — cese brusco de la actividad cardíaca y respiratoria efectiva. La sobrevida depende de la cadena de supervivencia y de identificar el ritmo.",
+      "tipos": [
+        "Ritmos desfibrilables — FV y TV sin pulso. Indicación de descarga + RCP.",
+        "Ritmos no desfibrilables — asistolia y AESP. RCP + adrenalina + tratar causa; NO desfibrilar.",
+        "Red flags (reconocimiento) — paciente que no responde, no respira o jadea (gasping) y sin pulso en < 10 s."
+      ],
+      "ejemplos": [
+        "Paciente inconsciente, sin respiración normal y sin pulso → iniciar RCP y pedir desfibrilador de inmediato.",
+        "Ritmo en monitor = FV → desfibrilar; ritmo = asistolia → RCP y adrenalina, confirmar en 2 derivaciones.",
+        "Compresiones de calidad: 100-120/min, 5-6 cm de profundidad, minimizar interrupciones, rotar reanimador c/2 min."
+      ]
+    },
     { "sigla": "PEG", "definicion": "Gastrostomía endoscópica percutánea — sonda alimentaria a través de la pared abdominal hasta el estómago." },
     { "sigla": "PICC", "definicion": "Peripherally Inserted Central Catheter — catéter central de inserción periférica (vía basílica/cefálica → vena cava)." },
     { "sigla": "PVC", "definicion": "Presión venosa central — presión en aurícula derecha medida por catéter central. Normal 2-8 mmHg." },
@@ -149,8 +220,32 @@
     { "sigla": "RCP", "definicion": "Reanimación cardiopulmonar — maniobras de soporte vital básico (compresiones + ventilaciones)." },
     { "sigla": "RIN", "definicion": "Razón internacional normalizada — control de anticoagulación oral con warfarina/acenocumarol." },
     { "sigla": "RTU", "definicion": "Resección transuretral — cirugía endoscópica de próstata o vejiga vía uretra." },
-    { "sigla": "SAOS", "definicion": "Síndrome de apnea obstructiva del sueño — pausas respiratorias durante el sueño por colapso de vía aérea superior." },
-    { "sigla": "SARM", "definicion": "Staphylococcus aureus resistente a meticilina." },
+    { "sigla": "SAOS", "definicion": "Síndrome de apnea obstructiva del sueño — episodios repetidos de colapso de la vía aérea superior durante el sueño, con pausas respiratorias, desaturaciones y fragmentación del descanso.",
+      "tipos": [
+        "Leve — 5 a 15 apneas/hipopneas por hora (IAH).",
+        "Moderado — 15 a 30 eventos por hora.",
+        "Grave — más de 30 eventos por hora. Mayor riesgo cardiovascular.",
+        "Red flags — somnolencia diurna severa, HTA resistente, eventos presenciados por la pareja."
+      ],
+      "ejemplos": [
+        "Ronquido intenso + pausas respiratorias presenciadas + somnolencia diurna → sospecha de SAOS, derivar a polisomnografía.",
+        "Obesidad + cuello ancho + HTA de difícil control → factores de riesgo de SAOS, evaluar estudio de sueño.",
+        "SAOS moderado-grave → indicación de CPAP nocturna, educar sobre adherencia y descenso de peso."
+      ]
+    },
+    { "sigla": "SARM", "definicion": "Staphylococcus aureus resistente a meticilina — cepa multirresistente de gran importancia en control de infecciones. Exige medidas de aislamiento de contacto.",
+      "tipos": [
+        "Asociado al hospital (SARM-AH) — en pacientes internados, con catéteres, cirugías o internaciones previas.",
+        "Asociado a la comunidad (SARM-AC) — en personas sin contacto con el sistema de salud; suele dar infecciones de piel.",
+        "Colonización vs infección — portador sin síntomas vs enfermedad activa (forúnculos, neumonía, bacteriemia).",
+        "Red flags — infección de herida que no responde a betalactámicos, fiebre y rápida progresión."
+      ],
+      "ejemplos": [
+        "Hisopado nasal positivo en paciente sin síntomas → colonización por SARM, aislamiento de contacto y descolonización si corresponde.",
+        "Herida quirúrgica con secreción purulenta + cultivo SARM → aislamiento, antibiótico según sensibilidad (vancomicina).",
+        "Precauciones de contacto: guantes y camisolín al ingresar, higiene de manos estricta y equipo de uso individual."
+      ]
+    },
     { "sigla": "SatO₂", "definicion": "Saturación de oxígeno — porcentaje de hemoglobina saturada con O₂ medido por oximetría de pulso. Normal: ≥ 95%." },
     { "sigla": "SBAR", "definicion": "Situation, Background, Assessment, Recommendation — herramienta estandarizada de comunicación clínica entre profesionales." },
     { "sigla": "SC", "definicion": "Subcutánea — vía de administración bajo la dermis (ángulo 45-90°)." },
@@ -164,14 +259,67 @@
     { "sigla": "SOAPIE", "definicion": "Subjetivo, Objetivo, Apreciación, Plan, Implementación, Evaluación — formato de registro de enfermería." },
     { "sigla": "TA", "definicion": "Tensión arterial — presión que ejerce la sangre sobre las paredes arteriales. Sistólica/diastólica en mmHg." },
     { "sigla": "TAS", "definicion": "Tensión arterial sistólica — pico de presión durante la sístole ventricular." },
-    { "sigla": "TBC", "definicion": "Tuberculosis — infección por Mycobacterium tuberculosis." },
+    { "sigla": "TBC", "definicion": "Tuberculosis — infección por Mycobacterium tuberculosis, de transmisión aérea. El pulmón es el órgano más afectado, pero puede comprometer otros sitios.",
+      "tipos": [
+        "Pulmonar — la forma más frecuente y contagiosa: tos > 2-3 semanas, expectoración, a veces hemoptisis.",
+        "Extrapulmonar — pleural, ganglionar, meníngea, ósea (mal de Pott), renal, miliar (diseminada).",
+        "Infección latente — paciente infectado, asintomático y NO contagioso (PPD/IGRA positivo, Rx normal).",
+        "Red flags — sudoración nocturna, pérdida de peso, fiebre vespertina y tos crónica con hemoptisis."
+      ],
+      "ejemplos": [
+        "Tos > 3 semanas + sudoración nocturna + adelgazamiento → sintomático respiratorio, baciloscopia seriada de esputo.",
+        "Contacto estrecho de paciente bacilífero con PPD positivo y Rx normal → infección latente, evaluar quimioprofilaxis.",
+        "TBC pulmonar confirmada → aislamiento respiratorio (barbijo N95), notificación y tratamiento supervisado (DOTS)."
+      ]
+    },
     { "sigla": "TEC", "definicion": "Traumatismo encéfalo-craneano — lesión traumática del cráneo y/o encéfalo." },
-    { "sigla": "TEP", "definicion": "Tromboembolismo pulmonar — obstrucción de arteria pulmonar por trombo (generalmente desde MMII)." },
+    { "sigla": "TEP", "definicion": "Tromboembolismo pulmonar — obstrucción de una arteria pulmonar por un trombo, en general desprendido de una TVP de los miembros inferiores. La gravedad depende del compromiso hemodinámico.",
+      "tipos": [
+        "Masivo (de alto riesgo) — con inestabilidad hemodinámica (hipotensión, shock). Mortalidad elevada.",
+        "Submasivo (riesgo intermedio) — normotenso pero con disfunción del ventrículo derecho.",
+        "De bajo riesgo — sin compromiso hemodinámico ni de VD.",
+        "Red flags — disnea súbita inexplicada, dolor pleurítico, taquicardia, hipotensión y desaturación."
+      ],
+      "ejemplos": [
+        "Disnea súbita + dolor pleurítico + taquicardia + factor de riesgo (postoperatorio, inmovilización) → sospecha de TEP.",
+        "TVP en MMII (dolor y edema unilateral) + disnea brusca → sospechar TEP, dímero D y angio-TC.",
+        "Disnea + hipotensión + signos de sobrecarga derecha → TEP masivo, soporte y considerar trombólisis.",
+        "Prevención: profilaxis antitrombótica y movilización precoz en pacientes encamados o postquirúrgicos."
+      ]
+    },
     { "sigla": "TET", "definicion": "Tubo endotraqueal — vía aérea avanzada por intubación orotraqueal." },
-    { "sigla": "TV", "definicion": "Taquicardia ventricular — ritmo rápido (> 100 lpm) originado en el ventrículo." },
+    { "sigla": "TV", "definicion": "Taquicardia ventricular — ritmo rápido (> 100 lpm) con complejos QRS anchos originado en el ventrículo. La presencia o ausencia de pulso define la conducta.",
+      "tipos": [
+        "TV con pulso — el paciente mantiene gasto cardíaco. Estable: antiarrítmicos; inestable: cardioversión.",
+        "TV sin pulso — equivale a paro cardíaco. Ritmo DESFIBRILABLE, igual que la FV.",
+        "Sostenida — dura > 30 s o requiere intervención por compromiso hemodinámico.",
+        "No sostenida — < 30 s, autolimitada. Igualmente requiere estudio.",
+        "Torsade de pointes — TV polimorfa asociada a QT largo; tratar con sulfato de magnesio."
+      ],
+      "ejemplos": [
+        "QRS ancho regular a 180 lpm + paciente lúcido y estable → TV con pulso, antiarrítmico y monitoreo.",
+        "TV a 200 lpm + hipotensión + alteración de conciencia → TV inestable, cardioversión sincronizada.",
+        "QRS ancho sin pulso palpable → TV sin pulso, tratar como paro: desfibrilar y RCP."
+      ]
+    },
     { "sigla": "UCO", "definicion": "Unidad coronaria — área hospitalaria de cuidados intensivos cardiológicos." },
     { "sigla": "UI", "definicion": "Unidades internacionales — medida de actividad biológica de heparinas, insulinas, hormonas." },
-    { "sigla": "UPP", "definicion": "Úlcera por presión — lesión de piel y/o tejido subyacente por presión sostenida." },
+    { "sigla": "UPP", "definicion": "Úlcera por presión — lesión localizada en piel y/o tejido subyacente, habitualmente sobre una prominencia ósea, por presión sostenida o presión combinada con cizallamiento. La estadificación guía el cuidado.",
+      "tipos": [
+        "Estadio I — eritema que no blanquea a la presión, piel intacta.",
+        "Estadio II — pérdida parcial de la dermis: flictena o úlcera superficial.",
+        "Estadio III — pérdida total del grosor de la piel, se ve tejido subcutáneo (no hueso ni tendón).",
+        "Estadio IV — pérdida total con exposición de hueso, tendón o músculo.",
+        "No estadiable / lesión de tejidos profundos — lecho cubierto por esfacelo/escara o área violácea.",
+        "Red flags — bordes socavados, mal olor, exudado purulento o fiebre: sospechar infección."
+      ],
+      "ejemplos": [
+        "Eritema persistente en sacro que no blanquea + piel íntegra → UPP estadio I, aliviar presión y reevaluar.",
+        "Flictena rota en talón con dermis expuesta → UPP estadio II, cura húmeda y protección.",
+        "Úlcera profunda en trocánter con hueso visible → UPP estadio IV, evaluación interdisciplinaria.",
+        "Prevención: cambios posturales c/2 h, superficies de redistribución de presión, hidratación y escala de Braden."
+      ]
+    },
     { "sigla": "UTI", "definicion": "Unidad de Terapia Intensiva — área hospitalaria de cuidados críticos." },
     { "sigla": "VNI", "definicion": "Ventilación no invasiva — ventilación mecánica con máscara (sin tubo endotraqueal): CPAP, BiPAP." },
     { "sigla": "VO", "definicion": "Vía oral — administración por la boca." },
