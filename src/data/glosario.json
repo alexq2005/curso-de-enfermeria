@@ -104,7 +104,7 @@
     { "sigla": "EPP", "definicion": "Equipo de protección personal — barbijo, guantes, antiparras, camisolín, etc." },
     { "sigla": "EV", "definicion": "Endovenoso (intravenoso) — vía de administración a través de una vena." },
     { "sigla": "EVA", "definicion": "Escala visual analógica — escala de dolor de 0 a 10 con regla deslizante." },
-    { "sigla": "FAST", "definicion": "Focused Assessment with Sonography for Trauma — eco rápida en trauma para detectar líquido libre." },
+    { "sigla": "FAST", "definicion": "Focused Assessment with Sonography for Trauma (Evaluación focalizada con ecografía en trauma) — eco rápida en trauma para detectar líquido libre." },
     { "sigla": "FAV", "definicion": "Fístula arteriovenosa — anastomosis quirúrgica entre una arteria y una vena que crea un acceso vascular de alto flujo, principalmente para hemodiálisis crónica. Es el acceso de elección por su durabilidad y menor tasa de infección.",
       "tipos": [
         "Nativa (autóloga) — con vasos propios del paciente (radiocefálica, braquiocefálica). De elección.",
@@ -255,7 +255,7 @@
       ]
     },
     { "sigla": "NPUAP", "definicion": "National Pressure Ulcer Advisory Panel — clasificación de úlceras por presión." },
-    { "sigla": "OPQRST", "definicion": "Onset, Provocation, Quality, Region, Severity, Time — mnemotecnia para evaluación del dolor." },
+    { "sigla": "OPQRST", "definicion": "Onset (Inicio), Provocation (Provoca/Palia), Quality (Carácter), Region (Región), Severity (Severidad), Time (Tiempo) — mnemotecnia para evaluación del dolor." },
     { "sigla": "OMS", "definicion": "Organización Mundial de la Salud (WHO)." },
     { "sigla": "OVACE", "definicion": "Obstrucción de vía aérea por cuerpo extraño (atragantamiento) — emergencia frecuente, sobre todo al comer. El grado de obstrucción define la conducta inmediata.",
       "tipos": [
@@ -353,7 +353,7 @@
       ]
     },
     { "sigla": "SatO₂", "definicion": "Saturación de oxígeno — porcentaje de hemoglobina saturada con O₂ medido por oximetría de pulso. Normal: ≥ 95%." },
-    { "sigla": "SBAR", "definicion": "Situation, Background, Assessment, Recommendation — herramienta estandarizada de comunicación clínica entre profesionales." },
+    { "sigla": "SBAR", "definicion": "Situation (Situación), Background (Antecedentes), Assessment (Valoración), Recommendation (Recomendación) — herramienta estandarizada de comunicación clínica entre profesionales." },
     { "sigla": "SC", "definicion": "Subcutánea — vía de administración bajo la dermis (ángulo 45-90°)." },
     { "sigla": "SCQ", "definicion": "Superficie corporal quemada — porcentaje de quemadura calculado por regla de los 9." },
     { "sigla": "SF", "definicion": "Solución fisiológica (NaCl 0,9%) — cristaloide isotónico de uso EV y para irrigación de catéteres." },

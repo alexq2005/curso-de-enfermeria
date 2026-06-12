@@ -13,6 +13,7 @@
 - **CI con GitHub Actions** (`.github/workflows/ci.yml`): typecheck + ESLint + Jest en push/PR a `main`
 
 ### Changed
+- **Términos en inglés glosados al español** en SBAR, OPQRST y ABCDE (Módulos 9-10) y en las mismas siglas del glosario: formato `Inglés (Español)` que conserva el acrónimo y agrega la traducción — ej. `Situation (Situación)`, `Airway (Vía aérea)`, `Onset (Inicio)`. Corrige la inconsistencia de que SOAPIE ya estaba traducido pero SBAR/OPQRST no. También en glosario: SBAR, OPQRST y FAST
 - **Tipografía de lectura** en CursoModuloScreen: cuerpo 15/24 (line-height 1.6×), jerarquía sub (18) > h4 (16) > cuerpo (15) > tablas (12.5); bullets alineados al line-height; espaciado vertical consistente entre bloques y subtemas
 - **Cards destacadas** (insight/tip/alert/warn) muestran su emoji identificador (estaba definido en `CARD_STYLES` pero sin renderizar)
 - **Contraste WCAG de `textLight`**: light `#9BA4B5` (2.4:1) → `#67738C` (4.5:1); dark `#636E83` (2.9:1) → `#8C96AD` (5:1)
