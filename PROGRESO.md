@@ -4,6 +4,31 @@
 
 ---
 
+## 2026-06-12 — Sesión 13: Prueba en emulador, traducción de anglicismos y seguridad
+
+### Resumen
+
+Se probó la app en el emulador `Medium_Phone_API_36.1` (build freeDebug OK, corre bien). Durante la prueba se detectó (feedback del usuario) que el método **SBAR** mostraba sus términos en inglés sin traducir, mientras SOAPIE (mismo módulo) ya estaba en español — inconsistencia. Se aplicó el patrón sistémico: glosado `Inglés (Español)` en **SBAR, OPQRST y ABCDE** del curso (Módulos 9-10) y en **SBAR, OPQRST y FAST** del glosario, conservando el acrónimo. Verificado en vivo en el emulador.
+
+Además se halló y mitigó un problema de seguridad: la password del keystore de release estaba **hardcodeada en `android/gradle.properties`** del repo público desde el commit inicial. Se eliminó (resuelve desde `~/.gradle`, igual que Patologías); `validateSigningFreeRelease` confirmó que el build sigue firmando. El keystore es **compartido con la app Patologías** (mismo archivo/upload key). Rotación de la password documentada como pendiente (decisión del usuario: no ejecutar ahora).
+
+### Cambios
+- `src/data/curso.json`: SBAR/OPQRST/ABCDE glosados al español
+- `src/data/glosario.json`: SBAR/OPQRST/FAST glosados (3 líneas, sin reformateo)
+- `android/gradle.properties`: removidas `RELEASE_STORE_PASSWORD`/`KEY_PASSWORD`/`KEY_ALIAS`
+- Bundle JS regenerado en cada cambio de contenido
+- Emulador: AVD ampliado a 16G + RAM 3 GB (config local, no versionado)
+
+### Commits
+- `39fa42b` content(curso): traducir terminos en ingles de SBAR, OPQRST y ABCDE
+- `0c54f5a` content(glosario): glosar SBAR, OPQRST y FAST al espanol
+- `f4fda48` fix(security): quitar passwords del keystore de gradle.properties trackeado
+
+### Pendientes
+- **🔐 Rotar la password del keystore** (`keytool -storepasswd`/`-keypasswd`): el valor sigue en el history público; rotar lo neutraliza. Cubre Curso + Patologías (mismo keystore). NO se recomienda scrub del history (rotar lo vuelve redundante).
+
+---
+
 ## 2026-06-12 — Sesión 12: Enriquecimiento de contenido del glosario (+33 términos)
 
 ### Resumen
