@@ -57,7 +57,20 @@
     { "sigla": "CH", "definicion": "Charrière (French) — unidad de calibre de sondas. 1 CH = ⅓ mm de diámetro externo (ej: sonda 16 CH = 5,3 mm)." },
     { "sigla": "CPAP", "definicion": "Continuous Positive Airway Pressure — presión positiva continua en la vía aérea (VNI)." },
     { "sigla": "CPOT", "definicion": "Critical-Care Pain Observation Tool — escala de dolor para pacientes críticos no comunicantes." },
-    { "sigla": "CVC", "definicion": "Catéter venoso central — vía vascular central (yugular, subclavia, femoral)." },
+    { "sigla": "CVC", "definicion": "Catéter venoso central — dispositivo cuya punta queda en una vena central (vena cava). Permite infundir soluciones de alta osmolaridad, medir PVC y administrar drogas vasoactivas.",
+      "tipos": [
+        "Yugular interna — acceso frecuente, buen control ecográfico.",
+        "Subclavia — mayor confort para el paciente, menor tasa de infección, pero riesgo de neumotórax.",
+        "Femoral — acceso rápido en emergencia; mayor riesgo de infección y trombosis.",
+        "PICC — catéter central de inserción periférica, alternativa para tratamientos prolongados.",
+        "Red flags — fiebre con escalofríos al infundir, enrojecimiento del sitio o secreción: sospechar infección del catéter."
+      ],
+      "ejemplos": [
+        "Indicación de CVC: drogas vasoactivas, NPT o quimioterapia que no toleran vía periférica.",
+        "Post-colocación de subclavia: solicitar Rx tórax para confirmar posición y descartar neumotórax antes de usarlo.",
+        "Prevención de bacteriemia asociada (CLABSI): técnica estéril, curación según protocolo y retiro precoz cuando no se necesita."
+      ]
+    },
     { "sigla": "EAP", "definicion": "Edema agudo de pulmón — acumulación brusca de líquido en el intersticio y los alvéolos. Emergencia respiratoria: el paciente se ahoga, prefiere estar sentado y desatura.",
       "tipos": [
         "Cardiogénico — por falla del ventrículo izquierdo (IAM, crisis hipertensiva, valvulopatía). El más frecuente.",
@@ -92,7 +105,18 @@
     { "sigla": "EV", "definicion": "Endovenoso (intravenoso) — vía de administración a través de una vena." },
     { "sigla": "EVA", "definicion": "Escala visual analógica — escala de dolor de 0 a 10 con regla deslizante." },
     { "sigla": "FAST", "definicion": "Focused Assessment with Sonography for Trauma — eco rápida en trauma para detectar líquido libre." },
-    { "sigla": "FAV", "definicion": "Fístula arteriovenosa — anastomosis quirúrgica entre arteria y vena, principalmente para hemodiálisis." },
+    { "sigla": "FAV", "definicion": "Fístula arteriovenosa — anastomosis quirúrgica entre una arteria y una vena que crea un acceso vascular de alto flujo, principalmente para hemodiálisis crónica. Es el acceso de elección por su durabilidad y menor tasa de infección.",
+      "tipos": [
+        "Nativa (autóloga) — con vasos propios del paciente (radiocefálica, braquiocefálica). De elección.",
+        "Protésica (injerto/graft) — con material sintético cuando las venas propias no sirven.",
+        "Red flags — ausencia de thrill/frémito o de soplo: posible trombosis del acceso, urgencia nefrológica."
+      ],
+      "ejemplos": [
+        "Control del acceso: palpar el thrill (frémito) y auscultar el soplo en cada turno para confirmar permeabilidad.",
+        "Cuidado del brazo de la FAV: NO tomar TA, NO extraer sangre ni colocar vías en ese miembro.",
+        "Brazo de la FAV frío, sin frémito ni soplo y doloroso → sospecha de trombosis, avisar de inmediato."
+      ]
+    },
     { "sigla": "FC", "definicion": "Frecuencia cardíaca — latidos por minuto (lpm). Normal adulto: 60-100." },
     { "sigla": "FID", "definicion": "Fosa ilíaca derecha — cuadrante abdominal donde se proyecta el apéndice." },
     { "sigla": "FII", "definicion": "Fosa ilíaca izquierda — cuadrante abdominal del colon sigmoide." },
@@ -179,11 +203,57 @@
     { "sigla": "IV", "definicion": "Intravenoso — sinónimo de EV." },
     { "sigla": "IVC", "definicion": "Irrigación vesical continua — lavado continuo de la vejiga con SF a través de sonda Foley de 3 vías." },
     { "sigla": "MMII", "definicion": "Miembros inferiores." },
-    { "sigla": "NANDA", "definicion": "North American Nursing Diagnosis Association — taxonomía de diagnósticos de enfermería." },
+    { "sigla": "NANDA", "definicion": "North American Nursing Diagnosis Association (NANDA-I) — taxonomía estandarizada de diagnósticos de enfermería. Aporta el lenguaje común para nombrar las respuestas humanas que la enfermería trata de forma autónoma.",
+      "tipos": [
+        "Diagnóstico real (focalizado en el problema) — respuesta presente. Formato PES: Problema + Etiología (r/c) + Signos (m/p).",
+        "Diagnóstico de riesgo — vulnerabilidad a desarrollar un problema. Formato PE (sin signos aún): problema + factores de riesgo.",
+        "Diagnóstico de promoción de la salud — deseo de aumentar el bienestar (\"disposición para mejorar...\").",
+        "Síndrome — agrupación de diagnósticos que se presentan juntos (ej: síndrome de deterioro por inmovilidad)."
+      ],
+      "ejemplos": [
+        "Real: 'Deterioro de la integridad cutánea r/c presión sostenida m/p úlcera en sacro'.",
+        "De riesgo: 'Riesgo de caídas r/c debilidad muscular y deterioro de la movilidad' (aún sin caída).",
+        "Promoción: 'Disposición para mejorar la gestión de la salud' en paciente que pide aprender sobre su tratamiento.",
+        "El diagnóstico NANDA enlaza con resultados NOC e intervenciones NIC dentro del PAE."
+      ]
+    },
     { "sigla": "NIBP", "definicion": "Non-Invasive Blood Pressure — presión arterial no invasiva (manguito automatizado)." },
-    { "sigla": "NIC", "definicion": "Nursing Interventions Classification — clasificación de intervenciones de enfermería." },
-    { "sigla": "NOC", "definicion": "Nursing Outcomes Classification — clasificación de resultados de enfermería." },
-    { "sigla": "NPT", "definicion": "Nutrición parenteral total — alimentación endovenosa por vía central." },
+    { "sigla": "NIC", "definicion": "Nursing Interventions Classification — clasificación estandarizada de las intervenciones de enfermería. Responde al \"qué hace\" la enfermera para alcanzar los resultados (NOC) frente a un diagnóstico (NANDA).",
+      "tipos": [
+        "Intervenciones autónomas — iniciadas por la enfermera según su juicio (educación, posicionamiento, higiene).",
+        "Intervenciones de colaboración — derivadas de indicaciones médicas o interdisciplinarias (administrar fármacos).",
+        "Cada intervención NIC incluye una etiqueta, una definición y un conjunto de actividades concretas."
+      ],
+      "ejemplos": [
+        "NIC 'Manejo del dolor': valorar el dolor, administrar analgesia pautada y reevaluar la respuesta.",
+        "NIC 'Prevención de úlceras por presión': cambios posturales, hidratación de la piel y uso de superficies de alivio.",
+        "NIC 'Oxigenoterapia' enlazada con el diagnóstico 'Deterioro del intercambio de gases' y el resultado NOC respiratorio."
+      ]
+    },
+    { "sigla": "NOC", "definicion": "Nursing Outcomes Classification — clasificación estandarizada de los resultados sensibles a los cuidados de enfermería. Define el \"qué se espera lograr\" y permite medir la evolución del paciente con indicadores y escalas.",
+      "tipos": [
+        "Resultado — estado, conducta o percepción del paciente que se mide a lo largo del tiempo.",
+        "Indicadores — aspectos concretos y observables que componen y operativizan cada resultado.",
+        "Escala Likert (1 a 5) — puntúa el estado actual (basal) y el objetivo (esperado) para comparar el progreso."
+      ],
+      "ejemplos": [
+        "NOC 'Control del dolor': indicador 'refiere dolor controlado', de basal 2/5 a objetivo 4/5.",
+        "NOC 'Integridad tisular: piel y mucosas' para evaluar la evolución de una úlcera por presión.",
+        "El NOC cierra el ciclo del PAE: comparar el resultado obtenido con el esperado en la etapa de evaluación."
+      ]
+    },
+    { "sigla": "NPT", "definicion": "Nutrición parenteral total — aporte de todos los nutrientes (glucosa, aminoácidos, lípidos, electrolitos, vitaminas) por vía endovenosa cuando el tubo digestivo no puede usarse. Por su osmolaridad requiere acceso venoso central.",
+      "tipos": [
+        "Total (NPT) — cubre todo el requerimiento nutricional por vía central (CVC o PICC).",
+        "Parcial/periférica (NPP) — complementaria, de menor osmolaridad, por vía periférica y corto plazo.",
+        "Red flags — fiebre, hiperglucemia, alteraciones electrolíticas: vigilar infección del catéter y síndrome de realimentación."
+      ],
+      "ejemplos": [
+        "Manejo de la vía: técnica estéril, luz exclusiva para la NPT y cambio de sistemas según protocolo (riesgo de sepsis).",
+        "Controles: glucemia capilar seriada, balance hídrico, peso e ionograma para detectar complicaciones metabólicas.",
+        "Nunca interrumpir bruscamente la NPT → riesgo de hipoglucemia; descender el ritmo de forma gradual."
+      ]
+    },
     { "sigla": "NPUAP", "definicion": "National Pressure Ulcer Advisory Panel — clasificación de úlceras por presión." },
     { "sigla": "OPQRST", "definicion": "Onset, Provocation, Quality, Region, Severity, Time — mnemotecnia para evaluación del dolor." },
     { "sigla": "OMS", "definicion": "Organización Mundial de la Salud (WHO)." },
@@ -199,7 +269,21 @@
         "Atragantamiento que evoluciona a inconsciencia → iniciar RCP y revisar la boca antes de las ventilaciones."
       ]
     },
-    { "sigla": "PAE", "definicion": "Proceso de Atención de Enfermería — método científico y sistemático aplicado al cuidado, que permite brindar atención individualizada y de calidad. Comprende 5 etapas cíclicas: valoración (recolección de datos), diagnóstico (juicio clínico con taxonomía NANDA-I), planificación (objetivos NOC e intervenciones NIC), ejecución (implementación del plan) y evaluación (comparación de resultados). Fundamenta la autonomía profesional y promueve el pensamiento crítico." },
+    { "sigla": "PAE", "definicion": "Proceso de Atención de Enfermería — método científico y sistemático aplicado al cuidado, que permite brindar atención individualizada y de calidad. Comprende 5 etapas cíclicas: valoración (recolección de datos), diagnóstico (juicio clínico con taxonomía NANDA-I), planificación (objetivos NOC e intervenciones NIC), ejecución (implementación del plan) y evaluación (comparación de resultados). Fundamenta la autonomía profesional y promueve el pensamiento crítico.",
+      "tipos": [
+        "1. Valoración — recolección y organización de datos (subjetivos y objetivos) por patrones funcionales o necesidades.",
+        "2. Diagnóstico — juicio clínico formulado con taxonomía NANDA-I (formato PES: Problema + Etiología + Signos).",
+        "3. Planificación — priorización de problemas, objetivos/resultados (NOC) e intervenciones (NIC).",
+        "4. Ejecución — implementación de las intervenciones planificadas y registro de los cuidados.",
+        "5. Evaluación — comparación de los resultados obtenidos con los esperados; retroalimenta el ciclo."
+      ],
+      "ejemplos": [
+        "Valoración: paciente con disnea, SatO₂ 88% y tiraje → dato objetivo que orienta el diagnóstico respiratorio.",
+        "Diagnóstico NANDA (PES): 'Deterioro del intercambio de gases r/c desequilibrio ventilación-perfusión m/p hipoxemia'.",
+        "Planificación: NOC 'Estado respiratorio: intercambio gaseoso' + NIC 'Oxigenoterapia' y 'Monitorización respiratoria'.",
+        "Evaluación: tras la intervención, SatO₂ asciende a 95% → resultado esperado alcanzado, continuar plan."
+      ]
+    },
     { "sigla": "PAINAD", "definicion": "Pain Assessment in Advanced Dementia — escala de dolor para pacientes con demencia avanzada." },
     { "sigla": "PCR", "definicion": "Paro cardiorrespiratorio — cese brusco de la actividad cardíaca y respiratoria efectiva. La sobrevida depende de la cadena de supervivencia y de identificar el ritmo.",
       "tipos": [
@@ -213,9 +297,31 @@
         "Compresiones de calidad: 100-120/min, 5-6 cm de profundidad, minimizar interrupciones, rotar reanimador c/2 min."
       ]
     },
-    { "sigla": "PEG", "definicion": "Gastrostomía endoscópica percutánea — sonda alimentaria a través de la pared abdominal hasta el estómago." },
+    { "sigla": "PEG", "definicion": "Gastrostomía endoscópica percutánea — sonda de alimentación colocada a través de la pared abdominal directamente al estómago. Es la vía de elección para nutrición enteral prolongada (> 4-6 semanas).",
+      "tipos": [
+        "PEG (gástrica) — la punta queda en el estómago. La más habitual para nutrición de largo plazo.",
+        "PEG-J (yeyunal) — extensión al yeyuno; útil cuando hay riesgo alto de broncoaspiración o gastroparesia.",
+        "Red flags — dolor, enrojecimiento, secreción purulenta o fuga periestomal: sospechar infección o desplazamiento."
+      ],
+      "ejemplos": [
+        "Paciente con ACV y disfagia persistente que requiere nutrición > 6 semanas → indicación de PEG en lugar de SNG.",
+        "Cuidados del estoma: higiene diaria, rotación de la sonda y vigilancia de la piel periestomal.",
+        "Tras cada alimentación, lavar la sonda con agua para mantener su permeabilidad y elevar la cabecera 30-45°."
+      ]
+    },
     { "sigla": "PICC", "definicion": "Peripherally Inserted Central Catheter — catéter central de inserción periférica (vía basílica/cefálica → vena cava)." },
-    { "sigla": "PVC", "definicion": "Presión venosa central — presión en aurícula derecha medida por catéter central. Normal 2-8 mmHg." },
+    { "sigla": "PVC", "definicion": "Presión venosa central — presión de la sangre en la vena cava/aurícula derecha, medida a través de un catéter venoso central. Refleja el estado de la volemia y la función del ventrículo derecho (normal 2-8 mmHg).",
+      "tipos": [
+        "Baja (< 2 mmHg) — sugiere hipovolemia o vasodilatación; orienta a reposición de volumen.",
+        "Elevada (> 8-12 mmHg) — sugiere sobrecarga de volumen, insuficiencia cardíaca derecha o taponamiento.",
+        "Red flags — PVC alta + hipotensión + yugulares ingurgitadas: sospechar taponamiento o neumotórax a tensión."
+      ],
+      "ejemplos": [
+        "PVC 1 mmHg + hipotensión + taquicardia + oliguria → hipovolemia, expandir con cristaloides y reevaluar.",
+        "PVC 14 mmHg + edemas + ingurgitación yugular → sobrecarga, ajustar aporte y considerar diuréticos.",
+        "Medición confiable: paciente en decúbito, transductor a nivel del 4° EIC línea axilar media (eje flebostático)."
+      ]
+    },
     { "sigla": "RCN", "definicion": "Royal College of Nursing — colegio profesional de enfermería del Reino Unido." },
     { "sigla": "RCP", "definicion": "Reanimación cardiopulmonar — maniobras de soporte vital básico (compresiones + ventilaciones)." },
     { "sigla": "RIN", "definicion": "Razón internacional normalizada — control de anticoagulación oral con warfarina/acenocumarol." },
@@ -254,9 +360,35 @@
     { "sigla": "SL", "definicion": "Sublingual — vía de administración bajo la lengua, absorción venosa rápida." },
     { "sigla": "SNA", "definicion": "Sistema nervioso autónomo — simpático + parasimpático." },
     { "sigla": "SNC", "definicion": "Sistema nervioso central — encéfalo y médula espinal." },
-    { "sigla": "SNG", "definicion": "Sonda nasogástrica — tubo introducido por la nariz hasta el estómago para nutrición, descompresión o lavado." },
+    { "sigla": "SNG", "definicion": "Sonda nasogástrica — tubo flexible introducido por la nariz hasta el estómago. Su finalidad determina el calibre y el manejo, y siempre debe confirmarse la posición antes de usarla.",
+      "tipos": [
+        "Para nutrición (alimentación enteral) — calibre fino (tipo K-9/Levin fina); infusión de fórmula.",
+        "Para descompresión/aspiración — calibre grueso; evacúa contenido gástrico en íleo u obstrucción.",
+        "Para lavado gástrico — en intoxicaciones o hemorragia digestiva alta.",
+        "Red flags — tos, cianosis o imposibilidad de hablar al colocarla: posible paso a vía aérea, retirar."
+      ],
+      "ejemplos": [
+        "Verificación de posición: aspirar contenido y medir pH ácido + control radiológico antes de la primera alimentación.",
+        "SNG a bolsa en descompresión por íleo → registrar volumen y aspecto del débito en el balance.",
+        "Antes de cada toma por SNG: comprobar residuo gástrico y elevar la cabecera 30-45° para prevenir broncoaspiración."
+      ]
+    },
     { "sigla": "SNP", "definicion": "Sistema nervioso periférico — nervios fuera del SNC." },
-    { "sigla": "SOAPIE", "definicion": "Subjetivo, Objetivo, Apreciación, Plan, Implementación, Evaluación — formato de registro de enfermería." },
+    { "sigla": "SOAPIE", "definicion": "Subjetivo, Objetivo, Apreciación, Plan, Implementación, Evaluación — formato estructurado de registro de enfermería orientado al problema. Ordena la nota clínica y refleja el razonamiento del PAE.",
+      "tipos": [
+        "S (Subjetivo) — lo que refiere el paciente o la familia (síntomas, percepciones).",
+        "O (Objetivo) — datos medibles y observables (signos vitales, hallazgos del examen).",
+        "A (Apreciación) — análisis e interpretación de los datos; diagnóstico de enfermería.",
+        "P (Plan) — intervenciones y objetivos propuestos.",
+        "I (Implementación) — acciones efectivamente realizadas.",
+        "E (Evaluación) — respuesta del paciente y resultado de las intervenciones."
+      ],
+      "ejemplos": [
+        "S: 'me falta el aire'. O: FR 28, SatO₂ 89%, tiraje. A: deterioro del intercambio gaseoso. P: O₂ a 3 L. I: cánula colocada. E: SatO₂ 95%.",
+        "S: 'me duele la herida 8/10'. O: herida sin signos de infección. A: dolor agudo. P: analgesia pautada. I: administrada. E: dolor 3/10.",
+        "Registro orientado al problema que da continuidad al cuidado entre turnos y deja trazabilidad legal."
+      ]
+    },
     { "sigla": "TA", "definicion": "Tensión arterial — presión que ejerce la sangre sobre las paredes arteriales. Sistólica/diastólica en mmHg." },
     { "sigla": "TAS", "definicion": "Tensión arterial sistólica — pico de presión durante la sístole ventricular." },
     { "sigla": "TBC", "definicion": "Tuberculosis — infección por Mycobacterium tuberculosis, de transmisión aérea. El pulmón es el órgano más afectado, pero puede comprometer otros sitios.",
@@ -321,7 +453,18 @@
       ]
     },
     { "sigla": "UTI", "definicion": "Unidad de Terapia Intensiva — área hospitalaria de cuidados críticos." },
-    { "sigla": "VNI", "definicion": "Ventilación no invasiva — ventilación mecánica con máscara (sin tubo endotraqueal): CPAP, BiPAP." },
+    { "sigla": "VNI", "definicion": "Ventilación no invasiva — soporte ventilatorio aplicado mediante interfase (máscara nasal o facial) sin necesidad de intubación. Evita las complicaciones de la vía aérea artificial en pacientes seleccionados.",
+      "tipos": [
+        "CPAP — presión positiva continua (un solo nivel). Útil en EAP cardiogénico y SAOS.",
+        "BiPAP — dos niveles de presión (inspiratorio y espiratorio). Útil en EPOC reagudizado con hipercapnia.",
+        "Red flags (contraindicaciones) — paro, deterioro de conciencia, vómitos, inestabilidad o falta de colaboración."
+      ],
+      "ejemplos": [
+        "EPOC reagudizado con acidosis respiratoria (CO₂ alto) → BiPAP para mejorar la ventilación y evitar intubación.",
+        "EAP cardiogénico con disnea e hipoxemia → CPAP para mejorar la oxigenación y reducir el trabajo respiratorio.",
+        "Vigilar tolerancia, fugas y estado de conciencia: si la VNI fracasa, no demorar la intubación."
+      ]
+    },
     { "sigla": "VO", "definicion": "Vía oral — administración por la boca." },
 
     { "sigla": "Adinamia", "definicion": "Pérdida de la iniciativa motora con incapacidad real para iniciar movimientos voluntarios. Más profunda que la astenia: en astenia el paciente PUEDE moverse pero está cansado; en adinamia NO puede o no inicia el movimiento aunque quiera.",
@@ -384,7 +527,19 @@
         "Pseudo-anuria: la SNG drena 0 mL pero la sonda Foley está obstruida → lavar/recambiar Foley antes de alarmar."
       ]
     },
-    { "sigla": "Apex cardíaco", "definicion": "Punto de máxima impulsión del corazón en la pared torácica — habitualmente 5° EIC línea medioclavicular izquierda." },
+    { "sigla": "Apex cardíaco", "definicion": "Punto de máxima impulsión (choque de la punta) del corazón sobre la pared torácica. Su ubicación, amplitud y carácter orientan sobre el tamaño y la función del ventrículo izquierdo.",
+      "tipos": [
+        "Normal — 5° espacio intercostal sobre la línea medioclavicular izquierda, latido suave de ≈ 2 cm.",
+        "Desplazado hacia abajo y afuera — sugiere dilatación/agrandamiento del ventrículo izquierdo (cardiomegalia).",
+        "Sostenido o intenso — orienta a hipertrofia ventricular (HTA, estenosis aórtica).",
+        "No palpable — obesidad, enfisema, derrame pericárdico o mala técnica."
+      ],
+      "ejemplos": [
+        "Apex en 5° EIC línea medioclavicular, latido breve → hallazgo normal en el examen cardiovascular.",
+        "Apex desplazado al 6°-7° EIC, por fuera de la línea medioclavicular → sospecha de cardiomegalia, solicitar Rx tórax.",
+        "Choque de punta sostenido y enérgico en hipertenso → hipertrofia ventricular izquierda, correlacionar con ECG."
+      ]
+    },
     { "sigla": "Apnea", "definicion": "Ausencia de respiración por más de 10 segundos. Observar SatO₂, color, esfuerzo respiratorio y conciencia.",
       "tipos": [
         "Obstructiva — vía aérea bloqueada con esfuerzo respiratorio presente.",
@@ -1009,7 +1164,19 @@
         "Miosis bilateral en paciente con sífilis no tratada que reacciona a acomodación pero no a luz → pupila de Argyll-Robertson."
       ]
     },
-    { "sigla": "Murmullo vesicular", "definicion": "Ruido respiratorio normal a la auscultación pulmonar, suave, predominio inspiratorio. Disminuido o ausente en derrame, neumotórax, consolidación." },
+    { "sigla": "Murmullo vesicular", "definicion": "Ruido respiratorio normal en la auscultación pulmonar: suave, de tonalidad baja y predominio inspiratorio, generado por el paso del aire en las vías aéreas pequeñas. Su disminución o ausencia es un signo clave.",
+      "tipos": [
+        "Conservado/normal — audible y simétrico en ambos campos pulmonares.",
+        "Disminuido — derrame pleural, neumotórax, enfisema, obesidad, respiración superficial.",
+        "Abolido (ausente) — derrame masivo, neumotórax completo o atelectasia con obstrucción bronquial.",
+        "Reemplazado por ruidos agregados — crepitantes, sibilancias o soplo tubario (consolidación)."
+      ],
+      "ejemplos": [
+        "MV abolido en una base + matidez a la percusión + vibraciones disminuidas → derrame pleural, Rx tórax.",
+        "MV abolido unilateral + timpanismo + desviación traqueal → neumotórax a tensión, urgencia.",
+        "MV conservado con crepitantes bibasales finos → congestión pulmonar (insuficiencia cardíaca)."
+      ]
+    },
     { "sigla": "Náuseas", "definicion": "Sensación subjetiva desagradable de necesidad inminente de vomitar, sin que necesariamente ocurra. Mediada por el centro del vómito en el bulbo. Acompaña sialorrea, palidez, sudoración fría, taquicardia y bradicardia paradójica vagal.",
       "tipos": [
         "Gastrointestinal periférica — por irritación gástrica o intestinal. Gastritis, gastroenteritis, obstrucción, distensión, isquemia mesentérica.",
@@ -1482,6 +1649,17 @@
         "Vómito en proyectil en lactante varón 3-6 semanas + 'oliva pilórica' palpable → estenosis hipertrófica del píloro."
       ]
     },
-    { "sigla": "Vómito en proyectil", "definicion": "Expulsión brusca del contenido gástrico, sin náuseas previas y con gran fuerza. Sospechar hipertensión endocraneana en niños y adultos." }
+    { "sigla": "Vómito en proyectil", "definicion": "Expulsión brusca y con gran fuerza del contenido gástrico, característicamente sin náuseas previas. Su semiología obliga a descartar causas graves, sobre todo neurológicas y obstructivas.",
+      "tipos": [
+        "De origen neurológico — por hipertensión endocraneana (tumor, hemorragia, hidrocefalia). Suele asociar cefalea.",
+        "De origen obstructivo — estenosis hipertrófica del píloro en el lactante (vómito tras las tomas).",
+        "Red flags — vómito en proyectil + cefalea + alteración de conciencia o foco neurológico: emergencia."
+      ],
+      "ejemplos": [
+        "Cefalea matinal + vómito en proyectil sin náuseas + papiledema → hipertensión endocraneana, neuroimagen urgente.",
+        "Lactante de 3-6 semanas con vómito en proyectil tras cada toma + hambre persistente → estenosis pilórica.",
+        "Vómito en proyectil + deterioro de conciencia post-TEC → sospechar hematoma intracraneal, TC de cráneo."
+      ]
+    }
   ]
 }
