@@ -17,7 +17,6 @@ import {
   StatusBar,
   StyleSheet,
   ImageBackground,
-  TouchableOpacity,
   Linking,
   Alert,
   Animated,
@@ -32,6 +31,7 @@ import { useCursoProgress } from '../context/CursoProgressContext';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { getCursoImage } from '../utils/cursoImages';
 import { ProgressBar } from '../components/ProgressBar';
+import { PressableScale } from '../components/PressableScale';
 import cursoData from '../data/curso.json';
 import type { ThemeColors } from '../utils/colors';
 import type {
@@ -183,9 +183,8 @@ export function CursoModuloScreen({ route, navigation }: Props) {
           El contenido que buscás no está disponible. Volvé a la lista de
           módulos e intentá de nuevo.
         </Text>
-        <TouchableOpacity
+        <PressableScale
           onPress={() => navigation.goBack()}
-          activeOpacity={0.85}
           accessibilityRole="button"
           accessibilityLabel="Volver a la lista de módulos"
           hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
@@ -197,7 +196,7 @@ export function CursoModuloScreen({ route, navigation }: Props) {
             color="#fff"
           />
           <Text style={styles.notFoundButtonText}>Volver</Text>
-        </TouchableOpacity>
+        </PressableScale>
       </View>
     );
   }
@@ -374,8 +373,7 @@ function ReadToggleButton({
   const fg = read ? '#FFFFFF' : accent;
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.85}
+    <PressableScale
       onPress={onToggle}
       accessibilityRole="button"
       accessibilityState={{ selected: read }}
@@ -383,6 +381,7 @@ function ReadToggleButton({
         read ? `Desmarcar ${sub.title}` : `Marcar ${sub.title} como leído`
       }
       hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+      pressedScale={0.94}
       style={[styles.readToggle, { backgroundColor: bg, borderColor: border }]}
     >
       <MaterialCommunityIcons
@@ -393,7 +392,7 @@ function ReadToggleButton({
       <Text style={[styles.readToggleText, { color: fg }]}>
         {read ? 'Leído' : 'Marcar como leído'}
       </Text>
-    </TouchableOpacity>
+    </PressableScale>
   );
 }
 
@@ -589,8 +588,7 @@ function CrosslinkBlock({
   }, [cfg, path]);
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.85}
+    <PressableScale
       onPress={handlePress}
       accessibilityRole="button"
       accessibilityLabel={`Abrir ${title} en la ${cfg.name}`}
@@ -629,7 +627,7 @@ function CrosslinkBlock({
           color="#fff"
         />
       </LinearGradient>
-    </TouchableOpacity>
+    </PressableScale>
   );
 }
 

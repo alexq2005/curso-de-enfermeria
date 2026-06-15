@@ -4,6 +4,34 @@
 
 ---
 
+## 2026-06-15 — Sesión 14: Modernización UX/UI (micro-interacciones)
+
+### Resumen
+
+La app ya tenía base de diseño fuerte (gradientes por módulo, neumorfismo tokenizado, responsive scaling, progreso de lectura, dark mode WCAG). El pedido fue "hacerla más moderna a nivel UX/UI". El diagnóstico: lo que faltaba era **movimiento con física**, no más color — todo usaba `TouchableOpacity` (solo opacidad) y las barras/listas eran estáticas.
+
+Se crearon **2 primitivos reutilizables** (0 deps nuevas, solo `Animated` core, native driver) y se aplicaron al flujo principal:
+- **`PressableScale`**: rebote spring (scale 0.96) al presionar; reenvía `accessibilityRole/Label/State`, `hitSlop` y `disabled`. Reemplaza a `TouchableOpacity` en todas las superficies táctiles.
+- **`FadeInView`**: entrada fade + translateY con `delay` por índice → tarjetas que aparecen escalonadas.
+- **`ProgressBar` animada**: el relleno se llena con `Animated.timing` (650 ms) al montar y al cambiar (antes: lleno de golpe). Misma API pública.
+
+En **CursoScreen (home)**: entrada escalonada de módulos, 2 "blobs" decorativos + saludo según progreso (`EMPECEMOS`/`SEGUÍ APRENDIENDO`/`¡CURSO COMPLETO!`) + botones de acción con borde glass. En **lectura, Buscador y Glosario**: press-feedback con rebote en read-toggle, crosslink, back buttons, tarjetas de resultado y "Limpiar búsqueda".
+
+**Decisión clave**: NO se envolvió cada subtema de lectura en `FadeInView` porque rompería el `onLayout` que mide posiciones para el deep-link "saltar a subtema" del Buscador (cambia el padre de referencia del layout). Se priorizó no romper una feature funcionando.
+
+### Cambios
+- `src/components/PressableScale.tsx` (nuevo), `src/components/FadeInView.tsx` (nuevo)
+- `src/components/ProgressBar.tsx` (fill animado)
+- `src/screens/CursoScreen.tsx` (hero + stagger + cards), `CursoModuloScreen.tsx`, `BuscadorScreen.tsx`, `GlosarioScreen.tsx` (PressableScale)
+
+### Verificación
+- `tsc --noEmit`: 0 errores · `eslint`: 0 errores (2 warnings inline-style preexistentes en ProgressBar) · `jest`: 31/31
+
+### Pendientes
+- **Regenerar el bundle JS** (`android/app/src/main/assets/index.android.bundle`) antes del próximo build/release — los cambios de hoy aún no están bundleados.
+
+---
+
 ## 2026-06-12 — Sesión 13: Prueba en emulador, traducción de anglicismos y seguridad
 
 ### Resumen

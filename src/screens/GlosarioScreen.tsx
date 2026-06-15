@@ -4,7 +4,15 @@
 // ============================================================
 
 import React, { useMemo, useState } from 'react';
-import { View, Text, TextInput, FlatList, StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  FlatList,
+  StatusBar,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -12,6 +20,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { useTheme } from '../context/ThemeContext';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
+import { PressableScale } from '../components/PressableScale';
 import type { ThemeColors } from '../utils/colors';
 import glosarioData from '../data/glosario.json';
 
@@ -27,7 +36,10 @@ const ALL_ENTRIES: Entry[] = (glosarioData.entries as Entry[])
   .sort((a, b) => a.sigla.localeCompare(b.sigla, 'es'));
 
 function normalize(text: string): string {
-  return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
 }
 
 export function GlosarioScreen() {
@@ -37,13 +49,17 @@ export function GlosarioScreen() {
   const navigation = useNavigation();
   const [query, setQuery] = useState('');
 
-  const styles = useMemo(() => createStyles(colors, rs, isDark), [colors, rs, isDark]);
+  const styles = useMemo(
+    () => createStyles(colors, rs, isDark),
+    [colors, rs, isDark],
+  );
 
   const filtered = useMemo(() => {
     const q = normalize(query.trim());
     if (!q) return ALL_ENTRIES;
     return ALL_ENTRIES.filter(
-      e => normalize(e.sigla).includes(q) || normalize(e.definicion).includes(q),
+      e =>
+        normalize(e.sigla).includes(q) || normalize(e.definicion).includes(q),
     );
   }, [query]);
 
@@ -51,7 +67,11 @@ export function GlosarioScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
 
       <LinearGradient
         colors={[colors.gradientStart, colors.gradientEnd]}
@@ -60,18 +80,25 @@ export function GlosarioScreen() {
         style={[styles.header, { paddingTop: insets.top + rs.space(16) }]}
       >
         <View style={styles.headerRow}>
-          <TouchableOpacity
+          <PressableScale
             onPress={() => navigation.goBack()}
-            activeOpacity={0.7}
             accessibilityRole="button"
             accessibilityLabel="Volver"
             hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
             style={styles.backButton}
           >
-            <MaterialCommunityIcons name="arrow-left" size={rs.font(20)} color="#fff" />
-          </TouchableOpacity>
+            <MaterialCommunityIcons
+              name="arrow-left"
+              size={rs.font(20)}
+              color="#fff"
+            />
+          </PressableScale>
           <View style={styles.headerIconWrap}>
-            <MaterialCommunityIcons name="book-alphabet" size={rs.font(22)} color="#fff" />
+            <MaterialCommunityIcons
+              name="book-alphabet"
+              size={rs.font(22)}
+              color="#fff"
+            />
           </View>
           <View style={styles.headerTitleWrap}>
             <Text style={styles.headerTitle}>Glosario</Text>
@@ -84,7 +111,11 @@ export function GlosarioScreen() {
         </View>
 
         <View style={styles.searchBox}>
-          <MaterialCommunityIcons name="magnify" size={rs.font(18)} color="rgba(255,255,255,0.85)" />
+          <MaterialCommunityIcons
+            name="magnify"
+            size={rs.font(18)}
+            color="rgba(255,255,255,0.85)"
+          />
           <TextInput
             value={query}
             onChangeText={setQuery}
@@ -125,23 +156,31 @@ export function GlosarioScreen() {
         ListEmptyComponent={
           <View style={styles.emptyState}>
             <View style={styles.emptyIconWrap}>
-              <MaterialCommunityIcons name="text-search" size={rs.font(36)} color={colors.textLight} />
+              <MaterialCommunityIcons
+                name="text-search"
+                size={rs.font(36)}
+                color={colors.textLight}
+              />
             </View>
             <Text style={styles.emptyTitle}>Sin resultados para "{query}"</Text>
             <Text style={styles.emptyHint}>
-              Probá con la sigla exacta (ej: "TA", "RCP") o una palabra de la definición.
+              Probá con la sigla exacta (ej: "TA", "RCP") o una palabra de la
+              definición.
             </Text>
-            <TouchableOpacity
+            <PressableScale
               onPress={() => setQuery('')}
-              activeOpacity={0.85}
               accessibilityRole="button"
               accessibilityLabel="Limpiar búsqueda"
               hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
               style={styles.emptyButton}
             >
-              <MaterialCommunityIcons name="backspace-outline" size={rs.font(15)} color={colors.primary} />
+              <MaterialCommunityIcons
+                name="backspace-outline"
+                size={rs.font(15)}
+                color={colors.primary}
+              />
               <Text style={styles.emptyButtonText}>Limpiar búsqueda</Text>
-            </TouchableOpacity>
+            </PressableScale>
           </View>
         }
         renderItem={({ item }) => (
@@ -154,10 +193,18 @@ export function GlosarioScreen() {
             <Text style={styles.entryDefinition}>{item.definicion}</Text>
             {item.tipos && item.tipos.length > 0 && (
               <View style={styles.entrySection}>
-                <Text style={[styles.entrySectionTitle, { color: colors.primary }]}>Tipos</Text>
+                <Text
+                  style={[styles.entrySectionTitle, { color: colors.primary }]}
+                >
+                  Tipos
+                </Text>
                 {item.tipos.map((t, i) => (
                   <View key={i} style={styles.entryItemRow}>
-                    <Text style={[styles.entryBullet, { color: colors.primary }]}>•</Text>
+                    <Text
+                      style={[styles.entryBullet, { color: colors.primary }]}
+                    >
+                      •
+                    </Text>
                     <Text style={styles.entryItemText}>{t}</Text>
                   </View>
                 ))}
@@ -165,12 +212,21 @@ export function GlosarioScreen() {
             )}
             {item.ejemplos && item.ejemplos.length > 0 && (
               <View style={styles.entrySection}>
-                <Text style={[styles.entrySectionTitle, { color: colors.secondary }]}>
+                <Text
+                  style={[
+                    styles.entrySectionTitle,
+                    { color: colors.secondary },
+                  ]}
+                >
                   Ejemplos clínicos
                 </Text>
                 {item.ejemplos.map((e, i) => (
                   <View key={i} style={styles.entryItemRow}>
-                    <Text style={[styles.entryBullet, { color: colors.secondary }]}>•</Text>
+                    <Text
+                      style={[styles.entryBullet, { color: colors.secondary }]}
+                    >
+                      •
+                    </Text>
                     <Text style={styles.entryItemText}>{e}</Text>
                   </View>
                 ))}
@@ -185,7 +241,11 @@ export function GlosarioScreen() {
 
 // ── Styles factory ──────────────────────────────────────────
 
-const createStyles = (colors: ThemeColors, rs: ResponsiveScale, isDark: boolean) =>
+const createStyles = (
+  colors: ThemeColors,
+  rs: ResponsiveScale,
+  isDark: boolean,
+) =>
   StyleSheet.create({
     container: {
       flex: 1,
