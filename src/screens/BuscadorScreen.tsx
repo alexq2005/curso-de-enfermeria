@@ -3,7 +3,17 @@
 // ============================================================
 
 import React, { useMemo, useState, useCallback } from 'react';
-import { View, Text, TextInput, FlatList, StatusBar, StyleSheet, TouchableOpacity, type TextStyle, type StyleProp } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  FlatList,
+  StatusBar,
+  StyleSheet,
+  TouchableOpacity,
+  type TextStyle,
+  type StyleProp,
+} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -12,6 +22,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { useTheme } from '../context/ThemeContext';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
+import { PressableScale } from '../components/PressableScale';
 import type { ThemeColors } from '../utils/colors';
 import cursoData from '../data/curso.json';
 import glosarioData from '../data/glosario.json';
@@ -43,7 +54,10 @@ interface GlosarioEntry {
 type IdxEntry = IndexEntry | GlosarioEntry;
 
 function normalize(text: string): string {
-  return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
 }
 
 // ── Tokenization + ranking ─────────────────────────────────────────────
@@ -52,8 +66,31 @@ function normalize(text: string): string {
 // arterial", "Técnica" sin "de medición"). Tokenizamos, descartamos stopwords
 // y rankeamos por número de tokens hallados + bonus por title/sigla match.
 const SPANISH_STOPWORDS = new Set([
-  'de', 'la', 'el', 'los', 'las', 'y', 'o', 'u', 'en', 'a', 'un', 'una', 'unos', 'unas',
-  'con', 'por', 'para', 'del', 'al', 'es', 'son', 'que', 'se', 'su', 'lo',
+  'de',
+  'la',
+  'el',
+  'los',
+  'las',
+  'y',
+  'o',
+  'u',
+  'en',
+  'a',
+  'un',
+  'una',
+  'unos',
+  'unas',
+  'con',
+  'por',
+  'para',
+  'del',
+  'al',
+  'es',
+  'son',
+  'que',
+  'se',
+  'su',
+  'lo',
 ]);
 
 function tokenizeQuery(normalizedQuery: string): string[] {
@@ -64,7 +101,8 @@ function tokenizeQuery(normalizedQuery: string): string[] {
 
 // Crude plural stripping: "tecnicas" → también probar "tecnica".
 function tokenForms(token: string): string[] {
-  if (token.length > 3 && token.endsWith('s')) return [token, token.slice(0, -1)];
+  if (token.length > 3 && token.endsWith('s'))
+    return [token, token.slice(0, -1)];
   return [token];
 }
 
@@ -81,12 +119,18 @@ function hasToken(haystack: string, token: string): boolean {
 // per-char map normalizedIndex → originalIndex, search the normalized form, and
 // then slice the *original* string at the mapped positions to preserve casing
 // and diacritics in the highlighted snippet.
-function findMatchRanges(text: string, normalizedQuery: string): Array<{ start: number; end: number }> {
+function findMatchRanges(
+  text: string,
+  normalizedQuery: string,
+): Array<{ start: number; end: number }> {
   if (!normalizedQuery) return [];
   let normText = '';
   const origForNormIdx: number[] = [];
   for (let i = 0; i < text.length; i++) {
-    const norm = text[i].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const norm = text[i]
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
     for (let j = 0; j < norm.length; j++) {
       normText += norm[j];
       origForNormIdx.push(i);
@@ -113,7 +157,13 @@ interface HighlightedTextProps {
   numberOfLines?: number;
 }
 
-function HighlightedText({ text, tokens, baseStyle, highlightStyle, numberOfLines }: HighlightedTextProps) {
+function HighlightedText({
+  text,
+  tokens,
+  baseStyle,
+  highlightStyle,
+  numberOfLines,
+}: HighlightedTextProps) {
   const ranges = useMemo(() => {
     if (tokens.length === 0) return [];
     const all: Array<{ start: number; end: number }> = [];
@@ -137,7 +187,11 @@ function HighlightedText({ text, tokens, baseStyle, highlightStyle, numberOfLine
     return merged;
   }, [text, tokens]);
   if (ranges.length === 0) {
-    return <Text style={baseStyle} numberOfLines={numberOfLines}>{text}</Text>;
+    return (
+      <Text style={baseStyle} numberOfLines={numberOfLines}>
+        {text}
+      </Text>
+    );
   }
   const parts: React.ReactNode[] = [];
   let cursor = 0;
@@ -167,9 +221,14 @@ function blockToText(block: CursoBlock): string {
     case 'ol':
       return block.items.join(' ');
     case 'card':
-      return [block.title, block.text ?? '', (block.items ?? []).join(' ')].filter(Boolean).join(' ');
+      return [block.title, block.text ?? '', (block.items ?? []).join(' ')]
+        .filter(Boolean)
+        .join(' ');
     case 'table':
-      return [block.headers.join(' '), ...block.rows.map(r => r.join(' '))].join(' ');
+      return [
+        block.headers.join(' '),
+        ...block.rows.map(r => r.join(' ')),
+      ].join(' ');
     case 'grid':
       return block.cards.map(c => `${c.title} ${c.text}`).join(' ');
     case 'crosslink':
@@ -183,7 +242,9 @@ const data = cursoData as CursoData;
 
 const SUB_INDEX: IndexEntry[] = data.modulos.flatMap(m =>
   m.subs.map(sub => {
-    const blockTexts = sub.blocks.map(b => blockToText(b as CursoBlock)).join(' ');
+    const blockTexts = sub.blocks
+      .map(b => blockToText(b as CursoBlock))
+      .join(' ');
     const fullText = `${sub.title} ${blockTexts}`;
     return {
       kind: 'sub' as const,
@@ -199,15 +260,15 @@ const SUB_INDEX: IndexEntry[] = data.modulos.flatMap(m =>
   }),
 );
 
-const GLOSARIO_INDEX: GlosarioEntry[] = (glosarioData.entries as { sigla: string; definicion: string }[]).map(
-  e => ({
-    kind: 'glosario' as const,
-    sigla: e.sigla,
-    siglaNorm: normalize(e.sigla),
-    definicion: e.definicion,
-    haystack: normalize(`${e.sigla} ${e.definicion}`),
-  }),
-);
+const GLOSARIO_INDEX: GlosarioEntry[] = (
+  glosarioData.entries as { sigla: string; definicion: string }[]
+).map(e => ({
+  kind: 'glosario' as const,
+  sigla: e.sigla,
+  siglaNorm: normalize(e.sigla),
+  definicion: e.definicion,
+  haystack: normalize(`${e.sigla} ${e.definicion}`),
+}));
 
 export function BuscadorScreen() {
   const { colors, isDark } = useTheme();
@@ -216,7 +277,10 @@ export function BuscadorScreen() {
   const navigation = useNavigation<Nav>();
   const [query, setQuery] = useState('');
 
-  const styles = useMemo(() => createStyles(colors, rs, isDark), [colors, rs, isDark]);
+  const styles = useMemo(
+    () => createStyles(colors, rs, isDark),
+    [colors, rs, isDark],
+  );
 
   const tokens = useMemo(() => tokenizeQuery(normalize(query.trim())), [query]);
 
@@ -225,28 +289,26 @@ export function BuscadorScreen() {
     // Score formula: primary = tokens hallados en haystack (×10).
     // Bonus por hits en title/sigla — empuja resultados con coincidencia
     // exacta de sigla o título por encima de matches enterrados en el body.
-    const scoredSubs = SUB_INDEX
-      .map(e => {
-        let primary = 0, bonus = 0;
-        for (const t of tokens) {
-          if (hasToken(e.haystack, t)) primary++;
-          if (hasToken(e.subTitleNorm, t)) bonus += 2;
-        }
-        return { entry: e as IdxEntry, score: primary * 10 + bonus };
-      })
-      .filter(x => x.score > 0);
-    const scoredGlos = GLOSARIO_INDEX
-      .map(e => {
-        let primary = 0, bonus = 0;
-        for (const t of tokens) {
-          if (hasToken(e.haystack, t)) primary++;
-          if (e.siglaNorm === t) bonus += 10;
-          else if (e.siglaNorm.startsWith(t)) bonus += 5;
-          else if (hasToken(e.siglaNorm, t)) bonus += 2;
-        }
-        return { entry: e as IdxEntry, score: primary * 10 + bonus };
-      })
-      .filter(x => x.score > 0);
+    const scoredSubs = SUB_INDEX.map(e => {
+      let primary = 0,
+        bonus = 0;
+      for (const t of tokens) {
+        if (hasToken(e.haystack, t)) primary++;
+        if (hasToken(e.subTitleNorm, t)) bonus += 2;
+      }
+      return { entry: e as IdxEntry, score: primary * 10 + bonus };
+    }).filter(x => x.score > 0);
+    const scoredGlos = GLOSARIO_INDEX.map(e => {
+      let primary = 0,
+        bonus = 0;
+      for (const t of tokens) {
+        if (hasToken(e.haystack, t)) primary++;
+        if (e.siglaNorm === t) bonus += 10;
+        else if (e.siglaNorm.startsWith(t)) bonus += 5;
+        else if (hasToken(e.siglaNorm, t)) bonus += 2;
+      }
+      return { entry: e as IdxEntry, score: primary * 10 + bonus };
+    }).filter(x => x.score > 0);
     return [...scoredGlos, ...scoredSubs]
       .sort((a, b) => b.score - a.score)
       .slice(0, 50)
@@ -255,14 +317,21 @@ export function BuscadorScreen() {
 
   const handleSubPress = useCallback(
     (entry: IndexEntry) => {
-      navigation.navigate('CursoModulo', { moduloId: entry.moduloId, subId: entry.subId });
+      navigation.navigate('CursoModulo', {
+        moduloId: entry.moduloId,
+        subId: entry.subId,
+      });
     },
     [navigation],
   );
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
 
       <LinearGradient
         colors={[colors.gradientStart, colors.gradientEnd]}
@@ -271,18 +340,25 @@ export function BuscadorScreen() {
         style={[styles.header, { paddingTop: insets.top + rs.space(16) }]}
       >
         <View style={styles.headerRow}>
-          <TouchableOpacity
+          <PressableScale
             onPress={() => navigation.goBack()}
-            activeOpacity={0.7}
             accessibilityRole="button"
             accessibilityLabel="Volver"
             hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
             style={styles.backButton}
           >
-            <MaterialCommunityIcons name="arrow-left" size={rs.font(20)} color="#fff" />
-          </TouchableOpacity>
+            <MaterialCommunityIcons
+              name="arrow-left"
+              size={rs.font(20)}
+              color="#fff"
+            />
+          </PressableScale>
           <View style={styles.headerIconWrap}>
-            <MaterialCommunityIcons name="magnify" size={rs.font(22)} color="#fff" />
+            <MaterialCommunityIcons
+              name="magnify"
+              size={rs.font(22)}
+              color="#fff"
+            />
           </View>
           <View style={styles.headerTitleWrap}>
             <Text style={styles.headerTitle}>Buscar</Text>
@@ -293,7 +369,11 @@ export function BuscadorScreen() {
         </View>
 
         <View style={styles.searchBox}>
-          <MaterialCommunityIcons name="magnify" size={rs.font(18)} color="rgba(255,255,255,0.85)" />
+          <MaterialCommunityIcons
+            name="magnify"
+            size={rs.font(18)}
+            color="rgba(255,255,255,0.85)"
+          />
           <TextInput
             value={query}
             onChangeText={setQuery}
@@ -324,7 +404,9 @@ export function BuscadorScreen() {
 
       <FlatList
         data={results}
-        keyExtractor={item => (item.kind === 'sub' ? `s_${item.subId}` : `g_${item.sigla}`)}
+        keyExtractor={item =>
+          item.kind === 'sub' ? `s_${item.subId}` : `g_${item.sigla}`
+        }
         contentContainerStyle={{
           paddingHorizontal: rs.space(16),
           paddingTop: rs.space(14),
@@ -334,7 +416,9 @@ export function BuscadorScreen() {
         ListHeaderComponent={
           results.length > 0 ? (
             <Text style={styles.resultCount}>
-              {results.length === 1 ? '1 resultado' : `${results.length} resultados`}
+              {results.length === 1
+                ? '1 resultado'
+                : `${results.length} resultados`}
             </Text>
           ) : null
         }
@@ -342,32 +426,46 @@ export function BuscadorScreen() {
           query.trim().length < 2 ? (
             <View style={styles.emptyState}>
               <View style={styles.emptyIconWrap}>
-                <MaterialCommunityIcons name="text-search-variant" size={rs.font(40)} color={colors.textLight} />
+                <MaterialCommunityIcons
+                  name="text-search-variant"
+                  size={rs.font(40)}
+                  color={colors.textLight}
+                />
               </View>
               <Text style={styles.emptyHint}>
-                Escribí al menos 2 caracteres para buscar.{'\n'}Probá: "disnea", "RCP", "EPP", "úlcera", "taquipnea", "TA"...
+                Escribí al menos 2 caracteres para buscar.{'\n'}Probá: "disnea",
+                "RCP", "EPP", "úlcera", "taquipnea", "TA"...
               </Text>
             </View>
           ) : (
             <View style={styles.emptyState}>
               <View style={styles.emptyIconWrap}>
-                <MaterialCommunityIcons name="emoticon-sad-outline" size={rs.font(36)} color={colors.textLight} />
+                <MaterialCommunityIcons
+                  name="emoticon-sad-outline"
+                  size={rs.font(36)}
+                  color={colors.textLight}
+                />
               </View>
-              <Text style={styles.emptyTitle}>Sin resultados para "{query}"</Text>
+              <Text style={styles.emptyTitle}>
+                Sin resultados para "{query}"
+              </Text>
               <Text style={styles.emptyHint}>
                 Revisá la ortografía o probá con un sinónimo o una sigla.
               </Text>
-              <TouchableOpacity
+              <PressableScale
                 onPress={() => setQuery('')}
-                activeOpacity={0.85}
                 accessibilityRole="button"
                 accessibilityLabel="Limpiar búsqueda"
                 hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
                 style={styles.emptyButton}
               >
-                <MaterialCommunityIcons name="backspace-outline" size={rs.font(15)} color={colors.primary} />
+                <MaterialCommunityIcons
+                  name="backspace-outline"
+                  size={rs.font(15)}
+                  color={colors.primary}
+                />
                 <Text style={styles.emptyButtonText}>Limpiar búsqueda</Text>
-              </TouchableOpacity>
+              </PressableScale>
             </View>
           )
         }
@@ -376,7 +474,11 @@ export function BuscadorScreen() {
             return (
               <View style={styles.glosarioCard}>
                 <View style={styles.cardKickerRow}>
-                  <MaterialCommunityIcons name="book-alphabet" size={rs.font(15)} color="#0EA5E9" />
+                  <MaterialCommunityIcons
+                    name="book-alphabet"
+                    size={rs.font(15)}
+                    color="#0EA5E9"
+                  />
                   <Text style={styles.glosarioKicker}>GLOSARIO</Text>
                   <HighlightedText
                     text={item.sigla}
@@ -395,8 +497,7 @@ export function BuscadorScreen() {
             );
           }
           return (
-            <TouchableOpacity
-              activeOpacity={0.85}
+            <PressableScale
               onPress={() => handleSubPress(item)}
               accessibilityRole="button"
               accessibilityLabel={`Abrir ${item.subTitle} en módulo ${item.moduloNum}, ${item.moduloTitle}`}
@@ -411,7 +512,11 @@ export function BuscadorScreen() {
                 <Text style={styles.moduloTitle} numberOfLines={1}>
                   {item.moduloTitle}
                 </Text>
-                <MaterialCommunityIcons name="chevron-right" size={rs.font(18)} color={colors.textLight} />
+                <MaterialCommunityIcons
+                  name="chevron-right"
+                  size={rs.font(18)}
+                  color={colors.textLight}
+                />
               </View>
               <HighlightedText
                 text={item.subTitle}
@@ -426,7 +531,7 @@ export function BuscadorScreen() {
                 highlightStyle={styles.highlight}
                 numberOfLines={2}
               />
-            </TouchableOpacity>
+            </PressableScale>
           );
         }}
       />
@@ -436,7 +541,11 @@ export function BuscadorScreen() {
 
 // ── Styles factory ──────────────────────────────────────────
 
-const createStyles = (colors: ThemeColors, rs: ResponsiveScale, isDark: boolean) =>
+const createStyles = (
+  colors: ThemeColors,
+  rs: ResponsiveScale,
+  isDark: boolean,
+) =>
   StyleSheet.create({
     container: {
       flex: 1,

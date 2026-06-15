@@ -7,7 +7,6 @@ import {
   View,
   Text,
   ScrollView,
-  TouchableOpacity,
   StatusBar,
   StyleSheet,
   ImageBackground,
@@ -25,12 +24,17 @@ import { useCursoProgress } from '../context/CursoProgressContext';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { getCursoImage } from '../utils/cursoImages';
 import { ProgressBar } from '../components/ProgressBar';
+import { PressableScale } from '../components/PressableScale';
+import { FadeInView } from '../components/FadeInView';
 import cursoData from '../data/curso.json';
 import type { ThemeColors } from '../utils/colors';
 import type { CursoData, CursoModulo } from '../types/curso';
 import type { RootStackParamList } from '../types';
 
-type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'CursoScreen'>;
+type NavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'CursoScreen'
+>;
 
 const data = cursoData as CursoData;
 
@@ -43,7 +47,8 @@ function useCursoStyles() {
 export function CursoScreen() {
   const { colors } = useTheme();
   const { isPremium } = usePremium();
-  const { globalProgress, getModuloProgress, lastModuloId, recentModuloIds } = useCursoProgress();
+  const { globalProgress, getModuloProgress, lastModuloId, recentModuloIds } =
+    useCursoProgress();
   const rs = useResponsiveScale();
   const styles = useCursoStyles();
   const insets = useSafeAreaInsets();
@@ -65,13 +70,23 @@ export function CursoScreen() {
 
   const fade = useRef(new Animated.Value(0)).current;
   useEffect(() => {
-    Animated.timing(fade, { toValue: 1, duration: 450, useNativeDriver: true }).start();
+    Animated.timing(fade, {
+      toValue: 1,
+      duration: 450,
+      useNativeDriver: true,
+    }).start();
   }, [fade]);
 
   const totalSubs = useMemo(
     () => data.modulos.reduce((acc, m) => acc + m.subs.length, 0),
     [],
   );
+
+  const greeting = useMemo(() => {
+    if (globalProgress.pct >= 100) return '¡CURSO COMPLETO! 🎉';
+    if (globalProgress.pct === 0) return 'EMPECEMOS 👋';
+    return 'SEGUÍ APRENDIENDO';
+  }, [globalProgress.pct]);
 
   const handlePress = useCallback(
     (m: CursoModulo) => {
@@ -86,7 +101,11 @@ export function CursoScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -99,19 +118,46 @@ export function CursoScreen() {
           end={{ x: 1, y: 1 }}
           style={[styles.hero, { paddingTop: insets.top + rs.space(20) }]}
         >
+          {/* Profundidad decorativa: blobs suaves detrás del contenido */}
+          <View
+            pointerEvents="none"
+            style={[styles.heroBlob, styles.heroBlobTop]}
+          />
+          <View
+            pointerEvents="none"
+            style={[styles.heroBlob, styles.heroBlobBottom]}
+          />
+
           <Animated.View style={{ opacity: fade }}>
             <View style={styles.heroTopRow}>
               <View style={styles.heroTitleWrap}>
+                <Text style={styles.heroGreeting}>{greeting}</Text>
                 <Text style={styles.heroTitle}>Manual de Enfermería</Text>
                 <Text style={styles.heroSubtitle}>
                   Material integral: fundamentos, técnicas y emergencias
                 </Text>
               </View>
               <View style={styles.heroActions}>
-                <HeaderAction icon="magnify" label="Buscar" onPress={() => navigation.navigate('BuscadorScreen')} />
-                <HeaderAction icon="book-alphabet" label="Glosario" onPress={() => navigation.navigate('GlosarioScreen')} />
-                <HeaderAction icon="apps" label="Mi suite de enfermería" onPress={() => navigation.navigate('MiSuite')} />
-                <HeaderAction icon="cog-outline" label="Configuración" onPress={() => navigation.navigate('SettingsScreen')} />
+                <HeaderAction
+                  icon="magnify"
+                  label="Buscar"
+                  onPress={() => navigation.navigate('BuscadorScreen')}
+                />
+                <HeaderAction
+                  icon="book-alphabet"
+                  label="Glosario"
+                  onPress={() => navigation.navigate('GlosarioScreen')}
+                />
+                <HeaderAction
+                  icon="apps"
+                  label="Mi suite de enfermería"
+                  onPress={() => navigation.navigate('MiSuite')}
+                />
+                <HeaderAction
+                  icon="cog-outline"
+                  label="Configuración"
+                  onPress={() => navigation.navigate('SettingsScreen')}
+                />
               </View>
             </View>
 
@@ -122,7 +168,11 @@ export function CursoScreen() {
             </View>
 
             <View style={styles.heroProgressWrap}>
-              <ProgressBar progress={globalProgress.pct} fillColor="#fff" height={6} />
+              <ProgressBar
+                progress={globalProgress.pct}
+                fillColor="#fff"
+                height={6}
+              />
               <Text style={styles.heroProgressLabel}>
                 {globalProgress.read} de {globalProgress.total} subtemas leídos
               </Text>
@@ -130,47 +180,80 @@ export function CursoScreen() {
           </Animated.View>
         </LinearGradient>
 
-        <Animated.View style={[styles.body, { opacity: fade }]}>
+        <View style={styles.body}>
           {/* Continuar */}
           {lastModulo && (
-            <TouchableOpacity
-              activeOpacity={0.85}
-              onPress={() => handlePress(lastModulo)}
-              accessibilityRole="button"
-              accessibilityLabel={`Continuar con ${lastModulo.title}, ${getModuloProgress(lastModulo.id).read} de ${lastModulo.subs.length} subtemas leídos`}
-              style={[styles.continueCard, { borderColor: lastModulo.gradient[1] + '40' }]}
-            >
-              <View style={[styles.continueIconWrap, { backgroundColor: lastModulo.gradient[1] + '22' }]}>
-                <MaterialCommunityIcons name="play-circle" size={rs.font(26)} color={lastModulo.gradient[1]} />
-              </View>
-              <View style={styles.continueBody}>
-                <Text style={[styles.continueKicker, { color: lastModulo.gradient[1] }]}>CONTINUAR</Text>
-                <Text style={styles.continueTitle} numberOfLines={1}>
-                  {lastModulo.title}
-                </Text>
-                <Text style={styles.continueMeta}>
-                  {getModuloProgress(lastModulo.id).read} / {lastModulo.subs.length} leídos
-                </Text>
-              </View>
-              <MaterialCommunityIcons name="chevron-right" size={rs.font(22)} color={colors.textLight} />
-            </TouchableOpacity>
+            <FadeInView delay={0}>
+              <PressableScale
+                onPress={() => handlePress(lastModulo)}
+                accessibilityRole="button"
+                accessibilityLabel={`Continuar con ${lastModulo.title}, ${
+                  getModuloProgress(lastModulo.id).read
+                } de ${lastModulo.subs.length} subtemas leídos`}
+                style={[
+                  styles.continueCard,
+                  { borderColor: lastModulo.gradient[1] + '40' },
+                ]}
+              >
+                <View
+                  style={[
+                    styles.continueIconWrap,
+                    { backgroundColor: lastModulo.gradient[1] + '22' },
+                  ]}
+                >
+                  <MaterialCommunityIcons
+                    name="play-circle"
+                    size={rs.font(26)}
+                    color={lastModulo.gradient[1]}
+                  />
+                </View>
+                <View style={styles.continueBody}>
+                  <Text
+                    style={[
+                      styles.continueKicker,
+                      { color: lastModulo.gradient[1] },
+                    ]}
+                  >
+                    CONTINUAR
+                  </Text>
+                  <Text style={styles.continueTitle} numberOfLines={1}>
+                    {lastModulo.title}
+                  </Text>
+                  <Text style={styles.continueMeta}>
+                    {getModuloProgress(lastModulo.id).read} /{' '}
+                    {lastModulo.subs.length} leídos
+                  </Text>
+                </View>
+                <MaterialCommunityIcons
+                  name="chevron-right"
+                  size={rs.font(22)}
+                  color={colors.textLight}
+                />
+              </PressableScale>
+            </FadeInView>
           )}
 
           {/* Recién visto */}
           {recentModulos.length > 1 && (
-            <View style={styles.recentSection}>
+            <FadeInView delay={70} style={styles.recentSection}>
               <Text style={styles.recentHeading}>Recién visto</Text>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.recentList}>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.recentList}
+              >
                 {recentModulos.map(m => {
                   const prog = getModuloProgress(m.id);
                   return (
-                    <TouchableOpacity
+                    <PressableScale
                       key={m.id}
-                      activeOpacity={0.85}
                       onPress={() => handlePress(m)}
                       accessibilityRole="button"
                       accessibilityLabel={`Módulo ${m.num}: ${m.title}, ${prog.pct}% leído`}
-                      style={[styles.recentCard, { shadowColor: m.gradient[1] }]}
+                      style={[
+                        styles.recentCard,
+                        { shadowColor: m.gradient[1] },
+                      ]}
                     >
                       <LinearGradient
                         colors={m.gradient}
@@ -179,7 +262,11 @@ export function CursoScreen() {
                         style={styles.recentGradient}
                       >
                         <View style={styles.recentTopRow}>
-                          <MaterialCommunityIcons name={m.iconName} size={rs.font(20)} color="#fff" />
+                          <MaterialCommunityIcons
+                            name={m.iconName}
+                            size={rs.font(20)}
+                            color="#fff"
+                          />
                           <Text style={styles.recentPct}>{prog.pct}%</Text>
                         </View>
                         <View>
@@ -191,108 +278,146 @@ export function CursoScreen() {
                           </Text>
                         </View>
                       </LinearGradient>
-                    </TouchableOpacity>
+                    </PressableScale>
                   );
                 })}
               </ScrollView>
-            </View>
+            </FadeInView>
           )}
 
           {/* Lista de módulos */}
-          {data.modulos.map((m) => {
+          {data.modulos.map((m, idx) => {
             const locked = m.isPremium && !isPremium;
             const prog = getModuloProgress(m.id);
             return (
-              <TouchableOpacity
-                key={m.id}
-                activeOpacity={0.85}
-                onPress={() => handlePress(m)}
-                accessibilityRole="button"
-                accessibilityLabel={
-                  locked
-                    ? `Módulo ${m.num}: ${m.title}. Contenido Premium bloqueado, toca para ver opciones`
-                    : `Módulo ${m.num}: ${m.title}, ${prog.read} de ${m.subs.length} subtemas leídos`
-                }
-                style={[styles.moduleCard, { shadowColor: m.gradient[1] }]}
-              >
-                <ImageBackground
-                  source={getCursoImage(m.imageKey)}
-                  style={styles.moduleImage}
-                  imageStyle={styles.moduleImageRadius}
+              <FadeInView key={m.id} delay={110 + idx * 55}>
+                <PressableScale
+                  onPress={() => handlePress(m)}
+                  accessibilityRole="button"
+                  accessibilityLabel={
+                    locked
+                      ? `Módulo ${m.num}: ${m.title}. Contenido Premium bloqueado, toca para ver opciones`
+                      : `Módulo ${m.num}: ${m.title}, ${prog.read} de ${m.subs.length} subtemas leídos`
+                  }
+                  style={[styles.moduleCard, { shadowColor: m.gradient[1] }]}
                 >
-                  {locked && <View style={styles.lockedScrim} />}
-                  <LinearGradient
-                    colors={['transparent', m.gradient[0] + '99', m.gradient[1] + 'F0']}
-                    locations={[0, 0.45, 1]}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 0.4, y: 1 }}
-                    style={styles.moduleGradient}
+                  <ImageBackground
+                    source={getCursoImage(m.imageKey)}
+                    style={styles.moduleImage}
+                    imageStyle={styles.moduleImageRadius}
                   >
-                    {/* Top row */}
-                    <View style={styles.moduleTopRow}>
-                      <View style={styles.moduleIconWrap}>
-                        <MaterialCommunityIcons name={m.iconName} size={rs.font(24)} color="#fff" />
+                    {locked && <View style={styles.lockedScrim} />}
+                    <LinearGradient
+                      colors={[
+                        'transparent',
+                        m.gradient[0] + '99',
+                        m.gradient[1] + 'F0',
+                      ]}
+                      locations={[0, 0.45, 1]}
+                      start={{ x: 0, y: 0 }}
+                      end={{ x: 0.4, y: 1 }}
+                      style={styles.moduleGradient}
+                    >
+                      {/* Top row */}
+                      <View style={styles.moduleTopRow}>
+                        <View style={styles.moduleIconWrap}>
+                          <MaterialCommunityIcons
+                            name={m.iconName}
+                            size={rs.font(24)}
+                            color="#fff"
+                          />
+                        </View>
+
+                        {locked ? (
+                          <View style={styles.proBadge}>
+                            <MaterialCommunityIcons
+                              name="lock"
+                              size={rs.font(11)}
+                              color="#D97706"
+                            />
+                            <Text style={styles.proBadgeText}>PRO</Text>
+                          </View>
+                        ) : (
+                          <View style={styles.numBadge}>
+                            <Text
+                              style={[
+                                styles.numBadgeText,
+                                { color: m.gradient[1] },
+                              ]}
+                            >
+                              {m.num}
+                            </Text>
+                          </View>
+                        )}
                       </View>
 
-                      {locked ? (
-                        <View style={styles.proBadge}>
-                          <MaterialCommunityIcons name="lock" size={rs.font(11)} color="#D97706" />
-                          <Text style={styles.proBadgeText}>PRO</Text>
-                        </View>
-                      ) : (
-                        <View style={styles.numBadge}>
-                          <Text style={[styles.numBadgeText, { color: m.gradient[1] }]}>
-                            {m.num}
-                          </Text>
-                        </View>
-                      )}
-                    </View>
-
-                    {/* Bottom row */}
-                    <View>
-                      <Text style={styles.moduleKicker}>
-                        MÓDULO {String(m.num).padStart(2, '0')}
-                      </Text>
-                      <Text style={styles.moduleTitle} numberOfLines={2}>
-                        {m.title}
-                      </Text>
-                      {locked ? (
-                        <View style={styles.moduleMetaRow}>
-                          <MaterialCommunityIcons name="lock-outline" size={rs.font(13)} color="rgba(255,255,255,0.95)" />
-                          <Text style={styles.lockedMetaText}>
-                            Contenido Premium — desbloquealo con PRO
-                          </Text>
-                        </View>
-                      ) : (
-                        <>
+                      {/* Bottom row */}
+                      <View>
+                        <Text style={styles.moduleKicker}>
+                          MÓDULO {String(m.num).padStart(2, '0')}
+                        </Text>
+                        <Text style={styles.moduleTitle} numberOfLines={2}>
+                          {m.title}
+                        </Text>
+                        {locked ? (
                           <View style={styles.moduleMetaRow}>
-                            <MaterialCommunityIcons name="book-open-page-variant" size={rs.font(12)} color="rgba(255,255,255,0.85)" />
-                            <Text style={styles.moduleMetaText}>
-                              {prog.read}/{m.subs.length} subtemas
+                            <MaterialCommunityIcons
+                              name="lock-outline"
+                              size={rs.font(13)}
+                              color="rgba(255,255,255,0.95)"
+                            />
+                            <Text style={styles.lockedMetaText}>
+                              Contenido Premium — desbloquealo con PRO
                             </Text>
-                            {prog.pct === 100 && (
-                              <MaterialCommunityIcons name="check-circle" size={rs.font(13)} color="#4ADE80" style={styles.moduleCheckIcon} />
-                            )}
                           </View>
-                          <View style={styles.moduleProgressWrap}>
-                            <ProgressBar progress={prog.pct} fillColor="#fff" trackColor="rgba(255,255,255,0.25)" height={4} />
-                          </View>
-                        </>
-                      )}
-                    </View>
-                  </LinearGradient>
-                </ImageBackground>
-              </TouchableOpacity>
+                        ) : (
+                          <>
+                            <View style={styles.moduleMetaRow}>
+                              <MaterialCommunityIcons
+                                name="book-open-page-variant"
+                                size={rs.font(12)}
+                                color="rgba(255,255,255,0.85)"
+                              />
+                              <Text style={styles.moduleMetaText}>
+                                {prog.read}/{m.subs.length} subtemas
+                              </Text>
+                              {prog.pct === 100 && (
+                                <MaterialCommunityIcons
+                                  name="check-circle"
+                                  size={rs.font(13)}
+                                  color="#4ADE80"
+                                  style={styles.moduleCheckIcon}
+                                />
+                              )}
+                            </View>
+                            <View style={styles.moduleProgressWrap}>
+                              <ProgressBar
+                                progress={prog.pct}
+                                fillColor="#fff"
+                                trackColor="rgba(255,255,255,0.25)"
+                                height={4}
+                              />
+                            </View>
+                          </>
+                        )}
+                      </View>
+                    </LinearGradient>
+                  </ImageBackground>
+                </PressableScale>
+              </FadeInView>
             );
           })}
 
           {/* Footer info */}
-          <View style={styles.footerCard}>
-            <Text style={styles.footerText}>
-              Material elaborado como guía de estudio. Verificá siempre los protocolos vigentes de tu institución y guías 2025-2026.
-            </Text>
-          </View>
-        </Animated.View>
+          <FadeInView delay={110 + data.modulos.length * 55}>
+            <View style={styles.footerCard}>
+              <Text style={styles.footerText}>
+                Material elaborado como guía de estudio. Verificá siempre los
+                protocolos vigentes de tu institución y guías 2025-2026.
+              </Text>
+            </View>
+          </FadeInView>
+        </View>
       </ScrollView>
     </View>
   );
@@ -300,20 +425,27 @@ export function CursoScreen() {
 
 // ── Subcomponentes ──────────────────────────────────────────
 
-function HeaderAction({ icon, label, onPress }: { icon: string; label: string; onPress: () => void }) {
+function HeaderAction({
+  icon,
+  label,
+  onPress,
+}: {
+  icon: string;
+  label: string;
+  onPress: () => void;
+}) {
   const rs = useResponsiveScale();
   const styles = useCursoStyles();
   return (
-    <TouchableOpacity
+    <PressableScale
       onPress={onPress}
-      activeOpacity={0.8}
       accessibilityRole="button"
       accessibilityLabel={label}
       hitSlop={{ top: 8, bottom: 8, left: 4, right: 4 }}
       style={styles.headerAction}
     >
       <MaterialCommunityIcons name={icon} size={rs.font(20)} color="#fff" />
-    </TouchableOpacity>
+    </PressableScale>
   );
 }
 
@@ -329,7 +461,11 @@ function Stat({ value, label }: { value: string; label: string }) {
 
 // ── Styles factory ──────────────────────────────────────────
 
-const createStyles = (colors: ThemeColors, rs: ResponsiveScale, isDark: boolean) =>
+const createStyles = (
+  colors: ThemeColors,
+  rs: ResponsiveScale,
+  isDark: boolean,
+) =>
   StyleSheet.create({
     container: {
       flex: 1,
@@ -339,6 +475,25 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale, isDark: boolean)
     hero: {
       paddingBottom: rs.space(28),
       paddingHorizontal: rs.space(24),
+      overflow: 'hidden',
+    },
+    heroBlob: {
+      position: 'absolute',
+      backgroundColor: 'rgba(255,255,255,0.10)',
+      borderRadius: 999,
+    },
+    heroBlobTop: {
+      width: rs.space(180),
+      height: rs.space(180),
+      top: -rs.space(70),
+      right: -rs.space(50),
+    },
+    heroBlobBottom: {
+      width: rs.space(130),
+      height: rs.space(130),
+      bottom: -rs.space(55),
+      left: -rs.space(40),
+      backgroundColor: 'rgba(255,255,255,0.07)',
     },
     heroTopRow: {
       flexDirection: 'row',
@@ -347,6 +502,13 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale, isDark: boolean)
     },
     heroTitleWrap: {
       flex: 1,
+    },
+    heroGreeting: {
+      fontSize: rs.font(11),
+      fontWeight: '800',
+      color: 'rgba(255,255,255,0.8)',
+      letterSpacing: 1.4,
+      marginBottom: 4,
     },
     heroTitle: {
       fontSize: rs.font(28),
@@ -369,7 +531,9 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale, isDark: boolean)
       width: rs.space(38),
       height: rs.space(38),
       borderRadius: 12,
-      backgroundColor: 'rgba(255,255,255,0.22)',
+      backgroundColor: 'rgba(255,255,255,0.18)',
+      borderWidth: 1,
+      borderColor: 'rgba(255,255,255,0.28)',
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -507,7 +671,7 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale, isDark: boolean)
       borderRadius: 22,
     },
     lockedScrim: {
-      ...StyleSheet.absoluteFillObject,
+      ...StyleSheet.absoluteFill,
       backgroundColor: 'rgba(15,23,42,0.32)',
       zIndex: 1,
     },

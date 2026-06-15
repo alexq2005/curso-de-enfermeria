@@ -2,7 +2,23 @@
 
 ## [Unreleased]
 
+## [1.1.0] — 2026-06-15 (versionCode 2)
+
+### Dependencias
+- **React Native 0.84.1 → 0.86.0** + react 19.2.7 + `@react-native/*` 0.86 (babel-preset, metro-config, jest-preset, eslint-config, typescript-config). Breaking change de RN 0.86: `StyleSheet.absoluteFillObject` removido (fusionado en `absoluteFill`) → renombrado en CursoScreen/Onboarding/Premium. Validado: tsc 0, jest 31/31, lint 0 err, build nativo freeDebug OK. ⚠️ El build nativo requiere **compilación serial** (`--max-workers=1` + `CMAKE_BUILD_PARALLEL_LEVEL=1`) en máquinas con ≤16 GB y muchos cores (ver troubleshooting)
+- **TypeScript 5.9 → 6.0.3**, **async-storage 2.2 → 3.1.1** (+ fix del mock de jest, ESM-only), **prettier 2.8 → 3.8.4** (+ reformateo del codebase, churn mínimo)
+- Updates seguros dentro de rango: react-navigation 7.3/7.17/7.18, react-native-screens 4.25.2, safe-area-context 5.8.0, babel 7.29.7, @types/react 19.2.17
+- **Diferidos** (incompatibles con el toolchain de RN 0.84/0.86): jest 30 (el preset `react-native` arrastra jest 29), eslint 10 (flat-config-only vs `.eslintrc` de `@react-native/eslint-config`)
+
+### Contenido clínico
+- **Auditoría completa del contenido teórico** (10 módulos / 56 subtemas leídos línea por línea): información correcta y vigente. **5 imprecisiones corregidas**: RCP niño ≈5 cm (M9.2, antes 4 cm), escala de flebitis 0-5 con conducta (M5.3, antes mal numerada 1-5), UPP + "lesión de tejidos profundos" y renombrado NPIAP 2019 (M6.5), nota de variación jurisdiccional en residuos (M4.4), nota ESC/ESH vs ACC/AHA en clasificación de TA (M3.1)
+- **9 subtemas de procedimientos nuevos** (carril método/info, con crosslinks a Patologías/Farmacológica): Modelos y teorías de enfermería — Henderson/Gordon (M1), Prevención de caídas y contención (M4), Posiciones del paciente, Movilización y mecánica corporal, Curación de heridas y apósitos, Glucemia capilar, Nutrición enteral y Balance hídrico (M7), Transfusión de hemoderivados (M8)
+- **Enriquecimiento pedagógico (lente docente)**: cada módulo abre con un subtema **🎯 Objetivos del módulo** (competencias) y cierra con **📌 Lo esencial para llevarte** (takeaways). Total: **56 → 85 subtemas, 178 → 258 bloques**
+
 ### Added
+- **Micro-interacciones modernas (UX/UI)**: nuevo componente `PressableScale` (rebote spring al presionar con `transform: scale` + native driver, reenvía accesibilidad/hitSlop/disabled) y `FadeInView` (entrada fade + translateY con stagger configurable, native driver). Aplicados a todas las superficies táctiles del flujo principal — tarjetas de módulo, continue/recent cards, botones del hero, read-toggle, crosslink, back buttons y "Limpiar búsqueda" de Buscador/Glosario. Reemplazan a `TouchableOpacity` (que solo cambiaba opacidad)
+- **ProgressBar animada**: el relleno se llena con `Animated.timing` (650 ms) al montar y ante cualquier cambio de progreso — antes aparecía lleno de golpe. Misma API pública. Da feedback satisfactorio al marcar un subtema como leído (barras de módulo y hero se llenan)
+- **Hero del home modernizado**: entrada escalonada de las tarjetas de módulo (delay por índice), profundidad decorativa (dos "blobs" suaves detrás del contenido), saludo consciente del progreso (`EMPECEMOS 👋` / `SEGUÍ APRENDIENDO` / `¡CURSO COMPLETO! 🎉`) y botones de acción con borde glass sutil
 - **Glosario enriquecido (+33 términos)**: 33 entradas clínicas del glosario (de 178) sumaron secciones `Tipos` y `Ejemplos clínicos`, replicando el estilo de las ya enriquecidas (Astenia/Disnea). Cobertura: cardiorrespiratorio (IAM, ICC, EAP, ACV, HTA, EPOC), paro/ritmos (FV, TV, BAV, AESP, PCR), urológico/UPP/infeccioso (ITU, UPP, TEP, TBC, SARM, SAOS, OVACE), PAE y taxonomías (PAE, NANDA, NIC, NOC, SOAPIE), examen físico (Apex cardíaco, Murmullo vesicular, Vómito en proyectil) y accesos/dispositivos (SNG, NPT, CVC, PVC, PEG, FAV, VNI). Entradas con `tipos` 77 → 110, con `ejemplos` 81 → 114, sin enriquecer 97 → 64. Las siglas de procedimiento/institución/unidad (ABCDE, ACLS, SBAR, OPQRST, CDC, OMS, EPP, AMBU, UI, escalas de dolor, vías de administración) se dejaron sin `tipos`/`ejemplos` por no aportar valor clínico
 - **Indicador de progreso de lectura** en CursoModuloScreen: barra fina bajo el header que se llena con el scroll (scaleX + native driver)
 - **Contador de resultados**: header "N resultados" en el Buscador y subtítulo dinámico "N de 178 términos" en el Glosario al filtrar

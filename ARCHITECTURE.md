@@ -104,6 +104,7 @@ resetearía trial/activación/onboarding de instalaciones existentes.
 - **Íconos**: MaterialCommunityIcons solo como indicadores pequeños
 - **Tipografía**: system fonts con responsive scaling (`utils/responsive.ts`)
 - **Dark mode**: completo, selector Claro/Oscuro/Sistema
+- **Micro-interacciones**: `components/PressableScale.tsx` (rebote spring al presionar, native driver) reemplaza a `TouchableOpacity` en superficies táctiles; `components/FadeInView.tsx` (entrada fade+translateY con stagger) para listas; `components/ProgressBar.tsx` anima el relleno con `Animated.timing`. Todo en `Animated` core — sin reanimated ni libs nativas extra
 
 ## Decisiones de Arquitectura
 

@@ -4,6 +4,60 @@
 
 ---
 
+## 2026-06-15 — Sesión 15: Release v1.1.0 — deps majors, RN 0.86 y auditoría/enriquecimiento de contenido
+
+### Resumen
+Preparación de **v1.1.0** (versionCode 2) en la rama `chore/release-v1.1.0`. Tres frentes:
+
+**1) Dependencias (1 commit por major, con gate tsc/lint/jest y back-off del que rompe):**
+- TypeScript 5.9 → **6.0.3** ✅, async-storage 2.2 → **3.1.1** ✅ (mock de jest ESM-only → mock in-memory propio), prettier 2.8 → **3.8.4** ✅ (+reformateo).
+- **React Native 0.84.1 → 0.86.0** ✅ + react 19.2.7 + `@react-native/*` 0.86. Breaking: `StyleSheet.absoluteFillObject` removido → `absoluteFill` (3 archivos). Validado con build nativo freeDebug (APK 51 MB).
+- **Diferidos**: jest 30 (preset RN arrastra jest 29) y eslint 10 (flat-config-only vs eslintrc de RN). Ver troubleshooting.
+- Build nativo de RN 0.86 **OOM-ea en paralelo** (24 cores × clang vs 16 GB) → requiere **serial** (`--max-workers=1` + `CMAKE_BUILD_PARALLEL_LEVEL=1`).
+
+**2) Auditoría de contenido clínico** (10 módulos / 56 subtemas leídos línea por línea): información correcta y vigente. **5 imprecisiones corregidas**: RCP niño ~5 cm (M9.2), escala de flebitis 0-5 con conducta (M5.3), UPP + lesión de tejidos profundos + NPIAP (M6.5), nota de jurisdicción en residuos (M4.4), nota ESC/ESH vs ACC/AHA en TA (M3.1).
+
+**3) Enriquecimiento de contenido** (lente docente, en carril método/info):
+- **+9 subtemas de procedimientos**: Henderson/Gordon (M1), caídas y contención (M4), posiciones, movilización, curación de heridas, glucemia capilar, nutrición enteral, balance hídrico (M7), transfusión de hemoderivados (M8). Con crosslinks a Patologías/Farmacológica donde corresponde.
+- **Objetivos + "Lo esencial"** por módulo (cada uno abre con 🎯 y cierra con 📌).
+- **56 → 85 subtemas, 178 → 258 bloques.**
+
+### Verificación
+- tsc 0 · eslint 0 err · jest 31/31 (en cada etapa). Build nativo freeDebug OK (serial). Bundle JS regenerado con todo el contenido (verificado: hemoderivados, Morse, Henderson, objetivos embebidos).
+
+### Pendientes
+- **Mergear `chore/release-v1.1.0` a main** y generar el **AAB de release** con build serial (o OOM por RAM).
+
+---
+
+## 2026-06-15 — Sesión 14: Modernización UX/UI (micro-interacciones)
+
+### Resumen
+
+La app ya tenía base de diseño fuerte (gradientes por módulo, neumorfismo tokenizado, responsive scaling, progreso de lectura, dark mode WCAG). El pedido fue "hacerla más moderna a nivel UX/UI". El diagnóstico: lo que faltaba era **movimiento con física**, no más color — todo usaba `TouchableOpacity` (solo opacidad) y las barras/listas eran estáticas.
+
+Se crearon **2 primitivos reutilizables** (0 deps nuevas, solo `Animated` core, native driver) y se aplicaron al flujo principal:
+- **`PressableScale`**: rebote spring (scale 0.96) al presionar; reenvía `accessibilityRole/Label/State`, `hitSlop` y `disabled`. Reemplaza a `TouchableOpacity` en todas las superficies táctiles.
+- **`FadeInView`**: entrada fade + translateY con `delay` por índice → tarjetas que aparecen escalonadas.
+- **`ProgressBar` animada**: el relleno se llena con `Animated.timing` (650 ms) al montar y al cambiar (antes: lleno de golpe). Misma API pública.
+
+En **CursoScreen (home)**: entrada escalonada de módulos, 2 "blobs" decorativos + saludo según progreso (`EMPECEMOS`/`SEGUÍ APRENDIENDO`/`¡CURSO COMPLETO!`) + botones de acción con borde glass. En **lectura, Buscador y Glosario**: press-feedback con rebote en read-toggle, crosslink, back buttons, tarjetas de resultado y "Limpiar búsqueda".
+
+**Decisión clave**: NO se envolvió cada subtema de lectura en `FadeInView` porque rompería el `onLayout` que mide posiciones para el deep-link "saltar a subtema" del Buscador (cambia el padre de referencia del layout). Se priorizó no romper una feature funcionando.
+
+### Cambios
+- `src/components/PressableScale.tsx` (nuevo), `src/components/FadeInView.tsx` (nuevo)
+- `src/components/ProgressBar.tsx` (fill animado)
+- `src/screens/CursoScreen.tsx` (hero + stagger + cards), `CursoModuloScreen.tsx`, `BuscadorScreen.tsx`, `GlosarioScreen.tsx` (PressableScale)
+
+### Verificación
+- `tsc --noEmit`: 0 errores · `eslint`: 0 errores (2 warnings inline-style preexistentes en ProgressBar) · `jest`: 31/31
+
+### Pendientes
+- **Regenerar el bundle JS** (`android/app/src/main/assets/index.android.bundle`) antes del próximo build/release — los cambios de hoy aún no están bundleados.
+
+---
+
 ## 2026-06-12 — Sesión 13: Prueba en emulador, traducción de anglicismos y seguridad
 
 ### Resumen

@@ -136,7 +136,7 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
       <View style={{ width: screenWidth, height: screenHeight }}>
         <ImageBackground
           source={item.image}
-          style={StyleSheet.absoluteFillObject}
+          style={StyleSheet.absoluteFill}
           resizeMode="cover"
         >
           {/* Gradient overlay from top */}
@@ -144,7 +144,7 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
             colors={item.gradient}
             start={{ x: 0.5, y: 0 }}
             end={{ x: 0.5, y: 0.55 }}
-            style={StyleSheet.absoluteFillObject}
+            style={StyleSheet.absoluteFill}
           />
 
           {/* Dark bottom for text legibility */}
@@ -152,7 +152,7 @@ export function OnboardingScreen({ navigation, onComplete }: Props) {
             colors={['transparent', 'rgba(0,0,0,0.7)', 'rgba(0,0,0,0.92)']}
             start={{ x: 0.5, y: 0.4 }}
             end={{ x: 0.5, y: 1 }}
-            style={StyleSheet.absoluteFillObject}
+            style={StyleSheet.absoluteFill}
           />
 
           {/* Content */}

@@ -213,8 +213,8 @@ export function MiSuiteScreen() {
                   isCurrent
                     ? `${app.name}, estás usando esta app`
                     : status === 'installed'
-                    ? `Abrir ${app.name}`
-                    : `Descargar ${app.name} desde Google Play`
+                      ? `Abrir ${app.name}`
+                      : `Descargar ${app.name} desde Google Play`
                 }
                 style={{
                   backgroundColor: isDark ? colors.surface : colors.neuSurface,
