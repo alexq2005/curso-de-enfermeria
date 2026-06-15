@@ -40,10 +40,20 @@ export function ProgressBar({
 
   return (
     <View
-      style={{ height, backgroundColor: trackColor, borderRadius, overflow: 'hidden' }}
+      style={{
+        height,
+        backgroundColor: trackColor,
+        borderRadius,
+        overflow: 'hidden',
+      }}
     >
       <Animated.View
-        style={{ width, height: '100%', backgroundColor: fillColor, borderRadius }}
+        style={{
+          width,
+          height: '100%',
+          backgroundColor: fillColor,
+          borderRadius,
+        }}
       />
     </View>
   );

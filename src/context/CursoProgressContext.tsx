@@ -32,7 +32,11 @@ interface ProgressContextValue {
   recordOpenModulo: (moduloId: string) => void;
   lastModuloId: string | null;
   recentModuloIds: string[];
-  getModuloProgress: (moduloId: string) => { read: number; total: number; pct: number };
+  getModuloProgress: (moduloId: string) => {
+    read: number;
+    total: number;
+    pct: number;
+  };
   globalProgress: { read: number; total: number; pct: number };
   resetProgress: () => void;
 }
@@ -45,7 +49,11 @@ const moduloSubCount: Record<string, number> = Object.fromEntries(
 );
 const totalSubsCount = data.modulos.reduce((acc, m) => acc + m.subs.length, 0);
 
-export function CursoProgressProvider({ children }: { children: React.ReactNode }) {
+export function CursoProgressProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [ready, setReady] = useState(false);
   const [readSubs, setReadSubs] = useState<Set<string>>(new Set());
   const [lastModuloId, setLastModuloId] = useState<string | null>(null);
@@ -58,11 +66,16 @@ export function CursoProgressProvider({ children }: { children: React.ReactNode 
         const raw = await AsyncStorage.getItem(STORAGE_KEY);
         if (raw) {
           const parsed = JSON.parse(raw) as PersistedState;
-          if (Array.isArray(parsed.readSubs)) setReadSubs(new Set(parsed.readSubs));
-          if (parsed.lastModuloId === null || typeof parsed.lastModuloId === 'string') {
+          if (Array.isArray(parsed.readSubs))
+            setReadSubs(new Set(parsed.readSubs));
+          if (
+            parsed.lastModuloId === null ||
+            typeof parsed.lastModuloId === 'string'
+          ) {
             setLastModuloId(parsed.lastModuloId);
           }
-          if (Array.isArray(parsed.recentModuloIds)) setRecentModuloIds(parsed.recentModuloIds);
+          if (Array.isArray(parsed.recentModuloIds))
+            setRecentModuloIds(parsed.recentModuloIds);
         }
       } catch (e) {
         console.warn('[CursoProgress] failed to load', e);
@@ -90,7 +103,10 @@ export function CursoProgressProvider({ children }: { children: React.ReactNode 
     };
   }, [ready, readSubs, lastModuloId, recentModuloIds]);
 
-  const isRead = useCallback((subId: string) => readSubs.has(subId), [readSubs]);
+  const isRead = useCallback(
+    (subId: string) => readSubs.has(subId),
+    [readSubs],
+  );
 
   const toggleRead = useCallback((subId: string) => {
     setReadSubs(prev => {
@@ -113,7 +129,10 @@ export function CursoProgressProvider({ children }: { children: React.ReactNode 
     (moduloId: string) => {
       const total = moduloSubCount[moduloId] ?? 0;
       const modSubs = data.modulos.find(m => m.id === moduloId)?.subs ?? [];
-      const read = modSubs.reduce((acc, s) => acc + (readSubs.has(s.id) ? 1 : 0), 0);
+      const read = modSubs.reduce(
+        (acc, s) => acc + (readSubs.has(s.id) ? 1 : 0),
+        0,
+      );
       const pct = total === 0 ? 0 : Math.round((read / total) * 100);
       return { read, total, pct };
     },
@@ -163,6 +182,9 @@ export function CursoProgressProvider({ children }: { children: React.ReactNode 
 
 export function useCursoProgress() {
   const ctx = useContext(Ctx);
-  if (!ctx) throw new Error('useCursoProgress must be used within CursoProgressProvider');
+  if (!ctx)
+    throw new Error(
+      'useCursoProgress must be used within CursoProgressProvider',
+    );
   return ctx;
 }

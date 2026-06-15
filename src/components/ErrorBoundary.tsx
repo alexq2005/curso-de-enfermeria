@@ -26,7 +26,11 @@ export class ErrorBoundary extends React.Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error('[ErrorBoundary] Error capturado:', error, errorInfo.componentStack);
+    console.error(
+      '[ErrorBoundary] Error capturado:',
+      error,
+      errorInfo.componentStack,
+    );
   }
 
   handleRetry = () => {
@@ -35,13 +39,21 @@ export class ErrorBoundary extends React.Component<Props, State> {
 
   render() {
     if (this.state.hasError) {
-      return <ErrorFallback error={this.state.error} onRetry={this.handleRetry} />;
+      return (
+        <ErrorFallback error={this.state.error} onRetry={this.handleRetry} />
+      );
     }
     return this.props.children;
   }
 }
 
-function ErrorFallback({ error, onRetry }: { error: Error | null; onRetry: () => void }) {
+function ErrorFallback({
+  error,
+  onRetry,
+}: {
+  error: Error | null;
+  onRetry: () => void;
+}) {
   const colors = FALLBACK_COLORS;
   return (
     <View
@@ -53,11 +65,31 @@ function ErrorFallback({ error, onRetry }: { error: Error | null; onRetry: () =>
         backgroundColor: colors.background,
       }}
     >
-      <MaterialCommunityIcons name="alert-circle-outline" size={48} color={colors.error} style={{ marginBottom: 16 }} />
-      <Text style={{ fontSize: 22, fontWeight: '700', color: colors.text, marginBottom: 8 }}>
+      <MaterialCommunityIcons
+        name="alert-circle-outline"
+        size={48}
+        color={colors.error}
+        style={{ marginBottom: 16 }}
+      />
+      <Text
+        style={{
+          fontSize: 22,
+          fontWeight: '700',
+          color: colors.text,
+          marginBottom: 8,
+        }}
+      >
         Algo salió mal
       </Text>
-      <Text style={{ fontSize: 15, color: colors.textSecondary, textAlign: 'center', lineHeight: 22, marginBottom: 24 }}>
+      <Text
+        style={{
+          fontSize: 15,
+          color: colors.textSecondary,
+          textAlign: 'center',
+          lineHeight: 22,
+          marginBottom: 24,
+        }}
+      >
         La aplicación encontró un error inesperado.
       </Text>
       {error && (
@@ -89,7 +121,9 @@ function ErrorFallback({ error, onRetry }: { error: Error | null; onRetry: () =>
           borderRadius: 12,
         }}
       >
-        <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '700' }}>Reintentar</Text>
+        <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '700' }}>
+          Reintentar
+        </Text>
       </TouchableOpacity>
     </View>
   );

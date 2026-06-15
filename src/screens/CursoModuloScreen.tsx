@@ -692,8 +692,8 @@ function TableBlock({
                       ? colors.surface
                       : colors.neuSurface
                     : isDark
-                    ? colors.background
-                    : '#F8FAFC',
+                      ? colors.background
+                      : '#F8FAFC',
               },
             ]}
           >

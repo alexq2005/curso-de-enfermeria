@@ -135,8 +135,8 @@ export function SettingsScreen() {
                     backgroundColor: active
                       ? colors.primary
                       : isDark
-                      ? colors.surfaceElevated
-                      : colors.neuInsetBg,
+                        ? colors.surfaceElevated
+                        : colors.neuInsetBg,
                     borderWidth: 1,
                     borderColor: active ? colors.primary : colors.borderLight,
                   }}
