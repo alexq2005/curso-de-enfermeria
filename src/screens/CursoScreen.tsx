@@ -671,7 +671,7 @@ const createStyles = (
       borderRadius: 22,
     },
     lockedScrim: {
-      ...StyleSheet.absoluteFillObject,
+      ...StyleSheet.absoluteFill,
       backgroundColor: 'rgba(15,23,42,0.32)',
       zIndex: 1,
     },

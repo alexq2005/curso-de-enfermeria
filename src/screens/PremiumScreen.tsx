@@ -249,7 +249,7 @@ export function PremiumScreen({ navigation }: Props) {
           ]}
           start={{ x: 0, y: 0 }}
           end={{ x: 0.5, y: 1 }}
-          style={StyleSheet.absoluteFillObject}
+          style={StyleSheet.absoluteFill}
         />
         <TouchableOpacity
           style={styles.backButton}
