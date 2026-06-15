@@ -15,6 +15,23 @@
       "isPremium": false,
       "subs": [
         {
+          "id": "m1-obj",
+          "title": "🎯 Objetivos del módulo",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "Al terminar este módulo vas a poder…",
+              "items": [
+                "Explicar qué es la enfermería y sus tres dimensiones (asistencial, docente, investigativa).",
+                "Aplicar las 5 etapas del PAE, de la valoración a la evaluación.",
+                "Reconocer los 4 principios bioéticos y cuándo prima cada uno.",
+                "Ubicar el rol del enfermero en cada nivel de atención."
+              ]
+            }
+          ]
+        },
+        {
           "id": "m1-1",
           "title": "1.1 Definición y disciplina",
           "blocks": [
@@ -149,6 +166,81 @@
               "text": "Toda intervención requiere consentimiento. La excepción es la emergencia con riesgo vital inmediato donde el paciente no puede expresar voluntad — se aplica el principio de beneficencia con documentación posterior."
             }
           ]
+        },
+        {
+          "id": "m1-6",
+          "title": "1.6 Modelos y teorías de enfermería",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Los modelos teóricos dan sustento a la práctica: definen qué cuidamos y cómo valoramos. Dos marcos clásicos para organizar la valoración del paciente:"
+            },
+            {
+              "type": "h4",
+              "text": "Virginia Henderson — 14 necesidades básicas"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Respirar normalmente.",
+                "Comer y beber adecuadamente.",
+                "Eliminar los desechos corporales.",
+                "Moverse y mantener una postura adecuada.",
+                "Dormir y descansar.",
+                "Vestirse y desvestirse.",
+                "Mantener la temperatura corporal.",
+                "Mantener la higiene y la integridad de la piel.",
+                "Evitar los peligros del entorno.",
+                "Comunicarse con los demás.",
+                "Vivir según sus creencias y valores.",
+                "Trabajar y sentirse realizado.",
+                "Participar en actividades recreativas.",
+                "Aprender, descubrir y satisfacer la curiosidad."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Marjory Gordon — 11 patrones funcionales"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Percepción - manejo de la salud.",
+                "Nutricional - metabólico.",
+                "Eliminación.",
+                "Actividad - ejercicio.",
+                "Sueño - descanso.",
+                "Cognitivo - perceptual.",
+                "Autopercepción - autoconcepto.",
+                "Rol - relaciones.",
+                "Sexualidad - reproducción.",
+                "Adaptación - tolerancia al estrés.",
+                "Valores - creencias."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "★ Cómo se usan",
+              "text": "Henderson piensa en \"necesidades\" (qué no logra cubrir el paciente por sí mismo); Gordon en \"patrones\" (cómo funciona cada área). Ambos ordenan la fase de Valoración del PAE y derivan en diagnósticos NANDA."
+            }
+          ]
+        },
+        {
+          "id": "m1-cierre",
+          "title": "📌 Lo esencial",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "Para llevarte",
+              "items": [
+                "El PAE es cíclico: si el paciente no mejora, revisá la valoración y el diagnóstico, no la ejecución.",
+                "Toda intervención requiere consentimiento — salvo emergencia vital sin voluntad expresable.",
+                "El enfermero suele ser el primero en detectar deterioro silencioso: la observación continua es cuidado."
+              ]
+            }
+          ]
         }
       ]
     },
@@ -165,6 +257,23 @@
       ],
       "isPremium": false,
       "subs": [
+        {
+          "id": "m2-obj",
+          "title": "🎯 Objetivos del módulo",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "Al terminar este módulo vas a poder…",
+              "items": [
+                "Recordar de memoria los valores normales del adulto (vitales, laboratorio, gases).",
+                "Ajustar los valores de referencia según la edad pediátrica.",
+                "Calcular la TAS mínima pediátrica con la regla 70 + (edad × 2).",
+                "Relacionar flujo de O₂ y FiO₂ en dispositivos de bajo flujo."
+              ]
+            }
+          ]
+        },
         {
           "id": "m2-1",
           "title": "2.1 Los 12 sistemas del cuerpo humano",
@@ -445,6 +554,22 @@
               "text": "TAS mínima en niños 1-10 años ≈ 70 + (edad × 2) mmHg. Por debajo de eso → hipotensión franca."
             }
           ]
+        },
+        {
+          "id": "m2-cierre",
+          "title": "📌 Lo esencial",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "Para llevarte",
+              "items": [
+                "FC 60-100, FR 12-20, TA 90-130/60-85, SatO₂ ≥ 95, diuresis 0,5-1 mL/kg/h: tenelos automatizados.",
+                "En pediatría todo \"corre más rápido\": FC y FR más altas cuanto más chico es el niño.",
+                "Cada L/min de cánula nasal suma ~4% a la FiO₂ basal de 21%."
+              ]
+            }
+          ]
         }
       ]
     },
@@ -461,6 +586,23 @@
       ],
       "isPremium": true,
       "subs": [
+        {
+          "id": "m3-obj",
+          "title": "🎯 Objetivos del módulo",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "Al terminar este módulo vas a poder…",
+              "items": [
+                "Medir correctamente los 6 signos vitales con técnica estandarizada.",
+                "Clasificar la TA y diferenciar urgencia de emergencia hipertensiva.",
+                "Reconocer patrones respiratorios patológicos (Kussmaul, Cheyne-Stokes, Biot).",
+                "Elegir la escala de dolor adecuada según edad y estado cognitivo."
+              ]
+            }
+          ]
+        },
         {
           "id": "m3-1",
           "title": "3.1 Tensión arterial",
@@ -540,6 +682,12 @@
               "variant": "alert",
               "title": "⚠️ Crisis hipertensiva",
               "text": "TA ≥ 180/120. Diferenciar urgencia (sin daño de órgano blanco, bajar TA en horas) de emergencia (con daño: encefalopatía, IAM, ACV, edema agudo de pulmón — bajar TA en minutos con medicación EV)."
+            },
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "★ ¿Qué guía seguir?",
+              "text": "Esta clasificación sigue las guías europeas (ESC/ESH), las más usadas en Latinoamérica. La guía estadounidense (ACC/AHA 2017) es más estricta: define HTA desde ≥130/80 mmHg. Usá la que adopte tu institución y sé consistente."
             }
           ]
         },
@@ -726,6 +874,22 @@
               "text": "OPQRST para anamnesis del dolor: Onset (Inicio), Provocation/Palliation (Provoca/Palia), Quality (Carácter del dolor), Radiation (Irradiación), Severity (Severidad), Time (Tiempo/evolución)."
             }
           ]
+        },
+        {
+          "id": "m3-cierre",
+          "title": "📌 Lo esencial",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "Para llevarte",
+              "items": [
+                "Manguito chico = TA falsamente alta; brazo por debajo del corazón también la altera.",
+                "Una SatO₂ normal NO descarta hipoxia (anemia severa, intoxicación por CO).",
+                "El dolor es el 5° signo vital: medilo y registralo siempre."
+              ]
+            }
+          ]
         }
       ]
     },
@@ -742,6 +906,23 @@
       ],
       "isPremium": true,
       "subs": [
+        {
+          "id": "m4-obj",
+          "title": "🎯 Objetivos del módulo",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "Al terminar este módulo vas a poder…",
+              "items": [
+                "Aplicar los 5 momentos de higiene de manos de la OMS.",
+                "Colocar y retirar el EPP en el orden correcto sin contaminarte.",
+                "Seleccionar el tipo de aislamiento según el mecanismo de transmisión.",
+                "Actuar paso a paso ante un pinchazo accidental."
+              ]
+            }
+          ]
+        },
         {
           "id": "m4-1",
           "title": "4.1 Lavado de manos — los 5 momentos OMS",
@@ -933,6 +1114,12 @@
             },
             {
               "type": "card",
+              "variant": "warn",
+              "title": "⚠️ El código de colores varía por jurisdicción",
+              "text": "No existe un único estándar mundial. En Argentina rige la Ley 24.051 (residuos peligrosos) + normas provinciales: el rojo identifica residuos biopatogénicos y los corto-punzantes van en descartador rígido. Verificá SIEMPRE el sistema de colores de tu institución antes de descartar."
+            },
+            {
+              "type": "card",
               "variant": "alert",
               "title": "🚨 Pinchazo accidental",
               "items": [
@@ -942,6 +1129,76 @@
                 "Notificar inmediatamente a medicina laboral.",
                 "Evaluar profilaxis post-exposición (HIV, HBV) — ventana 1-2 h ideal, hasta 72 h máx.",
                 "Serología basal del trabajador y de la fuente."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m4-5",
+          "title": "4.5 Prevención de caídas y contención",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Las caídas son uno de los eventos adversos más frecuentes en internación y muchas son prevenibles. La prevención empieza por valorar el riesgo de forma sistemática."
+            },
+            {
+              "type": "h4",
+              "text": "Valoración del riesgo"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Escala de Morse (0-125): historia de caídas, diagnóstico secundario, ayuda para deambular, acceso venoso, tipo de marcha y estado mental. ≥ 45 puntos = alto riesgo.",
+                "Escala de Downton: alternativa breve (caídas previas, fármacos, déficits sensoriales, estado mental, marcha).",
+                "Reevaluar al ingreso, ante cambio de estado, con fármacos nuevos y SIEMPRE después de una caída."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Medidas universales de prevención"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cama en posición baja y con frenos puestos.",
+                "Timbre y objetos personales al alcance.",
+                "Calzado antideslizante, piso seco, buena iluminación (luz nocturna).",
+                "Barandas según protocolo (no como sustituto de la vigilancia).",
+                "Acompañar al baño a pacientes de riesgo.",
+                "Revisar la medicación: sedantes, hipnóticos, hipotensores, diuréticos y polifarmacia aumentan el riesgo.",
+                "Identificación visible del riesgo (pulsera/cartel) según norma institucional."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Contención / sujeción física"
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "🚨 La sujeción es el último recurso",
+              "text": "Se usa solo con indicación médica escrita, por el menor tiempo posible y tras agotar alternativas. Requiere consentimiento (paciente o representante), reevaluación periódica, control de circulación, piel y alineación, y registro detallado. NUNCA como castigo, por comodidad del equipo ni por falta de personal."
+            },
+            {
+              "type": "card",
+              "variant": "warn",
+              "title": "⚠️ Riesgos de la sujeción",
+              "text": "Lesiones por presión, broncoaspiración, estrangulamiento, trombosis, agitación paradójica y deterioro funcional y psicológico. Preferí alternativas: acompañamiento, reorientación, manejo del delirium, ajuste del entorno."
+            }
+          ]
+        },
+        {
+          "id": "m4-cierre",
+          "title": "📌 Lo esencial",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "Para llevarte",
+              "items": [
+                "El RETIRO del EPP es donde más te contaminás: lo más sucio (guantes) primero, barbijo último.",
+                "Ante un pinchazo: NO exprimir, lavar, notificar y evaluar profilaxis en la primera hora.",
+                "Aéreo = N95 + presión negativa; gotas = barbijo quirúrgico. No los confundas."
               ]
             }
           ]
@@ -961,6 +1218,23 @@
       ],
       "isPremium": true,
       "subs": [
+        {
+          "id": "m5-obj",
+          "title": "🎯 Objetivos del módulo",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "Al terminar este módulo vas a poder…",
+              "items": [
+                "Seleccionar el dispositivo de O₂ según la FiO₂ requerida.",
+                "Reconocer indicaciones y cuidados de accesos vasculares, sondas y drenajes.",
+                "Vigilar un tubo torácico con sello de agua e interpretar el burbujeo/oscilación.",
+                "Interpretar parámetros básicos de monitoreo (EtCO₂, PVC)."
+              ]
+            }
+          ]
+        },
         {
           "id": "m5-1",
           "title": "5.1 Dispositivos de oxigenoterapia",
@@ -1092,13 +1366,43 @@
               "text": "Escala de flebitis (Maddox)"
             },
             {
-              "type": "ol",
-              "items": [
-                "Sin signos.",
-                "Eritema con o sin dolor.",
-                "Dolor + eritema y/o edema.",
-                "Anteriores + cordón venoso palpable.",
-                "Anteriores + cordón > 2,5 cm + secreción purulenta."
+              "type": "table",
+              "headers": [
+                "Grado",
+                "Signos",
+                "Conducta"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "Sitio sano, sin signos",
+                  "Continuar observación"
+                ],
+                [
+                  "1",
+                  "Eritema leve con o sin dolor",
+                  "Observar de cerca"
+                ],
+                [
+                  "2",
+                  "Dolor + eritema",
+                  "Retirar el catéter"
+                ],
+                [
+                  "3",
+                  "Dolor + eritema + induración",
+                  "Retirar + considerar tratamiento"
+                ],
+                [
+                  "4",
+                  "+ cordón venoso palpable",
+                  "Retirar + tratamiento"
+                ],
+                [
+                  "5",
+                  "+ cordón > 2,5 cm + secreción purulenta",
+                  "Retirar + tratamiento (tromboflebitis)"
+                ]
               ]
             }
           ]
@@ -1192,6 +1496,22 @@
               ]
             }
           ]
+        },
+        {
+          "id": "m5-cierre",
+          "title": "📌 Lo esencial",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "Para llevarte",
+              "items": [
+                "Venturi = única FiO₂ exacta; ideal en EPOC.",
+                "Tubo torácico: el frasco SIEMPRE por debajo del tórax, nunca pinzar en traslado.",
+                "Verificá la posición de las sondas (SNG pH < 5,5; TET balón 20-30 cmH₂O)."
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1208,6 +1528,23 @@
       ],
       "isPremium": true,
       "subs": [
+        {
+          "id": "m6-obj",
+          "title": "🎯 Objetivos del módulo",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "Al terminar este módulo vas a poder…",
+              "items": [
+                "Realizar el examen físico por sistemas con la secuencia correcta.",
+                "Ubicar los focos de auscultación cardíaca y los ruidos respiratorios.",
+                "Aplicar la escala de Glasgow y reconocer signos de alarma neurológicos.",
+                "Valorar el riesgo de UPP con Braden y estadificar las lesiones."
+              ]
+            }
+          ]
+        },
         {
           "id": "m6-1",
           "title": "6.1 Examen cardiovascular",
@@ -1543,16 +1880,39 @@
             },
             {
               "type": "h4",
-              "text": "UPP — Estadios NPUAP"
+              "text": "UPP / Lesión por presión — Estadios (NPIAP 2019)"
             },
             {
-              "type": "ol",
-              "items": [
-                "I: eritema no blanqueable, piel intacta.",
-                "II: pérdida parcial — flictena o erosión.",
-                "III: pérdida total con grasa subcutánea visible.",
-                "IV: exposición de músculo, hueso o tendón.",
-                "No clasificable: cubierta por esfacelo o escara."
+              "type": "table",
+              "headers": [
+                "Estadio",
+                "Hallazgos"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Eritema no blanqueable, piel intacta"
+                ],
+                [
+                  "2",
+                  "Pérdida parcial: flictena o erosión, dermis expuesta"
+                ],
+                [
+                  "3",
+                  "Pérdida total: grasa subcutánea visible, puede haber esfacelo"
+                ],
+                [
+                  "4",
+                  "Exposición de músculo, hueso o tendón"
+                ],
+                [
+                  "No clasificable",
+                  "Base cubierta por esfacelo/escara — no se ve el fondo"
+                ],
+                [
+                  "LTP (tejidos profundos)",
+                  "Coloración rojo oscuro/púrpura persistente o flictena hemorrágica; el daño profundo precede a la lesión visible"
+                ]
               ]
             },
             {
@@ -1567,6 +1927,22 @@
               "title": "Patologías musculoesqueléticas y tegumentarias",
               "description": "Fracturas, artrosis, UPP, quemaduras, celulitis con valoración y manejo.",
               "path": "system/musculoesqueletico"
+            }
+          ]
+        },
+        {
+          "id": "m6-cierre",
+          "title": "📌 Lo esencial",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "Para llevarte",
+              "items": [
+                "Abdomen: ausculto ANTES de palpar (la palpación altera los ruidos).",
+                "Tríada de Cushing (bradicardia + HTA + alteración respiratoria) = hipertensión endocraneana: avisá ya.",
+                "Glasgow ≤ 8 → considerar intubación."
+              ]
             }
           ]
         }
@@ -1585,6 +1961,23 @@
       ],
       "isPremium": true,
       "subs": [
+        {
+          "id": "m7-obj",
+          "title": "🎯 Objetivos del módulo",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "Al terminar este módulo vas a poder…",
+              "items": [
+                "Ejecutar las técnicas básicas con asepsia y los pasos correctos.",
+                "Aplicar los correctos + consentimiento antes de cada procedimiento.",
+                "Calcular goteo y dosis con las fórmulas universales.",
+                "Reconocer cuándo NO forzar y cuándo detener un procedimiento."
+              ]
+            }
+          ]
+        },
         {
           "id": "m7-1",
           "title": "7.1 Catéter venoso periférico",
@@ -1969,6 +2362,356 @@
               "text": "Ejemplo: indican 250 mg de ATB; el frasco trae 500 mg en 5 mL → (250 × 5) / 500 = 2,5 mL."
             }
           ]
+        },
+        {
+          "id": "m7-10",
+          "title": "7.10 Posiciones del paciente",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Posición",
+                "Descripción",
+                "Indicación típica"
+              ],
+              "rows": [
+                [
+                  "Fowler (45-60°)",
+                  "Semisentado",
+                  "Disnea, alimentación, post-ingesta, EAP"
+                ],
+                [
+                  "Semi-Fowler (30°)",
+                  "Cabecera a 30°",
+                  "Nutrición por SNG, prevención de broncoaspiración"
+                ],
+                [
+                  "Decúbito supino",
+                  "Boca arriba",
+                  "Reposo, examen, post-anestesia (cabeza lateralizada)"
+                ],
+                [
+                  "Decúbito prono",
+                  "Boca abajo",
+                  "SDRA (mejora la oxigenación), descarga sacra"
+                ],
+                [
+                  "Decúbito lateral",
+                  "De costado",
+                  "Prevención de UPP, sueño, embarazada (lado izquierdo)"
+                ],
+                [
+                  "SIMS (semiprono)",
+                  "Lateral izq. con pierna flexionada",
+                  "Enemas, examen rectal, inconsciente"
+                ],
+                [
+                  "Trendelenburg",
+                  "Plano inclinado, cabeza abajo",
+                  "Colocación de vía central; en shock es discutido"
+                ],
+                [
+                  "Anti-Trendelenburg",
+                  "Cabeza elevada, pies abajo",
+                  "Reflujo, post-cirugía abdominal alta"
+                ],
+                [
+                  "Litotomía",
+                  "Dorsal con piernas en estribos",
+                  "Parto, examen ginecológico, cirugía perineal"
+                ],
+                [
+                  "Genupectoral",
+                  "Apoyo en rodillas y pecho",
+                  "Examen rectal/vaginal, patología anal"
+                ]
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "💡 Cambios posturales",
+              "text": "En pacientes con movilidad reducida, rotar la posición cada 2 h previene UPP, atelectasias y rigidez. Acompañá cada cambio con revisión de la piel en las prominencias óseas."
+            }
+          ]
+        },
+        {
+          "id": "m7-11",
+          "title": "7.11 Movilización y mecánica corporal",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Mover y trasladar pacientes con técnica te protege a vos tanto como al paciente: la lesión lumbar es una de las principales causas de baja laboral en enfermería."
+            },
+            {
+              "type": "h4",
+              "text": "Principios de mecánica corporal"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Base de sustentación amplia: pies separados al ancho de los hombros.",
+                "Flexionar las rodillas, NO la cintura; mantener la espalda recta.",
+                "Mantener la carga cerca del cuerpo (centro de gravedad).",
+                "Usar los músculos de las piernas, no los de la espalda.",
+                "Girar todo el cuerpo (pies primero), nunca rotar la columna con carga.",
+                "Empujar o deslizar es preferible a levantar.",
+                "Pedir ayuda y usar dispositivos: sábana de traslado, tabla deslizante, grúa."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Traslados frecuentes"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cama - silla: silla frenada, del lado del miembro más fuerte, pivotando.",
+                "Reposicionamiento en cama: con sábana entremetida y dos operadores.",
+                "Volteo en bloque (log-roll): mantiene la alineación cabeza-cuello-tronco."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "🚨 Sospecha de lesión cervical/espinal",
+              "text": "Inmovilizar primero. Mover SIEMPRE en bloque (log-roll) con 3 o más personas: una controla la cabeza y da las órdenes, manteniendo la columna alineada. No flexionar ni rotar el cuello."
+            }
+          ]
+        },
+        {
+          "id": "m7-12",
+          "title": "7.12 Curación de heridas y apósitos",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "La curación busca crear un ambiente que favorezca la cicatrización: limpio, húmedo y protegido. Un marco útil es el concepto TIME: Tejido viable, control de la Infección/inflamación, equilibrio de la humedad (Moisture) y estímulo de los bordes (Edge)."
+            },
+            {
+              "type": "h4",
+              "text": "Tipos de cicatrización"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Primera intención: bordes afrontados (sutura, grapas). Cicatriz mínima.",
+                "Segunda intención: herida abierta que cierra por granulación (UPP, abscesos drenados).",
+                "Tercera intención: cierre diferido tras controlar la contaminación."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Limpieza"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Suero fisiológico 0,9% a presión suave (irrigación).",
+                "Del centro a la periferia en herida limpia; de lo limpio a lo sucio.",
+                "Evitar antisépticos citotóxicos (agua oxigenada, yodo concentrado) sobre tejido de granulación sano: retrasan la cicatrización."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Apósitos según la herida"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Apósito",
+                "Cuándo usarlo"
+              ],
+              "rows": [
+                [
+                  "Gasa",
+                  "Heridas simples; poco usada en cura húmeda moderna"
+                ],
+                [
+                  "Hidrocoloide",
+                  "Exudado leve-moderado, UPP I-II"
+                ],
+                [
+                  "Hidrogel",
+                  "Heridas secas o con esfacelo (desbridamiento autolítico)"
+                ],
+                [
+                  "Alginato",
+                  "Heridas muy exudativas o sangrantes"
+                ],
+                [
+                  "Espuma (foam)",
+                  "Exudado moderado-alto, acolchado y protección"
+                ],
+                [
+                  "Plata / antimicrobiano",
+                  "Alta carga bacteriana o infección"
+                ],
+                [
+                  "Film transparente",
+                  "Protección, fijación, heridas superficiales"
+                ]
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "💡 Cura húmeda > cura seca",
+              "text": "El ambiente húmedo acelera la cicatrización, favorece el desbridamiento y duele menos al retirar el apósito. La frecuencia de cambio la define el exudado y el tipo de apósito, no el calendario."
+            },
+            {
+              "type": "crosslink",
+              "target": "patologias",
+              "title": "Úlceras por presión y heridas crónicas",
+              "description": "Estadificación, factores de riesgo y manejo clínico de las heridas."
+            }
+          ]
+        },
+        {
+          "id": "m7-13",
+          "title": "7.13 Glucemia capilar (HGT)",
+          "blocks": [
+            {
+              "type": "ol",
+              "items": [
+                "Higiene de manos y guantes. Verificar la tira reactiva: no vencida y con el código/calibración correctos.",
+                "Pedir al paciente que se lave las manos con agua tibia y las seque: mejora la perfusión y elimina restos de azúcar que falsean el valor.",
+                "Elegir el lateral del pulpejo del dedo (menos terminaciones nerviosas que la punta). Rotar los sitios.",
+                "Punzar con lanceta. Descartar la PRIMERA gota y usar la segunda.",
+                "Aplicar la gota a la tira sin exprimir el dedo (el ordeñe diluye con líquido intersticial y baja el valor).",
+                "Leer el resultado, registrarlo y descartar la lanceta en el descartador rígido."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "warn",
+              "title": "⚠️ Errores frecuentes",
+              "text": "No descartar la primera gota, exprimir el dedo, tira vencida o mal codificada, manos con restos de azúcar o alcohol todavía húmedo. Si el valor no concuerda con la clínica, repetir y/o solicitar glucemia de laboratorio."
+            },
+            {
+              "type": "p",
+              "text": "Referencia (en ayunas): 70-100 mg/dL normal; < 70 hipoglucemia; ≥ 126 mg/dL repetido es criterio de diabetes. El manejo de la hipo/hiperglucemia y la insulinoterapia se desarrollan en las apps Patologías y Farmacológica."
+            },
+            {
+              "type": "crosslink",
+              "target": "farmacologia",
+              "title": "Insulinas y antidiabéticos",
+              "description": "Tipos, inicio de acción, picos y cuidados de enfermería."
+            }
+          ]
+        },
+        {
+          "id": "m7-14",
+          "title": "7.14 Nutrición enteral — administración",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Administrar alimentación por sonda (SNG, nasoyeyunal o gastrostomía) de forma segura. La complicación más temida es la broncoaspiración."
+            },
+            {
+              "type": "h4",
+              "text": "Antes de administrar"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Verificar la correcta posición de la sonda.",
+                "Cabecera a 30-45° durante la administración y mantenerla 30-60 min después.",
+                "Controlar el residuo gástrico cuando esté indicado y según protocolo.",
+                "Fórmula a temperatura ambiente; respetar fecha y tiempo de la fórmula abierta."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Métodos de administración"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Bolo / intermitente: con jeringa por gravedad, lento (riesgo de dumping si es rápido).",
+                "Por gravedad con bolsa: goteo regulado.",
+                "Por bomba de infusión: continua, mejor tolerada en el paciente crítico y en sonda yeyunal."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Después y mantenimiento"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Lavar la sonda con 20-30 mL de agua antes, después y entre fármacos para evitar obstrucción.",
+                "Administrar los fármacos por separado (líquidos o bien triturados), nunca mezclados en la fórmula."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "🚨 Prevención de broncoaspiración",
+              "text": "Cabecera SIEMPRE ≥ 30°. Si aparecen vómitos, tos, distensión abdominal o residuo elevado, detener y evaluar. Nunca administrar si hay dudas sobre la posición de la sonda."
+            }
+          ]
+        },
+        {
+          "id": "m7-15",
+          "title": "7.15 Balance hídrico",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "El balance hídrico (BH) registra todo lo que entra y sale del paciente en un período (turno o 24 h). Es clave en cardiópatas, renales, quemados, postquirúrgicos y pacientes críticos."
+            },
+            {
+              "type": "h4",
+              "text": "Ingresos"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vía oral: líquidos y agua de los alimentos.",
+                "Endovenosos: sueros, medicación diluida, hemoderivados.",
+                "Nutrición enteral o parenteral.",
+                "Agua metabólica (endógena): ~300 mL/día."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Egresos"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Diuresis: el egreso más importante de medir.",
+                "Deposiciones (sobre todo diarrea), vómitos, débito por SNG.",
+                "Drenajes y ostomías.",
+                "Pérdidas insensibles (piel + respiración): ~500-800 mL/día; aumentan con la fiebre (~+13% por cada °C)."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "BH = ingresos − egresos. Positivo: el paciente retiene (riesgo de sobrecarga). Negativo: pierde (riesgo de deshidratación). El peso diario complementa el BH: 1 kg de variación ≈ 1 litro."
+            },
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "💡 La diuresis manda",
+              "text": "Diuresis normal: 0,5-1 mL/kg/h. Por debajo de 0,5 mL/kg/h sostenido = oliguria → avisar. Un BH bien hecho detecta la sobrecarga o la deshidratación antes que los síntomas."
+            }
+          ]
+        },
+        {
+          "id": "m7-cierre",
+          "title": "📌 Lo esencial",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "Para llevarte",
+              "items": [
+                "Balón de Foley: agua estéril, NUNCA solución fisiológica.",
+                "Aspiración: succión solo AL retirar, máximo 10-15 seg, pre-oxigenando.",
+                "Goteo con macrogotero: gotas/min = mL × 20 / minutos."
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1985,6 +2728,23 @@
       ],
       "isPremium": true,
       "subs": [
+        {
+          "id": "m8-obj",
+          "title": "🎯 Objetivos del módulo",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "Al terminar este módulo vas a poder…",
+              "items": [
+                "Aplicar las 10 reglas correctas de administración segura.",
+                "Elegir vía, aguja y ángulo según el tipo de inyección.",
+                "Calcular dosis, goteo e infusiones en bomba (mcg/kg/min).",
+                "Reconocer los errores fatales y sus antídotos."
+              ]
+            }
+          ]
+        },
         {
           "id": "m8-1",
           "title": "8.1 Las 10 reglas correctas",
@@ -2259,6 +3019,79 @@
               "path": "home"
             }
           ]
+        },
+        {
+          "id": "m8-6",
+          "title": "8.6 Transfusión de hemoderivados",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Transfundir sangre o sus derivados es un procedimiento de alto riesgo: un error de identificación puede provocar una reacción hemolítica fatal. La verificación lo es todo."
+            },
+            {
+              "type": "h4",
+              "text": "Hemoderivados frecuentes"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Glóbulos rojos desplasmatizados: anemia sintomática, sangrado.",
+                "Plaquetas: plaquetopenia con sangrado o profilaxis.",
+                "Plasma fresco congelado: coagulopatía, reversión de anticoagulación.",
+                "Crioprecipitados: déficit de fibrinógeno o factor VIII."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Verificación (doble check entre 2 profesionales)"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Identidad del paciente con 2 identificadores, contra la pulsera y la unidad.",
+                "Grupo y factor (paciente vs unidad) y prueba cruzada compatible.",
+                "Número de unidad, vencimiento e integridad (color, coágulos, fugas).",
+                "Consentimiento informado firmado.",
+                "Signos vitales basales antes de iniciar."
+              ]
+            },
+            {
+              "type": "h4",
+              "text": "Administración"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vía exclusiva de buen calibre (≥ 18-20G) con filtro estándar.",
+                "Iniciar LENTO los primeros 15 minutos y permanecer junto al paciente: la mayoría de las reacciones graves aparecen temprano.",
+                "Solo compatible con SF 0,9%. NUNCA con dextrosa ni Ringer lactato (hemólisis / coágulos).",
+                "Completar la transfusión de glóbulos rojos en ≤ 4 horas.",
+                "Controlar signos vitales: basal, a los 15 min y luego según protocolo."
+              ]
+            },
+            {
+              "type": "card",
+              "variant": "alert",
+              "title": "🚨 Reacción transfusional",
+              "text": "Ante fiebre, escalofríos, dolor lumbar, disnea, hipotensión, urticaria u orina oscura: DETENER la transfusión de inmediato, mantener la vía permeable con SF 0,9%, controlar signos vitales, avisar al médico y al servicio de hemoterapia, y conservar la unidad y el equipo para su análisis."
+            }
+          ]
+        },
+        {
+          "id": "m8-cierre",
+          "title": "📌 Lo esencial",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "Para llevarte",
+              "items": [
+                "Drogas de alto riesgo (heparina, insulina, KCl, vasoactivos): doble check obligatorio.",
+                "El ventroglúteo es el sitio IM más seguro.",
+                "Naloxona para opioides, flumazenil para benzodiacepinas: conocelos."
+              ]
+            }
+          ]
         }
       ]
     },
@@ -2275,6 +3108,23 @@
       ],
       "isPremium": true,
       "subs": [
+        {
+          "id": "m9-obj",
+          "title": "🎯 Objetivos del módulo",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "Al terminar este módulo vas a poder…",
+              "items": [
+                "Aplicar RCP de alta calidad con frecuencia y profundidad correctas.",
+                "Seguir el algoritmo ACLS según el ritmo sea desfibrilable o no.",
+                "Reconocer y tratar inicialmente el shock y la anafilaxia.",
+                "Buscar las causas reversibles (5H/5T) en todo paro."
+              ]
+            }
+          ]
+        },
         {
           "id": "m9-1",
           "title": "9.1 Cadena de supervivencia",
@@ -2300,7 +3150,7 @@
               "type": "list",
               "items": [
                 "Frecuencia: 100-120 compresiones/min.",
-                "Profundidad: ≥ 5 cm adulto (no > 6), 4 cm niño, 4 cm o ⅓ tórax lactante.",
+                "Profundidad: ≥ 5 cm en adulto (no > 6 cm), ≈ 5 cm en niño (al menos ⅓ del diámetro AP del tórax), ≈ 4 cm en lactante (⅓ del tórax).",
                 "Permitir reexpansión total entre compresiones.",
                 "Minimizar interrupciones (< 10 seg).",
                 "Compresión:ventilación 30:2 sin vía aérea avanzada. Con vía: continuas + 1 ventilación c/6 seg.",
@@ -2434,6 +3284,22 @@
               ]
             }
           ]
+        },
+        {
+          "id": "m9-cierre",
+          "title": "📌 Lo esencial",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "Para llevarte",
+              "items": [
+                "RCP: 100-120/min, ≥ 5 cm en adulto, reexpansión total entre compresiones, 30:2.",
+                "Anafilaxia: adrenalina IM 0,3-0,5 mg en el muslo, ya — no esperes.",
+                "La asistolia NO se desfibrila; la FV/TV sin pulso SÍ."
+              ]
+            }
+          ]
         }
       ]
     },
@@ -2450,6 +3316,23 @@
       ],
       "isPremium": true,
       "subs": [
+        {
+          "id": "m10-obj",
+          "title": "🎯 Objetivos del módulo",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "tip",
+              "title": "Al terminar este módulo vas a poder…",
+              "items": [
+                "Registrar la evolución con SOAPIE y entregar el turno con SBAR.",
+                "Formular diagnósticos NANDA con estructura P-E-S.",
+                "Redactar objetivos SMART.",
+                "Comunicarte con el paciente y la familia con técnica (teach-back)."
+              ]
+            }
+          ]
+        },
         {
           "id": "m10-1",
           "title": "10.1 SOAPIE — registro de evolución",
@@ -2564,6 +3447,22 @@
                 "Empatía: \"entiendo que esto debe ser muy difícil\".",
                 "Confidencialidad — la información NO se comparte por canales no seguros.",
                 "Educación al alta: medicación, signos de alarma, control, plan de cuidados."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m10-cierre",
+          "title": "📌 Lo esencial",
+          "blocks": [
+            {
+              "type": "card",
+              "variant": "insight",
+              "title": "Para llevarte",
+              "items": [
+                "Lo que no está escrito, no se hizo: el registro es un documento legal.",
+                "SBAR le da voz a la enfermería en la decisión clínica.",
+                "Objetivo bien hecho = medible y con tiempo (\"SatO₂ ≥ 95% con O₂ a 3 L/min en 4 h\")."
               ]
             }
           ]
