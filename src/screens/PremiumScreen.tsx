@@ -488,7 +488,7 @@ export function PremiumScreen({ navigation }: Props) {
                 ]}
                 value={code}
                 onChangeText={setCode}
-                placeholder="Ej: ENFER-2024-XXXX"
+                placeholder="Ingresá tu código de activación"
                 placeholderTextColor={colors.textLight}
                 autoCapitalize="characters"
                 autoCorrect={false}

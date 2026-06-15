@@ -1,7 +1,7 @@
 # Roadmap — Manual de Enfermería
 
-> **Última actualización**: 2026-05-22
-> **Versión actual**: v1.0.0 (versionCode 1) · main con 21 commits en preparación de v1.1.0
+> **Última actualización**: 2026-06-15
+> **Versión actual**: **v1.1.0 (versionCode 2)** staged en rama `chore/release-v1.1.0` — RN 0.86, deps majors (TS6/async-storage3/prettier3), UX micro-interacciones, contenido 56→85 subtemas. Pendiente: merge a main + AAB de release (build serial)
 > **Política**: este documento se actualiza al cerrar cada release y al iniciar cada milestone. Mover items de "planeado" a "en progreso" → "completado" según avanza el trabajo.
 
 ---

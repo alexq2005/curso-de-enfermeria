@@ -4,6 +4,32 @@
 
 ---
 
+## 2026-06-15 — Sesión 15: Release v1.1.0 — deps majors, RN 0.86 y auditoría/enriquecimiento de contenido
+
+### Resumen
+Preparación de **v1.1.0** (versionCode 2) en la rama `chore/release-v1.1.0`. Tres frentes:
+
+**1) Dependencias (1 commit por major, con gate tsc/lint/jest y back-off del que rompe):**
+- TypeScript 5.9 → **6.0.3** ✅, async-storage 2.2 → **3.1.1** ✅ (mock de jest ESM-only → mock in-memory propio), prettier 2.8 → **3.8.4** ✅ (+reformateo).
+- **React Native 0.84.1 → 0.86.0** ✅ + react 19.2.7 + `@react-native/*` 0.86. Breaking: `StyleSheet.absoluteFillObject` removido → `absoluteFill` (3 archivos). Validado con build nativo freeDebug (APK 51 MB).
+- **Diferidos**: jest 30 (preset RN arrastra jest 29) y eslint 10 (flat-config-only vs eslintrc de RN). Ver troubleshooting.
+- Build nativo de RN 0.86 **OOM-ea en paralelo** (24 cores × clang vs 16 GB) → requiere **serial** (`--max-workers=1` + `CMAKE_BUILD_PARALLEL_LEVEL=1`).
+
+**2) Auditoría de contenido clínico** (10 módulos / 56 subtemas leídos línea por línea): información correcta y vigente. **5 imprecisiones corregidas**: RCP niño ~5 cm (M9.2), escala de flebitis 0-5 con conducta (M5.3), UPP + lesión de tejidos profundos + NPIAP (M6.5), nota de jurisdicción en residuos (M4.4), nota ESC/ESH vs ACC/AHA en TA (M3.1).
+
+**3) Enriquecimiento de contenido** (lente docente, en carril método/info):
+- **+9 subtemas de procedimientos**: Henderson/Gordon (M1), caídas y contención (M4), posiciones, movilización, curación de heridas, glucemia capilar, nutrición enteral, balance hídrico (M7), transfusión de hemoderivados (M8). Con crosslinks a Patologías/Farmacológica donde corresponde.
+- **Objetivos + "Lo esencial"** por módulo (cada uno abre con 🎯 y cierra con 📌).
+- **56 → 85 subtemas, 178 → 258 bloques.**
+
+### Verificación
+- tsc 0 · eslint 0 err · jest 31/31 (en cada etapa). Build nativo freeDebug OK (serial). Bundle JS regenerado con todo el contenido (verificado: hemoderivados, Morse, Henderson, objetivos embebidos).
+
+### Pendientes
+- **Mergear `chore/release-v1.1.0` a main** y generar el **AAB de release** con build serial (o OOM por RAM).
+
+---
+
 ## 2026-06-15 — Sesión 14: Modernización UX/UI (micro-interacciones)
 
 ### Resumen
